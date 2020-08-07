@@ -15,4 +15,5 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Auth'], function () {
 
 Route::prefix('admin')->group(function() {
     Route::get('/', 'DashboardController@index');
+    Route::resource('khach-hang', 'CustomerController');
 });
