@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Module Client</title>
-
-       {{-- Laravel Mix - CSS File --}}
-       {{-- <link rel="stylesheet" href="{{ mix('css/client.css') }}"> --}}
+    @include('client::layouts.includes.head')
+    @stack('css')    
 
     </head>
+
     <body>
+        @include('client::layouts.includes.main_header')
+
         @yield('content')
 
-        {{-- Laravel Mix - JS File --}}
-        {{-- <script src="{{ mix('js/client.js') }}"></script> --}}
+
+        @include('client::layouts.includes.main_footer')
+
+        @stack('scripts')
     </body>
+    
 </html>

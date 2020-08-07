@@ -1,19 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Module Admin</title>
+<html>
 
-       {{-- Laravel Mix - CSS File --}}
-       {{-- <link rel="stylesheet" href="{{ mix('css/admin.css') }}"> --}}
+<head>
+    @include('admin::layouts.includes.head')
+</head>
 
-    </head>
-    <body>
-        @yield('content')
+<body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
 
-        {{-- Laravel Mix - JS File --}}
-        {{-- <script src="{{ mix('js/admin.js') }}"></script> --}}
-    </body>
+        <!-- Navbar -->
+            @include('admin::layouts.includes.main_header')
+        <!-- /.navbar -->
+
+        <!-- Main Sidebar Container -->
+            @include('admin::layouts.includes.main_sidebar')
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            @yield('content')
+        </div>
+        <!-- /.content-wrapper -->
+
+        <!-- main footer -->
+            @include('admin::layouts.includes.main_footer')
+        <!-- /.main footer -->
+    </div>
+    <!-- ./wrapper -->
+
+        @include('admin::layouts.includes.footer')
+
+        @stack('scripts')
+</body>
+
 </html>
