@@ -22,52 +22,38 @@
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
-            <div class="card card-info">
-                <div class="card-header">
-                    <h3 class="card-title">Thêm mới @yield('title')</h3>
-                </div>
+            <div class="card">
                 <div class="card-body">
-                    <!-- Color Picker -->
-                    <div class="form-group">
-                        <label>Tên:</label>
-                        <input type="text" class="form-control my-colorpicker1">
-                    </div>
-                    <!-- /.form group -->
-
-                    <!-- Color Picker -->
-                    <div class="form-group">
-                        <label>Color picker with addon:</label>
-
-                        <div class="input-group my-colorpicker2">
-                            <input type="text" class="form-control">
-
-                            <div class="input-group-append">
-                                <span class="input-group-text"><i class="fas fa-square"></i></span>
-                            </div>
-                        </div>
-                        <!-- /.input group -->
-                    </div>
-                    <!-- /.form group -->
-
-                    <!-- time Picker -->
-                    <div class="bootstrap-timepicker">
+                    <form action="{{ route('admin.khach-hang.store') }}" method="POST">
+                        @csrf
                         <div class="form-group">
-                            <label>Time picker:</label>
-
-                            <div class="input-group date" id="timepicker" data-target-input="nearest">
-                                <input type="text" class="form-control datetimepicker-input" data-target="#timepicker" />
-                                <div class="input-group-append" data-target="#timepicker" data-toggle="datetimepicker">
-                                    <div class="input-group-text"><i class="far fa-clock"></i></div>
-                                </div>
-                            </div>
-                            <!-- /.input group -->
+                            <label>Tên:</label>
+                            <input type="text" class="form-control" name="name" value="{{ old('name') }}">
+                            @error('name')
+                            <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
-                        <!-- /.form group -->
-                    </div>
+                        <div class="form-group">
+                            <label>Email:</label>
+                            <input type="text" class="form-control" name="email" value="{{ old('email') }}">
+                            @error('email')
+                            <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <hr>
+                        <div class="form-group d-flex justify-content-center">
+                            <a href="{{ route('admin.khach-hang.index') }}" class="btn btn-lg btn-default mr-3">Trở lại</a>
+                            <button type="submit" class="btn btn-lg btn-primary">Thêm mới</button>
+                        </div>
+                    </form>
                 </div>
-                <!-- /.card-body -->
             </div>
             <!-- /.card -->
         </div>
     </section>
 @endsection
+
+@push('scripts')
+
+
+@endpush

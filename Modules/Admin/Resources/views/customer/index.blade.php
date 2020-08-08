@@ -43,7 +43,8 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Danh sách - @yield('title')</h3>
-                            <a href="{{ route('admin.khach-hang.create') }}" class="btn btn-primary float-right">Thêm mới</a>
+                            <a href="{{ route('admin.khach-hang.create') }}" class="btn btn-primary float-right">Thêm
+                                mới</a>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -54,7 +55,7 @@
                                         <th>Tên</th>
                                         <th>Email</th>
                                         <th>Trạng thái</th>
-                                        <th>Action</th>
+                                        <th width="10%">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -70,9 +71,13 @@
                                                 {{ $row->email }}
                                             </td>
                                             <td>
-                                                {{ $row->active }}
+                                                {{ $row->status }}
                                             </td>
-                                            <td>X</td>
+                                            <td>
+                                                <a href="{{ route('admin.khach-hang.show', [$row->id]) }}" class="btn btn-app">
+                                                    <i class="fas fa-edit"></i> Cập nhật
+                                                </a>
+                                            </td>
                                         </tr>
                                     @endforeach
 
@@ -103,6 +108,8 @@
     <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
     <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
     <script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <!-- Bootstrap Switch -->
+    <script src="plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
     <!-- AdminLTE App -->
     <script src="dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->

@@ -1,16 +1,24 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
-| Web Routes
+| Admin Auth Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
 */
+// Route::group(['namespace' => 'Auth'], function () {
+//     Route::get('login', 'LoginController@showLoginForm');
+//     Route::post('login', 'logincontroller@login')->name('admin.login');
+//     Route::post('logout', 'logincontroller@logout')->name('admin.logout');
+// });
 
-Route::prefix('client')->group(function() {
-    Route::get('/', 'ClientController@index');
+
+Route::group(['prefix' => ''], function () {
+    Route::get('', 'HomeController@index');
+    Route::get('lien-he', 'ContactController@index');
+    Route::get('ve-chung-toi', 'AboutController@index');
+    Route::get('thu-vien', 'GalleryController@index');
+    Route::get('chi-tiet-salon', 'SingleController@index');
+    Route::get('dich-vu', 'ServiceController@index');
 });

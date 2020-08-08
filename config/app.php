@@ -80,7 +80,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => ENV('APP_LOCALE', 'vi'),
 
     /*
     |--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => ENV('APP_LOCALE', 'vi'),
 
     /*
     |--------------------------------------------------------------------------
@@ -174,7 +174,12 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-
+        /*
+         * Package Laravel Permission Service
+         */
+        Spatie\Permission\PermissionServiceProvider::class,
+        // Debugbar
+        Barryvdh\Debugbar\ServiceProvider::class,
     ],
 
     /*
@@ -226,7 +231,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],
 
 ];
