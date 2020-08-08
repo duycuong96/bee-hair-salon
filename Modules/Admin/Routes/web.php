@@ -15,8 +15,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::group([
     'prefix' => 'admin',
-    'as'         => 'admin.'
+    'as' => 'admin.',
 ], function () {
     Route::get('/', 'DashboardController@index')->name('dashboard');
     Route::resource('khach-hang', 'CustomerController');
+    Route::post('validate', 'CustomerController@validateData')->name('khach-hang.validate');
 });
