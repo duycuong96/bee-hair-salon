@@ -19,4 +19,5 @@ Route::group([
 ], function () {
     Route::get('/', 'DashboardController@index')->name('dashboard');
     Route::resource('khach-hang', 'CustomerController');
+    Route::resource('salon', 'BranchSalonController');
 });
