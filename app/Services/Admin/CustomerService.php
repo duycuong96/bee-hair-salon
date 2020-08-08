@@ -22,4 +22,9 @@ class CustomerService
             ['data' => $data]
         );
     }
+
+    public function create()
+    {
+        return view('admin::customer.create');
+    }
 }

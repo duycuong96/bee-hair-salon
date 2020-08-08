@@ -29,7 +29,7 @@ class CustomerController extends AdminBaseController
      */
     public function create()
     {
-        return view('admin::create');
+        return $this->customerService->create();
     }
 
     /**
