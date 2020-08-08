@@ -19,6 +19,7 @@ Route::group([
 ], function () {
     Route::get('/', 'DashboardController@index')->name('dashboard');
     Route::resource('khach-hang', 'CustomerController');
+    Route::resource('salon', 'BranchSalonController');
     Route::post('validate', 'CustomerController@validateData')->name('khach-hang.validate');
     Route::resource('tai-khoan', 'UserController');
 });
