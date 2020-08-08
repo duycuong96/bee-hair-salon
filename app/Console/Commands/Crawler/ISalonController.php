@@ -31,13 +31,13 @@ class ISalonController extends Command
      *
      * @return void
      */
-    public function __construct(ServiceRepository $serviceRepo, BranchSalonRepository $branchSalonRepo)
-    {
-        parent::__construct();
-        $this->client = new Client();
-        $this->serviceRepo = $serviceRepo;
-        $this->branchSalonRepo = $branchSalonRepo;
-    }
+    // public function __construct(ServiceRepository $serviceRepo, BranchSalonRepository $branchSalonRepo)
+    // {
+    //     parent::__construct();
+    //     $this->client = new Client();
+    //     $this->serviceRepo = $serviceRepo;
+    //     $this->branchSalonRepo = $branchSalonRepo;
+    // }
 
     /**
      * Execute the console command.
