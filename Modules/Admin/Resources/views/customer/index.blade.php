@@ -43,6 +43,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Danh sách - @yield('title')</h3>
+                            <a href="{{ route('admin.khach-hang.create') }}" class="btn btn-primary float-right">Thêm mới</a>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
