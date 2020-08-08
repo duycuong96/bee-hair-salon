@@ -4,7 +4,7 @@ use App\Models\Customer;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
-class CustomerSeeeder extends Seeder
+class CustomerSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,20 +15,20 @@ class CustomerSeeeder extends Seeder
     {
         $datas = [
             [
-                'full_name'=>'Cuong',
-                'email'=>'cuong@gmail.com',
+                'name'=>'Cuong',
+                'email'=>'vuduycuong996@gmail.com',
                 'password' => Hash::make('123456'),
                 'ward_id' => '1',
             ],
             [
-                'full_name'=>'Phuoc',
+                'name'=>'Phuoc',
                 'email'=>'phuoc@gmail.com',
                 'password' => Hash::make('123456'),
                 'ward_id' => '1',
             ],
             [
-                'full_name'=>'Khai',
-                'email'=>'khai@gmail.com',
+                'name'=>'Thuan',
+                'email'=>'thuan@gmail.com',
                 'password' => Hash::make('123456'),
                 'ward_id' => '1',
             ],

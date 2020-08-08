@@ -4,9 +4,8 @@ namespace Modules\Admin\Http\Controllers;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-use Illuminate\Routing\Controller;
 use App\Services\Admin\CustomerService;
+use Modules\Admin\Http\Requests\CustomerRequest;
 
 class CustomerController extends AdminBaseController
 {
@@ -37,9 +36,9 @@ class CustomerController extends AdminBaseController
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function store(CustomerRequest $request)
     {
-        //
+        return $this->customerService->store($request);
     }
 
     /**
@@ -49,7 +48,7 @@ class CustomerController extends AdminBaseController
      */
     public function show($id)
     {
-        return view('admin::show');
+        return $this->customerService->show($id);
     }
 
     /**
@@ -68,9 +67,9 @@ class CustomerController extends AdminBaseController
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update(CustomerRequest $request, $id)
     {
-        //
+        return $this->customerService->update($request, $id);
     }
 
     /**
@@ -82,4 +81,5 @@ class CustomerController extends AdminBaseController
     {
         //
     }
+
 }
