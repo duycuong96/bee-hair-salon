@@ -126,6 +126,11 @@
     <!-- AdminLTE for demo purposes -->
     <script src="dist/js/demo.js"></script>
 
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+    $.widget.bridge('uibutton', $.ui.button)
+    </script>
+
     <script>
         $(function () {
             $("#example1").DataTable({
