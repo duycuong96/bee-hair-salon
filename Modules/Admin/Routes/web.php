@@ -20,5 +20,5 @@ Route::group([
     Route::get('/', 'DashboardController@index')->name('dashboard');
     Route::resource('khach-hang', 'UserController');
     Route::post('validate', 'UserController@validateData')->name('khach-hang.validate');
-    // Route::resource('tai-khoan', 'UserController');
+    Route::resource('salon', 'BranchSalonController');
 });
