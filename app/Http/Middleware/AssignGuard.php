@@ -21,14 +21,14 @@ class AssignGuard
     {
         $urlCurrent = URL::current();
         Session::flash('redirect', $urlCurrent);
-        $siteId = Request::segment(1);
+
         if(!Auth::guard($guard)->check()) {
             switch ($guard) {
                 case 'admin':
-                    $redirect = '/admin/login';
+                    $redirect = '/admin/dang-nhap';
                     break;
                 case 'customer':
-                    $redirect = '/login';
+                    $redirect = '/khach-hang/dang-nhap';
                     break;
                 default:
                     $redirect = '/';
