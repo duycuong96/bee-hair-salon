@@ -5,10 +5,11 @@ namespace Modules\Admin\Http\Controllers;
 use App\Services\Admin\BranchSalonService;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
+use Modules\Admin\Http\Requests\BranchSalonRequest;
 
 class BranchSalonController extends AdminBaseController
 {
+    protected $branchSalonService;
     public function __construct(BranchSalonService $branchSalonService)
     {
         $this->branchSalonService = $branchSalonService;
@@ -28,7 +29,7 @@ class BranchSalonController extends AdminBaseController
      */
     public function create()
     {
-        return view('admin::create');
+        return $this->branchSalonService->create();
     }
 
     /**
@@ -36,9 +37,10 @@ class BranchSalonController extends AdminBaseController
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function store(BranchSalonRequest $request)
     {
-        //
+
+        return $this->branchSalonService->store($request);
     }
 
     /**
@@ -48,17 +50,7 @@ class BranchSalonController extends AdminBaseController
      */
     public function show($id)
     {
-        return view('admin::show');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function edit($id)
-    {
-        return view('admin::edit');
+        return $this->branchSalonService->show($id);
     }
 
     /**
@@ -69,7 +61,7 @@ class BranchSalonController extends AdminBaseController
      */
     public function update(Request $request, $id)
     {
-        //
+        return $this->branchSalonService->update($request, $id);
     }
 
     /**
@@ -79,6 +71,6 @@ class BranchSalonController extends AdminBaseController
      */
     public function destroy($id)
     {
-        //
+        return $this->branchSalonService->delete($id);
     }
 }
