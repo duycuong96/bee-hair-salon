@@ -58,7 +58,7 @@ class CustomerService
     {
         $customer = Customer::find($id);
         if (empty($customer)) {
-            return redirect()->route('admin.khach-hang.show');
+            return redirect()->route('admin.khach-hang.index');
         } else {
             $customer->update($request->all());
             return redirect()->route('admin.khach-hang.index');

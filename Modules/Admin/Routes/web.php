@@ -31,5 +31,7 @@ Route::group([
     Route::resource('khach-hang', 'CustomerController');
     Route::post('validate', 'CustomerController@validateData')->name('khach-hang.validate');
     Route::resource('salon', 'BranchSalonController');
-    Route::resource('user', 'UserController');
+    Route::resource('tai-khoan', 'UserController');
+    Route::resource('phan-quyen', 'PermissionController');
+    Route::resource('vai-tro', 'RoleController');
 });
