@@ -26,6 +26,8 @@
 								<ul class="inner-dropdown">
 									<li><a href="/dich-vu">Dịch vụ</a></li>
 									<li><a href="/chi-tiet-salon">Chi tiết salon</a></li>
+									<li><a href="/tai-khoan">Tài khoản</a></li>
+									<li><a href="/dat-lich">Đặt lịch</a></li>
 								</ul>
 								</li>
 							
