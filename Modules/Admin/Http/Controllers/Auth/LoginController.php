@@ -11,6 +11,7 @@ use Illuminate\Support\Arr;
 
 class LoginController extends Controller
 {
+    use AuthenticatesUsers;
 
     /**
      * Where to redirect users after login.
@@ -37,13 +38,6 @@ class LoginController extends Controller
     public function showLoginForm()
     {
         return view('admin::auth.login');
-    }
-
-    public function login(LoginRequest $request)
-    {
-        $data = Arr::except($request->all(), ['_token']);
-        Auth::guard('admin')->login($data);
-        return redirect()->route('admin.dashboard');
     }
 
     /**
