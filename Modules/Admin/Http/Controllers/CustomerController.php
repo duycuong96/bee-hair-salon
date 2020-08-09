@@ -4,14 +4,14 @@ namespace Modules\Admin\Http\Controllers;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
-use App\Services\Admin\UserService;
-use Modules\Admin\Http\Requests\UserRequest;
+use App\Services\Admin\CustomerService;
+use Modules\Admin\Http\Requests\CustomerRequest;
 
-class UserController extends AdminBaseController
+class CustomerController extends AdminBaseController
 {
-    public function __construct(UserService $userService)
+    public function __construct(CustomerService $customerService)
     {
-        $this->userService = $userService;
+        $this->customerService = $customerService;
     }
     /**
      * Display a listing of the resource.
@@ -19,7 +19,7 @@ class UserController extends AdminBaseController
      */
     public function index(Request $request)
     {
-        return $this->userService->index($request);
+        return $this->customerService->index($request);
     }
 
     /**
@@ -28,7 +28,7 @@ class UserController extends AdminBaseController
      */
     public function create()
     {
-        return $this->userService->create();
+        return $this->customerService->create();
     }
 
     /**
@@ -36,9 +36,9 @@ class UserController extends AdminBaseController
      * @param Request $request
      * @return Renderable
      */
-    public function store(UserRequest $request)
+    public function store(CustomerRequest $request)
     {
-        return $this->userService->store($request);
+        return $this->customerService->store($request);
     }
 
     /**
@@ -48,7 +48,7 @@ class UserController extends AdminBaseController
      */
     public function show($id)
     {
-        return $this->userService->show($id);
+        return $this->customerService->show($id);
     }
 
     /**
@@ -67,9 +67,9 @@ class UserController extends AdminBaseController
      * @param int $id
      * @return Renderable
      */
-    public function update(UserRequest $request, $id)
+    public function update(CustomerRequest $request, $id)
     {
-        return $this->userService->update($request, $id);
+        return $this->customerService->update($request, $id);
     }
 
     /**

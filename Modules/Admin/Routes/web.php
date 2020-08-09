@@ -18,7 +18,7 @@ Route::group([
     'as' => 'admin.',
 ], function () {
     Route::get('/', 'DashboardController@index')->name('dashboard');
-    Route::resource('khach-hang', 'UserController');
-    Route::post('validate', 'UserController@validateData')->name('khach-hang.validate');
+    Route::resource('khach-hang', 'CustomerController');
+    Route::post('validate', 'CustomerController@validateData')->name('khach-hang.validate');
     Route::resource('salon', 'BranchSalonController');
 });
