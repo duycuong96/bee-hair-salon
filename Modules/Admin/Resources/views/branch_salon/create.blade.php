@@ -85,5 +85,4 @@
 
 @push('scripts')
 
-
 @endpush

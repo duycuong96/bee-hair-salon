@@ -86,6 +86,29 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item has-treeview {{ (request()->is('admin/salon*')) ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link {{ (request()->is('admin/salon*')) ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-store"></i>
+                        <p>
+                            Quản lý Salon
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview ">
+                        <li class="nav-item">
+                            <a href="{{route('admin.salon.index')}}" class="nav-link {{ (request()->is('admin/salon')) ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Danh sách salon</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.salon.create')}}" class="nav-link {{ (request()->is('admin/salon/create')) ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Thêm salon</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

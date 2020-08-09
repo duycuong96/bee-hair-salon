@@ -15,7 +15,7 @@ class BranchSalonRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'thumb_img' => 'required|min:2|image',
+            'thumb_img' => 'z`min:2|image',
             'name' => 'required|min:2',
             'thumb_img' => 'required',
             'content' => 'min:10',

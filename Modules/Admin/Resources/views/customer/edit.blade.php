@@ -73,5 +73,4 @@
 
 @push('scripts')
 
-
 @endpush
