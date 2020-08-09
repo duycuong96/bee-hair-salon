@@ -6,10 +6,11 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use Modules\Admin\Http\Requests\Auth\LoginRequest;
+use Illuminate\Support\Arr;
 
 class LoginController extends Controller
 {
-    use AuthenticatesUsers;
 
     /**
      * Where to redirect users after login.
@@ -36,6 +37,13 @@ class LoginController extends Controller
     public function showLoginForm()
     {
         return view('admin::auth.login');
+    }
+
+    public function login(LoginRequest $request)
+    {
+        $data = Arr::except($request->all(), ['_token']);
+        Auth::guard('admin')->login($data);
+        return redirect()->route('admin.dashboard');
     }
 
     /**
