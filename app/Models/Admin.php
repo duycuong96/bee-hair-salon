@@ -13,7 +13,7 @@ class Admin extends Authenticatable
     use SoftDeletes;
     use HasRoles;
 
-    protected $table = 'admin';
+    protected $table = 'admins';
 
     protected $fillable = [
         'name',
