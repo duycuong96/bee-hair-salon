@@ -1,0 +1,50 @@
+<?php
+
+namespace Modules\Admin\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+
+class UserRequest extends FormRequest
+{
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        $rule = [
+            $unique = Rule::unique('users')
+            ->where(function($query) {
+                $query->where('id', '=', auth()->user()->id);
+            }),
+            'name' => [
+                'required'
+            ],
+            'email' => [
+                'required',
+                'email',
+            ]
+        ];
+        return $rule;
+    }
+
+    public function attributes()
+    {
+        return [
+            'name' => 'Tên khách hàng',
+            'email' => 'Địa chỉ email'
+        ];
+    }
+
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        return true;
+    }
+}

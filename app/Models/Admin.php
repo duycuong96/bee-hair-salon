@@ -7,16 +7,18 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Permission\Traits\HasRoles;
 
-class AdminUser extends Authenticatable
+class Admin extends Authenticatable
 {
     use Notifiable;
     use SoftDeletes;
     use HasRoles;
 
-    protected $table = 'admin_users';
+    protected $table = 'admin';
 
     protected $fillable = [
-        'name', 'email', 'password',
+        'name',
+        'email',
+        'password',
     ];
 
     protected $hidden = [
@@ -25,6 +27,10 @@ class AdminUser extends Authenticatable
 
     protected $dates = [
         'deleted_at'
+    ];
+
+    protected $casts = [
+        'email_verified_at' => 'datetime',
     ];
 
     public function role()
