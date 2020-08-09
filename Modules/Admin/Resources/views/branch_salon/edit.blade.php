@@ -74,7 +74,7 @@
                         <hr>
                         <div class="form-group d-flex justify-content-center">
                             <a href="{{ route('admin.salon.index') }}" class="btn btn-lg btn-default mr-3">Trở lại</a>
-                            <button type="submit" class="btn btn-lg btn-primary">Thêm mớiiii</button>
+                            <button type="submit" class="btn btn-lg btn-primary">Thêm mới</button>
                         </div>
                     </form>
                 </div>
