@@ -4,6 +4,9 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Session;
 
 class AssignGuard
 {
@@ -16,8 +19,22 @@ class AssignGuard
      */
     public function handle($request, Closure $next,  $guard = null)
     {
+        $urlCurrent = URL::current();
+        Session::flash('redirect', $urlCurrent);
+        $siteId = Request::segment(1);
         if(!Auth::guard($guard)->check()) {
-            return redirect('/');
+            switch ($guard) {
+                case 'admin':
+                    $redirect = '/admin/login';
+                    break;
+                case 'web':
+                    $redirect = '/login';
+                    break;
+                default:
+                    $redirect = '/';
+                    break;
+            }
+            return redirect($redirect);
         }
         Auth::shouldUse($guard);
         return $next($request);

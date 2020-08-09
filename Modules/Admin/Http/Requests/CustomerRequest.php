@@ -5,7 +5,7 @@ namespace Modules\Admin\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class UserRequest extends FormRequest
+class CustomerRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -15,7 +15,7 @@ class UserRequest extends FormRequest
     public function rules()
     {
         $rule = [
-            $unique = Rule::unique('users')
+            $unique = Rule::unique('customers')
             ->where(function($query) {
                 $query->where('id', '=', auth()->user()->id);
             }),
