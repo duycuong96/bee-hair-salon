@@ -1,6 +1,4 @@
 {
     "Admin": true,
-    "Client": true,
-    "Customer": true,
-    "Auth": true
+    "Client": true
 }
