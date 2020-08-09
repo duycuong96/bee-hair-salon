@@ -27,7 +27,7 @@ class AssignGuard
                 case 'admin':
                     $redirect = '/admin/login';
                     break;
-                case 'web':
+                case 'customer':
                     $redirect = '/login';
                     break;
                 default:
