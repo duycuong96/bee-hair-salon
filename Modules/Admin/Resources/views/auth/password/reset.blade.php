@@ -38,7 +38,7 @@
                     </div>
                     @enderror
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Mật khẩu" name="password">
+                        <input type="password" class="form-control" placeholder="Mật khẩu mới" name="password">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -46,7 +46,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Nhập lại mật khẩu" name="password_confirmation">
+                        <input type="password" class="form-control" placeholder="Nhập lại mật khẩu mới" name="password_confirmation">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>

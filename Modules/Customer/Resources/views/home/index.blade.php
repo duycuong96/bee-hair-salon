@@ -1,8 +1,8 @@
 @extends('customer::layouts.master')
+
 @section('title', 'BeeHair Salon')
+
 @section('content')
-
-
 
     <!-- banner -->
     <div class="banner_w3lspvt" id="home">

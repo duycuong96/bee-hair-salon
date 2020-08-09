@@ -12,12 +12,12 @@ Route::group([
     'namespace' => 'Auth',
     'as' => 'admin.',
 ], function () {
-    Route::get('login', 'LoginController@showLoginForm')->name('formLogin');
+    Route::get('dang-nhap', 'LoginController@showLoginForm')->name('formLogin');
     Route::post('login', 'LoginController@login')->name('login');
     Route::post('logout', 'LoginController@logout')->name('admin.logout');
-    Route::get('forgot-password', 'ForgotPasswordController@showLinkRequestForm')->name('password.reset.showForm');
+    Route::get('quen-mat-khau', 'ForgotPasswordController@showLinkRequestForm')->name('password.reset.showForm');
     Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail')->name('send.link.email');
-    Route::get('password/reset/{token}', 'ResetPasswordController@showResetForm')->name('password.showResetForm');
+    Route::get('mat-khau/dat-lai/{token}', 'ResetPasswordController@showResetForm')->name('password.showResetForm');
     Route::post('password/reset', 'ResetPasswordController@reset')->name('password.update');
 
 });
