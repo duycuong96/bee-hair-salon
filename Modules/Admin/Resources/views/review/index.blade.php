@@ -1,6 +1,6 @@
 @extends('admin::layouts.master')
 
-@section('title', 'Danh sách salon')
+@section('title', 'Danh sách đánh giá')
 
 @push('css')
     <!-- Font Awesome -->
@@ -43,8 +43,8 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Danh sách - @yield('title')</h3>
-                        <a href="{{ route('admin.salon.create') }}"
-                            class="btn btn-primary float-right">Thêm mới</a>
+                        {{-- <a href="{{ route('admin.salon.create') }}"
+                            class="btn btn-primary float-right">Thêm mới</a> --}}
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -52,9 +52,13 @@
                             <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Tên</th>
-                                    <th>Ảnh salon</th>
-                                    <th>Địa chỉ</th>
+                                    <th>Tên salon</th>
+                                    <th>Tên khách hàng</th>
+                                    <th>Tên nhân viên</th>
+                                    <th>Mức độ đánh giá</th>
+                                    <th>Nội dung đánh giá</th>
+                                    <th>Ngày đánh giá</th>
+                                    <th>Trang thái</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -65,30 +69,32 @@
                                             {{ $row->id }}
                                         </td>
                                         <td>
-                                            {{ $row->name }}
+                                            {{ $row->salon_id }}
                                         </td>
                                         <td>
-                                            <img src="{!! url('storage/'.$row->thumb_img) !!}" height="70px">
+                                            {{ $row->customer_id }}
                                         </td>
                                         <td>
-                                            {{ $row->address }}
+                                            {{ $row->employee_id }}
+                                        </td>
+                                        <td>
+                                            {{ $row->rating_stars }}
+                                        </td>
+                                        <td>
+                                            {{ $row->detail }}
+                                        </td>
+                                        <td>
+                                            {{ $row->created_at }}
+                                        </td>
+                                        <td>
+                                            {{ $row->status }}
                                         </td>
                                         <td>
                                             <div class="btn-group">
-                                                <a href="{{ route('admin.salon.show', [$row->id]) }}"
+                                                <a href="{{ route('admin.danh-gia.show', [$row->id]) }}"
                                                     class="btn btn-app text-success">
                                                     <i class="fas fa-edit"></i> Cập nhật
                                                 </a>
-                                                <form
-                                                    action="{{ route('admin.salon.destroy', [$row->id]) }}"
-                                                    method="post">
-                                                    @csrf
-                                                    @method('DELETE')
-
-                                                    <button type="submit" class="btn btn-app text-danger">
-                                                        <i class="far fa-trash-alt"></i> Xóa
-                                                    </button>
-                                            </form>
                                             </div>
                                         </td>
                                     </tr>

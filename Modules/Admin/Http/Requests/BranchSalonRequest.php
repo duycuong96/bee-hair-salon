@@ -24,14 +24,6 @@ class BranchSalonRequest extends FormRequest
             'phone' => 'required|min:10'
         ];
     }
-    public function messages()
-    {
-        return [
-            'required' => ':attribute không được để trống',
-            'min' => ":attribute quá ngắn",
-            'image' => ":attribute không phải là ảnh",
-        ];
-    }
 
     public function attributes()
     {

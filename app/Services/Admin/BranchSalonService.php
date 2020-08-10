@@ -53,10 +53,10 @@ class BranchSalonService
         $branchSalon = BranchSalon::find($id);
         dd($branchSalon);
         if (empty($branchSalon)) {
-            return redirect()->route('admin.khach-hang.show');
+            return redirect()->route('admin.salon.index')->with('error', "Salon không tồn tại");
         } else {
             $branchSalon->update($request->all());
-            return redirect()->route('admin.khach-hang.index');
+            return redirect()->route('admin.salon.index')->with('success', "Sửa salon thành công");
         }
 
     }
@@ -64,6 +64,6 @@ class BranchSalonService
     public function delete($id)
     {
         BranchSalon::destroy($id);
-        return redirect()->back()->with('success', 'Xóa Salon thành công');
+        return redirect()->route('admin.salon.index')->with('success', 'Xóa Salon thành công');
     }
 }

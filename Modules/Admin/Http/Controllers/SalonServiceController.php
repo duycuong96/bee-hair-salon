@@ -2,16 +2,17 @@
 
 namespace Modules\Admin\Http\Controllers;
 
+use App\Services\Admin\SalonServiceService;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
-use App\Services\Admin\CustomerService;
-use Modules\Admin\Http\Requests\CustomerRequest;
+use Illuminate\Routing\Controller;
 
-class CustomerController extends AdminBaseController
+class SalonServiceController extends AdminBaseController
 {
-    public function __construct(CustomerService $customerService)
+    protected $salonServiceService;
+    public function __construct(SalonServiceService $salonServiceService)
     {
-        $this->customerService = $customerService;
+        $this->salonServiceService = $salonServiceService;
     }
     /**
      * Display a listing of the resource.
@@ -19,7 +20,7 @@ class CustomerController extends AdminBaseController
      */
     public function index(Request $request)
     {
-        return $this->customerService->index($request);
+        return $this->salonServiceService->index($request);
     }
 
     /**
@@ -28,7 +29,7 @@ class CustomerController extends AdminBaseController
      */
     public function create()
     {
-        return $this->customerService->create();
+        return $this->salonServiceService->create();
     }
 
     /**
@@ -36,9 +37,9 @@ class CustomerController extends AdminBaseController
      * @param Request $request
      * @return Renderable
      */
-    public function store(CustomerRequest $request)
+    public function store(Request $request)
     {
-        return $this->customerService->store($request);
+        return $this->salonServiceService->store($request);
     }
 
     /**
@@ -48,7 +49,7 @@ class CustomerController extends AdminBaseController
      */
     public function show($id)
     {
-        return $this->customerService->show($id);
+        return $this->salonServiceService->show($id);
     }
 
     /**
@@ -57,7 +58,7 @@ class CustomerController extends AdminBaseController
      * @param int $id
      * @return Renderable
      */
-    public function update(CustomerRequest $request, $id)
+    public function update(Request $request, $id)
     {
         return $this->customerService->update($request, $id);
     }
@@ -71,5 +72,4 @@ class CustomerController extends AdminBaseController
     {
         //
     }
-
 }
