@@ -1,6 +1,6 @@
 @extends('admin::layouts.master')
 
-@section('title', 'Danh sách salon')
+@section('title', 'Danh sách dịch vụ')
 
 @push('css')
     <!-- Font Awesome -->
@@ -43,18 +43,31 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Danh sách - @yield('title')</h3>
-                        <a href="{{ route('admin.salon.create') }}"
+                        <a href="{{ route('admin.dich-vu.create') }}"
                             class="btn btn-primary float-right">Thêm mới</a>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
+                        @if (session('success'))
+                        <div class="alert alert-success" role="alert">
+                          {{session('success')}}
+                        </div>
+                        @endif
+                        @if (session('error'))
+                        <div class="alert alert-warning " role="alert">
+                          {{session('error')}}
+                        </div>
+                        @endif
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th>Id</th>
                                     <th>Tên</th>
-                                    <th>Ảnh salon</th>
-                                    <th>Địa chỉ</th>
+                                    <th>Ảnh dịch vụ</th>
+                                    <th>Chi tiết</th>
+                                    <th>Giá</th>
+                                    <th>Giá sau khi giảm</th>
+                                    <th>Thời gian kết thúc</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -68,19 +81,30 @@
                                             {{ $row->name }}
                                         </td>
                                         <td>
-                                            <img src="{!! url('storage/'.$row->thumb_img) !!}" height="70px">
+                                            {{-- @foreach ($row->images as $item)
+                                                <img src="{!! url('storage/'.$item) !!}" alt="" height="70px">
+                                            @endforeach --}}
                                         </td>
                                         <td>
-                                            {{ $row->address }}
+                                            {{ $row->detail }}
+                                        </td>
+                                        <td>
+                                            {{ $row->price }}
+                                        </td>
+                                        <td>
+                                            {{ $row->sale_price }}
+                                        </td>
+                                        <td>
+                                            {{ $row->estimate }}
                                         </td>
                                         <td>
                                             <div class="btn-group">
-                                                <a href="{{ route('admin.salon.show', [$row->id]) }}"
+                                                <a href="{{ route('admin.dich-vu.show', [$row->id]) }}"
                                                     class="btn btn-app text-success">
                                                     <i class="fas fa-edit"></i> Cập nhật
                                                 </a>
                                                 <form
-                                                    action="{{ route('admin.salon.destroy', [$row->id]) }}"
+                                                    action="{{ route('admin.dich-vu.destroy', [$row->id]) }}"
                                                     method="post">
                                                     @csrf
                                                     @method('DELETE')
