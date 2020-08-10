@@ -20,6 +20,9 @@ Route::group([
     Route::get('/', 'DashboardController@index')->name('dashboard');
     Route::resource('khach-hang', 'CustomerController');
     Route::resource('salon', 'BranchSalonController');
+    Route::resource('danh-gia', 'ReviewController')->only('index', 'show', 'update');
+    Route::resource('dich-vu', 'ServiceController')->except('edit');
+    Route::resource('dich-vu-salon', 'SalonServiceController')->except('edit');
     Route::post('validate', 'CustomerController@validateData')->name('khach-hang.validate');
     Route::resource('tai-khoan', 'UserController');
 });

@@ -97,17 +97,63 @@
                     <ul class="nav nav-treeview ">
                         <li class="nav-item">
                             <a href="{{route('admin.salon.index')}}" class="nav-link {{ (request()->is('admin/salon')) ? 'active' : '' }}">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-list-ol nav-icon"></i>
                                 <p>Danh sách salon</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('admin.salon.create')}}" class="nav-link {{ (request()->is('admin/salon/create')) ? 'active' : '' }}">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-plus-circle nav-icon"></i>
                                 <p>Thêm salon</p>
                             </a>
                         </li>
                     </ul>
+                </li>
+                <li class="nav-item has-treeview {{ (request()->is('admin/danh-gia*')) ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link {{ (request()->is('admin/danh-gia*')) ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-pen"></i>
+                        <p>
+                            Quản lý đánh giá
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview ">
+                        <li class="nav-item">
+                            <a href="{{route('admin.danh-gia.index')}}" class="nav-link {{ (request()->is('admin/danh-gia')) ? 'active' : '' }}">
+                                <i class="fas fa-list-ol nav-icon"></i>
+                                <p>Danh sách đánh giá</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item has-treeview {{ (request()->is('admin/dich-vu*')) ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link {{ (request()->is('admin/dich-vu*')) ? 'active' : '' }}">
+                        <i class="nav-icon fab fa-servicestack"></i>
+                        <p>
+                            Quản lý dịch vụ
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview ">
+                        <li class="nav-item">
+                            <a href="{{route('admin.dich-vu.index')}}" class="nav-link {{ (request()->is('admin/dich-vu')) ? 'active' : '' }}">
+                                <i class="fas fa-list-ol nav-icon"></i>
+                                <p>Danh sách dịch vụ</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.dich-vu.create')}}" class="nav-link {{ (request()->is('admin/dich-vu/create')) ? 'active' : '' }}">
+                                <i class="fas fa-plus-circle nav-icon"></i>
+                                <p>Thêm dịch vụ</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                  <a href="{{route('admin.dich-vu-salon.create')}}" class="nav-link {{ (request()->is('admin/dich-vu-salon/create')) ? 'active' : '' }}">
+                    <i class="nav-icon fab fa-usps"></i>
+                    <p>Đăng ký dịch vụ</p>
+                  </a>
                 </li>
             </ul>
         </nav>
