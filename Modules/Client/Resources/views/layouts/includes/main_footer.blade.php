@@ -53,30 +53,6 @@
                 </div>
 
             </div>
-            <div class="w3ls-footer text-center mt-4">
-                <ul class="list-unstyled w3ls-icons">
-                    <li>
-                        <a href="#">
-                        <span class="fa fa-facebook-f"></span>
-                    </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                        <span class="fa fa-twitter"></span>
-                    </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                        <span class="fa fa-dribbble"></span>
-                    </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                        <span class="fa fa-vk"></span>
-                    </a>
-                    </li>
-                </ul>
-            </div>
             <div class="move-top text-right"><a href="#home" class="move-top"> <span class="fa fa-angle-up  mb-3" aria-hidden="true"></span></a></div>
         </div>
         <!-- //footer bottom -->

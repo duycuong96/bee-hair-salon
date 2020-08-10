@@ -19,7 +19,7 @@
 					<div class="bs-slider-overlay">
 						<div class="banner-text">
 							<div class="container">
-								<h2 class="movetxt agile-title text-capitalize">We Create and Renovate Hair Style Trends</h2>
+								<h2 class="movetxt agile-title text-capitalize">We Help to grow your hair as well beardg</h2>
 								<p>Mỗi lần cắt tóc là một lần đánh bạc nhan sắc của mình, hãy tin tưởng ở chúng tôi !</p>
 								<a href="contact.html" class="btn"> Đặt lịch ngay </a>
 							</div>
