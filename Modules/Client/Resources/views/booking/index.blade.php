@@ -1,122 +1,236 @@
 @extends('client::layouts.master')
+
 @section('title','BeeHair')
+
+@push('css')
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
+<link rel="stylesheet" href="{{asset('client/css/booking.css')}}">
+
+@endpush
+
 @section('content')
 
+<!-- MultiStep Form -->
+<div class="container-fluid" id="grad1">
+  <div class="row justify-content-center mt-0">
+      <div class="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-5 mt-3 mb-2">
+          <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+              <h2><strong>Sign Up Your User Account</strong></h2>
+              <p>Fill all form field to go to next step</p>
+              <div class="row">
+                  <div class="col-md-12 mx-0">
+                      <form id="msform">
+                          <!-- progressbar -->
+                          <ul id="progressbar">
+                              <li class="active" id="account"><strong>Chọn salon</strong></li>
+                              <li id="personal"><strong>Chọn dịch vụ</strong></li>
+                              <li id="payment"><strong>Chọn stylist</strong></li>
+                              <li id="confirm"><strong>Hoàn tất</strong></li>
+                          </ul> <!-- fieldsets -->
+                          <fieldset class="">
+                              <div class="form-card box-salon">
+                                  <h2 class="fs-title">Chọn salon bạn muốn đặt lịch</h2>
+                                  <select class="list-salon">
+                                    <option selected>Chọn tỉnh/thành phố</option>
+                                    <option >Hà Nội</option>
+                                    <option >Thành phố HCM</option>
+                                  </select> 
+                                  <select class="list-salon two">
+                                    <option selected>Chọn quận/huyện</option>
+                                    <option >Hoàn Kiếm</option>
+                                    <option >Thủ Đức</option>
+                                  </select> 
 
-<form id="regForm" action="https://www.w3schools.com/action_page.php">
-    <h1>Đặt lịch cắt tóc</h1>
-        <!-- One "tab" for each step in the form: -->
-        <div class="tab">Chọn salon:
-                <select class="custom-select" id="inputGroupSelect01">
-                    <option selected>Choose...</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select></p>
-        </div>
-        <div class="tab">Chọn dịch vụ:
-            <p><input placeholder="E-mail..." oninput="this.className = ''" name="email"></p>
-            <p><input placeholder="Phone..." oninput="this.className = ''" name="phone"></p>
-        </div>
-        <div class="tab">Birthday:
-            <p><input placeholder="dd" oninput="this.className = ''" name="dd"></p>
-            <p><input placeholder="mm" oninput="this.className = ''" name="nn"></p>
-            <p><input placeholder="yyyy" oninput="this.className = ''" name="yyyy"></p>
-        </div>
-        <div class="tab">Chọn stylist:
-            <p><input placeholder="Username..." oninput="this.className = ''" name="uname"></p>
-            <p><input placeholder="Password..." oninput="this.className = ''" name="pword" type="password"></p>
-        </div>
-        <div style="overflow:auto;">
-        <div style="float:right;">
-            <button type="button" id="prevBtn" onclick="nextPrev(-1)" class="my-3 mr-3">Previous</button>
-            <button type="button" id="nextBtn" onclick="nextPrev(1)" class="my-3">Next</button>
-        </div>
-        </div>
-        <!-- Circles which indicates the steps of the form: -->
-        <div style="text-align:center;margin-top:40px;">
-            <span class="step"></span>
-            <span class="step"></span>
-            <span class="step"></span>
-            <span class="step"></span>
-        </div>
-  </form>
+                                  <div class="card my-3 border p-2 box-salon" style="max-width: 540px;">
+                                    <div class="row no-gutters">
+                                      <div class="col-md-4">
+                                        <img src="https://storage.30shine.com/salon_image/front/139.png" class="card-img" alt="...">
+                                      </div>
+                                      <div class="col-md-8">
+                                        <div class="card-body">
+                                          <h5 class="card-title">Card title</h5>
+                                          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="card my-3 border p-2 box-salon" style="max-width: 540px;">
+                                    <div class="row no-gutters">
+                                      <div class="col-md-4">
+                                        <img src="https://storage.30shine.com/salon_image/front/139.png" class="card-img" alt="...">
+                                      </div>
+                                      <div class="col-md-8">
+                                        <div class="card-body">
+                                          <h5 class="card-title">Card title</h5>
+                                          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="card my-3 border p-2 box-salon" style="max-width: 540px;">
+                                    <div class="row no-gutters">
+                                      <div class="col-md-4">
+                                        <img src="https://storage.30shine.com/salon_image/front/139.png" class="card-img" alt="...">
+                                      </div>
+                                      <div class="col-md-8">
+                                        <div class="card-body">
+                                          <h5 class="card-title">Card title</h5>
+                                          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                              </div> 
+                              <input type="button" name="next" class="next action-button" value="Tiếp theo" />
+                          </fieldset>
+                          <fieldset>
+                              <div class="form-card">
+                                  <h2 class="fs-title">Mời anh chọn dịch vụ</h2>
+                                    <div class="form-group">
+                            
+                                        <div class="custom-control custom-radio mb-3">
+                                          <input class="custom-control-input" type="radio" id="customRadio1" name="customRadio">
+                                          <label for="customRadio1" class="custom-control-label">Custom Radio</label>
+                                          <div class="box-service">
+                                            <img src="https://i.pinimg.com/564x/3b/99/89/3b9989d995daca4a801ef91a50f889e7.jpg" alt="" class="ser-image">
+                                            <div class="ser-money">Giá dịch vụ <br> 100k</div>
+                                            <div class="ser-time">Thời gian làm dịch vụ<br>1h</div>
+                                          </div>
+                                        </div>
+                                        <div class="custom-control custom-radio">
+                                          <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" >
+                                          <label for="customRadio2" class="custom-control-label">Custom Radio </label>
+                                          <div class="box-service">
+                                            <img src="https://i.pinimg.com/564x/3b/99/89/3b9989d995daca4a801ef91a50f889e7.jpg" alt="" class="ser-image">
+                                            <div class="ser-money">Giá dịch vụ <br> 100k</div>
+                                            <div class="ser-time">Thời gian làm dịch vụ<br>1h</div>
+                                          </div>
+                                        </div>
+                                        <div class="custom-control custom-radio">
+                                          <input class="custom-control-input" type="radio" id="customRadio3" >
+                                          <label for="customRadio3" class="custom-control-label">Custom Radio </label>
+                                          <div class="box-service">
+                                            <img src="https://i.pinimg.com/564x/3b/99/89/3b9989d995daca4a801ef91a50f889e7.jpg" alt="" class="ser-image">
+                                            <div class="ser-money">Giá dịch vụ <br> 100k</div>
+                                            <div class="ser-time">Thời gian làm dịch vụ<br>1h</div>
+                                          </div>
+                                        </div>
+                                    </div>
+                              </div> 
+                              <input type="button" name="previous" class="previous action-button-previous" value="Quay lại" /> 
+                              <input type="button" name="next" class="next action-button" value="Tiếp theo" />
+                          </fieldset>
+                          <fieldset>
+                              <div class="form-card">
+                                  <h2 class="fs-title">Chọn stylist</h2>
+                                  
+                                  <div class="custom-control custom-radio mb-3">
+                                    <input class="custom-control-input" type="radio" id="customRadio1" name="customRadio">
+                                    <label for="customRadio1" class="custom-control-label">Custom Radio</label>
+                                    <div class="box-service">
+                                      <img src="https://i.pinimg.com/564x/3b/99/89/3b9989d995daca4a801ef91a50f889e7.jpg" alt="" class="ser-image">
+                                      <div class="ser-money">Name Stylist</div>
+                                      
+                                    </div>
+                                  </div>
+                                  <div class="custom-control custom-radio">
+                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" >
+                                    <label for="customRadio2" class="custom-control-label">Custom Radio </label>
+                                    <div class="box-service">
+                                      <img src="https://i.pinimg.com/564x/3b/99/89/3b9989d995daca4a801ef91a50f889e7.jpg" alt="" class="ser-image">
+                                      <div class="ser-money">Name Stylist</div>
+                                      
+                                    </div>
+                                  </div>
+                                  <div class="custom-control custom-radio">
+                                    <input class="custom-control-input" type="radio" id="customRadio3" >
+                                    <label for="customRadio3" class="custom-control-label">Custom Radio </label>
+                                    <div class="box-service">
+                                      <img src="https://i.pinimg.com/564x/3b/99/89/3b9989d995daca4a801ef91a50f889e7.jpg" alt="" class="ser-image">
+                                      <div class="ser-money">Name Stylist</div>
+                                    </div>
+                                  </div>
+                                  
+                                  <h2 class="fs-title mt-3">Chọn ngày giờ</h2>
+                                  <div class="pick-date">
+                                    <ul class="nav nav-tabs" role="tablist">
+                                        <li role="presentation" class="col-md-4 date-item active">
+                                            <a href="#homnay" aria-controls="homnay" role="tab" data-toggle="tab">
+                                                <div class="name-day">Hôm nay</div>
+                                                <span> Thứ Sáu 10/07</span>
+                                            </a>
+                                        </li>
+                                        <li role="presentation" class="col-md-4 date-item">
+                                            <a href="#ngaymai" aria-controls="ngaymai" role="tab" data-toggle="tab">
+                                                <div class="name-day">Ngày mai</div>
+                                                <span> Thứ Bảy 11/07</span>
+                                            </a>
+                                        </li>
+                                        <li role="presentation" class="col-md-4 date-item">
+                                            <a href="#ngaykia" aria-controls="ngaykia" role="tab" data-toggle="tab">
+                                                <div class="name-day">Ngày kia</div>
+                                                <span> Chủ Nhật 12/07</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                
+                                    <div class="tab-content">
+                                        <div role="tabpanel" class="tab-pane active" id="homnay">
+                                          <div class="form-group">
+                                            <div class="custom-control custom-radio">
+                                              <input class="custom-control-input" type="radio" id="customRadio1" name="customRadio">
+                                              <label for="customRadio1" class="custom-control-label">8h30
+                                                
+                                              </label>
+                                              <span class="not-free cl-white br-4">Hết chỗ</span>
+                                            </div>
+                                            <div class="custom-control custom-radio">
+                                              <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked="">
+                                              <label for="customRadio2" class="custom-control-label">9h00</label>
+                                              <span class="not-free cl-white br-4">Hết chỗ</span>
+                                            </div>
+                                            <div class="custom-control custom-radio">
+                                              <input class="custom-control-input" type="radio" id="customRadio3" disabled="">
+                                              <label for="customRadio3" class="custom-control-label">9h30</label>
+                                              <span class="not-free cl-white br-4">Hết chỗ</span>
+                                            </div>
+                                          </div>
+                                            
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane" id="ngaymai">ngày mai</div>
+                                        <div role="tabpanel" class="tab-pane" id="ngaykia">ngày kia</div>
+                                    </div>
+                                </div>
 
-  <script>
-    var currentTab = 0; // Current tab is set to be the first tab (0)
-    showTab(currentTab); // Display the crurrent tab
-    
-    function showTab(n) {
-      // This function will display the specified tab of the form...
-      var x = document.getElementsByClassName("tab");
-      x[n].style.display = "block";
-      //... and fix the Previous/Next buttons:
-      if (n == 0) {
-        document.getElementById("prevBtn").style.display = "none";
-      } else {
-        document.getElementById("prevBtn").style.display = "inline";
-      }
-      if (n == (x.length - 1)) {
-        document.getElementById("nextBtn").innerHTML = "Submit";
-      } else {
-        document.getElementById("nextBtn").innerHTML = "Next";
-      }
-      //... and run a function that will display the correct step indicator:
-      fixStepIndicator(n)
-    }
-    
-    function nextPrev(n) {
-      // This function will figure out which tab to display
-      var x = document.getElementsByClassName("tab");
-      // Exit the function if any field in the current tab is invalid:
-      if (n == 1 && !validateForm()) return false;
-      // Hide the current tab:
-      x[currentTab].style.display = "none";
-      // Increase or decrease the current tab by 1:
-      currentTab = currentTab + n;
-      // if you have reached the end of the form...
-      if (currentTab >= x.length) {
-        // ... the form gets submitted:
-        document.getElementById("regForm").submit();
-        return false;
-      }
-      // Otherwise, display the correct tab:
-      showTab(currentTab);
-    }
-    
-    function validateForm() {
-      // This function deals with validation of the form fields
-      var x, y, i, valid = true;
-      x = document.getElementsByClassName("tab");
-      y = x[currentTab].getElementsByTagName("input");
-      // A loop that checks every input field in the current tab:
-      for (i = 0; i < y.length; i++) {
-        // If a field is empty...
-        if (y[i].value == "") {
-          // add an "invalid" class to the field:
-          y[i].className += " invalid";
-          // and set the current valid status to false
-          valid = false;
-        }
-      }
-      // If the valid status is true, mark the step as finished and valid:
-      if (valid) {
-        document.getElementsByClassName("step")[currentTab].className += " finish";
-      }
-      return valid; // return the valid status
-    }
-    
-    function fixStepIndicator(n) {
-      // This function removes the "active" class of all steps...
-      var i, x = document.getElementsByClassName("step");
-      for (i = 0; i < x.length; i++) {
-        x[i].className = x[i].className.replace(" active", "");
-      }
-      //... and adds the "active" class on the current step:
-      x[n].className += " active";
-    }
-    </script>
-  
-
+                              </div> <input type="button" name="previous" class="previous action-button-previous" value="Previous" /> <input type="button" name="make_payment" class="next action-button" value="Confirm" />
+                          </fieldset>
+                          <fieldset>
+                              <div class="form-card">
+                                  <h2 class="fs-title text-center">Success !</h2> <br><br>
+                                  <div class="row justify-content-center">
+                                      <div class="col-3"> <img src="https://img.icons8.com/color/96/000000/ok--v2.png" class="fit-image"> </div>
+                                  </div> <br><br>
+                                  <div class="row justify-content-center">
+                                      <div class="col-7 text-center">
+                                          <h5>You Have Successfully Signed Up</h5>
+                                      </div>
+                                  </div>
+                              </div>
+                          </fieldset>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
 
 @endsection
+
+@push('scripts')
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="{{asset('client/js/booking.js')}}"></script>
+@endpush
