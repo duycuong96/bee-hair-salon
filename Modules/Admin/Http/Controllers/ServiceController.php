@@ -2,6 +2,7 @@
 
 namespace Modules\Admin\Http\Controllers;
 
+use App\Services\Admin\SalonServiceService;
 use App\Services\Admin\ServiceService;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
@@ -10,9 +11,14 @@ use Modules\Admin\Http\Requests\ServiceRequest;
 class ServiceController extends AdminBaseController
 {
     protected $serviceService;
-    public function __construct(ServiceService $serviceService)
+    protected $salonServiceService;
+    public function __construct(
+        ServiceService $serviceService,
+        SalonServiceService $salonServiceService
+        )
     {
         $this->serviceService = $serviceService;
+        $this->salonServiceService = $salonServiceService;
     }
     /**
      * Display a listing of the resource.
@@ -71,5 +77,11 @@ class ServiceController extends AdminBaseController
     public function destroy($id)
     {
         return $this->serviceService->delete($id);
+    }
+
+    public function createServiceSalon($id) {
+        $salon_id = null;
+        $service_id = $id;
+        return $this->salonServiceService->create($salon_id, $service_id);
     }
 }
