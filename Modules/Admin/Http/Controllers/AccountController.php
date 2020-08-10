@@ -5,16 +5,24 @@ namespace Modules\Admin\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Admin\Http\Requests\AccountRequest;
+use App\Services\Admin\AccountService;
 
-class AdminUserController extends Controller
+
+class AccountController extends AdminBaseController
 {
+
+    public function __construct(AccountService $accountService)
+    {
+        $this->accountService = $accountService;
+    }
     /**
      * Display a listing of the resource.
      * @return Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('admin::index');
+        return $this->accountService->index($request);
     }
 
     /**
@@ -23,7 +31,7 @@ class AdminUserController extends Controller
      */
     public function create()
     {
-        return view('admin::create');
+        return $this->accountService->create();
     }
 
     /**
@@ -31,9 +39,9 @@ class AdminUserController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function store(AccountRequest $request)
     {
-        //
+        return $this->accountService->store($request);
     }
 
     /**
@@ -43,17 +51,7 @@ class AdminUserController extends Controller
      */
     public function show($id)
     {
-        return view('admin::show');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function edit($id)
-    {
-        return view('admin::edit');
+        return $this->accountService->show($id);
     }
 
     /**
@@ -62,9 +60,9 @@ class AdminUserController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update(AccountRequest $request, $id)
     {
-        //
+        return $this->accountService->update($request, $id);
     }
 
     /**

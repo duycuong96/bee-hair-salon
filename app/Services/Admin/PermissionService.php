@@ -11,7 +11,7 @@ class PermissionService
             if ($request->name) $query->where('name', 'like', '%'.$request->name.'%');
         });
 
-        $data = $builder->orderBy('created_at', 'desc')
+        $data = $builder->orderBy('id', 'desc')
                         ->paginate(10);
 
         $data->appends(request()->query());
