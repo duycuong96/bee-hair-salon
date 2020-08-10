@@ -5,9 +5,11 @@ use App\Models\BranchSalon;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
 use Str;
+use App\Traits\WebResponseTrait;
 
 class BranchSalonService
 {
+    use WebResponseTrait;
     public function index($request)
     {
         $builder = BranchSalon::where(function ($query) use ($request) {
@@ -35,8 +37,7 @@ class BranchSalonService
         $data['thumb_img'] = $request->file('thumb_img')->store('branch_salon', 'public');
 
         $customer = BranchSalon::create($data);
-
-        return redirect()->route('admin.salon.index');
+        return $this->returnSuccessWithRoute('admin.salon.index', __('messages.data_create_success'));
     }
 
     public function show($id)
@@ -63,7 +64,12 @@ class BranchSalonService
 
     public function delete($id)
     {
-        BranchSalon::destroy($id);
-        return redirect()->route('admin.salon.index')->with('success', 'Xóa Salon thành công');
+        $branchSalon =  BranchSalon::find($id);
+        if (empty($branchSalon)) {
+            return $this->returnFailedWithRoute('admin.salon.index', __('messages.data_delete_failed'));
+        } else {
+            $branchSalon->delete();
+            return $this->returnSuccessWithRoute('admin.salon.index', __('messages.data_delete_success'));
+        }
     }
 }

@@ -7,9 +7,11 @@ use Illuminate\Support\Arr;
 use App\Mail\MailCreateCustomer;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
+use App\Traits\WebResponseTrait;
 
 class CustomerService
 {
+    use WebResponseTrait;
     public function index($request)
     {
         $builder = Customer::where(function ($query) use ($request) {
@@ -42,7 +44,7 @@ class CustomerService
         $data['password'] = null;
         $customer = Customer::create($data);
         Mail::to($email)->send(new MailCreateCustomer( $data['registration_token']));
-        return redirect()->route('admin.khach-hang.index');
+        return $this->returnSuccessWithRoute('admin.khach-hang.index', __('messages.data_create_success'));
     }
 
     public function show($id)
@@ -58,10 +60,10 @@ class CustomerService
     {
         $customer = Customer::find($id);
         if (empty($customer)) {
-            return redirect()->route('admin.khach-hang.index');
+            return $this->returnFailedWithRoute('admin.khach-hang.index', __('messages.data_update_failed'));
         } else {
             $customer->update($request->all());
-            return redirect()->route('admin.khach-hang.index');
+            return $this->returnSuccessWithRoute('admin.khach-hang.index', __('messages.data_update_success'));
         }
 
     }

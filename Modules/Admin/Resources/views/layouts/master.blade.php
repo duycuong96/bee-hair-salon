@@ -28,7 +28,16 @@
     <!-- ./wrapper -->
 
         @include('admin::layouts.includes.footer')
-
+        @if(session('status'))
+            <!-- Toastr -->
+            <script>
+                $(document).ready(function () {
+                    toastr.options.closeButton = true;
+                    toastr.options.timeOut = 2000;
+                    toastr.{{session('status')}}( '{{session('message')}}' )
+                });
+            </script>
+        @endif
         @stack('scripts')
 </body>
 
