@@ -33,7 +33,7 @@
             <script>
                 $(document).ready(function () {
                     toastr.options.closeButton = true;
-                    toastr.options.timeOut = 2000;
+                    toastr.options.timeOut = 6000;
                     toastr.{{session('status')}}( '{{session('message')}}' )
                 });
             </script>
