@@ -55,8 +55,9 @@ class RoleService
         );
     }
 
-    public function update($request, Role $role)
+    public function update($request, $id)
     {
+        $role = Role::find($id);
         $role->update($request->except('permission'));
         $permissions = $request->input('permission') ? $request->input('permission') : [];
         $role->syncPermissions($permissions);

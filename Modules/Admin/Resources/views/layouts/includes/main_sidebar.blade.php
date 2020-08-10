@@ -23,6 +23,7 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
        with font-awesome or any other icon font library -->
+                @can('Quản trị viên')
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -31,6 +32,7 @@
                         </p>
                     </a>
                 </li>
+
                 <li class="nav-item has-treeview">
                     <a href="" class="nav-link">
                         <i class="nav-icon fas fa-grin"></i>
@@ -123,23 +125,6 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item has-treeview {{ (request()->is('admin/danh-gia*')) ? 'menu-open' : '' }}">
-                    <a href="#" class="nav-link {{ (request()->is('admin/danh-gia*')) ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-pen"></i>
-                        <p>
-                            Quản lý đánh giá
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview ">
-                        <li class="nav-item">
-                            <a href="{{route('admin.danh-gia.index')}}" class="nav-link {{ (request()->is('admin/danh-gia')) ? 'active' : '' }}">
-                                <i class="fas fa-list-ol nav-icon"></i>
-                                <p>Danh sách đánh giá</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
                 <li class="nav-item has-treeview {{ (request()->routeIs('admin.vai-tro*')) ? 'menu-open' : '' }}">
                     <a href="" class="nav-link {{ (request()->routeIs('admin.vai-tro*')) ? 'active' : '' }}">
                         <i class="nav-icon fas fa-user-tag"></i>
@@ -159,6 +144,23 @@
                             <a href="{{route('admin.vai-tro.create')}}" class="nav-link {{ (request()->routeIs('admin.vai-tro.create')) ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Thêm mới</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item has-treeview {{ (request()->is('admin/danh-gia*')) ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link {{ (request()->is('admin/danh-gia*')) ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-pen"></i>
+                        <p>
+                            Quản lý đánh giá
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview ">
+                        <li class="nav-item">
+                            <a href="{{route('admin.danh-gia.index')}}" class="nav-link {{ (request()->is('admin/danh-gia')) ? 'active' : '' }}">
+                                <i class="fas fa-list-ol nav-icon"></i>
+                                <p>Danh sách đánh giá</p>
                             </a>
                         </li>
                     </ul>
@@ -186,7 +188,32 @@
                         </li>
                     </ul>
                 </li>
-
+                @endcan
+                @can('Cộng tác viên')
+                <li class="nav-item has-treeview {{ (request()->routeIs('admin.tin-tuc*')) ? 'menu-open' : '' }}">
+                    <a href="" class="nav-link {{ (request()->routeIs('admin.tin-tuc*')) ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-user-tag"></i>
+                        <p>
+                            Tin tức
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('admin.vai-tro.index')}}" class="nav-link {{ (request()->routeIs('admin.vai-tro.index')) ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Danh sách</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.vai-tro.create')}}" class="nav-link {{ (request()->routeIs('admin.vai-tro.create')) ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Thêm mới</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                @endcan
                 <li class="nav-item">
                   <a href="{{route('admin.dich-vu-salon.create')}}" class="nav-link {{ (request()->is('admin/dich-vu-salon/create')) ? 'active' : '' }}">
                     <i class="nav-icon fab fa-usps"></i>

@@ -42,11 +42,11 @@
                             <div class="select2-purple">
                               <select name="permission[]" id="permission" class="select2" multiple="multiple" data-placeholder="Chọn" data-dropdown-css-class="select2-purple" style="width: 100%;">
                                 @foreach($permissions as $id => $permissions)
-                                <option value="{{ $id }}" {{ (in_array($id, old('permission', [])) || isset($role) && $role->permissions->contains($id)) ? 'selected' : '' }}>{{ $permissions }}</option>
-                            @endforeach
+                                    <option value="{{ $id }}" {{ (in_array($id, old('permission', [])) || isset($role) && $role->permissions->contains($id)) ? 'selected' : '' }}>{{ $permissions }}</option>
+                                @endforeach
                               </select>
                             </div>
-                          </div>
+                        </div>
                         <hr>
                         <div class="form-group d-flex justify-content-center">
                             <a href="{{ route('admin.vai-tro.index') }}" class="btn btn-lg btn-default mr-3">Trở lại</a>

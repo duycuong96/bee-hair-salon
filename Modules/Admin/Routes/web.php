@@ -36,7 +36,7 @@ Route::group([
     Route::get('them-salon-dich-vu/{id}', 'ServiceController@createServiceSalon')->name('salon.createSalon');
     Route::resource('dich-vu-salon', 'SalonServiceController')->except('edit');
     Route::post('validate', 'CustomerController@validateData')->name('khach-hang.validate');
-    Route::resource('tai-khoan', 'UserController');
+    Route::resource('tai-khoan', 'AccountController');
     Route::resource('phan-quyen', 'PermissionController');
     Route::resource('vai-tro', 'RoleController');
 });
