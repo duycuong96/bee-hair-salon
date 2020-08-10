@@ -30,7 +30,7 @@ class SalonServiceService
         );
     }
 
-    public function create()
+    public function create($salon_id, $service_id)
     {
         $salons = BranchSalon::all();
         $services = Service::all();
@@ -38,7 +38,9 @@ class SalonServiceService
             'admin::salon_service.create',
             [
                 'salons' => $salons,
-                'services' => $services
+                'services' => $services,
+                'salon_id' => $salon_id,
+                'service_id' => $service_id,
             ]);
     }
 

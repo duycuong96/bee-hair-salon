@@ -3,6 +3,7 @@
 namespace Modules\Admin\Http\Controllers;
 
 use App\Services\Admin\BranchSalonService;
+use App\Services\Admin\SalonServiceService;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Modules\Admin\Http\Requests\BranchSalonRequest;
@@ -10,9 +11,14 @@ use Modules\Admin\Http\Requests\BranchSalonRequest;
 class BranchSalonController extends AdminBaseController
 {
     protected $branchSalonService;
-    public function __construct(BranchSalonService $branchSalonService)
+    protected $salonServiceService;
+    public function __construct(
+        BranchSalonService $branchSalonService,
+        SalonServiceService $salonServiceService
+        )
     {
         $this->branchSalonService = $branchSalonService;
+        $this->salonServiceService = $salonServiceService;
     }
     /**
      * Display a listing of the resource.
@@ -72,5 +78,11 @@ class BranchSalonController extends AdminBaseController
     public function destroy($id)
     {
         return $this->branchSalonService->delete($id);
+    }
+
+    public function createSalonService($id) {
+        $salon_id = $id;
+        $service_id = null;
+        return $this->salonServiceService->create($salon_id, $service_id);
     }
 }
