@@ -54,10 +54,10 @@ class BranchSalonService
         $branchSalon = BranchSalon::find($id);
         dd($branchSalon);
         if (empty($branchSalon)) {
-            return redirect()->route('admin.salon.index')->with('error', "Salon không tồn tại");
+            return $this->returnFailedWithRoute('admin.salon.index', __('messages.data_update_failed'));
         } else {
             $branchSalon->update($request->all());
-            return redirect()->route('admin.salon.index')->with('success', "Sửa salon thành công");
+            return $this->returnSuccessWithRoute('admin.salon.index', __('messages.data_update_success'));
         }
 
     }
