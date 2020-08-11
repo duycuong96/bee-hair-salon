@@ -1,6 +1,6 @@
 @extends('admin::layouts.master')
 
-@section('title', 'Danh sách đánh giá')
+@section('title', 'Danh sách Liên hệ')
 
 @push('css')
     <!-- Font Awesome -->
@@ -52,12 +52,11 @@
                             <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Tên salon</th>
                                     <th>Tên khách hàng</th>
-                                    <th>Mức độ đánh giá</th>
-                                    <th>Nội dung đánh giá</th>
-                                    <th>Ngày đánh giá</th>
-                                    <th>Trang thái</th>
+                                    <th>Số điện thoại</th>
+                                    <th>Email</th>
+                                    <th>Nội dung liện hệ</th>
+                                    <th>Trạng thái</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -68,41 +67,30 @@
                                             {{ $row->id }}
                                         </td>
                                         <td>
-                                            {{ $row->branchSalon->name }}
+                                            {{ $row->name }}
                                         </td>
                                         <td>
-                                            {{ $row->customer->name }}
+                                            {{ $row->phone }}
                                         </td>
                                         <td>
-                                            <span
-                                                class="fa fa-star {{ $row->rating_stars >= 1 ? 'text-warning' : '' }}"></span>
-                                            <span
-                                                class="fa fa-star {{ $row->rating_stars >= 2 ? 'text-warning' : '' }}"></span>
-                                            <span
-                                                class="fa fa-star {{ $row->rating_stars >= 3 ? 'text-warning' : '' }}"></span>
-                                            <span
-                                                class="fa fa-star {{ $row->rating_stars >= 4 ? 'text-warning' : '' }}"></span>
-                                            <span
-                                                class="fa fa-star {{ $row->rating_stars >= 5 ? 'text-warning' : '' }}"></span>
+                                            {{ $row->email }}
                                         </td>
                                         <td>
-                                            {{ $row->detail }}
+                                            {{ $row->title }}
                                         </td>
                                         <td>
-                                            {{ $row->created_at }}
+                                            {{ $row->content }}
                                         </td>
                                         <td>
                                             @if ($row->status == 1)
-                                                <b class="text-warning">Chở xét duyệt</b>
-                                            @elseif($row->status == 2)
-                                                <b class="text-success">Đã xét duyệt</b>
+                                                <b class="text-warning">Chưa trả lời</b>
                                             @else
-                                                <b class="text-danger">Ẩn đánh giá</b>
+                                                <b class="text-success">Đã trả lời</b>
                                             @endif
                                         </td>
                                         <td>
                                             <div class="btn-group">
-                                                <a href="{{ route('admin.danh-gia.show', [$row->id]) }}"
+                                                <a href="{{ route('admin.lien-he.show', [$row->id]) }}"
                                                     class="btn btn-app text-success">
                                                     <i class="fas fa-edit"></i> Cập nhật
                                                 </a>

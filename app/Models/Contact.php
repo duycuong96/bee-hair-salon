@@ -15,6 +15,7 @@ class Contact extends Model
         'title',
         'content',
         'customer_id',
+        'status',
     ];
     function customer(){
         return $this->belongsTo('App\Models\Customer', 'customer_id', 'id');
