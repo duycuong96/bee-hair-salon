@@ -10,9 +10,11 @@ use App\Models\SalonService;
 use App\Models\Service;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
+use App\Traits\WebResponseTrait;
 
 class SalonServiceService
 {
+    use WebResponseTrait;
     public function index($request)
     {
         $builder = Customer::where(function ($query) use ($request) {
@@ -50,15 +52,18 @@ class SalonServiceService
         $salon = BranchSalon::find($data['salon_id']);
         $service = Service::find($data['service_id']);
         if($salon == null || $service == null){
-            return redirect()->route('admin.dashboard')->with('error', "Salon hoặc dịch vụ không tồn tại");
+            return $this->returnSuccessWithRoute('admin.dashboard', __('messages.data_not_found'));
         }
         SalonService::create($data);
-        return redirect()->route('admin.dashboard')->with('success', "Thêm dịch vụ salon thành công ");
+        return $this->returnSuccessWithRoute('admin.dashboard', __('messages.data_create_success'));
     }
 
     public function show($id)
     {
         $data = Customer::find($id);
+        if (empty($data)) {
+            return $this->returnFailedWithRoute('admin.khach-hang.index', __('messages.data_not_found'));
+        }
         return view(
             'admin::customer.edit',
             ['data' => $data],
@@ -69,10 +74,10 @@ class SalonServiceService
     {
         $customer = Customer::find($id);
         if (empty($customer)) {
-            return redirect()->route('admin.khach-hang.show');
+            return $this->returnSuccessWithRoute('admin.dashboard', __('messages.data_not_found'));
         } else {
             $customer->update($request->all());
-            return redirect()->route('admin.khach-hang.index');
+            return $this->returnSuccessWithRoute('admin.dashboard', __('messages.data_update_success'));
         }
 
     }

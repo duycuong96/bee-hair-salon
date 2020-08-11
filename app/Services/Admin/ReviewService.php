@@ -1,10 +1,12 @@
 <?php
 namespace App\Services\Admin;
 
+use App\Traits\WebResponseTrait;
 use App\Models\Review;
 
 class ReviewService
 {
+    use WebResponseTrait;
     public function index($request)
     {
         $builder = Review::where(function ($query) use ($request) {
@@ -25,6 +27,9 @@ class ReviewService
     public function show($id)
     {
         $data = Review::find($id);
+        if (empty($data)) {
+            return $this->returnSuccessWithRoute('admin.danh-gia.index', __('messages.data_not_found'));
+        }
         return view(
             'admin::review.edit',
             ['data' => $data],
@@ -36,10 +41,10 @@ class ReviewService
         $review = Review::find($id);
 
         if (empty($review)) {
-            return redirect()->route('admin.danh-gia.index')->with('error', "Đánh giá không tồn tại");
+        return $this->returnSuccessWithRoute('admin.danh-gia.index', __('messages.data_update_failed'));
         } else {
             $review->update($request->input());
-            return redirect()->route('admin.danh-gia.index')->with('success', "Cập nhật đánh giá thành công");
+            return $this->returnSuccessWithRoute('admin.danh-gia.index', __('messages.data_update_success'));
         }
 
     }
