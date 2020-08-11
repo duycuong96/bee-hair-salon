@@ -25,35 +25,17 @@
 	<div class="container py-md-5">
 	<h3 class="heading text-center mb-3 mb-sm-5">PHONG CÁCH CỦA CHÚNG TÔI</h3>
 		<div class="row what-we-do-grid">
-			<div class="col-lg-3 col-md-6 pr-0 pl-md-3 pl-0">
-				<img src="{{asset('customer/images/sp1.jpg')}}" class="img-fluid" alt="" />
-			</div>
-			<div class="col-lg-3 col-md-6 bg-grid-clr">
-				<h4 class="mt-md-0 my-2">HAIRCUTS</h4>
-				<p class="">Sed ut perspiciatis undert sed omnis natus error .</p>
-			</div>
-			<div class="col-lg-3 col-md-6 pr-0 pl-md-3 pl-0 mt-lg-0 mt-4">
-				<img src="{{asset('customer/images/sp2.jpg')}}" class="img-fluid" alt="" />
-			</div>
-			<div class="col-lg-3 col-md-6 bg-grid-clr mt-lg-0 mt-md-4">
-				<h4 class="mt-md-0 my-2">SHAVES</h4>
-				<p class="">Sed ut perspiciatis undert sed omnis natus error .</p>
-			</div>
+            @foreach ($services as $service)
+                <div class="col-lg-3 col-md-6 pr-0 pl-md-3 pl-0">
+                    <img src="{!! url('storage/'.  json_decode($service->images)[0]) !!}" class="img-fluid" alt="" />
+                </div>
+                <div class="col-lg-3 col-md-6 bg-grid-clr">
+                    <h4 class="mt-md-0 my-2">{{$service->name}}</h4>
+                    <p class="">{{$service->detail}}</p>
+                </div>
 
-			<div class="col-lg-3 col-md-6 pr-0 pl-md-3 pl-0 mt-lg-5 mt-4">
-				<img src="{{asset('customer/images/sp3.jpg')}}" class="img-fluid" alt="" />
-			</div>
-			<div class="col-lg-3 col-md-6 bg-grid-clr mt-lg-5 mt-md-4">
-				<h4 class="mt-md-0 my-2">BEARD TRIM</h4>
-				<p class="">Sed ut perspiciatis undert sed omnis natus error .</p>
-			</div>
-			<div class="col-lg-3 col-md-6 pr-0 pl-md-3 pl-0 mt-lg-5 mt-4">
-				<img src="{{asset('customer/images/sp4.jpg')}}" class="img-fluid" alt="" />
-			</div>
-			<div class="col-lg-3 col-md-6 bg-grid-clr mt-lg-5 mt-md-4">
-				<h4 class="mt-md-0 my-2">MUSTACHE TRIM</h4>
-				<p class="">Sed ut perspiciatis undert sed omnis natus error .</p>
-			</div>
+            @endforeach
+            {{ $services->links() }}
 		</div>
 	</div>
 </section>

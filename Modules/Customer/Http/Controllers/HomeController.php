@@ -2,19 +2,25 @@
 
 namespace Modules\Customer\Http\Controllers;
 
+use App\Services\Customer\HomeService;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
 class HomeController extends Controller
 {
+    protected $homeService;
+    public function __construct(HomeService $homeService)
+    {
+        $this->homeService = $homeService;
+    }
     /**
      * Display a listing of the resource.
      * @return Renderable
      */
     public function index()
     {
-        return view('customer::index');
+        return $this->homeService->index();
     }
 
     /**

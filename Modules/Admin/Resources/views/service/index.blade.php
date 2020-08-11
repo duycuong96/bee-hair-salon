@@ -63,8 +63,6 @@
                                 <tr>
                                     <th>Id</th>
                                     <th>Tên</th>
-                                    <th>Ảnh dịch vụ</th>
-                                    <th>Chi tiết</th>
                                     <th>Giá</th>
                                     <th>Giá sau khi giảm</th>
                                     <th>Thời gian kết thúc</th>
@@ -81,18 +79,10 @@
                                             {{ $row->name }}
                                         </td>
                                         <td>
-                                            {{-- @foreach ($row->images as $item)
-                                                <img src="{!! url('storage/'.$item) !!}" alt="" height="70px">
-                                            @endforeach --}}
+                                            {{ number_format($row->price, 0, ',', ' ') }} đ
                                         </td>
                                         <td>
-                                            {{ $row->detail }}
-                                        </td>
-                                        <td>
-                                            {{ $row->price }}
-                                        </td>
-                                        <td>
-                                            {{ $row->sale_price }}
+                                            {{ number_format($row->sale_price, 0, ',', ' ') }} đ
                                         </td>
                                         <td>
                                             {{ $row->estimate }}

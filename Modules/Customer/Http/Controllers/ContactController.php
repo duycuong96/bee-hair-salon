@@ -2,28 +2,27 @@
 
 namespace Modules\Customer\Http\Controllers;
 
+use App\Services\Customer\ContactService;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
 class ContactController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     * @return Renderable
-     */
-    public function index()
+
+    protected $contactService;
+    public function __construct(ContactService $contactService)
     {
-        return view('customer::index');
+        $this->contactService = $contactService;
     }
 
     /**
      * Show the form for creating a new resource.
      * @return Renderable
      */
-    public function create()
+    public function index()
     {
-        return view('customer::create');
+        return $this->contactService->index();
     }
 
     /**
@@ -33,7 +32,7 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $this->contactService->create($request);
     }
 
     /**

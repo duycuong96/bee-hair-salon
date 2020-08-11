@@ -2,12 +2,18 @@
 
 namespace Modules\Customer\Http\Controllers;
 
+use App\Services\Customer\BranchSalonService;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
 class BranchSalonController extends Controller
 {
+    protected $branchSalonService;
+    public function __construct(BranchSalonService $branchSalonService)
+    {
+        $this->branchSalonService = $branchSalonService;
+    }
     /**
      * Display a listing of the resource.
      * @return Renderable
@@ -43,7 +49,7 @@ class BranchSalonController extends Controller
      */
     public function show($id)
     {
-        return view('customer::show');
+        return $this->branchSalonService->show($id);
     }
 
     /**

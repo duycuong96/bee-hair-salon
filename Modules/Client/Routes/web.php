@@ -15,12 +15,12 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::group(['prefix' => ''], function () {
-    Route::get('', 'HomeController@index');
-    Route::get('lien-he', 'ContactController@index');
+    // Route::get('', 'HomeController@index');
+    // Route::get('lien-he', 'ContactController@index');
     Route::get('ve-chung-toi', 'AboutController@index');
     Route::get('thu-vien', 'GalleryController@index');
-    Route::get('chi-tiet-salon', 'SingleController@index');
-    Route::get('dich-vu', 'ServiceController@index');
+    // Route::get('chi-tiet-salon', 'SingleController@index');
+    // Route::get('dicgh-vu', 'ServiceController@index');
     Route::get('tai-khoan', 'ProfileController@index');
     Route::get('tai-khoan/cap-nhat', 'ProfileController@updateProfile')->name('profile.update');
     Route::get('tai-khoan/doi-mat-khau', 'ProfileController@changePassword')->name('profile.password');

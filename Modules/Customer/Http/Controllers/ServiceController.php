@@ -2,19 +2,25 @@
 
 namespace Modules\Customer\Http\Controllers;
 
+use App\Services\Customer\ServiceService;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
 class ServiceController extends Controller
 {
+    protected $serviceService;
+    public function __construct(ServiceService $serviceService)
+    {
+        $this->serviceService = $serviceService;
+    }
     /**
      * Display a listing of the resource.
      * @return Renderable
      */
     public function index()
     {
-        return view('customer::index');
+        return $this->serviceService->index();
     }
 
     /**

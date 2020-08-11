@@ -29,27 +29,33 @@
                 </div>
             </div>
             <div class="contact-w3pvt-form mt-5">
-                <form action="#" class="w3layouts-contact-fm" method="post">
+                <form action="{{route('customer.lien-he.store')}}" class="w3layouts-contact-fm" method="post">
+                    @csrf
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>First Name</label>
-                                <input class="form-control" type="text" name="Name" placeholder="" required="">
+                                <label>Tên khách hàng</label>
+                                <input class="form-control" type="text" name="name" placeholder="" required="">
                             </div>
                             <div class="form-group">
-                                <label>Last Name</label>
-                                <input class="form-control" type="text" name="Name" placeholder="" required="">
+                                <label>Số điện thoại</label>
+                                <input class="form-control" type="text" name="phone" placeholder="" required="">
                             </div>
                             <div class="form-group">
                                 <label>Email</label>
-                                <input class="form-control" type="email" name="Email" placeholder="" required="">
+                                <input class="form-control" type="email" name="email" placeholder="" required="">
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Write Message</label>
-                                <textarea class="form-control" name="Message" placeholder="" required=""></textarea>
+                                <label>Tiêu đề</label>
+                                <input class="form-control" type="text" name="title" placeholder="" required="">
                             </div>
+                            <div class="form-group">
+                                <label>Nội dung</label>
+                                <textarea class="form-control" name="content" id="" required></textarea>
+                            </div>
+                            <input type="hidden" name="status" value="1">
                         </div>
                         <div class="form-group mx-auto mt-3">
                             <button type="submit" class="btn submit">Submit</button>
