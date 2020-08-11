@@ -5,9 +5,11 @@ use App\Models\Service;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
 use Str;
+use App\Traits\WebResponseTrait;
 
 class ServiceService
 {
+    use WebResponseTrait;
     public function index($request)
     {
         $builder = Service::where(function ($query) use ($request) {
@@ -43,14 +45,14 @@ class ServiceService
         unset($data['arrayImages']);
         $customer = Service::create($data);
 
-        return redirect()->route('admin.dich-vu.index')->with('success', "Thêm dịch vụ thành công");
+        return $this->returnSuccessWithRoute('admin.dich-vu.index', __('messages.data_create_success'));
     }
 
     public function show($id)
     {
         $data = Service::find($id);
         if (empty($data)) {
-            return redirect()->route('admin.dich-vu.index')->with('error',"Dịch vụ không tồn tại");
+            return $this->returnFailedWithRoute('admin.dich-vu.index', __('messages.data_update_failed'));
         }
         $data['images'] = json_decode($data['images']);
         return view(
@@ -65,7 +67,7 @@ class ServiceService
         $service = Service::find($id);
         $array = [];
         if (empty($service)) {
-            return redirect()->route('admin.dich-vu.index')->with('error', "dịch vụ không tồn tại");
+            return $this->returnFailedWithRoute('admin.dich-vu.index', __('messages.data_update_failed'));
         } else {
             if (empty($request->file())) {
                 $data['images'] = $service->images;
@@ -79,14 +81,18 @@ class ServiceService
                 }
             }
             $service->update($data);
-            return redirect()->route('admin.dich-vu.show', $id)->with('success', "Sửa dịch vụ thành công");
+            return $this->returnSuccessWithRoute('admin.dich-vu.index', __('messages.data_update_success'));
         }
 
     }
 
     public function delete($id)
     {
+        $data = Service::find($id);
+        if (empty($data)) {
+            return $this->returnFailedWithRoute('admin.dich-vu.index', __('messages.data_update_failed'));
+        }
         Service::destroy($id);
-        return redirect()->route('admin.dich-vu.index')->with('success', 'Xóa dịch vụ thành công');
+        return $this->returnSuccessWithRoute('admin.dich-vu.index', __('messages.data_delete_success'));
     }
 }
