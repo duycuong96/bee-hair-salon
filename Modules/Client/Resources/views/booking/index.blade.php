@@ -125,35 +125,35 @@
                           <fieldset>
                               <div class="form-card">
                                   <h2 class="fs-title">Chọn stylist</h2>
-                                  
+
+                                  <div class="pick-stylist">
                                   <div class="custom-control custom-radio mb-3">
-                                    <input class="custom-control-input" type="radio" id="customRadio1" name="customRadio">
-                                    <label for="customRadio1" class="custom-control-label">Custom Radio</label>
                                     <div class="box-service">
                                       <img src="https://i.pinimg.com/564x/3b/99/89/3b9989d995daca4a801ef91a50f889e7.jpg" alt="" class="ser-image">
-                                      <div class="ser-money">Name Stylist</div>
-                                      
                                     </div>
+                                    <input class="custom-control-input" type="radio" id="customRadio4" name="customRadio">
+                                    <label for="customRadio4" class="custom-control-label">Name Stylist</label>
                                   </div>
                                   <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" >
-                                    <label for="customRadio2" class="custom-control-label">Custom Radio </label>
                                     <div class="box-service">
                                       <img src="https://i.pinimg.com/564x/3b/99/89/3b9989d995daca4a801ef91a50f889e7.jpg" alt="" class="ser-image">
-                                      <div class="ser-money">Name Stylist</div>
-                                      
                                     </div>
+                                    <input class="custom-control-input" type="radio" id="customRadio5" name="customRadio" >
+                                    <label for="customRadio5" class="custom-control-label">Name Stylist </label>
                                   </div>
                                   <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio3" >
-                                    <label for="customRadio3" class="custom-control-label">Custom Radio </label>
                                     <div class="box-service">
                                       <img src="https://i.pinimg.com/564x/3b/99/89/3b9989d995daca4a801ef91a50f889e7.jpg" alt="" class="ser-image">
-                                      <div class="ser-money">Name Stylist</div>
                                     </div>
+                                    <input class="custom-control-input" type="radio" id="customRadio6" name="customRadio">
+                                    <label for="customRadio6" class="custom-control-label">Name Stylist </label>
                                   </div>
+                                </div>
+
+
+
                                   
-                                  <h2 class="fs-title mt-3">Chọn ngày giờ</h2>
+                                  <h2 class="fs-title mt-3">Chọn giờ cắt</h2>
                                   <div class="pick-date">
                                     <ul class="nav nav-tabs" role="tablist">
                                         <li role="presentation" class="col-md-4 date-item active">
@@ -182,7 +182,6 @@
                                             <div class="custom-control custom-radio">
                                               <input class="custom-control-input" type="radio" id="customRadio1" name="customRadio">
                                               <label for="customRadio1" class="custom-control-label">8h30
-                                                
                                               </label>
                                               <span class="not-free cl-white br-4">Hết chỗ</span>
                                             </div>
@@ -192,7 +191,7 @@
                                               <span class="not-free cl-white br-4">Hết chỗ</span>
                                             </div>
                                             <div class="custom-control custom-radio">
-                                              <input class="custom-control-input" type="radio" id="customRadio3" disabled="">
+                                              <input class="custom-control-input" type="radio" id="customRadio3">
                                               <label for="customRadio3" class="custom-control-label">9h30</label>
                                               <span class="not-free cl-white br-4">Hết chỗ</span>
                                             </div>
@@ -204,7 +203,9 @@
                                     </div>
                                 </div>
 
-                              </div> <input type="button" name="previous" class="previous action-button-previous" value="Previous" /> <input type="button" name="make_payment" class="next action-button" value="Confirm" />
+                              </div> 
+                              <input type="button" name="previous" class="previous action-button-previous" value="Quay lại" /> 
+                              <input type="button" name="make_payment" class="next action-button" value="Xác nhận" />
                           </fieldset>
                           <fieldset>
                               <div class="form-card">
