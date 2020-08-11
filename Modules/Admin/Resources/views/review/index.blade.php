@@ -54,7 +54,6 @@
                                     <th>Id</th>
                                     <th>Tên salon</th>
                                     <th>Tên khách hàng</th>
-                                    <th>Tên nhân viên</th>
                                     <th>Mức độ đánh giá</th>
                                     <th>Nội dung đánh giá</th>
                                     <th>Ngày đánh giá</th>
@@ -69,16 +68,22 @@
                                             {{ $row->id }}
                                         </td>
                                         <td>
-                                            {{ $row->salon_id }}
+                                            {{ $row->branchSalon->name }}
                                         </td>
                                         <td>
-                                            {{ $row->customer_id }}
+                                            {{ $row->customer->name }}
                                         </td>
                                         <td>
-                                            {{ $row->employee_id }}
-                                        </td>
-                                        <td>
-                                            {{ $row->rating_stars }}
+                                            <span
+                                                class="fa fa-star {{ $row->rating_stars >= 1 ? 'text-warning' : '' }}"></span>
+                                            <span
+                                                class="fa fa-star {{ $row->rating_stars >= 2 ? 'text-warning' : '' }}"></span>
+                                            <span
+                                                class="fa fa-star {{ $row->rating_stars >= 3 ? 'text-warning' : '' }}"></span>
+                                            <span
+                                                class="fa fa-star {{ $row->rating_stars >= 4 ? 'text-warning' : '' }}"></span>
+                                            <span
+                                                class="fa fa-star {{ $row->rating_stars >= 5 ? 'text-warning' : '' }}"></span>
                                         </td>
                                         <td>
                                             {{ $row->detail }}
