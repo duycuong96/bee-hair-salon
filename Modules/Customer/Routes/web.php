@@ -26,7 +26,6 @@ Route::group([
 Route::group([
     'prefix' => '',
     'as' => 'customer.',
-    'middleware' => 'Assign.guard:admin',
 ], function () {
     Route::get('', 'HomeController@index')->name('home');
     // Route::get('lien-he', 'ContactController@index');
