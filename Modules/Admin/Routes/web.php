@@ -39,4 +39,5 @@ Route::group([
     Route::resource('tai-khoan', 'AccountController');
     Route::resource('phan-quyen', 'PermissionController');
     Route::resource('vai-tro', 'RoleController');
+    Route::resource('lien-he', 'ContactController')->only('index', 'show', 'update');
 });

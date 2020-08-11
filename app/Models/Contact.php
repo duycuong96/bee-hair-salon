@@ -4,20 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Review extends Model
+class Contact extends Model
 {
-    protected $table = 'reviews';
+    protected $table = 'contacts';
 
     protected $fillable = [
-        'salon_id',
+        'name',
+        'phone',
+        'email',
+        'title',
+        'content',
         'customer_id',
-        'rating_stars',
-        'detail',
         'status',
     ];
-    function branchSalon(){
-        return $this->belongsTo('App\Models\BranchSalon', 'salon_id', 'id');
-    }
     function customer(){
         return $this->belongsTo('App\Models\Customer', 'customer_id', 'id');
     }

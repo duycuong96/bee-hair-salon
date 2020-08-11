@@ -95,76 +95,35 @@
         <div class="container py-md-5">
             <h3 class="heading text-center mb-3 mb-sm-5">Dịch vụ</h3>
             <div class="row ab-info">
-                <div class="col-md-6 ab-content ab-content1">
-                    <div class="ab-content-inner">
-                        <a href="single.html"><img src="{{ asset('customer/images/services2.jpg') }}" alt="news image"
-                                class="img-fluid"></a>
-                        <div class="ab-info-con">
-                            <h4> Trim your Hair</h4>
-                            <a href="single.html" class="read-more two btn m-0 px-3"><span
-                                    class="fa fa-arrow-circle-o-right"> </span></a>
+                @foreach ($servicesT as $serviceT)
+                    <div class="col-md-6 ab-content ab-content1">
+                        <div class="ab-content-inner">
+                            <a href="single.html">
+                                <img src="{!! url('storage/'.  json_decode($serviceT->images)[0]) !!}" alt="news image"
+                                    class="img-fluid"></a>
+                            <div class="ab-info-con">
+                                <h4> {{ $serviceT->name }} </h4>
+                                <a href="single.html" class="read-more two btn m-0 px-3"><span
+                                        class="fa fa-arrow-circle-o-right"> </span></a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-6 ab-content ab-content1">
-                    <div class="ab-content-inner">
-                        <a href="single.html"><img src="{{ asset('customer/images/services1.jpg') }}" alt="news image"
-                                class="img-fluid"></a>
-                        <div class="ab-info-con">
-                            <h4>Trim your Beard</h4>
-                            <a href="single.html" class="read-more two btn m-0 px-3"><span
-                                    class="fa fa-arrow-circle-o-right"> </span></a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
             <div class="row ab-info second mt-lg-4">
-                <div class="col-md-3 ab-content">
-                    <div class="ab-content-inner">
-                        <a href="single.html"><img src="{{ asset('customer/images/ser3.jpg') }}" alt="news image"
-                                class="img-fluid"></a>
-                        <div class="ab-info-con">
-                            <h4>colouring</h4>
-                            <a href="single.html" class="read-more two btn m-0 px-3"><span
-                                    class="fa fa-arrow-circle-o-right"> </span></a>
+                @foreach ($servicesB as $serviceB)
+                    <div class="col-md-3 ab-content">
+                        <div class="ab-content-inner">
+                            <a href="single.html"><img src="{!! url('storage/'.  json_decode($serviceB->images)[0]) !!}" alt="news image"
+                                    class="img-fluid"></a>
+                            <div class="ab-info-con">
+                                <h4>{{$serviceB->name}}</h4>
+                                <a href="single.html" class="read-more two btn m-0 px-3"><span
+                                        class="fa fa-arrow-circle-o-right"> </span></a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-3 ab-content">
-                    <div class="ab-content-inner">
-                        <a href="single.html"><img src="{{ asset('customer/images/ser4.jpg') }}" alt="news image"
-                                class="img-fluid"></a>
-                        <div class="ab-info-con">
-                            <h4>Bathing</h4>
-                            <a href="single.html" class="read-more two btn m-0 px-3"><span
-                                    class="fa fa-arrow-circle-o-right"> </span></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 ab-content">
-                    <div class="ab-content-inner">
-                        <a href="single.html"><img src="{{ asset('customer/images/ser5.jpg') }}" alt="news image"
-                                class="img-fluid"></a>
-                        <div class="ab-info-con">
-                            <h4>drying</h4>
-                            <a href="single.html" class="read-more two btn m-0 px-3"><span
-                                    class="fa fa-arrow-circle-o-right"> </span></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 ab-content">
-                    <div class="ab-content-inner">
-                        <a href="single.html"><img src="{{ asset('customer/images/ser6.jpg') }}" alt="news image"
-                                class="img-fluid"></a>
-                        <div class="ab-info-con">
-                            <h4>Creams</h4>
-                            <a href="single.html" class="read-more two btn m-0 px-3"><span
-                                    class="fa fa-arrow-circle-o-right"> </span></a>
-                        </div>
-                    </div>
-
-
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -179,78 +138,19 @@
                     <div class="padding">
                         <h3>PRICES FOR MUSTACHE TRIMMING</h3>
                         <!-- Item starts -->
-                        <div class="menu-item">
-                            <div class="row border-dot no-gutters">
-                                <div class="col-8 menu-item-name">
-                                    <h6>Trim your Mustaches style 1</h6>
+                        @foreach ($servicesB as $serviceB)
+                            <div class="menu-item">
+                                <div class="row border-dot no-gutters">
+                                    <div class="col-8 menu-item-name">
+                                        <h6>{{$serviceB->name}}</h6>
+                                    </div>
+                                    <div class="col-4 menu-item-price text-right">
+                                        <h6>{{ number_format($serviceB->sale_price, 0, ',', ' ') }} đ</h6>
+                                    </div>
                                 </div>
-                                <div class="col-4 menu-item-price text-right">
-                                    <h6>$7</h6>
-                                </div>
-                            </div>
 
-                        </div>
-                        <!-- Item ends -->
-                        <!-- Item starts -->
-                        <div class="menu-item my-4">
-                            <div class="row border-dot no-gutters">
-                                <div class="col-8 menu-item-name">
-                                    <h6>Trim your Mustaches style 2</h6>
-                                </div>
-                                <div class="col-4 menu-item-price text-right">
-                                    <h6>$10</h6>
-                                </div>
                             </div>
-                        </div>
-                        <!-- Item ends -->
-                        <!-- Item starts -->
-                        <div class="menu-item">
-                            <div class="row border-dot no-gutters">
-                                <div class="col-8 menu-item-name">
-                                    <h6>Trim your Mustaches style 3</h6>
-                                </div>
-                                <div class="col-4 menu-item-price text-right">
-                                    <h6>$15</h6>
-                                </div>
-                            </div>
-
-                        </div>
-                        <!-- Item ends -->
-                        <!-- Item starts -->
-                        <div class="menu-item mt-4">
-                            <div class="row border-dot no-gutters">
-                                <div class="col-8 menu-item-name">
-                                    <h6>Trim your Mustaches style 4</h6>
-                                </div>
-                                <div class="col-4 menu-item-price text-right">
-                                    <h6>$15</h6>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Item ends -->
-                        <!-- Item starts -->
-                        <div class="menu-item mt-4">
-                            <div class="row border-dot no-gutters">
-                                <div class="col-8 menu-item-name">
-                                    <h6>Trim your Mustaches style 5</h6>
-                                </div>
-                                <div class="col-4 menu-item-price text-right">
-                                    <h6>$20</h6>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Item ends -->
-                        <!-- Item starts -->
-                        <div class="menu-item mt-4">
-                            <div class="row border-dot no-gutters">
-                                <div class="col-8 menu-item-name">
-                                    <h6>Trim your Mustaches style 6</h6>
-                                </div>
-                                <div class="col-4 menu-item-price text-right">
-                                    <h6>$25</h6>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                         <!-- Item ends -->
                     </div>
                 </div>
@@ -362,42 +262,18 @@
                 <h3 class="heading text-center text-bl mb-2">Danh sách cửa hàng</h3>
             </div>
             <div class="row pt-2">
-                <div class="col-lg-3 col-sm-6 px-lg-2 mb-4">
-                    <img src="{{ asset('customer/images/sa1.jpg') }}" alt="" class="img-fluid" />
-                    <div class="bottom-ser-w3pvt">
-                        <h4 class="ser-text-w3 text-bl font-weight-bold text-uppercase mb-2">42 Lê Đại Hành P. Lê Đại Hành,
-                            Q. Hai Bà Trưng</h4>
-                        <p>0898.586.264</p>
-                        <a href="#" class="btn button-style-3 mt-md-5 mt-4">Xem thêm</a>
+                @foreach ($salons as $salon)
+                    <div class="col-lg-3 col-sm-6 px-lg-2 mb-4">
+                        <img src="{!! url('storage/'.  $salon->thumb_img) !!}" alt="" class="img-fluid" />
+                        <div class="bottom-ser-w3pvt serv-bg-clr4">
+                            <h4 class="ser-text-w3 text-bl font-weight-bold text-uppercase mb-2">
+                                {{$salon->ward_id}}
+                            </h4>
+                            <p>{{ number_format($salon->phone, 0, ',', '.') }}</p>
+                            <a href=" {{route('customer.salon.show', $salon->id)}} " class="btn button-style-3 mt-md-5 mt-4">Xem thêm</a>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 px-lg-2 mb-4">
-                    <img src="{{ asset('customer/images/sa2.jpg') }}" alt="" class="img-fluid" />
-                    <div class="bottom-ser-w3pvt serv-bg-clr2">
-                        <h4 class="ser-text-w3 text-bl font-weight-bold text-uppercase mb-2">1026 Đường Láng P. Láng Thượng,
-                            Q. Đống Đa</h4>
-                        <p>0898.586.246</p>
-                        <a href="#" class="btn button-style-3 mt-md-5 mt-4">Xem thêm</a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 px-lg-2 mb-4">
-                    <img src="{{ asset('customer/images/sa3.jpg') }}" alt="" class="img-fluid" />
-                    <div class="bottom-ser-w3pvt serv-bg-clr3">
-                        <h4 class="ser-text-w3 text-bl font-weight-bold text-uppercase mb-2">56 Nguyễn Huy Tưởng P. TX
-                            Trung, Q. Thanh Xuân</h4>
-                        <p>0898.586.250</p>
-                        <a href="#" class="btn button-style-3 mt-md-5 mt-4">Xem thêm</a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 px-lg-2 mb-4">
-                    <img src="{{ asset('customer/images/sa4.jpg') }}" alt="" class="img-fluid" />
-                    <div class="bottom-ser-w3pvt serv-bg-clr4">
-                        <h4 class="ser-text-w3 text-bl font-weight-bold text-uppercase mb-2">407 Trường Chinh P. Khương
-                            Trung, Q. Thanh Xuân</h4>
-                        <p>0898.586.154</p>
-                        <a href="#" class="btn button-style-3 mt-md-5 mt-4">Xem thêm</a>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
@@ -409,44 +285,19 @@
         <div class="container py-md-5">
             <h3 class="heading text-center mb-3 mb-sm-5">Đánh giá của khách hàng</h3>
             <div class="row mt-3">
+                @foreach ($reviews as $review)
+                    <div class="col-md-4 test-grid text-left px-lg-3">
+                        <div class="test-info">
 
-                <div class="col-md-4 test-grid text-left px-lg-3">
-                    <div class="test-info">
+                            <p>{{$review->detail}}</p>
+                            <h3 class="mt-md-4 mt-3"> {{$review->customer['name']}} </h3>
 
-                        <p>Lorem Ipsum has been the industry's standard since the 1500s. Praesent ullamcorper dui turpis.
-                        </p>
-                        <h3 class="mt-md-4 mt-3"> Abraham Smith</h3>
-
-                        <div class="test-img text-center mb-3">
-                            <img src="{{ asset('customer/images/test1.jpg') }}" class="img-fluid" alt="user-image">
+                            <div class="test-img text-center mb-3">
+                                <img src="{!! url('storage/'.  $review->avatar) !!}" class="img-fluid" alt="user-image">
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-md-4 test-grid text-left px-lg-3 py-sm-5 py-md-0 py-3">
-                    <div class="test-info">
-
-                        <p>Lorem Ipsum has been the industry's standard since the 1500s. Praesent ullamcorper dui turpis.
-                        </p>
-                        <h3 class="mt-md-4 mt-3"> Mariana Noe</h3>
-                        <div class="test-img text-center mb-3">
-                            <img src="{{ asset('customer/images/test2.jpg') }}" class="img-fluid" alt="user-image">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 test-grid text-left px-lg-3">
-                    <div class="test-info">
-
-                        <p>Lorem Ipsum has been the industry's standard since the 1500s. Praesent ullamcorper dui turpis.
-                        </p>
-                        <h3 class="mt-md-4 mt-3">Nebula Nairobi</h3>
-
-                        <div class="test-img text-center mb-3">
-                            <img src="{{ asset('customer/images/test3.jpg') }}" class="img-fluid" alt="user-image">
-                        </div>
-                    </div>
-                </div>
             </div>
-
+            @endforeach
 
         </div>
     </section>
