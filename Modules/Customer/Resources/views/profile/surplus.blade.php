@@ -3,7 +3,6 @@
 @section('title','BeeHair')
 @section('content')
 
-
 <!-- banner -->
 <section class="inner-page-banner" id="home">
 </section>
@@ -19,7 +18,7 @@
 	</ol>
 </div>
 <!-- //page details -->
-<div class="student-profile py-4" >
+<div class="student-profile py-4">
     <div class="container">
         <div class="row">
             <div class="col-lg-4">
@@ -49,39 +48,23 @@
                 </div>
             </div>
             <div class="col-lg-8">
-
+                
                 <form>
                     <div class="content-wrap">
-                        <h4 class="text-center mt-5">Cập nhật tài khoản</h4>
-                        <form action="" method="POST">
-                            <div class="contact-form">
-                                <div class="contact-name form-group">
-                                    <label for="">Tên</label>
-                                    <input type="text" class="form-control">
-                                </div>
-                                <div class="contact-name form-group">
-                                    <label for="">Số điện thoại</label>
-                                    <input type="text" class="form-control">
-                                </div>
-                                <div class="contact-name form-group">
-                                    <label for="">Địa chỉ</label>
-                                    <input type="text" class="form-control">
-                                </div>
-                                <input type="submit" value="Cập nhật" id="submit-message" class=" btn btn-primary text-center">
-                            </div>
-                        </form>
+                        <h4 class="text-center py-3 border-bottom">Số dư tài khoản</h4>
+                        <p class="text-center text-danger">Hiện tại không có số dư tài khoản</p>
                     </div>
                 </form>
-
+                
             </div>
         </div>
     </div>
-  </div>
+</div>
 
 
 
 
 
-
+  
 
 @endsection

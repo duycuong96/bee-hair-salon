@@ -24,11 +24,12 @@
 								<a href="#">Dropdown <span class="fa fa-angle-down" aria-hidden="true"></span></a>
 								<input type="checkbox" id="drop-2"/>
 								<ul class="inner-dropdown">
-									<li><a href="/dich-vu">Dịch vụ</a></li>
-									<li><a href="/chi-tiet-salon">Chi tiết salon</a></li>
+									<li><a href="{{route('customer.dich-vu.index')}}">Dịch vụ</a></li>
+									<li><a href="/tai-khoan">Tài khoản</a></li>
+									<li><a href="/dat-lich">Đặt lịch</a></li>
 								</ul>
 								</li>
-							
+
 
 						</ul>
 				</nav>

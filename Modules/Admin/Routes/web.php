@@ -25,7 +25,7 @@ Route::group([
 Route::group([
     'prefix' => 'admin',
     'as' => 'admin.',
-    'middleware' => 'Assign.guard:admin',
+    // 'middleware' => 'Assign.guard:customer',
 ], function () {
     Route::get('/', 'DashboardController@index')->name('dashboard');
     Route::resource('khach-hang', 'CustomerController');
