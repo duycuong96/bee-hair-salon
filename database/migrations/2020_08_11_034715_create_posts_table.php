@@ -16,16 +16,15 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('slugs');
-            $table->text('content');
-            $table->string('image');
-            $table->string('active');
-            $table->integer('like');
-            $table->unsignedBigInteger('admin_id');
-            $table->unsignedBigInteger('category_id');
+            $table->string('slugs')->nullable();
+            $table->text('content')->nullable();
+            $table->string('image')->nullable();
+            $table->string('active')->nullable();
+            $table->integer('like')->nullable();
+            $table->unsignedBigInteger('author_id')->nullable();
+            $table->unsignedBigInteger('category_id')->nullable();
             $table->timestamps();
-
-            $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade');
+            $table->softDeletes();
         });
     }
 

@@ -27,13 +27,13 @@ return [
     'need_confirm_account' => 'Tài khoản chưa được quản trị viên phê duyệt.',
     'alert_update_account_failed' => 'Đã xảy ra lỗi khi cập nhật tài khoản của bạn.',
 
-    'data_create_success' => 'Đã thêm dữ liệu.',
-    'data_update_success' => 'Tôi đã chỉnh sửa dữ liệu.',
+    'data_create_success' => 'Đã thêm dữ liệu thành công.',
+    'data_update_success' => 'Chỉnh sửa dữ liệu thành công.',
     'data_delete_success' => 'Dữ liệu đã bị xóa.',
     'data_create_failed'  => 'Đã xảy ra lỗi khi tạo dữ liệu.',
     'data_update_failed'  => 'Đã xảy ra lỗi khi cập nhật dữ liệu.',
     'data_delete_failed'  => 'Đã xảy ra lỗi khi xóa dữ liệu.',
-    'data_not_found'      => 'Không tim thây kêt quả.',
+    'data_not_found'      => 'Không tìm thây kêt quả.',
 
     'send_email_success' => 'Một email đã được gửi đến địa chỉ email của bạn.',
 ];
