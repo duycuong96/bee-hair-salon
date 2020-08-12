@@ -35,3 +35,16 @@ Route::group([
     Route::resource('salon', 'BranchSalonController')->only('show');
     Route::resource('dich-vu', 'ServiceController');
 });
+Route::group([
+    'prefix' => '',
+    'as' => 'customer.',
+    'middleware' => 'Assign.guard:customer',
+], function () {
+    Route::get('tai-khoan', 'ProfileController@index')->name('tai-khoan.index');
+    Route::put('tai-khoan/{id}', 'ProfileController@update')->name('tai-khoan.update');
+    Route::get('tai-khoan/doi-mat-khau', 'ProfileController@changePassword')->name('tai-khoan.forgotPassword');
+    // Route::get('tai-khoan/so-du', 'ProfileController@surplus')->name('profile.surplus');
+    // Route::get('tai-khoan/thong-bao', 'ProfileController@notification')->name('profile.notification');
+    // Route::get('tai-khoan/lich-su&danh-gia', 'ProfileController@history')->name('profile.history');
+});
+
