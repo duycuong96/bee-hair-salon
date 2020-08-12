@@ -5,15 +5,14 @@ namespace Modules\Admin\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Modules\Admin\Http\Requests\CustomerRequest;
-use App\Services\Admin\CustomersService;
+use Modules\Admin\Http\Requests\CommentRequest;
+use App\Services\Admin\CommentService;
 
-class CustomerController extends AdminBaseController
+class CommentController extends Controller
 {
-
-    public function __construct(CustomersService $customerService)
+    public function __construct(CommentService $commentService)
     {
-        $this->customerService = $customerService;
+        $this->commentService = $commentService;
     }
     /**
      * Display a listing of the resource.
@@ -21,7 +20,7 @@ class CustomerController extends AdminBaseController
      */
     public function index(Request $request)
     {
-        return $this->customerService->index($request);
+        return $this->commentService->index($request);
     }
 
     /**
@@ -30,7 +29,7 @@ class CustomerController extends AdminBaseController
      */
     public function create()
     {
-        return $this->customerService->create();
+        return $this->commentService->create();
     }
 
     /**
@@ -38,9 +37,9 @@ class CustomerController extends AdminBaseController
      * @param Request $request
      * @return Renderable
      */
-    public function store(CustomerRequest $request)
+    public function store(CommentRequest $request)
     {
-        return $this->customerService->store($request);
+        return $this->commentService->store($request);
     }
 
     /**
@@ -50,7 +49,7 @@ class CustomerController extends AdminBaseController
      */
     public function show($id)
     {
-        return $this->customerService->show($id);
+        return $this->commentService->show($id);
     }
 
     /**
@@ -69,9 +68,9 @@ class CustomerController extends AdminBaseController
      * @param int $id
      * @return Renderable
      */
-    public function update(CustomerRequest $request, $id)
+    public function update(CommentRequest $request, $id)
     {
-        return $this->customerService->update($request, $id);
+        return $this->commentService->update($request, $id);
     }
 
     /**

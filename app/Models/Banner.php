@@ -12,6 +12,7 @@ class Banner extends Model
         'name',
         'title',
         'desc',
+        'image',
         'url',
         'location',
         'active',

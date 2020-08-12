@@ -5,15 +5,14 @@ namespace Modules\Admin\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Modules\Admin\Http\Requests\CustomerRequest;
-use App\Services\Admin\CustomersService;
+use Modules\Admin\Http\Requests\PostRequest;
+use App\Services\Admin\PostService;
 
-class CustomerController extends AdminBaseController
+class PostController extends Controller
 {
-
-    public function __construct(CustomersService $customerService)
+    public function __construct(PostService $postService)
     {
-        $this->customerService = $customerService;
+        $this->postService = $postService;
     }
     /**
      * Display a listing of the resource.
@@ -21,7 +20,7 @@ class CustomerController extends AdminBaseController
      */
     public function index(Request $request)
     {
-        return $this->customerService->index($request);
+        return $this->postService->index($request);
     }
 
     /**
@@ -30,7 +29,7 @@ class CustomerController extends AdminBaseController
      */
     public function create()
     {
-        return $this->customerService->create();
+        return $this->postService->create();
     }
 
     /**
@@ -38,9 +37,9 @@ class CustomerController extends AdminBaseController
      * @param Request $request
      * @return Renderable
      */
-    public function store(CustomerRequest $request)
+    public function store(PostRequest $request)
     {
-        return $this->customerService->store($request);
+        return $this->postService->store($request);
     }
 
     /**
@@ -50,7 +49,7 @@ class CustomerController extends AdminBaseController
      */
     public function show($id)
     {
-        return $this->customerService->show($id);
+        return $this->postService->show($id);
     }
 
     /**
@@ -69,9 +68,9 @@ class CustomerController extends AdminBaseController
      * @param int $id
      * @return Renderable
      */
-    public function update(CustomerRequest $request, $id)
+    public function update(PostRequest $request, $id)
     {
-        return $this->customerService->update($request, $id);
+        return $this->postService->update($request, $id);
     }
 
     /**

@@ -25,7 +25,7 @@ Route::group([
 Route::group([
     'prefix' => 'admin',
     'as' => 'admin.',
-    // 'middleware' => 'Assign.guard:customer',
+    'middleware' => 'Assign.guard:admin',
 ], function () {
     Route::get('/', 'DashboardController@index')->name('dashboard');
     Route::resource('khach-hang', 'CustomerController');
@@ -35,11 +35,14 @@ Route::group([
     Route::resource('dich-vu', 'ServiceController')->except('edit');
     Route::get('them-salon-dich-vu/{id}', 'ServiceController@createServiceSalon')->name('salon.createSalon');
     Route::resource('dich-vu-salon', 'SalonServiceController')->except('edit');
-    Route::post('validate', 'CustomerController@validateData')->name('khach-hang.validate');
+    // Route::post('validate', 'CustomerController@validateData')->name('khach-hang.validate');
     Route::resource('tai-khoan', 'AccountController');
     Route::resource('phan-quyen', 'PermissionController');
     Route::resource('vai-tro', 'RoleController');
     Route::resource('lien-he', 'ContactController')->only('index', 'show', 'update');
-    Route::resource('bai-viet', 'PostController');
+
     Route::resource('banner', 'BannerController');
+    Route::resource('bai-viet', 'PostController');
+    Route::resource('chuyen-muc', 'CategoryController');
+    Route::resource('binh-luan', 'CommentController');
 });

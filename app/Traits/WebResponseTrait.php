@@ -7,7 +7,7 @@ trait WebResponseTrait
         if(!$mes) {
             $mes = 'ok';
         }
-        return redirect()->route($route, ['id' => auth()->user()->id])->with([
+        return redirect()->route($route)->with([
             'status' => 'success',
             'message' => $mes
         ]);
@@ -27,7 +27,7 @@ trait WebResponseTrait
         if(!$mes) {
             $mes = 'failed';
         }
-        return redirect()->route($route, ['id' => auth()->user()->id])->with([
+        return redirect()->route($route)->with([
             'status' => 'error',
             'message' => $mes
         ]);

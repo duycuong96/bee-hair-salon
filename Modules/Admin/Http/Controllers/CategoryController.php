@@ -5,15 +5,15 @@ namespace Modules\Admin\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Modules\Admin\Http\Requests\CustomerRequest;
-use App\Services\Admin\CustomersService;
+use Modules\Admin\Http\Requests\CategoryRequest;
+use App\Services\Admin\CategoryService;
 
-class CustomerController extends AdminBaseController
+class CategoryController extends AdminBaseController
 {
 
-    public function __construct(CustomersService $customerService)
+    public function __construct(CategoryService $categoryService)
     {
-        $this->customerService = $customerService;
+        $this->categoryService = $categoryService;
     }
     /**
      * Display a listing of the resource.
@@ -21,7 +21,7 @@ class CustomerController extends AdminBaseController
      */
     public function index(Request $request)
     {
-        return $this->customerService->index($request);
+        return $this->categoryService->index($request);
     }
 
     /**
@@ -30,7 +30,7 @@ class CustomerController extends AdminBaseController
      */
     public function create()
     {
-        return $this->customerService->create();
+        return $this->categoryService->create();
     }
 
     /**
@@ -38,9 +38,9 @@ class CustomerController extends AdminBaseController
      * @param Request $request
      * @return Renderable
      */
-    public function store(CustomerRequest $request)
+    public function store(CategoryRequest $request)
     {
-        return $this->customerService->store($request);
+        return $this->categoryService->store($request);
     }
 
     /**
@@ -50,7 +50,7 @@ class CustomerController extends AdminBaseController
      */
     public function show($id)
     {
-        return $this->customerService->show($id);
+        return $this->categoryService->show($id);
     }
 
     /**
@@ -69,9 +69,9 @@ class CustomerController extends AdminBaseController
      * @param int $id
      * @return Renderable
      */
-    public function update(CustomerRequest $request, $id)
+    public function update(CategoryRequest $request, $id)
     {
-        return $this->customerService->update($request, $id);
+        return $this->categoryService->update($request, $id);
     }
 
     /**
