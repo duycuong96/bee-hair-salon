@@ -25,7 +25,7 @@
 								<input type="checkbox" id="drop-2"/>
 								<ul class="inner-dropdown">
 									<li><a href="{{route('customer.dich-vu.index')}}">Dịch vụ</a></li>
-									<li><a href="/tai-khoan">Tài khoản</a></li>
+									<li><a href="{{route('customer.tai-khoan.index')}}">Tài khoản</a></li>
 									<li><a href="/dat-lich">Đặt lịch</a></li>
 								</ul>
 								</li>

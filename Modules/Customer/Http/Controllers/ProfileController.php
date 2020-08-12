@@ -2,19 +2,25 @@
 
 namespace Modules\Customer\Http\Controllers;
 
+use App\Services\Customer\ProfileService;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
 class ProfileController extends Controller
 {
+    protected $profileService;
+    public function __construct(ProfileService $profileService)
+    {
+        $this->profileService = $profileService;
+    }
     /**
      * Display a listing of the resource.
      * @return Renderable
      */
     public function index()
     {
-        return view('customer::index');
+        return $this->profileService->index();
     }
 
     /**
@@ -64,7 +70,7 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return $this->profileService->update($request, $id);
     }
 
     /**
@@ -75,5 +81,9 @@ class ProfileController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function changePassword(){
+        return view('customer::profile.forgot_password');
     }
 }
