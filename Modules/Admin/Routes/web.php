@@ -40,4 +40,6 @@ Route::group([
     Route::resource('phan-quyen', 'PermissionController');
     Route::resource('vai-tro', 'RoleController');
     Route::resource('lien-he', 'ContactController')->only('index', 'show', 'update');
+    Route::resource('bai-viet', 'PostController');
+    Route::resource('banner', 'BannerController');
 });

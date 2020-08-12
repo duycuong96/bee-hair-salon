@@ -13,6 +13,6 @@ class RoleSeeder extends Seeder
     public function run()
     {
         $role = Role::create(['guard_name' => 'admin','name' => 'administrator']);
-        $role->givePermissionTo('admin_manage');
+        $role->givePermissionTo('Quản trị viên');
     }
 }
