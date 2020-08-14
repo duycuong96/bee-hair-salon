@@ -5,25 +5,16 @@
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="index3.html" class="nav-link">Home</a>
+            <a href="{{ route('customer.home') }}" class="nav-link">Trang chủ</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">Contact</a>
+            <a href="{{ route('admin.setting.account') }}" class="nav-link">Cập nhật tài khoản</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="{{ route('admin.change.password.account') }}" class="nav-link">Đổi mật khẩu</a>
         </li>
     </ul>
 
-    <!-- SEARCH FORM -->
-    <form class="form-inline ml-3">
-        <div class="input-group input-group-sm">
-            <input class="form-control form-control-navbar" type="search" placeholder="Search"
-                aria-label="Search">
-            <div class="input-group-append">
-                <button class="btn btn-navbar" type="submit">
-                    <i class="fas fa-search"></i>
-                </button>
-            </div>
-        </div>
-    </form>
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
@@ -116,10 +107,14 @@
                 <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
             </div>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-                <i class="fas fa-th-large"></i>
-            </a>
-        </li>
+        <div class="ml-3">
+            <a class="btn btn-block btn-default"
+               onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();">Đăng xuất</a>
+            <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
+                {{ csrf_field() }}
+            </form>
+        </div>
+
     </ul>
 </nav>

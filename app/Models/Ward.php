@@ -7,10 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Ward extends Model
 {
     protected $table = 'ward';
+    protected $primaryKey = 'code';
+    public $incrementing = false;
+    public $timestamps = false;
 
-    protected $fillable = [
-        'name',
-        'type',
-        'district_code',
-    ];
+    public function district()
+    {
+        return $this->beLongto('App\Models\District', 'district_code', 'code');
+    }
 }

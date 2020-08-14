@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Admin\Http\Requests\AccountRequest;
 use App\Services\Admin\AccountService;
-
+use Modules\Admin\Http\Requests\MyAccountRequest;
 
 class AccountController extends AdminBaseController
 {
@@ -73,5 +73,25 @@ class AccountController extends AdminBaseController
     public function destroy($id)
     {
         //
+    }
+
+    public function formSettingAccount()
+    {
+        return $this->accountService->formSettingAccount();
+    }
+
+    public function settingAccount(MyAccountRequest $request)
+    {
+        return $this->accountService->settingAccount($request);
+    }
+
+    public function formChangePassword()
+    {
+        return $this->accountService->formChangePassword();
+    }
+
+    public function changePassword(MyAccountRequest $request)
+    {
+        return $this->accountService->changePassword($request);
     }
 }

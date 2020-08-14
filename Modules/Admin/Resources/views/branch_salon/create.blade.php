@@ -68,8 +68,20 @@
                             <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
                             @enderror
                         </div>
-                        <input type="hidden" name="ward_id" value="2">
-                        <input type="hidden" name="admin" value="2">
+                        <div class="form-group">
+                            <label for="">Địa chỉ</label><span class="ml-1 errorMsg">※</span>
+                            @error('post_code')
+                            <span class="ml-1 errorMsg">{{ $message }}</span>
+                            @enderror
+                            @error('address')
+                            <span class="ml-1 errorMsg">{{ $message }}</span>
+                            @enderror
+                            <div><input type="text" name="post_code" value="{{ old('post_code') }}" class="size_s"
+                                    id="postCode" class="col-2 form-control d-inline" placeholder="500-1234">
+                                <input type="text" name="address" id="address" value="{{ old('address') }}"
+                                    class="mt-3 form-control -inline" placeholder="">
+                            </div>
+                        </div>
                         <hr>
                         <div class="form-group d-flex justify-content-center">
                             <a href="{{ route('admin.salon.index') }}" class="btn btn-lg btn-default mr-3">Trở lại</a>
@@ -84,5 +96,47 @@
 @endsection
 
 @push('scripts')
+    <script>
+        function showModalSelect(data) {
+            $('#selectAdress select option').remove();
+            $.each(data, function(key, value) {
+                let option = '<option>' + value.address1 + value.address2 + value.address3 + '</option>';
+                $('#selectAdress select').append(option);
+            });
+            $('#ModalAddress').modal('show');
+        }
 
+        function fetchData(data) {
+            if (data == null || data.length == 0) {
+                $("#address").val('');
+                return;
+            }
+            if (data.length == 1) {
+                let address = data[0].name;
+                $("#address").val(address);
+            } else {
+                showModalSelect(data);
+                $('#selectAdress').on('change', 'select', function() {
+                    let address = $(this).val();
+                    $("#address").val(address);
+                    $('#ModalAddress').modal('hide');
+                });
+            }
+        }
+        $(document).ready(function() {
+            var url = "{{ route('address.ward') }}" + "?code=";
+            console.log('ready');
+            $('#postCode').on('change', function() {
+                $.ajax({
+                    url: url + $('#postCode').val(),
+                    dataType: "json",
+                    success: function(res) {
+                        console.log(res);
+                        fetchData(res.data);
+                    }
+                });
+            });
+        })
+
+    </script>
 @endpush
