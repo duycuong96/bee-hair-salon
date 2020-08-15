@@ -40,15 +40,15 @@ class ProfileService
         {
             return $this->returnSuccessWithRoute('customer.tai-khoan.index', __('messages.data_not_found'));
         }
-        if (!empty($data['avatar'])) {
+        if (isset($data['avatar'])) {
             $data['avatar'] = $data['avatar']->store('customer', 'public');
         }
         // dd(Auth::user()->password);
-        if (password_verify($data['password'], Auth::user()->password)) {
+        if (isset($data['password']) && password_verify($data['password'], Auth::user()->password)) {
             $data['password'] = Hash::make($data['newPassword']);
         }
         $customer->update($data);
-        return $this->returnSuccessWithRoute('customer.tai-khoan.forgotPassword', __('messages.data_create_success'));
+        return $this->returnSuccessWithRoute('customer.tai-khoan.index', __('messages.data_create_success'));
 
     }
 }
