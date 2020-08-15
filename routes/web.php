@@ -13,4 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+Route::group(['prefix' => 'address', 'as' => 'address.'], function () {
+    Route::get('province', 'AddressController@province')->name('province');
+    Route::get('district', 'AddressController@district')->name('district');
+    Route::get('ward', 'AddressController@ward')->name('ward');
+});

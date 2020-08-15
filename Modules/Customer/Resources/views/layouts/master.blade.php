@@ -14,6 +14,19 @@
 
         @include('customer::layouts.includes.main_footer')
 
+        @include('customer::layouts.includes.footer')
+
+        @if(session('status'))
+            <!-- Toastr -->
+            <script>
+                $(document).ready(function () {
+                    toastr.options.closeButton = true;
+                    toastr.options.timeOut = 6000;
+                    toastr.{{session('status')}}( '{{session('message')}}' )
+                });
+            </script>
+        @endif
+
         @stack('scripts')
     </body>
 

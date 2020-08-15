@@ -19,18 +19,32 @@ class AccountRequest extends FormRequest
                 $unique = Rule::unique('admins')
                 ->where(function($query) {
                     $query->where('id', '=', auth()->user()->id);
+                    $query->whereNull('deleted_at');
                 });
-                $rule['name'] = [
-                    'required'
-                ];
-                $rule['email'] = [
-                    'required',
-                    'email',
-                    $unique,
-                ];
-                $rule['password'] = [
-                    'required',
-                ];
+                if (request()->name) {
+                    $rule['name'] = [
+                        'required'
+                    ];
+                }
+                if (request()->email) {
+                    $rule['email'] = [
+                        'required',
+                        'email',
+                        $unique,
+                    ];
+                }
+                if (request()->password) {
+                    $rule['password'] = [
+                        'required',
+                    ];
+                }
+                if (request()->address) {
+                    $rule['address'] = [
+                        'required'
+                    ];
+                }
+
+
             break;
 
             case "PUT":
@@ -47,7 +61,6 @@ class AccountRequest extends FormRequest
                 $rule['email'] = [
                     'required',
                     'email',
-                    $unique,
                 ];
                 if(request()->password) {
                     $rule['password'] = [
