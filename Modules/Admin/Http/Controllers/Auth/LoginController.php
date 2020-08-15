@@ -27,7 +27,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest:admin', ['except' => 'logout']);
+        $this->middleware('guest:admin, admin.dashboard', ['except' => 'logout']);
     }
 
     /**
@@ -51,7 +51,7 @@ class LoginController extends Controller
         $this->guard()->logout();
         $request->session()->flush();
         $request->session()->regenerate();
-        return redirect('admin/login');
+        return redirect()->route('admin.formLogin');
     }
 
     public function sendFailedLoginResponse(Request $request)

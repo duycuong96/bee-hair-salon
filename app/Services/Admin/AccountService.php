@@ -6,6 +6,7 @@ use App\Traits\WebResponseTrait;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 
 class AccountService
 {
@@ -83,6 +84,42 @@ class AccountService
             Log::error($ex);
             $this->returnFailedWithRoute('admin.tai-khoan.index', __('messages.data_update_failed'));
         }
+
+    }
+
+    public function formSettingAccount()
+    {
+        $account = Auth::user();
+        return view('admin::account.setting_account', ['account' => $account]);
+    }
+
+    public function settingAccount($request)
+    {
+        $data = $request->only(
+            'name',
+            'avatar',
+            'address',
+            'phone',
+            'dob',
+        );
+        // dd($data); die;
+        try {
+            Auth::user()->update($data);
+            return $this->returnSuccessWithRoute('admin.submit.setting.account', __('messages.data_update_success'));
+        }catch (\Exception $ex) {
+            Log::error($ex);
+            return $this->returnFailedWithRoute('admin.submit.setting.account', __('messages.data_update_failed'));
+        }
+    }
+
+    public function formChangePassword()
+    {
+        $account = Auth::user();
+        return view('admin::account.change_password', ['account' => $account]);
+    }
+
+    public function changePassword()
+    {
 
     }
 
