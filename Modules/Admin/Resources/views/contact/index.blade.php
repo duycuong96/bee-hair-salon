@@ -55,7 +55,7 @@
                                     <th>Tên khách hàng</th>
                                     <th>Số điện thoại</th>
                                     <th>Email</th>
-                                    <th>Nội dung liện hệ</th>
+                                    <th>Tiêu đề liện hệ</th>
                                     <th>Trạng thái</th>
                                     <th>Action</th>
                                 </tr>
@@ -77,9 +77,6 @@
                                         </td>
                                         <td>
                                             {{ $row->title }}
-                                        </td>
-                                        <td>
-                                            {{ $row->content }}
                                         </td>
                                         <td>
                                             @if ($row->status == 1)

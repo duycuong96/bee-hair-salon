@@ -1,5 +1,5 @@
 
-@extends('client::layouts.master')
+@extends('customer::layouts.master')
 @section('title','BeeHair')
 @section('content')
 
@@ -48,14 +48,14 @@
                 </div>
             </div>
             <div class="col-lg-8">
-                
+
                 <form>
                     <div class="content-wrap">
                         <h4 class="text-center py-3 border-bottom">Số dư tài khoản</h4>
                         <p class="text-center text-danger">Hiện tại không có số dư tài khoản</p>
                     </div>
                 </form>
-                
+
             </div>
         </div>
     </div>
@@ -65,6 +65,6 @@
 
 
 
-  
+
 
 @endsection

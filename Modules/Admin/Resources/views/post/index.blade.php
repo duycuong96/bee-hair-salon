@@ -52,8 +52,9 @@
                                 <thead>
                                     <tr>
                                         <th>Id</th>
-                                        <th>Tên</th>
-                                        <th>Ảnh</th>
+                                        <th>Tiêu đề</th>
+                                        <th>Tác giả</th>
+                                        <th>Danh mục</th>
                                         <th>Trạng thái</th>
                                         <th width="10%">Action</th>
                                     </tr>
@@ -68,7 +69,10 @@
                                                 {{ $row->title }}
                                             </td>
                                             <td>
-                                                {{ $row->image }}
+                                                {{ $row->author_id }}
+                                            </td>
+                                            <td>
+                                                {{ $row->category_id }}
                                             </td>
                                             <td>
                                                 {{ $row->active }}

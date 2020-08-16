@@ -54,6 +54,7 @@
                                         <th>Id</th>
                                         <th>Tên</th>
                                         <th>Ảnh</th>
+                                        <th>Vị trí</th>
                                         <th>Trạng thái</th>
                                         <th width="10%">Action</th>
                                     </tr>
@@ -69,6 +70,9 @@
                                             </td>
                                             <td>
                                                 {{ $row->image }}
+                                            </td>
+                                            <td>
+                                                {{$row->location}}
                                             </td>
                                             <td>
                                                 {{ $row->active }}
