@@ -13,7 +13,6 @@ class HomeService
         $servicesB = Service::all()->sortBy('price')->take(4);
         $salons = BranchSalon::all()->take(4);
         $reviews = Review::where('rating_stars', 5)->get()->take(3);
-        dd($salons);
         return view(
             'customer::home.index',
             [
