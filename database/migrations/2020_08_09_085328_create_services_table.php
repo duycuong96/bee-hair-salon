@@ -18,10 +18,11 @@ class CreateServicesTable extends Migration
             $table->string('name', 255);
             $table->string('slugs', 255)->nullable();
             $table->text('detail')->nullable();
-            $table->json('images')->nullable();
+            $table->string('image')->nullable();
             $table->unsignedBigInteger('price')->default(0);
             $table->unsignedInteger('sale_price')->default(0);
             $table->time('estimate')->nullable();
+            $table->tinyInteger('status')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
