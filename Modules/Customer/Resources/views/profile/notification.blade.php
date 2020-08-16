@@ -1,5 +1,5 @@
 
-@extends('client::layouts.master')
+@extends('customer::layouts.master')
 @section('title','BeeHair')
 @section('content')
 
@@ -48,11 +48,11 @@
                 </div>
             </div>
             <div class="col-lg-8">
-                
+
                 <form>
                     <div class="content-wrap">
-                       
-                        
+
+
                         <div id="page-container">
                             <h4 class="text-center">Thông báo</h4>
                             <div id="dialog-container">
@@ -77,7 +77,7 @@
                                     Yeah, that's sound with me. I'll see you in 10
                                     </div>
                                 </div>
-                                
+
                                 <div class="dialog-box">
                                     <div class="background-blur"></div>
                                     <div class="header">
@@ -99,7 +99,7 @@
                                     Okay xx
                                     </div>
                                 </div>
-                                
+
                                 <div class="dialog-box">
                                     <div class="background-blur"></div>
                                     <div class="header">
@@ -121,7 +121,7 @@
                                     Your friend Ethan mentioned you in a comment.
                                     </div>
                                 </div>
-                                
+
                                 <div class="dialog-box">
                                     <div class="background-blur"></div>
                                     <div class="header">
@@ -143,7 +143,7 @@
                                     An explosion in London has left over 20 people fighting for their lives.
                                     </div>
                                 </div>
-                              
+
                             </div>
                                 <ul class="pagination justify-content-center">
                                     <li class="page-item"><a class="page-link" href="#">Trước</a></li>
@@ -155,13 +155,13 @@
                                     <li class="page-item"><a class="page-link" href="#">Sau</a></li>
                                 </ul>
                             </div>
-                            
+
 
 
 
                     </div>
                 </form>
-                
+
             </div>
         </div>
     </div>
@@ -171,6 +171,6 @@
 
 
 
-  
+
 
 @endsection

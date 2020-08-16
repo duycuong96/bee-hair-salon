@@ -43,18 +43,52 @@
                             @enderror
                         </div>
                         <div class="form-group">
+                            <label>Avatar:</label>
+                            <input type="file" class="form-control" name="avatar" value="{{ old('avatar', $data->avatar) }}">
+                            @error('avatar')
+                            <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label>Ngày sinh:</label>
+                            <input type="date" class="form-control" name="birthday" value="{{ old('birthday', $data->birthday) }}">
+                            @error('birthday')
+                            <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label>Số điện thoại:</label>
+                            <input type="text" class="form-control" name="phone" value="{{ old('phone', $data->phone) }}">
+                            @error('phone')
+                            <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label>Địa chỉ:</label>
+                            <input type="text" class="form-control" name="address" value="{{ old('address', $data->address) }}">
+                            @error('address')
+                            <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
                             <label>Trạng thái tài khoản:</label>
                             <br>
                             <div class="icheck-primary d-inline">
-                              <input type="radio" id="radioPrimary1" name="status" value="1" checked>
+                              <input type="radio" id="radioPrimary1" name="status" value="{{STATUS_ACCOUNT_CUSTOMER_ACTIVE}}" checked>
                               <label for="radioPrimary1">
+                                  Chưa kích hoạt
+                              </label>
+                            </div>
+                            <div class="icheck-primary d-inline">
+                              <input type="radio" id="radioPrimary2" name="status" value="{{STATUS_ACCOUNT_CUSTOMER_ACTIVE}}">
+                              <label for="radioPrimary2">
                                   Hoạt động
                               </label>
                             </div>
                             <div class="icheck-primary d-inline">
-                              <input type="radio" id="radioPrimary2" name="status" value="2">
+                              <input type="radio" id="radioPrimary2" name="status" value="{{STATUS_ACCOUNT_CUSTOMER_NOT_ACTIVE}}">
                               <label for="radioPrimary2">
-                                  Không hoạt động
+                                  Đã khóa
                               </label>
                             </div>
                           </div>

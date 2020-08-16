@@ -54,6 +54,7 @@
                                         <th>Id</th>
                                         <th>Tên</th>
                                         <th>Email</th>
+                                        <th>Chức vụ</th>
                                         <th>Trạng thái</th>
                                         <th width="10%">Action</th>
                                     </tr>
@@ -69,6 +70,9 @@
                                             </td>
                                             <td>
                                                 {{ $row->email }}
+                                            </td>
+                                            <td>
+                                                {{-- {{ $row-> }} --}}
                                             </td>
                                             <td>
                                                 {{ $row->status }}
