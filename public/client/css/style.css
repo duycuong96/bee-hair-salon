@@ -110,7 +110,7 @@ p.sub-para {
 }
 .bs-slider-overlay1 {
     width: 100%;
-    height: 100%; 
+    height: 100%;
     background-size: 2px;
 }
 h4.agile-title,h1.agile-title,h2.agile-title {
@@ -301,7 +301,7 @@ header {
 [id^=drop] {
 	display: none;
 }
-nav { 
+nav {
 	margin:0;
 	padding: 0;
 }
@@ -316,7 +316,7 @@ nav ul {
 	margin:0;
 	list-style: none;
 	position: relative;
-}	
+}
 nav ul li {
 	margin: 0px;
 	display:inline-block;
@@ -329,14 +329,14 @@ nav a,nav a:hover {
     font-size: 17px;
     position: relative;
 }
-.menu li.active  a{ 
+.menu li.active  a{
     color: #eee;
     background: transparent;
 }
 nav ul ul {
 	display: none;
-	position: absolute; 
-	top: 25px; 
+	position: absolute;
+	top: 25px;
     background: #fff;
     padding: 10px;
 }
@@ -360,7 +360,7 @@ nav ul ul li a {
 nav ul ul ul li {
 	position: relative;
 	top:-60px;
-	left:170px; 
+	left:170px;
 }
 li > a:only-child:after { content: ''; }
 @media all and (max-width : 991px) {
@@ -435,9 +435,9 @@ li > a:only-child:after { content: ''; }
 	nav ul li ul li .toggle,
 	nav ul ul a,
     nav ul ul ul a{
-		padding:14px 20px;	
+		padding:14px 20px;
 		color:#FFF;
-		font-size:17px; 
+		font-size:17px;
     }
 	nav ul ul {
 		float: none;
@@ -867,7 +867,6 @@ a.w3pvt_google {
     padding: 16px 20px;
     color: #333;
     font-size: 14px;
-    text-transform: capitalize;
     letter-spacing: 2px;
     width: 100%;
     border: 1px solid #ddd;
@@ -1051,7 +1050,7 @@ a.move-top span {
 @media(max-width:1366px) {
 }
 @media(max-width:1280px) {
-    
+
 }
 @media(max-width:1080px) {
 	.banner-text {
@@ -1114,7 +1113,7 @@ h4.tittle {
 }
 }
 @media(max-width:667px) {
-	
+
 }
 @media(max-width:640px) {
 .banner-text {
@@ -1225,7 +1224,7 @@ p.copy-right-grids {
 }
 .menu-item-name h6 {
     font-size: 13px;
-    
+
 }
 }
 @media(max-width:375px){

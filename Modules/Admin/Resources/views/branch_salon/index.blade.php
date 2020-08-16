@@ -53,8 +53,10 @@
                                 <tr>
                                     <th>Id</th>
                                     <th>Tên</th>
-                                    <th>Ảnh salon</th>
                                     <th>Địa chỉ</th>
+                                    <th>Quản lý</th>
+                                    <th>Địa điểm</th>
+                                    <th>Trạng thái</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -68,11 +70,13 @@
                                             {{ $row->name }}
                                         </td>
                                         <td>
-                                            <img src="{!! url('storage/'.$row->thumb_img) !!}" height="70px">
-                                        </td>
-                                        <td>
                                             {{ $row->address }}
                                         </td>
+                                        <td>
+
+                                        </td>
+                                        <td></td>
+                                        <td></td>
                                         <td>
                                             <div class="btn-group">
                                                 <a href="{{ route('admin.salon.show', [$row->id]) }}"
