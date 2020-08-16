@@ -44,6 +44,11 @@
                                     value="{{ Auth::user()->phone }}">
                             </div>
                             <div class="contact-name form-group">
+                                <label for="">Sinh nhật</label>
+                                <input type="text" class="form-control" name="birthday"
+                                    value="{{ Auth::user()->birthday }}">
+                            </div>
+                            <div class="contact-name form-group">
                                 <label for="">Địa chỉ</label>
                                 <input type="text" class="form-control" name="address"
                                     value="{{ Auth::user()->address }}">
