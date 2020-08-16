@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateReviewsTable extends Migration
+class CreateOrderServiceTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateReviewsTable extends Migration
      */
     public function up()
     {
-        Schema::create('reviews', function (Blueprint $table) {
+        Schema::create('order_service', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('salon_id');
-            $table->unsignedBigInteger('customer_id');
-            $table->integer('rating_stars');
-            $table->text('detail')->nullable();
-            $table->tinyInteger('status')->nullable();
+            $table->bigInteger('order_id')->nullable();
+            $table->bigInteger('service_id')->nullable();
+            $table->integer('price')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -32,6 +30,6 @@ class CreateReviewsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reviews');
+        Schema::dropIfExists('order_service');
     }
 }

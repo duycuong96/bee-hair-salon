@@ -21,7 +21,7 @@ class CreateContactsTable extends Migration
             $table->string('title');
             $table->text('content');
             $table->unsignedBigInteger('customer_id')->nullable();
-            $table->integer('status');
+            $table->tinyInteger('status')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
