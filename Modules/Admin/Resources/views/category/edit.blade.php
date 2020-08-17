@@ -35,6 +35,20 @@
                             <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
                             @enderror
                         </div>
+                        <div class="form-group">
+                            <label>Nôi dung:</label>
+                            <textarea name="description" class="form-control" id="" cols="30" rows="10">{{ old('description', $data->description) }}</textarea>
+                            @error('description')
+                            <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label>Ảnh:</label>
+                            <input type="file" class="form-control" name="image" value="{{ old('name') }}">
+                            @error('image')
+                            <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
                         <hr>
                         <div class="form-group d-flex justify-content-center">
                             <a href="{{ route('admin.chuyen-muc.index') }}" class="btn btn-lg btn-default mr-3">Trở lại</a>

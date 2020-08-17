@@ -1,6 +1,6 @@
 @extends('admin::layouts.master')
 
-@section('title', 'Bài viết')
+@section('title', 'Cập nhật bài viết')
 
 @section('content')
     <!-- Content Header (Page header) -->
@@ -32,6 +32,20 @@
                             <label>Tên tiêu đề:</label>
                             <input type="text" class="form-control" name="title" value="{{ old('title', $data->title) }}">
                             @error('name')
+                            <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label>Nôi dung:</label>
+                            <textarea name="content" class="form-control" id="" cols="30" rows="10"> {{$data->content}} </textarea>
+                            @error('content')
+                            <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label>Ảnh:</label>
+                            <input type="file" class="form-control" name="image" value="{{ old('name', $data->image) }}">
+                            @error('image')
                             <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
                             @enderror
                         </div>

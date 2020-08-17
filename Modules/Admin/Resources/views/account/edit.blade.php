@@ -30,22 +30,15 @@
                         <input type="hidden" name="id" value="{{ $data->id }}">
                         <div class="form-group">
                             <label>Tên:</label>
-                            <input type="text" class="form-control" name="name" value="{{ old('name', $data->name) }}">
+                            <input disabled type="text" class="form-control" name="name" value="{{ old('name', $data->name) }}">
                             @error('name')
                             <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label>Email:</label>
-                            <input type="text" class="form-control" name="email" value="{{ old('email', $data->email) }}">
+                            <input disabled type="text" class="form-control" name="email" value="{{ old('email', $data->email) }}">
                             @error('email')
-                            <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label>Mật khẩu:</label>
-                            <input type="password" class="form-control" name="password" value="{{ old('password') }}">
-                            @error('password')
                             <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
                             @enderror
                         </div>
