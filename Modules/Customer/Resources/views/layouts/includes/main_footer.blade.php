@@ -6,10 +6,7 @@
                     <h2>
                         <a href="index.html">Bee Hair</a>
                     </h2>
-                    <p class="my-3">Donec consequat sam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus</p>
-                    <p>
-                        Id quod possimusapien ut leo cursus rhoncus. Nullam dui mi, vulputate ac metus at, semper varius orci.
-                    </p>
+                    <p class="my-3">Đến với BeeHair bạn sẽ được trải nghiệm dịch vụ cắt tóc đẳng cấp từ dịch vụ và các stylist hàng đầu</p>
                 </div>
                 <div class="col-lg-4 col-md-6 mt-md-0 mt-5">
                     <div class="footer-w3pvt">
@@ -17,19 +14,8 @@
                         <hr>
                         <ul class="list-info-w3pvt last-w3ls-contact mt-lg-4">
                             <li>
-                                <p> Monday - Friday 08.00 am - 10.00 pm</p>
-
+                                <p> Thứ 2 - Chủ Nhật 08.00 am - 10.00 pm</p>
                             </li>
-                            <li class="my-2">
-                                <p>Saturday 08.00 am - 10.00 pm</p>
-
-                            </li>
-                            <li class="my-2">
-                                <p>Sunday 08.00 am - 10.00 pm</p>
-
-                            </li>
-
-
                         </ul>
                     </div>
                 </div>
@@ -39,15 +25,15 @@
                         <hr>
                         <div class="last-w3ls-contact">
                             <p>
-                                <a href="mailto:example@email.com">info@example.com</a>
+                                <a href="mailto:example@email.com">info@beehair.vn</a>
                             </p>
                         </div>
                         <div class="last-w3ls-contact my-2">
-                            <p>+ 456 123 7890</p>
+                            <p>+84 367896789</p>
                         </div>
                         <div class="last-w3ls-contact">
-                            <p>+ 90 nsequursu dsdesdc,
-                                <br>xxx Honey State 049436.</p>
+                            <p>Trụ sở chính: Số 68, Nguyễn Tuân
+                                <br>Thanh Xuân, Hà Nội.</p>
                         </div>
                     </div>
                 </div>

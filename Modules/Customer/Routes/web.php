@@ -19,7 +19,8 @@ Route::group([
     Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail')->name('send.link.email');
     Route::get('mat-khau/dat-lai/{token}', 'ResetPasswordController@showResetForm')->name('password.showResetForm');
     Route::post('password/reset', 'ResetPasswordController@reset')->name('password.update');
-
+    Route::get('dang-ky', 'RegisterController@showRegistrationForm')->name('formRegister');
+    Route::post('register', 'RegisterController@register')->name('register');
 });
 
 
@@ -28,9 +29,8 @@ Route::group([
     'as' => 'customer.',
 ], function () {
     Route::get('', 'HomeController@index')->name('home');
-    // Route::get('lien-he', 'ContactController@index');
     Route::resource('lien-he', 'ContactController')->only('index', 'store');
-    // Route::get('ve-chung-toi', 'AboutController@index');
+    Route::get('ve-chung-toi', 'AboutController@index');
     // Route::get('thu-vien', 'GalleryController@index');
     Route::resource('salon', 'BranchSalonController')->only('show');
     Route::resource('dich-vu', 'ServiceController');
