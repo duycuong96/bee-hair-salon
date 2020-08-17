@@ -71,7 +71,7 @@
                                                 {{ $row->image }}
                                             </td>
                                             <td>
-                                                {{ $row->active }}
+                                                {{ $row->status }}
                                             </td>
                                             <td>
                                                 <a href="{{ route('admin.banner.show', [$row->id]) }}" class="btn btn-app">

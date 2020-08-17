@@ -171,8 +171,8 @@
         </li>
     </ul>
 </li>
-<li class="nav-item has-treeview {{ request()->routeIs('admin.vai-tro*') ? 'menu-open' : '' }}">
-    <a href="" class="nav-link {{ request()->routeIs('admin.vai-tro*') ? 'active' : '' }}">
+<li class="nav-item has-treeview {{ request()->routeIs('admin.thong-ke*') ? 'menu-open' : '' }}">
+    <a href="" class="nav-link {{ request()->routeIs('admin.thong-ke*') ? 'active' : '' }}">
         <i class="nav-icon fas fa-user-tag"></i>
         <p>
             Thống kê
@@ -181,24 +181,24 @@
     </a>
     <ul class="nav nav-treeview">
         <li class="nav-item">
-            <a href="{{ route('admin.vai-tro.index') }}"
-                class="nav-link {{ request()->routeIs('admin.vai-tro.index') ? 'active' : '' }}">
+            <a href="{{ route('admin.thong-ke.khach.hang') }}"
+                class="nav-link {{ request()->routeIs('admin.thong-ke.khach.hang') ? 'active' : '' }}">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Thống kê khách hàng</p>
             </a>
         </li>
         <li class="nav-item">
-            <a href="{{ route('admin.vai-tro.create') }}"
-                class="nav-link {{ request()->routeIs('admin.vai-tro.create') ? 'active' : '' }}">
+            <a href="{{ route('admin.thong-ke.doanh-thu') }}"
+                class="nav-link {{ request()->routeIs('admin.thong-ke.doanh-thu') ? 'active' : '' }}">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Doanh thu</p>
             </a>
         </li>
         <li class="nav-item">
-            <a href="{{ route('admin.vai-tro.create') }}"
-                class="nav-link {{ request()->routeIs('admin.vai-tro.create') ? 'active' : '' }}">
+            <a href="{{ route('admin.thong-ke.dich-vu') }}"
+                class="nav-link {{ request()->routeIs('admin.thong-ke.dich-vu') ? 'active' : '' }}">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Đơn hàng</p>
+                <p>Dịch vụ</p>
             </a>
         </li>
     </ul>
