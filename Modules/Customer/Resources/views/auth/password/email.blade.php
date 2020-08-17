@@ -57,7 +57,7 @@
                 </form>
                 <div class="row mt-5 d-flex justify-content-center">
                     <div class="col-lg-6">
-                        <a href="" class="float-left">Đăng ký tài khoản mới</a>
+                        <a href="{{ route('customer.formRegister') }}" class="float-left">Đăng ký tài khoản mới</a>
                         <a href="{{ route('customer.formLogin') }}" class="float-right">Đăng nhập</a>
                     </div>
                 </div>

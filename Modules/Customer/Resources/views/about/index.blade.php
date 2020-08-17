@@ -21,41 +21,19 @@
     <!-- //page details -->
     <!--about-mid -->
     <div class="container py-md-5">
-        <h3 class="heading text-center mb-3 mb-sm-5">About More</h3>
+        <h3 class="heading text-center mb-3 mb-sm-5">Giới thiệu</h3>
         <div class="row mid-grids mt-lg-5 mt-3">
             <div class="col-md-5 content-w3pvt-img">
-                <img src="{{ asset('customer/images/ab1.jpg') }}" alt="" class="img-fluid">
+                <img src="{{ asset('client/images/ab1.jpg') }}" alt="" class="img-fluid">
             </div>
             <div class="col-md-7 content-left-bottom entry-w3ls-info text-left mt-3">
-                <h5 class="mt-1">CLASSIC HAIR STYLING </h5>
-                <h4>real men go to
-                    <br>real Men spas</h4>
-                <p class="mt-2 text-left">Integer pulvinar leo id viverra feugiat.Pellentesque libero justo, semper at
-                    tempus vel, ultrices in sed ligula. Nulla uter sollicitudin velit. Sed porttitor orci vel fermentum elit
-                    maximus. Curabitur ut turpis massa in condimentum libero. Pellentesque maximus Pellentesque libero justo
-                    Nulla uter sollicitudin velit. Sed porttitor orci vel ferm semper at vel, ultrices in ligula semper at
-                    vel.Curabitur ut turpis massa in condimentum libero.</p>
+                <h4>Về chúng tôi
+                    <br>BeeHair Salon</h4>
+                <p class="mt-2 text-left">Xuất phát từ ý tưởng nung nấu của 5 thành viện từ thời còn sinh viên. Đến năm 2020 chúng tôi tập hợp lại khởi nghiệp với dịch vụ về tóc dành cho cả nam và nữ. Chúng tôi đã cùng nhau xây dựng lên hệ thống đặt lịch cắt tóc giúp khách hàng thuận tiện hơn trong công việc hàng ngày.</p>
 
             </div>
 
 
-        </div>
-        <div class="row mid-grids mt-lg-5 mt-3 py-3">
-
-            <div class="col-md-7 content-left-bottom entry-w3ls-info text-left mt-3">
-                <h5 class="mt-1">CLASSIC BEARD STYLING</h5>
-                <h4>checkout hottest
-                    <br>beard styling</h4>
-                <p class="mt-2 text-left">Integer pulvinar leo id viverra feugiat.Pellentesque libero justo, semper at
-                    tempus vel, ultrices in sed ligula. Nulla uter sollicitudin velit. Sed porttitor orci vel fermentum elit
-                    maximus. Curabitur ut turpis massa in condimentum libero. Pellentesque maximus Pellentesque libero justo
-                    Nulla uter sollicitudin velit. Sed porttitor orci vel ferm semper at vel, ultrices in ligula semper at
-                    vel.Curabitur ut turpis massa in condimentum libero.</p>
-
-            </div>
-            <div class="col-md-5 content-w3pvt-img mt-lg-0 mt-3">
-                <img src="{{ asset('customer/images/ab2.jpg') }}" alt="" class="img-fluid">
-            </div>
         </div>
     </div>
     <!-- //about-mid -->
@@ -89,15 +67,15 @@
     <!--//team -->
     <section class="banner-bottom  py-5">
         <div class="container py-md-5">
-            <h3 class="heading text-center mb-3 mb-sm-5">Our Team</h3>
+            <h3 class="heading text-center mb-3 mb-sm-5">Đội ngũ của chúng tôi</h3>
             <div class="row mt-lg-5 mt-4">
                 <div class="col-md-4 team-gd text-center">
                     <div class="team-img mb-4">
                         <img src="images/t1.jpg" class="img-fluid" alt="user-image">
                     </div>
                     <div class="team-info">
-                        <h3 class="mt-md-4 mt-3">JAMES Men spa</h3>
-                        <p>Lorem Ipsum has been the industry's standard since the 1500s.</p>
+                        <h3 class="mt-md-4 mt-3">Vũ Duy Cường</h3>
+                        <p>CEO & Fouder</p>
                         <ul class="list-unstyled team-icons mt-4">
                             <li>
                                 <a href="#" class="t-icon">
@@ -124,8 +102,8 @@
                         <img src="images/t2.jpg" class="img-fluid" alt="user-image">
                     </div>
                     <div class="team-info">
-                        <h3 class="mt-md-4 mt-3">DEEN MUSTACHIO</h3>
-                        <p>Lorem Ipsum has been the industry's standard since the 1500s.</p>
+                        <h3 class="mt-md-4 mt-3">TRẦN HỒNG PHƯỚC</h3>
+                        <p>Phó Giám Đốc</p>
                         <ul class="list-unstyled team-icons mt-4">
                             <li>
                                 <a href="#" class="t-icon">
@@ -151,8 +129,8 @@
                         <img src="images/t3.jpg" class="img-fluid" alt="user-image">
                     </div>
                     <div class="team-info">
-                        <h3 class="mt-md-4 mt-3"> CLINT HAIRISTA</h3>
-                        <p>Lorem Ipsum has been the industry's standard since the 1500s.</p>
+                        <h3 class="mt-md-4 mt-3">Nguyễn Tiến</h3>
+                        <p>Mentor</p>
                         <ul class="list-unstyled team-icons mt-4">
                             <li>
                                 <a href="#" class="t-icon">
