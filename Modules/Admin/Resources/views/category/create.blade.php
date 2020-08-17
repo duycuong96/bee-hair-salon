@@ -34,6 +34,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
+<<<<<<< HEAD
                             <label>Nôi dung:</label>
                             <textarea name="description" class="form-control" id="" cols="30" rows="10"></textarea>
                             @error('description')
@@ -46,6 +47,14 @@
                             @error('image')
                             <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
                             @enderror
+=======
+                            <label>Mô tả:</label>
+                            <input type="text" class="form-control" name="" value="">
+                        </div>
+                        <div class="form-group">
+                            <label>Ảnh bài viết:</label>
+                            <input type="file" class="form-control" name="title" value="">
+>>>>>>> ab0979c68b3910422f2c4a79e545338c4af1fc62
                         </div>
 
                         <hr>

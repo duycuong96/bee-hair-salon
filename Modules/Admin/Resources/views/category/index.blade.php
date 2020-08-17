@@ -43,7 +43,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Danh sách - @yield('title')</h3>
-                            <a href="{{ route('admin.banner.create') }}" class="btn btn-primary float-right">Thêm
+                            <a href="{{ route('admin.chuyen-muc.create') }}" class="btn btn-primary float-right">Thêm
                                 mới</a>
                         </div>
                         <!-- /.card-header -->
@@ -74,7 +74,7 @@
                                                 <b class="text-success">Hoạt động</b>
                                             </td>
                                             <td>
-                                                <a href="{{ route('admin.banner.show', [$row->id]) }}" class="btn btn-app">
+                                                <a href="{{ route('admin.chuyen-muc.show', [$row->id]) }}" class="btn btn-app">
                                                     <i class="fas fa-edit"></i> Cập nhật
                                                 </a>
                                             </td>
