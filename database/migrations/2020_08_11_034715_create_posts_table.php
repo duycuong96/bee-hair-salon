@@ -23,6 +23,7 @@ class CreatePostsTable extends Migration
             $table->integer('like')->nullable();
             $table->unsignedBigInteger('author_id')->nullable();
             $table->unsignedBigInteger('category_id')->nullable();
+            $table->tinyInteger('status')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
