@@ -52,7 +52,6 @@ class BranchSalonService
     public function update($request, $id)
     {
         $branchSalon = BranchSalon::find($id);
-        dd($branchSalon);
         if (empty($branchSalon)) {
             return $this->returnFailedWithRoute('admin.salon.index', __('messages.data_update_failed'));
         } else {
