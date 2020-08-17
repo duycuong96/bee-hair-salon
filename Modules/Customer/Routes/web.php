@@ -34,6 +34,7 @@ Route::group([
     // Route::get('thu-vien', 'GalleryController@index');
     Route::resource('salon', 'BranchSalonController')->only('show');
     Route::resource('dich-vu', 'ServiceController');
+    Route::get('danh-sach-salon', 'BranchSalonController@index')->name('branchSalon.index');
 });
 Route::group([
     'prefix' => '',
