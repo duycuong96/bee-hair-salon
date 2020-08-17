@@ -33,6 +33,14 @@
                             <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
                             @enderror
                         </div>
+                        <div class="form-group">
+                            <label>Mô tả:</label>
+                            <input type="text" class="form-control" name="" value="">
+                        </div>
+                        <div class="form-group">
+                            <label>Ảnh bài viết:</label>
+                            <input type="file" class="form-control" name="title" value="">
+                        </div>
 
                         <hr>
                         <div class="form-group d-flex justify-content-center">

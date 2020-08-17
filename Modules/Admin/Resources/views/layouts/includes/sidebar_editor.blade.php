@@ -26,7 +26,7 @@
 
 <li class="nav-item has-treeview {{ request()->routeIs('admin.chuyen-muc*') ? 'menu-open' : '' }}">
     <a href="" class="nav-link {{ request()->routeIs('admin.chuyen-muc*') ? 'active' : '' }}">
-        <i class="nav-icon fas fa-user-tag"></i>
+        <i class="nav-icon fas fa-blog"></i>
         <p>
             Chuyên mục
             <i class="fas fa-angle-left right"></i>
@@ -52,7 +52,7 @@
 
 <li class="nav-item has-treeview {{ request()->routeIs('admin.binh-luan*') ? 'menu-open' : '' }}">
     <a href="" class="nav-link {{ request()->routeIs('admin.binh-luan*') ? 'active' : '' }}">
-        <i class="nav-icon fas fa-user-tag"></i>
+        <i class="nav-icon fas fa-comments"></i>
         <p>
             Bình luận
             <i class="fas fa-angle-left right"></i>
