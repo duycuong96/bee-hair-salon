@@ -43,4 +43,7 @@ class Admin extends Authenticatable
     {
         return $this->belongsToMany(Role::class, 'role_user');
     }
+    function branchSalon(){
+        return $this->belongsTo(BranchSalon::class, 'id', 'admin_id');
+    }
 }
