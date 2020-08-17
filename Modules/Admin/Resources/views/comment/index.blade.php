@@ -50,7 +50,9 @@
                                 <thead>
                                     <tr>
                                         <th>Id</th>
-                                        <th>Tên</th>
+                                        <th>Tiêu đề</th>
+                                        <th>Tiêu đề bài viết</th>
+                                        <th>Tên khách hàng</th>
                                         <th>Trạng thái</th>
                                         <th width="10%">Action</th>
                                     </tr>
@@ -63,6 +65,12 @@
                                             </td>
                                             <td>
                                                 {{ $row->title }}
+                                            </td>
+                                            <td>
+                                                {{ $row->post_id }}
+                                            </td>
+                                            <td>
+                                                {{ $row->customer_id }}
                                             </td>
                                             <td>
                                                 {{ $row->active }}

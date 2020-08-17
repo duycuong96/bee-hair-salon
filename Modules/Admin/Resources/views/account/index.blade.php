@@ -72,10 +72,16 @@
                                                 {{ $row->email }}
                                             </td>
                                             <td>
-                                                {{-- {{ $row-> }} --}}
+                                                {{ $row->branchSalon->name }}
                                             </td>
                                             <td>
-                                                {{ $row->status }}
+                                                @if ($row->status == STATUS_ACCOUNT_CUSTOMER_REGISTER)
+                                                    <b class="text-warning">Chưa được kích hoạt</b>
+                                                @elseif($row->status == STATUS_ACCOUNT_CUSTOMER_ACTIVE)
+                                                    <b class="text-success">Đang hoạt động</b>
+                                                @else
+                                                <b class="text-danger">Đang khóa</b>
+                                                @endif
                                             </td>
                                             <td>
                                                 <a href="{{ route('admin.tai-khoan.show', [$row->id]) }}" class="btn btn-app">
