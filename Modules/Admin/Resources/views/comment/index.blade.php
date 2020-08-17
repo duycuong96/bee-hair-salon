@@ -76,7 +76,7 @@
                                                 {{ $row->active }}
                                             </td>
                                             <td>
-                                                <a href="{{ route('admin.bai-viet.show', [$row->id]) }}" class="btn btn-app">
+                                                <a href="{{ route('admin.binh-luan.show', [$row->id]) }}" class="btn btn-app">
                                                     <i class="fas fa-edit"></i> Cập nhật
                                                 </a>
                                             </td>

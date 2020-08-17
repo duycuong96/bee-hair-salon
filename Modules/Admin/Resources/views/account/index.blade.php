@@ -72,7 +72,7 @@
                                                 {{ $row->email }}
                                             </td>
                                             <td>
-                                                {{ $row->branchSalon->name }}
+                                                Quản trị
                                             </td>
                                             <td>
                                                 @if ($row->status == STATUS_ACCOUNT_CUSTOMER_REGISTER)
