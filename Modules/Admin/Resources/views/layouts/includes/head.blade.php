@@ -32,4 +32,4 @@
 <!-- Toastr -->
 <link rel="stylesheet" href="plugins/toastr/toastr.min.css">
 
-@include('admin::layouts.includes.css');
+@include('admin::layouts.includes.css')
