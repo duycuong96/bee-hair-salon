@@ -18,8 +18,8 @@ class CreateCommentsTable extends Migration
             $table->bigInteger('post_id')->nullable();
             $table->string('title');
             $table->text('content')->nullable();
-            $table->bigInteger('customer_id')->nullable();
-            $table->integer('active')->nullable();
+            $table->unsignedBigInteger('customer_id')->nullable();
+            $table->tinyInteger('status')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

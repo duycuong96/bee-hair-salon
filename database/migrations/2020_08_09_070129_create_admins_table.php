@@ -22,7 +22,6 @@ class CreateAdminsTable extends Migration
             $table->string('address')->nullable();
             $table->string('phone')->nullable();
             $table->date('dob')->nullable();
-            $table->integer('branch_salon_id')->nullable();
             $table->tinyInteger('status')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
