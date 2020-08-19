@@ -27,10 +27,9 @@
                     <form action="{{ route('admin.khach-hang.update', [$data->id]) }}" method="POST">
                         @csrf
                         @method('PUT')
-                        <input type="hidden" name="id" value="{{ $data->id }}">
                         <div class="form-group">
                             <label>Tên:</label>
-                            <input disabled type="text" class="form-control" name="name" value="{{ old('name', $data->name) }}">
+                            <input type="text" class="form-control" name="name" value="{{ old('name', $data->name) }}" readonly>
                             @error('name')
                             <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
                             @enderror
@@ -60,20 +59,35 @@
                             <label>Trạng thái tài khoản:</label>
                             <br>
                             <div class="icheck-primary d-inline">
-                              <input type="radio" id="radioPrimary1" name="status" value="{{STATUS_ACCOUNT_CUSTOMER_ACTIVE}}" checked>
+                              <input
+                                    type="radio"
+                                    id="radioPrimary1"
+                                    name="status"
+                                    value="{{STATUS_ACCOUNT_CUSTOMER_REGISTER}}"
+                                    {{ ($data->status == STATUS_ACCOUNT_CUSTOMER_REGISTER) ? 'checked' : '' }}>
                               <label for="radioPrimary1">
                                   Chưa kích hoạt
                               </label>
                             </div>
                             <div class="icheck-primary d-inline">
-                              <input type="radio" id="radioPrimary2" name="status" value="{{STATUS_ACCOUNT_CUSTOMER_ACTIVE}}">
+                              <input
+                                    type="radio"
+                                    id="radioPrimary1"
+                                    name="status"
+                                    value="{{STATUS_ACCOUNT_CUSTOMER_ACTIVE}}"
+                                    {{ ($data->status = STATUS_ACCOUNT_CUSTOMER_ACTIVE) ? 'checked' : ''}}>
                               <label for="radioPrimary2">
                                   Hoạt động
                               </label>
                             </div>
                             <div class="icheck-primary d-inline">
-                              <input type="radio" id="radioPrimary2" name="status" value="{{STATUS_ACCOUNT_CUSTOMER_NOT_ACTIVE}}">
-                              <label for="radioPrimary2">
+                              <input
+                                    type="radio"
+                                    id="radioPrimary1"
+                                    name="status"
+                                    value="{{STATUS_ACCOUNT_CUSTOMER_NOT_ACTIVE}}"
+                                    {{ ($data->status = STATUS_ACCOUNT_CUSTOMER_NOT_ACTIVE) ? 'checked' : ''}}>
+                              <label for="radioPrimary3">
                                   Đã khóa
                               </label>
                             </div>
