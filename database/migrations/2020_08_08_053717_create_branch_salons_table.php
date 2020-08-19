@@ -24,7 +24,6 @@ class CreateBranchSalonsTable extends Migration
             $table->bigInteger('view')->nullable();
             $table->unsignedInteger('status')->default(0);
             $table->integer('ward_id')->nullable();
-            $table->bigInteger('admin_id')->nullable();
             $table->json('locations')->nullable();
             $table->integer('seat')->nullable();
             $table->timestamps();
