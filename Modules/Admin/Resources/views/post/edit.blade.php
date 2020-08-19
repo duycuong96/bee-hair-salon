@@ -1,6 +1,6 @@
 @extends('admin::layouts.master')
 
-@section('title', 'Bài viết')
+@section('title', 'Cập nhật bài viết')
 
 @section('content')
     <!-- Content Header (Page header) -->

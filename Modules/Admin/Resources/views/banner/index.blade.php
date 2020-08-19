@@ -69,7 +69,7 @@
                                                 {{ $row->name }}
                                             </td>
                                             <td>
-                                                {{ $row->image }}
+                                                <img src="{{ $row->image }}" height="100px" alt="">
                                             </td>
                                             <td>
                                                 {{$row->location}}

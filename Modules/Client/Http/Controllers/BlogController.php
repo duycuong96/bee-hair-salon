@@ -1,27 +1,20 @@
 <?php
 
-namespace Modules\Admin\Http\Controllers;
+namespace Modules\Client\Http\Controllers;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Modules\Admin\Http\Requests\CommentRequest;
-use App\Services\Admin\CommentService;
 
-class CommentController extends Controller
+class BlogController extends Controller
 {
-    protected $commentService;
-    public function __construct(CommentService $commentService)
-    {
-        $this->commentService = $commentService;
-    }
     /**
      * Display a listing of the resource.
      * @return Renderable
      */
-    public function index(Request $request)
+    public function index()
     {
-        return $this->commentService->index($request);
+        return view('client::blog.index');
     }
 
     /**
@@ -30,7 +23,7 @@ class CommentController extends Controller
      */
     public function create()
     {
-        return $this->commentService->create();
+        return view('client::create');
     }
 
     /**
@@ -38,9 +31,9 @@ class CommentController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(CommentRequest $request)
+    public function store(Request $request)
     {
-        return $this->commentService->store($request);
+        //
     }
 
     /**
@@ -50,7 +43,7 @@ class CommentController extends Controller
      */
     public function show($id)
     {
-        return $this->commentService->show($id);
+        return view('client::show');
     }
 
     /**
@@ -60,7 +53,7 @@ class CommentController extends Controller
      */
     public function edit($id)
     {
-        return view('admin::edit');
+        return view('client::edit');
     }
 
     /**
@@ -69,9 +62,9 @@ class CommentController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(CommentRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        return $this->commentService->update($request, $id);
+        //
     }
 
     /**
