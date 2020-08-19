@@ -243,6 +243,7 @@ select.list-dt:focus {
 }
 .box-salon .card-img {
   height: 100%;
+  width: 100%;
 }
 .box-service {
   display: flex;
