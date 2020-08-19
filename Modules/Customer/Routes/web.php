@@ -35,6 +35,8 @@ Route::group([
     Route::resource('salon', 'BranchSalonController')->only('show');
     Route::resource('dich-vu', 'ServiceController');
     Route::get('danh-sach-salon', 'BranchSalonController@index')->name('branchSalon.index');
+    Route::get('dat-lich', 'BookingController@booking')->name('booking');
+    Route::post('dat-lich', 'BookingController@bookingSchedule')->name('bookingSchedule');
 });
 Route::group([
     'prefix' => '',

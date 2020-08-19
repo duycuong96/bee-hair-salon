@@ -24,14 +24,15 @@ Route::group(['prefix' => ''], function () {
     // Route::get('tai-khoan', 'ProfileController@index');
     // Route::get('tai-khoan/cap-nhat', 'ProfileController@updateProfile')->name('profile.update');
     // Route::get('tai-khoan/doi-mat-khau', 'ProfileController@changePassword')->name('profile.password');
-    Route::get('tai-khoan/so-du', 'ProfileController@surplus')->name('profile.surplus');
-    Route::get('tai-khoan/thong-bao', 'ProfileController@notification')->name('profile.notification');
-    Route::get('tai-khoan/lich-su&danh-gia', 'ProfileController@history')->name('profile.history');
+    // Route::get('tai-khoan/so-du', 'ProfileController@surplus')->name('profile.surplus');
+    // Route::get('tai-khoan/thong-bao', 'ProfileController@notification')->name('profile.notification');
+    // Route::get('tai-khoan/lich-su&danh-gia', 'ProfileController@history')->name('profile.history');
+    // Route::get('dat-lich', 'BookingController@index');
 
     // Route::get('dat-lich', 'BookingController@index');
     Route::get('danh-sach-cua-hang', 'ListSalonController@index');
 
-    Route::get('dat-lich', 'BookingController@index');
+//     Route::get('dat-lich', 'BookingController@index');
     Route::get('blog', 'BlogController@index');
 
 });
