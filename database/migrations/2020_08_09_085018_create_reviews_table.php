@@ -15,11 +15,12 @@ class CreateReviewsTable extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('salon_id');
-            $table->unsignedBigInteger('customer_id');
+            $table->unsignedBigInteger('salon_id')->nullable();
+            $table->unsignedBigInteger('customer_id')->nullable();
+            $table->unsignedBigInteger('admin_id')->nullable();
             $table->integer('rating_stars');
             $table->text('detail')->nullable();
-            $table->integer('status');
+            $table->tinyInteger('status')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

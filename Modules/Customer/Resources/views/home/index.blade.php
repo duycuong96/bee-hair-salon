@@ -18,9 +18,9 @@
                         <div class="bs-slider-overlay">
                             <div class="banner-text">
                                 <div class="container">
-                                    <h2 class="movetxt agile-title text-capitalize">We Create and Renovate Hair Style Trends
+                                    <h2 class="movetxt agile-title text-capitalize">Khai trương cửa hàng
                                     </h2>
-                                    <p>Mỗi lần cắt tóc là một lần đánh bạc nhan sắc của mình, hãy tin tưởng ở chúng tôi !
+                                    <p>216, Trung Kính, Yên Hoà, Cầu Giấy, Hà Nội
                                     </p>
                                     <a href="contact.html" class="btn"> Đặt lịch ngay </a>
                                 </div>
@@ -70,25 +70,29 @@
     </div>
     <!-- //banner -->
 
-    <!-- banner bottom grids -->
-    <section class="content-info py-5" id="about">
-        <div class="container py-md-5">
-            <h3 class="heading text-center mb-3 mb-sm-5">Về chúng tôi</h3>
-
-            <div class="info-w3pvt-mid text-center px-lg-5">
-
-                <div class="title-desc text-center px-lg-5">
-                    <img src="{{ asset('customer/images/about1.png') }}" alt="news image" class="img-fluid">
-                    <p class="px-lg-5">Praesent ullamcorper dui turpis.At vero eos et accusam et justo duo dolores et ea
-                        rebum.Integer sit amet mattis quam, sit amet ultricies velit. Praesent ullamcorper dui turpis.
-                        Praesent ullamcorper dui turpis.At vero eos et accusam et justo duo dolores et ea rebum.Integer sit
-                        amet mattis quam, sit amet ultricies velit. Praesent ullamcorper dui turpis.</p>
-                    <a class="btn mt-lg-4 mt-3 read scroll" href="#services" role="button">Tìm hiểu thêm</a>
-                </div>
+    <!-- list-salon -->
+    <div class="service text-center py-5" id="services">
+        <div class="container py-xl-5 py-lg-3">
+            <div class="price-sty position-relative mb-5">
+                <h3 class="heading text-center text-bl mb-2">Danh sách cửa hàng</h3>
+            </div>
+            <div class="row pt-2">
+                @foreach ($salons as $salon)
+                    <div class="col-lg-3 col-sm-6 px-lg-2 mb-4">
+                        <img src="{!! url('storage/'.  $salon->thumb_img) !!}" alt="" class="img-fluid" />
+                        <div class="bottom-ser-w3pvt serv-bg-clr4">
+                            <h4 class="ser-text-w3 text-bl font-weight-bold text-uppercase mb-2">
+                                {{$salon->ward_id}}
+                            </h4>
+                            <p>{{ number_format($salon->phone, 0, ',', '.') }}</p>
+                            <a href=" {{route('customer.salon.show', $salon->id)}} " class="btn button-style-3 mt-md-5 mt-4">Xem thêm</a>
+                        </div>
+                    </div>
+                @endforeach
             </div>
         </div>
-    </section>
-    <!-- //banner bottom grids -->
+    </div>
+    <!-- //lisi-salon -->
 
     <!-- /services -->
     <section class="services py-5" id="services">
@@ -136,7 +140,7 @@
             <div class="row pricing-grids">
                 <div class="col-lg-6  mb-lg-0 mb-5">
                     <div class="padding">
-                        <h3>PRICES FOR MUSTACHE TRIMMING</h3>
+                        <h3>Dịch vụ mới</h3>
                         <!-- Item starts -->
                         @foreach ($servicesB as $serviceB)
                             <div class="menu-item">
@@ -156,7 +160,7 @@
                 </div>
                 <div class="col-lg-6  mb-lg-0 mb-5">
                     <div class="padding">
-                        <h3>HAIR AND BEARD CUT PRICES</h3>
+                        <h3>Dịch vụ ưa thích</h3>
                         <!-- Item starts -->
                         <div class="menu-item">
                             <div class="row border-dot no-gutters">
@@ -244,9 +248,8 @@
         <div class="container py-md-5">
             <div class="test-info text-center">
                 <h3 class="tittle order">
-                    <span>HÃY GỌI CHO CHÚNG TÔI ĐỂ ĐẶT LỊCH HẸN</span>Nhân viên của chúng tôi sẽ gọi lại ngay lập tức và đặt
-                    lịch hẹn</h3>
-                <h4 class="tittle my-2">123456789 </h4>
+                    <span>HÃY GỌI CHO CHÚNG TÔI ĐỂ ĐƯỢC TƯ VẤN</span></h3>
+                <h4 class="tittle my-2">+84 367896789</h4>
 
                 <div class="read-more mx-auto m-0 text-center">
                     <a href="contact.html" class="read-more scroll btn">Click tại đây</a> </div>
@@ -255,29 +258,7 @@
     </section>
     <!--//order-now-->
 
-    <!-- list-salon -->
-    <div class="service text-center py-5" id="services">
-        <div class="container py-xl-5 py-lg-3">
-            <div class="price-sty position-relative mb-5">
-                <h3 class="heading text-center text-bl mb-2">Danh sách cửa hàng</h3>
-            </div>
-            <div class="row pt-2">
-                @foreach ($salons as $salon)
-                    <div class="col-lg-3 col-sm-6 px-lg-2 mb-4">
-                        <img src="{!! url('storage/'.  $salon->thumb_img) !!}" alt="" class="img-fluid" />
-                        <div class="bottom-ser-w3pvt serv-bg-clr4">
-                            <h4 class="ser-text-w3 text-bl font-weight-bold text-uppercase mb-2">
-                                {{$salon->ward_id}}
-                            </h4>
-                            <p>{{ number_format($salon->phone, 0, ',', '.') }}</p>
-                            <a href=" {{route('customer.salon.show', $salon->id)}} " class="btn button-style-3 mt-md-5 mt-4">Xem thêm</a>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-    </div>
-    <!-- //lisi-salon -->
+
 
 
     <!--/testimonials-->
@@ -318,7 +299,7 @@
                 </div>
                 <div class="col-md-7 subscribe-right p-lg-5 py-sm-5 py-4">
                     <form action="#" method="post">
-                        <input type="email" name="email" placeholder="Enter your email here" required="">
+                        <input type="email" name="email" placeholder="Nhập email của bạn" required="">
                         <button class="btn1"><span class="fa fa-paper-plane" aria-hidden="true"></span></button>
                     </form>
                 </div>

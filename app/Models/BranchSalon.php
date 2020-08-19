@@ -21,4 +21,7 @@ class BranchSalon extends Model
         'admin_id',
         'locations',
     ];
+    function admin(){
+        return $this->belongsTo('App\Models\Admin', 'admin_id', 'id');
+    }
 }

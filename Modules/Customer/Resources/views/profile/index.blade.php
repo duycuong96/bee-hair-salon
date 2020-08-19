@@ -1,4 +1,4 @@
-@extends('client::layouts.master')
+@extends('customer::layouts.master')
 @section('title','BeeHair')
 @section('content')
 
@@ -42,6 +42,11 @@
                                 <label for="">Số điện thoại</label>
                                 <input type="text" class="form-control" name="phone"
                                     value="{{ Auth::user()->phone }}">
+                            </div>
+                            <div class="contact-name form-group">
+                                <label for="">Sinh nhật</label>
+                                <input type="text" class="form-control" name="birthday"
+                                    value="{{ Auth::user()->birthday }}">
                             </div>
                             <div class="contact-name form-group">
                                 <label for="">Địa chỉ</label>

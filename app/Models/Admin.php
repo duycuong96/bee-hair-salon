@@ -20,6 +20,12 @@ class Admin extends Authenticatable
         'name',
         'email',
         'password',
+        'avatar',
+        'address',
+        'phone',
+        'dob',
+        'branch_salon_id',
+        'status',
     ];
 
     protected $hidden = [
@@ -42,5 +48,9 @@ class Admin extends Authenticatable
     public function role()
     {
         return $this->belongsToMany(Role::class, 'role_user');
+    }
+
+    function branchSalon(){
+        return $this->belongsTo(BranchSalon::class, 'id', 'admin_id');
     }
 }

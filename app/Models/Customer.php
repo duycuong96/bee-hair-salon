@@ -25,6 +25,7 @@ class Customer extends Authenticatable
         'password',
         'address',
         'ward_id',
+        'status',
     ];
 
     protected $hidden = [

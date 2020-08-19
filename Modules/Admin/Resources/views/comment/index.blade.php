@@ -50,7 +50,9 @@
                                 <thead>
                                     <tr>
                                         <th>Id</th>
-                                        <th>Tên</th>
+                                        <th>Tiêu đề</th>
+                                        <th>Tiêu đề bài viết</th>
+                                        <th>Tên khách hàng</th>
                                         <th>Trạng thái</th>
                                         <th width="10%">Action</th>
                                     </tr>
@@ -65,10 +67,16 @@
                                                 {{ $row->title }}
                                             </td>
                                             <td>
+                                                {{ $row->post_id }}
+                                            </td>
+                                            <td>
+                                                {{ $row->customer_id }}
+                                            </td>
+                                            <td>
                                                 {{ $row->active }}
                                             </td>
                                             <td>
-                                                <a href="{{ route('admin.bai-viet.show', [$row->id]) }}" class="btn btn-app">
+                                                <a href="{{ route('admin.binh-luan.show', [$row->id]) }}" class="btn btn-app">
                                                     <i class="fas fa-edit"></i> Cập nhật
                                                 </a>
                                             </td>

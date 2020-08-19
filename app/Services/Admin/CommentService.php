@@ -18,7 +18,6 @@ class CommentService
                         ->paginate(10);
 
         $data->appends(request()->query());
-
         return view(
             'admin::comment.index',
             ['data' => $data]

@@ -52,8 +52,9 @@
                                 <thead>
                                     <tr>
                                         <th>Id</th>
-                                        <th>Tên</th>
-                                        <th>Ảnh</th>
+                                        <th>Tiêu đề</th>
+                                        <th>Tác giả</th>
+                                        <th>Danh mục</th>
                                         <th>Trạng thái</th>
                                         <th width="10%">Action</th>
                                     </tr>
@@ -68,15 +69,23 @@
                                                 {{ $row->title }}
                                             </td>
                                             <td>
-                                                {{ $row->image }}
+                                                {{ $row->author_id }}
+                                            </td>
+                                            <td>
+                                                {{ $row->category_id }}
                                             </td>
                                             <td>
                                                 {{ $row->active }}
                                             </td>
                                             <td>
+                                                <div class="btn-group">
                                                 <a href="{{ route('admin.bai-viet.show', [$row->id]) }}" class="btn btn-app">
-                                                    <i class="fas fa-edit"></i> Cập nhật
+                                                    <i class="fas fa-edit "></i> Cập nhật
                                                 </a>
+                                                <a href="{{ route('admin.bai-viet.show', [$row->id]) }}" class="btn btn-app">
+                                                    <i class="fas fa-trash"></i> Xóa
+                                                </a>
+                                            </div>
                                             </td>
                                         </tr>
                                     @endforeach

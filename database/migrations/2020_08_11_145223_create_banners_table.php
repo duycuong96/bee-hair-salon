@@ -18,10 +18,10 @@ class CreateBannersTable extends Migration
             $table->string('name');
             $table->string('title')->nullable();
             $table->string('image')->nullable();
-            $table->string('desc')->nullable();
+            $table->text('desc')->nullable();
             $table->string('url')->nullable();
-            $table->string('location')->nullable();
-            $table->string('active')->nullable();
+            $table->integer('location')->nullable();
+            $table->tinyInteger('active')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

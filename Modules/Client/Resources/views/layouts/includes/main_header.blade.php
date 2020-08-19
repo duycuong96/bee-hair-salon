@@ -20,8 +20,8 @@
 							<li class="mr-lg-3 mr-2"><a href="/lien-he">Liên hệ</a></li>
 							<li class="mr-lg-3 mr-2 p-0">
 
-								<label for="drop-2" class="toggle">Dropdown <span class="fa fa-angle-down" aria-hidden="true"></span> </label>
-								<a href="#">Dropdown <span class="fa fa-angle-down" aria-hidden="true"></span></a>
+								<label for="drop-2" class="toggle">Tài khoản <span class="fa fa-angle-down" aria-hidden="true"></span> </label>
+								<a href="#">Tài khoản <span class="fa fa-angle-down" aria-hidden="true"></span></a>
 								<input type="checkbox" id="drop-2"/>
 								<ul class="inner-dropdown">
 									<li><a href="/dich-vu">Dịch vụ</a></li>
@@ -31,7 +31,7 @@
 									<li><a href="/danh-sach-cua-hang">Danh sách cửa hàng</a></li>
 								</ul>
 								</li>
-							
+
 
 						</ul>
 				</nav>

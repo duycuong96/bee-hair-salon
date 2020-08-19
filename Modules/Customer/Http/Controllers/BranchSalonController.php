@@ -20,7 +20,7 @@ class BranchSalonController extends Controller
      */
     public function index()
     {
-        return view('customer::index');
+        return view('customer::branch_salon.index');
     }
 
     /**

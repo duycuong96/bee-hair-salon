@@ -1,5 +1,5 @@
 
-@extends('client::layouts.master')
+@extends('customer::layouts.master')
 @section('title','BeeHair')
 @section('content')
 

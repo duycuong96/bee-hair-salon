@@ -14,7 +14,7 @@ class AboutController extends Controller
      */
     public function index()
     {
-        return view('customer::index');
+        return view('customer::about.index');
     }
 
     /**

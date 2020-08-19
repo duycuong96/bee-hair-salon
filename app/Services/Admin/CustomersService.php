@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Arr;
 use App\Mail\MailCreateCustomer;
 use Carbon\Carbon;
+use Hash;
 use Illuminate\Support\Str;
 
 class CustomersService
@@ -40,7 +41,8 @@ class CustomersService
         $data['send_email_at'] = Carbon::now();
         $data['status'] = STATUS_ACCOUNT_CUSTOMER_REGISTER;
         $data['password'] = null;
-        $customer = Customer::create($data);
+        Customer::create($data);
+        // dd($customer);
         Mail::to($email)->send(new MailCreateCustomer( $data['registration_token']));
         return redirect()->route('admin.khach-hang.index');
     }

@@ -53,8 +53,11 @@
                                 <tr>
                                     <th>Id</th>
                                     <th>Tên</th>
-                                    <th>Ảnh salon</th>
                                     <th>Địa chỉ</th>
+                                    <th>Quản lý</th>
+                                    <th>Địa điểm</th>
+                                    <th>Số điện thoại</th>
+                                    <th>Trạng thái</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -68,10 +71,25 @@
                                             {{ $row->name }}
                                         </td>
                                         <td>
-                                            <img src="{!! url('storage/'.$row->thumb_img) !!}" height="70px">
+                                            {{ $row->address }}
                                         </td>
                                         <td>
-                                            {{ $row->address }}
+                                            {{ $row->admin->name }}
+                                        </td>
+                                        <td>
+                                            {{ $row->ward_id }}
+                                        </td>
+                                        <td>
+                                            {{ $row->phone }}
+                                        </td>
+                                        <td>
+                                            @if ($row->status == STATUS_ACCOUNT_CUSTOMER_REGISTER)
+                                                <b class="text-warning">Chưa được kích hoạt</b>
+                                            @elseif($row->status == STATUS_ACCOUNT_CUSTOMER_ACTIVE)
+                                                <b class="text-success">Đang hoạt động</b>
+                                            @else
+                                                <b class="text-danger">Đang khóa</b>
+                                            @endif
                                         </td>
                                         <td>
                                             <div class="btn-group">

@@ -62,6 +62,12 @@ Route::group([
     Route::resource('chuyen-muc', 'CategoryController');
     // page curd comment
     Route::resource('binh-luan', 'CommentController');
+    // Page Thống kê
+    Route::get('thong-ke/khach-hang', 'StatisticController@customer')->name('thong-ke.khach.hang');
+    Route::get('thong-ke/doanh-thu', 'StatisticController@revenue')->name('thong-ke.doanh-thu');
+    Route::get('thong-ke/dich-vu', 'StatisticController@service')->name('thong-ke.dich-vu');
+    // Page xác nhận đơn hàng: staff
+    Route::get('xac-nhan-don-hang', 'OrderController@confirmOrder')->name('confirm_order');
 });
 
 

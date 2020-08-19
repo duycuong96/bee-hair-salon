@@ -54,6 +54,7 @@
                                         <th>Id</th>
                                         <th>Tên</th>
                                         <th>Email</th>
+                                        <th>Chức vụ</th>
                                         <th>Trạng thái</th>
                                         <th width="10%">Action</th>
                                     </tr>
@@ -71,7 +72,16 @@
                                                 {{ $row->email }}
                                             </td>
                                             <td>
-                                                {{ $row->status }}
+                                                Quản trị
+                                            </td>
+                                            <td>
+                                                @if ($row->status == STATUS_ACCOUNT_CUSTOMER_REGISTER)
+                                                    <b class="text-warning">Chưa được kích hoạt</b>
+                                                @elseif($row->status == STATUS_ACCOUNT_CUSTOMER_ACTIVE)
+                                                    <b class="text-success">Đang hoạt động</b>
+                                                @else
+                                                <b class="text-danger">Đang khóa</b>
+                                                @endif
                                             </td>
                                             <td>
                                                 <a href="{{ route('admin.tai-khoan.show', [$row->id]) }}" class="btn btn-app">

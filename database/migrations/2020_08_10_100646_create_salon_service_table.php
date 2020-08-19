@@ -16,9 +16,6 @@ class CreateSalonServiceTable extends Migration
         Schema::create('salon_service', function (Blueprint $table) {
             $table->unsignedBigInteger('salon_id');
             $table->unsignedBigInteger('service_id');
-
-            $table->foreign('salon_id')->references('id')->on('branch_salons')->onDelete('cascade');
-            $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
         });
     }
 

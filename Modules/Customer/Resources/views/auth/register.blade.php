@@ -31,10 +31,22 @@
                 @enderror
             </div>
             <div class="contact-w3pvt-form mt-5">
-                <form action="{{ route('customer.login') }}" class="w3layouts-contact-fm" method="POST">
+                <form action="{{ route('customer.register') }}" class="w3layouts-contact-fm" method="POST">
                     @csrf
                     <div class="row d-flex justify-content-center">
                         <div class="col-lg-8">
+
+                            <div class="form-group">
+                                <label>Tên</label>
+                                <input class="form-control" type="text" name="name" placeholder="" value="{{ old('name') }}">
+                            </div>
+                            @error('name')
+                            <div>
+                                <label class="col-form-label text-danger">
+                                    {{ $message }}</i>
+                                </label>
+                            </div>
+                            @enderror
 
                             <div class="form-group">
                                 <label>Email</label>
@@ -62,14 +74,14 @@
                         </div>
                         <div class="col-lg-12 d-flex justify-content-center">
                             <div class="form-group mx-auto mt-3">
-                                <button type="submit" class="btn submit">Đăng nhập</button>
+                                <button type="submit" class="btn submit">Đăng ký</button>
                             </div>
                         </div>
                     </div>
                 </form>
                 <div class="row mt-5 d-flex justify-content-center">
                     <div class="col-lg-6">
-                        <a href="" class="float-left">Đăng ký tài khoản mới</a>
+                        <a href="{{ route('customer.formLogin') }}" class="float-left">Đăng nhập</a>
                         <a href="{{ route('customer.password.reset.showForm') }}" class="float-right">Quên mật khẩu</a>
                     </div>
                 </div>

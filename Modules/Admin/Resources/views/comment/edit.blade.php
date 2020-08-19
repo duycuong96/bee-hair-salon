@@ -1,6 +1,6 @@
 @extends('admin::layouts.master')
 
-@section('title', 'Bài viết')
+@section('title', 'Cập nhật bình luận')
 
 @section('content')
     <!-- Content Header (Page header) -->
@@ -29,11 +29,34 @@
                         @method('PUT')
                         <input type="hidden" name="id" value="{{ $data->id }}">
                         <div class="form-group">
-                            <label>Tên tiêu đề:</label>
-                            <input type="text" class="form-control" name="title" value="{{ old('title', $data->title) }}">
+                            <label>Tiêu đề bình luận:</label>
+                            <input type="text" class="form-control" name="title" value="{{ old('title', $data->title) }}"
+                                disabled>
                             @error('name')
                             <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
                             @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="">Nội dung</label>
+                            <textarea class="form-control" name="" id="" cols="30" rows="10" disabled></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Trạng thái bình luận:</label>
+                            <br>
+                            <div class="icheck-primary d-inline">
+                                <input type="radio" id="radioPrimary1" name="status"
+                                    value="{{ STATUS_ACCOUNT_CUSTOMER_ACTIVE }}" checked>
+                                <label for="radioPrimary1">
+                                    Không chấp nhận
+                                </label>
+                            </div>
+                            <div class="icheck-primary d-inline">
+                                <input type="radio" id="radioPrimary2" name="status"
+                                    value="{{ STATUS_ACCOUNT_CUSTOMER_ACTIVE }}">
+                                <label for="radioPrimary2">
+                                    Chấp nhận
+                                </label>
+                            </div>
                         </div>
                         <hr>
                         <div class="form-group d-flex justify-content-center">

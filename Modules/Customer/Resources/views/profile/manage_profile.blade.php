@@ -1,6 +1,6 @@
 <div class="col-lg-4">
     <div class="card" style="width: 18rem;">
-        <img src="{!! url('storage/'.Auth::user()->avatar) !!}" class="card-img-top" alt="...">
+        <img src="{!! url('storage/'.Auth::user()->avatar) !!}" height="300px" class="card-img-top" alt="...">
         <form action="{{ route('customer.tai-khoan.update', Auth::user()->id) }}"
             method="post" enctype="multipart/form-data">
             @csrf
