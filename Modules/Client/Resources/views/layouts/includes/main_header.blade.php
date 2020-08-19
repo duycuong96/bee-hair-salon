@@ -29,6 +29,7 @@
 									<li><a href="/tai-khoan">Tài khoản</a></li>
 									<li><a href="/dat-lich">Đặt lịch</a></li>
 									<li><a href="/danh-sach-cua-hang">Danh sách cửa hàng</a></li>
+									<li><a href="/blog">Blog</a></li>
 								</ul>
 								</li>
 

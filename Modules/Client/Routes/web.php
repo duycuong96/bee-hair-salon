@@ -32,5 +32,6 @@ Route::group(['prefix' => ''], function () {
     Route::get('danh-sach-cua-hang', 'ListSalonController@index');
 
     Route::get('dat-lich', 'BookingController@index');
+    Route::get('blog', 'BlogController@index');
 
 });
