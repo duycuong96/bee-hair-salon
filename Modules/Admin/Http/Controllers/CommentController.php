@@ -10,6 +10,7 @@ use App\Services\Admin\CommentService;
 
 class CommentController extends Controller
 {
+    protected $commentService;
     public function __construct(CommentService $commentService)
     {
         $this->commentService = $commentService;

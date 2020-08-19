@@ -68,10 +68,10 @@
                                                 {{ $row->name }}
                                             </td>
                                             <td>
-                                                {{ $row->image }}
+                                                <img src="{{ $row->image }}" height="100px" alt="">
                                             </td>
                                             <td>
-                                                {{ $row->status }}
+                                                <b class="text-success">Hoạt động</b>
                                             </td>
                                             <td>
                                                 <a href="{{ route('admin.chuyen-muc.show', [$row->id]) }}" class="btn btn-app">

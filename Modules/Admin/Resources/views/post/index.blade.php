@@ -78,9 +78,14 @@
                                                 {{ $row->active }}
                                             </td>
                                             <td>
+                                                <div class="btn-group">
                                                 <a href="{{ route('admin.bai-viet.show', [$row->id]) }}" class="btn btn-app">
-                                                    <i class="fas fa-edit"></i> Cập nhật
+                                                    <i class="fas fa-edit "></i> Cập nhật
                                                 </a>
+                                                <a href="{{ route('admin.bai-viet.show', [$row->id]) }}" class="btn btn-app">
+                                                    <i class="fas fa-trash"></i> Xóa
+                                                </a>
+                                            </div>
                                             </td>
                                         </tr>
                                     @endforeach

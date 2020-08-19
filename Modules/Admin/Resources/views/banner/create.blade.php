@@ -1,6 +1,6 @@
 @extends('admin::layouts.master')
 
-@section('title', 'Banner')
+@section('title', 'Thêm Banner')
 
 @section('content')
     <!-- Content Header (Page header) -->
@@ -33,6 +33,21 @@
                             <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
                             @enderror
                         </div>
+                        <div class="form-group">
+                            <label>Banner:</label>
+                            <input type="file" class="form-control" name="img" value="{{ old('name') }}">
+                            @error('name')
+                            <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label>Nội dung:</label>
+                            <textarea name="desc" class="form-control" id=""></textarea>
+                            @error('name')
+                            <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+
 
                         <hr>
                         <div class="form-group d-flex justify-content-center">
