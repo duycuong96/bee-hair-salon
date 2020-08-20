@@ -20,6 +20,7 @@
 <link rel="stylesheet" href="{{asset('client/css/style.css')}}" type="text/css" media="all" />
 <link rel="stylesheet" href="{{asset('client/css/profile.css')}}" type="text/css" media="all" />
 <link rel="stylesheet" href="{{asset('client/css/blog.css')}}" type="text/css" media="all" />
+<link rel="stylesheet" href="{{asset('client/css/blogsingle.css')}}" type="text/css" media="all" />
 <link href="{{asset('client/css/font-awesome.css')}}" rel="stylesheet">
 
 <link href="//fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700" rel="stylesheet">
