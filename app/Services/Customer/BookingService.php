@@ -5,6 +5,7 @@ use App\Models\BranchSalon;
 use App\Models\Order;
 use App\Models\OrderService;
 use App\Models\Service;
+use App\Models\TimeSchedule;
 use App\Traits\WebResponseTrait;
 
 class BookingService
@@ -14,11 +15,13 @@ class BookingService
     {
         $dataSalon = BranchSalon::all();
         $dataService = Service::all();
+        $dataTime = TimeSchedule::all();
         return view(
             'customer::booking.index',
             [
                 'dataSalon' => $dataSalon,
                 'dataService' => $dataService,
+                'dataTime' => $dataTime,
             ]
         );
     }
@@ -28,10 +31,13 @@ class BookingService
         $dataOrder = $request->only(
             'salon_id',
         );
-
-        // dd($data);
+        $dataOrder['customer_id'] = auth()->user()->id;
+        $time_schedule_id = $request->time_schedule_id;
+        $time_schedule = TimeSchedule::find($time_schedule_id);
+        // dd($time_schedule->time_start);
+        $dataOrder['time_start'] = $time_schedule->time_start;
+        $dataOrder['time_end'] =  $time_schedule->time_end;
         $lastIdOrder = Order::create($dataOrder)->id;
-        // $lastInsertId = Order::latest()->get();
 
         $dataService = $request->only(
             'service_id',

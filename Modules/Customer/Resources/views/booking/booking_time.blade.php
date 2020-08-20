@@ -23,27 +23,15 @@
     <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="homnay">
             <div class="form-group">
-                <div class="custom-control custom-radio">
-                    <input class="custom-control-input" type="radio"
-                        id="customRadio8" name="customRadio">
-                    <label for="customRadio8" class="custom-control-label">8h00 - 9h00
-                    </label>
-                    <span class="not-free cl-white br-4">Hết chỗ</span>
-                </div>
-                <div class="custom-control custom-radio">
-                    <input class="custom-control-input" type="radio"
-                        id="customRadio7" name="customRadio" >
-                    <label for="customRadio7"
-                        class="custom-control-label">9h00 - 10h00</label>
-                    <span class="not-free cl-white br-4 text-right">Hết chỗ</span>
-                </div>
-                <div class="custom-control custom-radio">
-                    <input class="custom-control-input" type="radio"
-                        id="customRadio9"  name="customRadio" >
-                    <label for="customRadio9"
-                        class="custom-control-label">10h00 - 11h00</label>
-                    <span class="not-free cl-white br-4 text-right">Hết chỗ</span>
-                </div>
+                @foreach ($dataTime as $row)
+                    <div class="custom-control custom-radio">
+                        <input class="custom-control-input" type="radio" id="time_schedule_id_{{ $row->id }}" name="time_schedule_id" value="{{ $row->id }}">
+                        <label for="time_schedule_id_{{ $row->id }}" class="custom-control-label">{{ $row->time_start}} - {{ $row->time_end}}
+                        </label>
+                        <span class="not-free cl-white br-4">Hết chỗ</span>
+                    </div>
+                @endforeach
+
             </div>
 
         </div>
