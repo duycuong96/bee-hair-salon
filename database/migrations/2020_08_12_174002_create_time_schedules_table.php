@@ -15,8 +15,8 @@ class CreateTimeSchedulesTable extends Migration
     {
         Schema::create('time_schedules', function (Blueprint $table) {
             $table->id();
-            $table->timestamp('start_time')->nullable();
-            $table->timestamp('start_end')->nullable();
+            $table->time('time_start')->nullable();
+            $table->time('time_end')->nullable();
             $table->timestamps();
         });
     }

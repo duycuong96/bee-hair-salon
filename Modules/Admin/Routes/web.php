@@ -66,6 +66,8 @@ Route::group([
     Route::get('thong-ke/khach-hang', 'StatisticController@customer')->name('thong-ke.khach.hang');
     Route::get('thong-ke/doanh-thu', 'StatisticController@revenue')->name('thong-ke.doanh-thu');
     Route::get('thong-ke/dich-vu', 'StatisticController@service')->name('thong-ke.dich-vu');
+    // thời gian biểu
+    Route::resource('thoi-gian-bieu', 'TimeScheduleController');
     // Page xác nhận đơn hàng: staff
     Route::get('xac-nhan-don-hang', 'OrderController@confirmOrder')->name('confirm_order');
 });
