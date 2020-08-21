@@ -14,9 +14,13 @@ class BannerRequest extends FormRequest
     public function rules()
     {
         $rule = [
-            'name' => [
-                'required'
-            ],
+            'name' => 'required',
+            'title' => 'min:2',
+            'image' => '',
+            'desc' => 'min:10',
+            'url' => 'min:10',
+            'location' => 'numeric',
+            'avtive' => 'numeric',
 
         ];
         return $rule;
@@ -26,6 +30,12 @@ class BannerRequest extends FormRequest
     {
         return [
             'name' => 'Tên',
+            'title' => "Tiêu đề",
+            'image' => "Ảnh banner",
+            'desc' => "mô tả",
+            'url' => "Đường dẫn",
+            'location' => 'Vị trí đặt banner',
+            'active' => 'Trạng thái',
         ];
     }
 

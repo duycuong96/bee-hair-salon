@@ -51,6 +51,6 @@ class Admin extends Authenticatable
     }
 
     function branchSalon(){
-        return $this->belongsTo(BranchSalon::class, 'id', 'admin_id');
+        return $this->belongsToMany(BranchSalon::class, 'admin_salons', 'admin_id', 'salon_id');
     }
 }

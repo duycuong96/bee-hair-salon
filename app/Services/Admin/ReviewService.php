@@ -49,4 +49,23 @@ class ReviewService
 
     }
 
+    public function delete($id)
+    {
+        Review::where('id', $id)->delete();
+        return $this->returnSuccessWithRoute('admin.danh-gia.index', __('messages.data_delete_success'));
+    }
+
+    public function listSoftDelete(){
+        $data = Review::onlyTrashed()->get();
+        return view(
+            'admin::review.listSoftDelete',
+            ['data' => $data]
+        );
+    }
+    public function restore($id)
+    {
+        Review::withTrashed()->where('id', $id)->restore();
+        return $this->returnSuccessWithRoute('admin.danh-gia.listSoftDelete', __('messages.data_create_success'));
+    }
+
 }

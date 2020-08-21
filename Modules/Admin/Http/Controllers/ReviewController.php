@@ -42,5 +42,17 @@ class ReviewController extends AdminBaseController
     {
         return $this->reviewService->update($request, $id);
     }
+    public function destroy($id)
+    {
+        return $this->reviewService->delete($id);
+    }
 
+    public function listSoftDelete()
+    {
+        return $this->reviewService->listSoftDelete();
+    }
+    public function restore($id)
+    {
+        return $this->reviewService->restore($id);
+    }
 }

@@ -61,14 +61,14 @@
 
                         <select class="custom-select" name="status">
                             <option
-                                {{ $data->status == 1 ? 'selected' : '' }}
-                                value="1">Chờ xét duyệt</option>
+                                {{ $data->status == STATUS_ACCOUNT_CUSTOMER_REGISTER ? 'selected' : '' }}
+                                value="{{STATUS_ACCOUNT_CUSTOMER_REGISTER}}">Chờ xét duyệt</option>
                                 <option
-                                    {{ $data->status == 2 ? 'selected' : '' }}
-                                    value="2">Đã xét duyệt</option>
+                                    {{ $data->status == STATUS_ACCOUNT_CUSTOMER_ACTIVE ? 'selected' : '' }}
+                                    value="{{STATUS_ACCOUNT_CUSTOMER_ACTIVE}}">Đã xét duyệt</option>
                                 <option
-                                    {{ $data->status == 3 ? 'selected' : '' }}
-                                    value="3">Ẩn đánh giá</option>
+                                    {{ $data->status == STATUS_ACCOUNT_CUSTOMER_NOT_ACTIVE ? 'selected' : '' }}
+                                    value="{{STATUS_ACCOUNT_CUSTOMER_NOT_ACTIVE}}">Ẩn đánh giá</option>
                         </select>
                     </div>
                     <div class="form-group d-flex justify-content-center">

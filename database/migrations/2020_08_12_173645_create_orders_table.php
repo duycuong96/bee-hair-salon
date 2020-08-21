@@ -17,8 +17,8 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->bigInteger('customer_id')->nullable();
             $table->bigInteger('salon_id')->nullable();
-            $table->time('time_start')->nullable();
-            $table->time('time_end')->nullable();
+            $table->timestamp('time_start')->nullable();
+            $table->timestamp('time_end')->nullable();
             $table->integer('price')->nullable();
             $table->tinyInteger('status')->nullable();
             $table->timestamps();

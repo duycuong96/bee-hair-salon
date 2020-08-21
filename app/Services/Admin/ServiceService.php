@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Services\Admin;
 
 use App\Models\Service;
@@ -13,15 +14,15 @@ class ServiceService
     public function index($request)
     {
         $builder = Service::where(function ($query) use ($request) {
-            if ($request->name) $query->where('name', 'like', '%'.$request->name.'%');
+            if ($request->name) $query->where('name', 'like', '%' . $request->name . '%');
         });
 
         $data = $builder->orderBy('created_at', 'desc')
-                        ->paginate(10);
+            ->paginate(10);
 
         $data->appends(request()->query());
         foreach ($data as $item) {
-            $item->images= json_decode($item->images);
+            $item->images = json_decode($item->images);
         }
         return view(
             'admin::service.index',
@@ -35,7 +36,9 @@ class ServiceService
     }
     public function store($request)
     {
-        $data = request()->all();
+        $data = $request->all();
+        $data['estimate'] = $data['estimate'] . ':00';
+        $data['slugs'] = Str::slug($data['name'], '-');
         $array = [];
         foreach ($data['arrayImages'] as $image) {
             $img = $image->store('service', 'public');
@@ -43,7 +46,7 @@ class ServiceService
         }
         $data['images'] = json_encode($array);
         unset($data['arrayImages']);
-        $customer = Service::create($data);
+        Service::create($data);
 
         return $this->returnSuccessWithRoute('admin.dich-vu.index', __('messages.data_create_success'));
     }
@@ -65,14 +68,14 @@ class ServiceService
     {
         $data = request()->all();
         $service = Service::find($id);
+        $data['slugs'] = Str::slug($data['name'], '-');
         $array = [];
         if (empty($service)) {
             return $this->returnFailedWithRoute('admin.dich-vu.index', __('messages.data_update_failed'));
         } else {
             if (empty($request->file())) {
                 $data['images'] = $service->images;
-            }
-            else{
+            } else {
                 foreach ($data['arrayImages'] as $image) {
                     $img = $image->store('service', 'public');
                     array_push($array, $img);
@@ -83,7 +86,6 @@ class ServiceService
             $service->update($data);
             return $this->returnSuccessWithRoute('admin.dich-vu.index', __('messages.data_update_success'));
         }
-
     }
 
     public function delete($id)
@@ -94,5 +96,18 @@ class ServiceService
         }
         Service::destroy($id);
         return $this->returnSuccessWithRoute('admin.dich-vu.index', __('messages.data_delete_success'));
+    }
+
+    public function listSoftDelete(){
+        $data = Service::onlyTrashed()->get();
+        return view(
+            'admin::service.listSoftDelete',
+            ['data' => $data]
+        );
+    }
+    public function restore($id)
+    {
+        Service::withTrashed()->where('id', $id)->restore();
+        return $this->returnSuccessWithRoute('admin.dich-vu.listSoftDelete', __('messages.data_create_success'));
     }
 }

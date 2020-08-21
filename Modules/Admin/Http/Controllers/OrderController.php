@@ -6,9 +6,11 @@ use App\Services\Admin\OrderService;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Admin\Http\Requests\OrderServiceRequest;
 
 class OrderController extends AdminBaseController
 {
+    protected $orderService;
     public function __construct(OrderService $orderService)
     {
         $this->orderService = $orderService;
@@ -19,28 +21,12 @@ class OrderController extends AdminBaseController
      */
     public function index()
     {
-        return view('admin::index');
+        return $this->orderService->index();
     }
-
-    /**
-     * Show the form for creating a new resource.
-     * @return Renderable
-     */
-    public function create()
+    public function store(OrderServiceRequest $request)
     {
-        return view('admin::create');
+        return $this->orderService->store($request);
     }
-
-    /**
-     * Store a newly created resource in storage.
-     * @param Request $request
-     * @return Renderable
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
     /**
      * Show the specified resource.
      * @param int $id
@@ -48,7 +34,7 @@ class OrderController extends AdminBaseController
      */
     public function show($id)
     {
-        return view('admin::show');
+        return $this->orderService->show($id);
     }
 
     /**
@@ -79,11 +65,20 @@ class OrderController extends AdminBaseController
      */
     public function destroy($id)
     {
-        //
+        return $this->orderService->delete($id);
     }
 
     public function confirmOrder(Request $request)
     {
         return $this->orderService->confirmOrder($request);
+    }
+
+    public function listSoftDelete($id)
+    {
+        return $this->orderService->listSoftDelete($id);
+    }
+    public function restore($id)
+    {
+        return $this->orderService->restore($id);
     }
 }

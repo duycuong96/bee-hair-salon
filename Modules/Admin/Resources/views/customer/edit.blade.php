@@ -72,10 +72,10 @@
                             <div class="icheck-primary d-inline">
                               <input
                                     type="radio"
-                                    id="radioPrimary1"
+                                    id="radioPrimary2"
                                     name="status"
                                     value="{{STATUS_ACCOUNT_CUSTOMER_ACTIVE}}"
-                                    {{ ($data->status = STATUS_ACCOUNT_CUSTOMER_ACTIVE) ? 'checked' : ''}}>
+                                    {{ ($data->status == STATUS_ACCOUNT_CUSTOMER_ACTIVE) ? 'checked' : ''}}>
                               <label for="radioPrimary2">
                                   Hoạt động
                               </label>
@@ -83,10 +83,10 @@
                             <div class="icheck-primary d-inline">
                               <input
                                     type="radio"
-                                    id="radioPrimary1"
+                                    id="radioPrimary3"
                                     name="status"
                                     value="{{STATUS_ACCOUNT_CUSTOMER_NOT_ACTIVE}}"
-                                    {{ ($data->status = STATUS_ACCOUNT_CUSTOMER_NOT_ACTIVE) ? 'checked' : ''}}>
+                                    {{ ($data->status == STATUS_ACCOUNT_CUSTOMER_NOT_ACTIVE) ? 'checked' : ''}}>
                               <label for="radioPrimary3">
                                   Đã khóa
                               </label>

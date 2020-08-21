@@ -74,7 +74,9 @@
                                             {{ $row->address }}
                                         </td>
                                         <td>
-                                            {{ $row->admin->name }}
+                                            @foreach ($row->admin as $item)
+                                                {{$item->name}}
+                                            @endforeach
                                         </td>
                                         <td>
                                             {{ $row->ward_id }}
@@ -110,7 +112,7 @@
                                                     <button type="submit" class="btn btn-app text-danger">
                                                         <i class="far fa-trash-alt"></i> Xóa
                                                     </button>
-                                            </form>
+                                                </form>
                                             </div>
                                         </td>
                                     </tr>

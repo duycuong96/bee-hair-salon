@@ -10,7 +10,7 @@ use App\Services\Admin\BannerService;
 
 class BannerController extends AdminBaseController
 {
-
+    protected $bannerService;
     public function __construct(BannerService $bannerService)
     {
         $this->bannerService = $bannerService;
@@ -81,6 +81,15 @@ class BannerController extends AdminBaseController
      */
     public function destroy($id)
     {
-        //
+        return $this->bannerService->delete($id);
+    }
+
+    public function listSoftDelete()
+    {
+        return $this->bannerService->listSoftDelete();
+    }
+    public function restore($id)
+    {
+        return $this->bannerService->restore($id);
     }
 }

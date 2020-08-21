@@ -48,7 +48,7 @@
                         <label>Trạng thái:</label>
                         <select class="custom-select" name="status">
                             <option
-                                {{ $data->status == 1 ? 'selected' : '' }}
+                                {{ $data->status == STATUS_ACCOUNT_CUSTOMER_ACTIVE ? 'selected' : '' }}
                                 value="1">Chưa trả lời</option>
                                 <option
                                     {{ $data->status == 2 ? 'selected' : '' }}

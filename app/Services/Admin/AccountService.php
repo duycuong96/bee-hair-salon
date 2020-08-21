@@ -63,10 +63,7 @@ class AccountService
 
     public function update($request, $id)
     {
-        $data = $request->only(
-            'name',
-            'email',
-        );
+        $data = $request->all();
         if($request->password){
             $data['password'] = Hash::make($request->password);
         }

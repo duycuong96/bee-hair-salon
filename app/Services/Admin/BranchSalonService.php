@@ -2,6 +2,7 @@
 namespace App\Services\Admin;
 
 use App\Models\BranchSalon;
+use App\Models\Province;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
 use Str;
@@ -29,12 +30,21 @@ class BranchSalonService
 
     public function create()
     {
-        return view('admin::branch_salon.create');
+        $provinces = Province::all();
+        $districts = array();
+        $wards = array();
+        return view('admin::branch_salon.create',
+            [
+                'provinces'=> $provinces,
+                'districts' => $districts,
+                'wards' => $wards,
+            ]);
     }
     public function store($request)
     {
         $data = request()->all();
-        $data['thumb_img'] = $request->file('thumb_img')->store('branch_salon', 'public');
+        dd($data);
+        $data['image'] = $request->file('image')->store('branch_salon', 'public');
 
         $customer = BranchSalon::create($data);
         return $this->returnSuccessWithRoute('admin.salon.index', __('messages.data_create_success'));

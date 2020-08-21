@@ -203,8 +203,8 @@
         </li>
     </ul>
 </li>
-<li class="nav-item has-treeview {{ request()->routeIs('admin.vai-tro*') ? 'menu-open' : '' }}">
-    <a href="" class="nav-link {{ request()->routeIs('admin.vai-tro*') ? 'active' : '' }}">
+<li class="nav-item has-treeview {{ request()->routeIs('admin.don-hang*') ? 'menu-open' : '' }}">
+    <a href="" class="nav-link {{ request()->routeIs('admin.don-hang*') ? 'active' : '' }}">
         <i class="nav-icon fas fa-user-tag"></i>
         <p>
             Đơn đặt lịch
@@ -213,8 +213,8 @@
     </a>
     <ul class="nav nav-treeview">
         <li class="nav-item">
-            <a href="{{ route('admin.vai-tro.index') }}"
-                class="nav-link {{ request()->routeIs('admin.vai-tro.index') ? 'active' : '' }}">
+            <a href="{{ route('admin.don-hang.index') }}"
+                class="nav-link {{ request()->routeIs('admin.don-hang.index') ? 'active' : '' }}">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Danh sách</p>
             </a>

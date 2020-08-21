@@ -45,8 +45,6 @@
                             <h3 class="card-title">Danh sách - @yield('title')</h3>
                             <a href="{{ route('admin.banner.create') }}" class="btn btn-primary float-right">Thêm
                                 mới</a>
-                            <a href="{{ route('admin.banner.listSoftDelete') }}"
-                                class="btn btn-danger float-right">Banner đã xóa</a>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -71,7 +69,7 @@
                                                 {{ $row->name }}
                                             </td>
                                             <td>
-                                                <img src="{!! storage_path($row->image) !!}" alt="" height="100px">
+                                                <img src="{!! url('storage/'.$row->image) !!}" alt="" height="100px">
                                             </td>
                                             <td>
                                                 {{$row->location}}
@@ -85,20 +83,10 @@
                                             </td>
                                             <td>
                                                 <div class="btn-group">
-                                                    <a href="{{ route('admin.banner.show', [$row->id]) }}" class="btn btn-app">
-                                                        <i class="fas fa-edit"></i> Cập nhật
+                                                    <a href="{{ route('admin.banner.restore', [$row->id]) }}"
+                                                        class="btn btn-app text-success">
+                                                        <i class="fas fa-trash-restore"></i> Khôi phục
                                                     </a>
-
-                                                    <form
-                                                        action="{{ route('admin.banner.destroy', [$row->id]) }}"
-                                                        method="post">
-                                                        @csrf
-                                                        @method('DELETE')
-
-                                                        <button type="submit" class="btn btn-app text-danger">
-                                                            <i class="far fa-trash-alt"></i> Xóa
-                                                        </button>
-                                                    </form>
                                                 </div>
                                             </td>
                                         </tr>
