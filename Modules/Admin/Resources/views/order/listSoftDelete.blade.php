@@ -1,6 +1,6 @@
 @extends('admin::layouts.master')
 
-@section('title', 'Danh sách dịch vụ')
+@section('title', 'Danh sách đánh giá')
 
 @push('css')
     <!-- Font Awesome -->
@@ -43,79 +43,36 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Danh sách - @yield('title')</h3>
-                        <a href="{{ route('admin.dich-vu.create') }}"
-                            class="btn btn-primary float-right">Thêm mới</a>
-                        <a href="{{ route('admin.dich-vu.listSoftDelete') }}"
-                            class="btn btn-danger float-right">Đánh giá đã xóa</a>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
                         @if (session('success'))
-                        <div class="alert alert-success" role="alert">
-                          {{session('success')}}
-                        </div>
+                            <p class="text-success"> {{session('success')}} </p>
                         @endif
-                        @if (session('error'))
-                        <div class="alert alert-warning " role="alert">
-                          {{session('error')}}
-                        </div>
-                        @endif
-                        <table id="example1" class="table table-bordered table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Tên</th>
-                                    <th>Giá</th>
-                                    <th>Giá sau khi giảm</th>
-                                    <th>Thời gian kết thúc</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($data as $row)
+                        <table class="table table-striped">
+                          <thead>
+                          <tr>
+                            <th>#</th>
+                            <th>Tên dịch vụ</th>
+                            <th>Giá tiền #</th>
+                            <th>Active</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                              @foreach ($data as $service)
                                     <tr>
-                                        <td>
-                                            {{ $row->id }}
-                                        </td>
-                                        <td>
-                                            {{ $row->name }}
-                                        </td>
-                                        <td>
-                                            {{ number_format($row->price, 0, ',', ' ') }} đ
-                                        </td>
-                                        <td>
-                                            {{ number_format($row->sale_price, 0, ',', ' ') }} đ
-                                        </td>
-                                        <td>
-                                            {{ $row->estimate }}
-                                        </td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <a href="{{ route('admin.dich-vu.show', [$row->id]) }}"
-                                                    class="btn btn-app text-success">
-                                                    <i class="fas fa-edit"></i> Cập nhật
-                                                </a>
-                                                <a href="{{ route('admin.salon.createSalon', [$row->id]) }}"
-                                                    class="btn btn-app text-success ml-2">
-                                                    <i class="fas fa-plus"></i> Thêm salon
-                                                </a>
-                                                <form
-                                                    action="{{ route('admin.dich-vu.destroy', [$row->id]) }}"
-                                                    method="post">
-                                                    @csrf
-                                                    @method('DELETE')
-
-                                                    <button type="submit" class="btn btn-app text-danger">
-                                                        <i class="far fa-trash-alt"></i> Xóa
-                                                    </button>
-                                            </form>
-                                            </div>
-                                        </td>
+                                    <td>1</td>
+                                    <td>{{ $service->service->name }}</td>
+                                    <td>{{ number_format($service->price, 0, ',', ' ') }} đ</td>
+                                    <td>
+                                        <a href="{{ route('admin.don-hang.restore', [$service->id]) }}"
+                                            class="btn btn-app text-success">
+                                            <i class="fas fa-trash-restore"></i> Khôi phục
+                                        </a>
+                                    </td>
                                     </tr>
-                                @endforeach
-
-                            </tbody>
-
+                              @endforeach
+                          </tbody>
                         </table>
                     </div>
                     <!-- /.card-body -->

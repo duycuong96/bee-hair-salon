@@ -10,7 +10,7 @@ class BranchSalon extends Model
 
     protected $fillable = [
         'name',
-        'thumb_img',
+        'image',
         'content',
         'work_time',
         'address',
@@ -22,6 +22,6 @@ class BranchSalon extends Model
         'locations',
     ];
     function admin(){
-        return $this->belongsTo('App\Models\Admin', 'admin_id', 'id');
+        return $this->belongstoMany(Admin::class, 'admin_salons', 'admin_id', 'salon_id');
     }
 }

@@ -45,7 +45,6 @@ class BranchSalonController extends AdminBaseController
      */
     public function store(BranchSalonRequest $request)
     {
-
         return $this->branchSalonService->store($request);
     }
 

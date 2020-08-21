@@ -1,6 +1,6 @@
 @extends('admin::layouts.master')
 
-@section('title', 'Banner')
+@section('title', 'Danh sách đơn hàng')
 
     @push('css')
         <!-- Font Awesome -->
@@ -43,10 +43,8 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Danh sách - @yield('title')</h3>
-                            <a href="{{ route('admin.banner.create') }}" class="btn btn-primary float-right">Thêm
+                            <a href="{{ route('admin.bai-viet.create') }}" class="btn btn-primary float-right">Thêm
                                 mới</a>
-                            <a href="{{ route('admin.banner.listSoftDelete') }}"
-                                class="btn btn-danger float-right">Banner đã xóa</a>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -54,9 +52,10 @@
                                 <thead>
                                     <tr>
                                         <th>Id</th>
-                                        <th>Tên</th>
-                                        <th>Ảnh</th>
-                                        <th>Vị trí</th>
+                                        <th>Tên khách hàng</th>
+                                        <th>Tên salon</th>
+                                        <th>Giờ cắt</th>
+                                        <th>Thành tiền</th>
                                         <th>Trạng thái</th>
                                         <th width="10%">Action</th>
                                     </tr>
@@ -68,38 +67,30 @@
                                                 {{ $row->id }}
                                             </td>
                                             <td>
-                                                {{ $row->name }}
+                                                {{ $row->customer->name }}
                                             </td>
                                             <td>
-                                                <img src="{!! storage_path($row->image) !!}" alt="" height="100px">
+                                                {{ $row->branchSalon->name }}
                                             </td>
                                             <td>
-                                                {{$row->location}}
+                                                {{ $row->time_start }}
                                             </td>
                                             <td>
-                                                @if($row->active == STATUS_ACCOUNT_CUSTOMER_ACTIVE)
-                                                    <b class="text-success">Hiện</b>
+                                               {{ number_format($row->price, 0, ',', ' ') }} đ
+                                            </td>
+                                            <td>
+                                                @if ($row->status == STATUS_ACCOUNT_CUSTOMER_REGISTER)
+                                                    <b class="text-warning">Chờ tới giờ</b>
+                                                @elseif($row->status == STATUS_ACCOUNT_CUSTOMER_ACTIVE)
+                                                    <b class="text-success">Khách hàng đã đến</b>
                                                 @else
-                                                    <b class="text-danger">Ẩn</b>
+                                                    <b class="text-danger">Đã hoàn thành/b>
                                                 @endif
                                             </td>
                                             <td>
-                                                <div class="btn-group">
-                                                    <a href="{{ route('admin.banner.show', [$row->id]) }}" class="btn btn-app">
-                                                        <i class="fas fa-edit"></i> Cập nhật
-                                                    </a>
-
-                                                    <form
-                                                        action="{{ route('admin.banner.destroy', [$row->id]) }}"
-                                                        method="post">
-                                                        @csrf
-                                                        @method('DELETE')
-
-                                                        <button type="submit" class="btn btn-app text-danger">
-                                                            <i class="far fa-trash-alt"></i> Xóa
-                                                        </button>
-                                                    </form>
-                                                </div>
+                                                <a href="{{ route('admin.don-hang.show', [$row->id]) }}" class="btn btn-app">
+                                                    <i class="fas fa-edit"></i> Chi tiết
+                                                </a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -129,10 +120,12 @@
                 "responsive": true,
                 "autoWidth": false,
                 "paging": true,
+                "ordering": false,
+                "searching": true,
                 "language": {
                     "decimal": "",
                     "emptyTable": "No data available in table",
-                    "info": "Showing _START_ to _END_ of _TOTAL_ entries",
+                    "info": "Hiển thị _START_ đến _END_ trong _TOTAL_ mục",
                     "infoEmpty": "Showing 0 to 0 of 0 entries",
                     "infoFiltered": "(filtered from _MAX_ total entries)",
                     "infoPostFix": "",
@@ -153,15 +146,6 @@
                         "sortDescending": ": activate to sort column descending"
                     }
                 }
-            });
-            $('#example2').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
             });
         });
 

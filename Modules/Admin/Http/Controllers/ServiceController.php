@@ -64,7 +64,7 @@ class ServiceController extends AdminBaseController
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update(ServiceRequest $request, $id)
     {
         return $this->serviceService->update($request, $id);
     }
@@ -84,4 +84,13 @@ class ServiceController extends AdminBaseController
         $service_id = $id;
         return $this->salonServiceService->create($salon_id, $service_id);
     }
+    public function listSoftDelete()
+    {
+        return $this->serviceService->listSoftDelete();
+    }
+    public function restore($id)
+    {
+        return $this->serviceService->restore($id);
+    }
+
 }

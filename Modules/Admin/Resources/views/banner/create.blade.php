@@ -24,7 +24,7 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('admin.banner.store') }}" method="POST">
+                    <form action="{{ route('admin.banner.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label>Tên:</label>
@@ -34,20 +34,33 @@
                             @enderror
                         </div>
                         <div class="form-group">
+                            <label>Tiêu đề:</label>
+                            <input type="text" class="form-control" name="title" value="{{ old('title') }}">
+                            @error('title')
+                            <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
                             <label>Banner:</label>
-                            <input type="file" class="form-control" name="img" value="{{ old('name') }}">
-                            @error('name')
+                            <input type="file" class="form-control" name="image" value="{{ old('image') }}">
+                            @error('image')
                             <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label>Nội dung:</label>
-                            <textarea name="desc" class="form-control" id=""></textarea>
-                            @error('name')
+                            <textarea name="desc" class="form-control" id="">{{ old('desc') }}</textarea>
+                            @error('desc')
                             <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
                             @enderror
                         </div>
-
+                        <div class="form-group">
+                            <label>Đường dẫn:</label>
+                            <input type="text" class="form-control" name="url" value="{{ old('url') }}">
+                            @error('url')
+                            <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
 
                         <hr>
                         <div class="form-group d-flex justify-content-center">

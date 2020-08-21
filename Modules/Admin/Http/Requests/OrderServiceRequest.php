@@ -4,7 +4,7 @@ namespace Modules\Admin\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ServiceRequest extends FormRequest
+class OrderServiceRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -14,22 +14,14 @@ class ServiceRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:3',
-            'detail' => 'min:6',
-            'image' => '',
-            'price' => 'required|numeric',
-            'sale_price' => 'required|numeric',
-            'estimate' => 'required',
+            'service_id' => 'required'
         ];
     }
+
     public function attributes()
     {
         return [
-            'name' => 'Tên dịch vụ',
-            'detail' => 'Chi tiết dịch vụ',
-            'image' => 'Ảnh dịch vụ',
-            'price' => 'Giá dịch vụ',
-            'sale_price' => 'Giá dịch vụ sau khi giảm',
+            'service_id' => 'Dịch vụ',
         ];
     }
 

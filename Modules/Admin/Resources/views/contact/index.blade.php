@@ -79,10 +79,10 @@
                                             {{ $row->title }}
                                         </td>
                                         <td>
-                                            @if ($row->status == 1)
-                                                <b class="text-warning">Chưa trả lời</b>
-                                            @else
+                                            @if($row->status == STATUS_ACCOUNT_CUSTOMER_ACTIVE)
                                                 <b class="text-success">Đã trả lời</b>
+                                            @else
+                                                <b class="text-danger">Chưa Trả lời</b>
                                             @endif
                                         </td>
                                         <td>

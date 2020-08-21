@@ -41,11 +41,15 @@ Route::group([
     Route::resource('salon', 'BranchSalonController');
     Route::get('them-dich-vu-salon/{id}', 'BranchSalonController@createSalonService')->name('salon.createService');
     // page curd review
-    Route::resource('danh-gia', 'ReviewController')->only('index', 'show', 'update');
+    Route::resource('danh-gia', 'ReviewController')->except('create', 'store', 'edit');
+    Route::get('danh-gia-lich-su-xoa', 'ReviewController@listSoftDelete')->name('danh-gia.listSoftDelete');
+    Route::get('danh-gia/khoi-phuc/{id}', 'ReviewController@restore')->name('danh-gia.restore');
     // page curd service
     Route::resource('dich-vu', 'ServiceController')->except('edit');
     Route::get('them-salon-dich-vu/{id}', 'ServiceController@createServiceSalon')->name('salon.createSalon');
     Route::resource('dich-vu-salon', 'SalonServiceController')->except('edit');
+    Route::get('dich-vu-lich-su-xoa', 'ServiceController@listSoftDelete')->name('dich-vu.listSoftDelete');
+    Route::get('dich-vu/khoi-phuc/{id}', 'ServiceController@restore')->name('dich-vu.restore');
     // Route::post('validate', 'CustomerController@validateData')->name('khach-hang.validate');
     // page curd account
     Route::resource('tai-khoan', 'AccountController');
@@ -56,6 +60,8 @@ Route::group([
     Route::resource('lien-he', 'ContactController')->only('index', 'show', 'update');
     // page curd banner
     Route::resource('banner', 'BannerController');
+    Route::get('banner-lich-su-xoa', 'BannerController@listSoftDelete')->name('banner.listSoftDelete');
+    Route::get('banner/khoi-phuc/{id}', 'BannerController@restore')->name('banner.restore');
     // page curd post
     Route::resource('bai-viet', 'PostController');
     // page curd category
@@ -67,7 +73,10 @@ Route::group([
     Route::get('thong-ke/doanh-thu', 'StatisticController@revenue')->name('thong-ke.doanh-thu');
     Route::get('thong-ke/dich-vu', 'StatisticController@service')->name('thong-ke.dich-vu');
     // Page xác nhận đơn hàng: staff
-    Route::get('xac-nhan-don-hang', 'OrderController@confirmOrder')->name('confirm_order');
+    Route::get('don-hang-xac-nhan', 'OrderController@confirmOrder')->name('confirm_order');
+    Route::resource('don-hang', 'OrderController')->except('edit');
+    Route::get('don-hang-dich-vu-da-xoa/{id}', 'OrderController@listSoftDelete')->name('don-hang.listSoftDelete');
+    Route::get('don-hang/khoi-phuc/{id}', 'OrderController@restore')->name('don-hang.restore');
 });
 
 

@@ -19,13 +19,9 @@ class CustomerRequest extends FormRequest
             ->where(function($query) {
                 $query->where('id', '=', auth()->user()->id);
             }),
-            'name' => [
-                'required'
-            ],
-            'email' => [
-                'required',
-                'email',
-            ]
+            'name' => 'required|min:2',
+            'email' => 'required|email',
+
         ];
         return $rule;
     }

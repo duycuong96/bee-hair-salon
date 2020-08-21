@@ -11,7 +11,7 @@ use Modules\Admin\Http\Requests\MyAccountRequest;
 
 class AccountController extends AdminBaseController
 {
-
+    protected $accountService;
     public function __construct(AccountService $accountService)
     {
         $this->accountService = $accountService;

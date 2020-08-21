@@ -36,8 +36,8 @@
                         </div>
                         <div class="form-group">
                             <label>Ảnh salon:</label>
-                            <input type="file" class="form-control" name="thumb_img" value="{{ old('thumb_img') }}">
-                            @error('thumb_img')
+                            <input type="file" class="form-control" name="image" value="{{ old('image') }}">
+                            @error('image')
                             <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
                             @enderror
                         </div>

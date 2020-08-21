@@ -33,7 +33,10 @@ class BannerService
     public function store($request)
     {
         $data = request()->all();
-        $banner = Banner::create($data);
+        $data['image'] = $request->file('image')->store('banner', 'public');
+        $data['active'] = STATUS_ACCOUNT_CUSTOMER_NOT_ACTIVE;
+
+        Banner::create($data);
         return $this->returnSuccessWithRoute('admin.banner.index', __('messages.data_create_success'));
     }
 
@@ -50,12 +53,35 @@ class BannerService
 
     public function update($request, $id)
     {
+        $data=$request->all();
         $banner = Banner::find($id);
         if(empty($banner)) {
             return $this->returnFailedWithRoute('admin.banner.index', __('messages.data_update_failed'));
         } else {
-            $banner->update($request->all());
+            if (empty($request->file())) {
+                $data['image'] = $banner->image;
+            }else {
+                $data['image'] = $request->file('image')->store('banner', 'public');
+            }
+            $banner->update($data);
             return $this->returnSuccessWithRoute('admin.banner.index', __('messages.data_update_success'));
         }
+    }
+    public function delete($id)
+    {
+        Banner::where('id', $id)->delete();
+        return $this->returnSuccessWithRoute('admin.banner.index', __('messages.data_delete_success'));
+    }
+    public function listSoftDelete(){
+        $data = Banner::onlyTrashed()->get();
+        return view(
+            'admin::banner.listSoftDelete',
+            ['data' => $data]
+        );
+    }
+    public function restore($id)
+    {
+        Banner::withTrashed()->where('id', $id)->restore();
+        return $this->returnSuccessWithRoute('admin.banner.listSoftDelete', __('messages.data_create_success'));
     }
 }

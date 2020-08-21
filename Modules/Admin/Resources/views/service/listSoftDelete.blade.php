@@ -1,6 +1,6 @@
 @extends('admin::layouts.master')
 
-@section('title', 'Danh sách đánh giá')
+@section('title', 'Danh sách dịch vụ')
 
 @push('css')
     <!-- Font Awesome -->
@@ -43,21 +43,29 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Danh sách - @yield('title')</h3>
-                            <a href="{{ route('admin.danh-gia.listSoftDelete') }}"
-                                class="btn btn-danger float-right">Đánh giá đã xóa</a>
+                        <a href="{{ route('admin.dich-vu.create') }}"
+                            class="btn btn-primary float-right">Thêm mới</a>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
+                        @if (session('success'))
+                        <div class="alert alert-success" role="alert">
+                          {{session('success')}}
+                        </div>
+                        @endif
+                        @if (session('error'))
+                        <div class="alert alert-warning " role="alert">
+                          {{session('error')}}
+                        </div>
+                        @endif
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Tên salon</th>
-                                    <th>Tên khách hàng</th>
-                                    <th>Mức độ đánh giá</th>
-                                    <th>Nội dung đánh giá</th>
-                                    <th>Ngày đánh giá</th>
-                                    <th>Trang thái</th>
+                                    <th>Tên</th>
+                                    <th>Giá</th>
+                                    <th>Giá sau khi giảm</th>
+                                    <th>Thời gian kết thúc</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -68,54 +76,23 @@
                                             {{ $row->id }}
                                         </td>
                                         <td>
-                                            {{ $row->branchSalon->name }}
+                                            {{ $row->name }}
                                         </td>
                                         <td>
-                                            {{ $row->customer->name }}
+                                            {{ number_format($row->price, 0, ',', ' ') }} đ
                                         </td>
                                         <td>
-                                            <span
-                                                class="fa fa-star {{ $row->rating_stars >= 1 ? 'text-warning' : '' }}"></span>
-                                            <span
-                                                class="fa fa-star {{ $row->rating_stars >= 2 ? 'text-warning' : '' }}"></span>
-                                            <span
-                                                class="fa fa-star {{ $row->rating_stars >= 3 ? 'text-warning' : '' }}"></span>
-                                            <span
-                                                class="fa fa-star {{ $row->rating_stars >= 4 ? 'text-warning' : '' }}"></span>
-                                            <span
-                                                class="fa fa-star {{ $row->rating_stars >= 5 ? 'text-warning' : '' }}"></span>
+                                            {{ number_format($row->sale_price, 0, ',', ' ') }} đ
                                         </td>
                                         <td>
-                                            {{ $row->detail }}
-                                        </td>
-                                        <td>
-                                            {{ $row->created_at }}
-                                        </td>
-                                        <td>
-                                            @if ($row->status == STATUS_ACCOUNT_CUSTOMER_REGISTER)
-                                                <b class="text-warning">Chưa được xét duyệt</b>
-                                            @elseif($row->status == STATUS_ACCOUNT_CUSTOMER_ACTIVE)
-                                                <b class="text-success">Xét duyệt thành công</b>
-                                            @else
-                                                <b class="text-danger">Ẩn đánh giá</b>
-                                            @endif
+                                            {{ $row->estimate }}
                                         </td>
                                         <td>
                                             <div class="btn-group">
-                                                <a href="{{ route('admin.danh-gia.show', [$row->id]) }}"
+                                                <a href="{{ route('admin.dich-vu.restore', [$row->id]) }}"
                                                     class="btn btn-app text-success">
-                                                    <i class="fas fa-edit"></i> Cập nhật
+                                                    <i class="fas fa-trash-restore"></i> Khôi phục
                                                 </a>
-                                                <form
-                                                    action="{{ route('admin.danh-gia.destroy', [$row->id]) }}"
-                                                    method="post">
-                                                    @csrf
-                                                    @method('DELETE')
-
-                                                    <button type="submit" class="btn btn-app text-danger">
-                                                        <i class="far fa-trash-alt"></i> Xóa
-                                                    </button>
-                                                </form>
                                             </div>
                                         </td>
                                     </tr>

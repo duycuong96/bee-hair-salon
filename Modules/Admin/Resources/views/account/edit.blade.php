@@ -30,14 +30,14 @@
                         <input type="hidden" name="id" value="{{ $data->id }}">
                         <div class="form-group">
                             <label>Tên:</label>
-                            <input disabled type="text" class="form-control" name="name" value="{{ old('name', $data->name) }}">
+                            <input readonly type="text" class="form-control" name="name" value="{{ old('name', $data->name) }}">
                             @error('name')
                             <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label>Email:</label>
-                            <input disabled type="text" class="form-control" name="email" value="{{ old('email', $data->email) }}">
+                            <input readonly type="text" class="form-control" name="email" value="{{ old('email', $data->email) }}">
                             @error('email')
                             <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
                             @enderror
@@ -52,6 +52,43 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label>Trạng thái tài khoản:</label>
+                            <br>
+                            <div class="icheck-primary d-inline">
+                              <input
+                                    type="radio"
+                                    id="radioPrimary1"
+                                    name="status"
+                                    value="{{STATUS_ACCOUNT_CUSTOMER_REGISTER}}"
+                                    {{ ($data->status == STATUS_ACCOUNT_CUSTOMER_REGISTER) ? 'checked' : '' }}>
+                              <label for="radioPrimary1">
+                                  Chưa kích hoạt
+                              </label>
+                            </div>
+                            <div class="icheck-primary d-inline">
+                              <input
+                                    type="radio"
+                                    id="radioPrimary2"
+                                    name="status"
+                                    value="{{STATUS_ACCOUNT_CUSTOMER_ACTIVE}}"
+                                    {{ ($data->status == STATUS_ACCOUNT_CUSTOMER_ACTIVE) ? 'checked' : ''}}>
+                              <label for="radioPrimary2">
+                                  Hoạt động
+                              </label>
+                            </div>
+                            <div class="icheck-primary d-inline">
+                              <input
+                                    type="radio"
+                                    id="radioPrimary3"
+                                    name="status"
+                                    value="{{STATUS_ACCOUNT_CUSTOMER_NOT_ACTIVE}}"
+                                    {{ ($data->status == STATUS_ACCOUNT_CUSTOMER_NOT_ACTIVE) ? 'checked' : ''}}>
+                              <label for="radioPrimary3">
+                                  Đã khóa
+                              </label>
+                            </div>
+                          </div>
                         <hr>
                         <div class="form-group d-flex justify-content-center">
                             <a href="{{ route('admin.tai-khoan.index') }}" class="btn btn-lg btn-default mr-3">Trở lại</a>
