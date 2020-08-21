@@ -34,5 +34,6 @@ Route::group(['prefix' => ''], function () {
 
 //     Route::get('dat-lich', 'BookingController@index');
     Route::get('blog', 'BlogController@index');
+    Route::get('blogsingle', 'BlogSingleController@index');
 
 });
