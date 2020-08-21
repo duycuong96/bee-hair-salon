@@ -221,5 +221,29 @@
         </li>
     </ul>
 </li>
-
+<li class="nav-item has-treeview {{ request()->routeIs('admin.thoi-gian-bieu*') ? 'menu-open' : '' }}">
+    <a href="{{ route('admin.thoi-gian-bieu.index') }}" class="nav-link {{ request()->routeIs('admin.thoi-gian-bieu*') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-grin"></i>
+        <p>
+            Thời gian biểu
+            <i class="fas fa-angle-left right"></i>
+        </p>
+    </a>
+    <ul class="nav nav-treeview">
+        <li class="nav-item">
+            <a href="{{ route('admin.thoi-gian-bieu.index') }}"
+                class="nav-link {{ request()->routeIs('admin.thoi-gian-bieu.index') ? 'active' : '' }}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Danh sách</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{{ route('admin.thoi-gian-bieu.create') }}"
+                class="nav-link {{ request()->routeIs('admin.thoi-gian-bieu.create') ? 'active' : '' }}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Thêm mới</p>
+            </a>
+        </li>
+    </ul>
+</li>
 

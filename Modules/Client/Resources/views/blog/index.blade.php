@@ -1,5 +1,5 @@
-@extends('customer::layouts.master')
-@section('title', 'Bài viết')
+@extends('client::layouts.master')
+@section('title', 'BeeHair')
 @section('content')
 
 

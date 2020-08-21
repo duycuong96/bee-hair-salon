@@ -28,6 +28,9 @@
 									<li><a href="/chi-tiet-salon">Chi tiết salon</a></li>
 									<li><a href="/tai-khoan">Tài khoản</a></li>
 									<li><a href="/dat-lich">Đặt lịch</a></li>
+									<li><a href="/danh-sach-cua-hang">Danh sách cửa hàng</a></li>
+									<li><a href="/blog">Blog</a></li>
+									<li><a href="/blogsingle">Blog Single</a></li>
 								</ul>
 								</li>
 
