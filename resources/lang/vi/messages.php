@@ -36,4 +36,6 @@ return [
     'data_not_found'      => 'Không tìm thây kêt quả.',
 
     'send_email_success' => 'Một email đã được gửi đến địa chỉ email của bạn.',
+
+    'data_exist_failed'        => 'Đã tồn tại.',
 ];
