@@ -17,7 +17,15 @@ class CategoryRequest extends FormRequest
             'name' => [
                 'required'
             ],
-
+            'description' => [
+                'required'
+            ],
+            'image' => [
+                'image'
+            ],
+            'status' => [
+                'required'
+            ],
         ];
         return $rule;
     }
@@ -26,6 +34,9 @@ class CategoryRequest extends FormRequest
     {
         return [
             'name' => 'Tên thể loại',
+            'description' => 'Nội dung mô tả',
+            'image' => 'Ảnh chuyên mục',
+            'status' => 'Trạng thái',
         ];
     }
 

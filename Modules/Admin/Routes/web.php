@@ -68,6 +68,8 @@ Route::group([
     Route::get('bai-viet/khoi-phuc/{id}', 'PostController@restore')->name('bai-viet.restore');
     // page curd category
     Route::resource('chuyen-muc', 'CategoryController');
+    Route::get('chuyen-muc-thung-rac', 'CategoryController@listSoftDelete')->name('chuyen-muc.listSoftDelete');
+    Route::get('chuyen-muc/khoi-phuc/{id}', 'CategoryController@restore')->name('chuyen-muc.restore');
     // page curd comment
     Route::resource('binh-luan', 'CommentController');
     // Page Thống kê

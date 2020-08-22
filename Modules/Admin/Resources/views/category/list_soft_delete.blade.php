@@ -75,19 +75,9 @@
                                             </td>
                                             <td>
                                                 <div class="btn-group">
-                                                    <a href="{{ route('admin.chuyen-muc.show', [$row->id]) }}" class="btn btn-app">
-                                                        <i class="fas fa-edit "></i> Cập nhật
+                                                    <a href="{{ route('admin.chuyen-muc.restore', [$row->id]) }}" class="btn btn-app text-success">
+                                                        <i class="fas fa-trash-restore"></i> Khôi phục
                                                     </a>
-                                                    <form
-                                                        action="{{ route('admin.chuyen-muc.destroy', [$row->id]) }}"
-                                                        method="post">
-                                                        @csrf
-                                                        @method('DELETE')
-
-                                                        <button type="submit" class="btn btn-app text-danger">
-                                                            <i class="far fa-trash-alt"></i> Xóa
-                                                        </button>
-                                                    </form>
                                                 </div>
                                             </td>
                                         </tr>

@@ -81,6 +81,16 @@ class CategoryController extends AdminBaseController
      */
     public function destroy($id)
     {
-        //
+        return $this->categoryService->delete($id);
+    }
+
+    public function listSoftDelete()
+    {
+        return $this->categoryService->listSoftDelete();
+    }
+
+    public function restore($id)
+    {
+        return $this->categoryService->restore($id);
     }
 }
