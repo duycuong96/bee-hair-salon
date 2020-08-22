@@ -1,9 +1,12 @@
 <?php
 namespace App\Services\Admin;
 
+use App\Models\Category;
 use App\Traits\WebResponseTrait;
 use App\Models\Post;
-
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
+use Exception;
 class PostService
 {
     use WebResponseTrait;
@@ -27,12 +30,32 @@ class PostService
 
     public function create()
     {
-        return view('admin::post.create');
+        $dataCategories = Category::all();
+        return view(
+            'admin::post.create',
+            [
+                'dataCategories' => $dataCategories,
+            ]
+        );
     }
 
     public function store($request)
     {
-        $data = request()->all();
+        $data = $request->only(
+            'title',
+            'slug',
+            'content',
+            'image',
+            'like',
+            'status',
+            'author_id',
+            'category_id',
+        );
+        $data['slug'] = Str::slug($request->title, '-');
+        $data['image'] = $request->file('image')->store('post', 'public');
+        $data['like'] = 0;
+        $data['author_id'] = auth()->user()->id;
+        // dd($data);
         $post = Post::create($data);
         return $this->returnSuccessWithRoute('admin.bai-viet.index', __('messages.data_create_success'));
     }
@@ -40,10 +63,12 @@ class PostService
     public function show($id)
     {
         $data = Post::find($id);
+        $dataCategories = Category::all();
         return view(
             'admin::post.edit',
             [
                 'data' => $data,
+                'dataCategories' => $dataCategories,
             ]
         );
     }
@@ -51,10 +76,16 @@ class PostService
     public function update($request, $id)
     {
         $post = Post::find($id);
+        $data=$request->all();
         if(empty($post)) {
             return $this->returnFailedWithRoute('admin.bai-viet.index', __('messages.data_update_failed'));
         } else {
-            $post->update($request->all());
+            if (empty($request->file())) {
+                $data['image'] = $post->image;
+            }else {
+                $data['image'] = $request->file('image')->store('post', 'public');
+            }
+            $post->update($data);
             return $this->returnSuccessWithRoute('admin.bai-viet.index', __('messages.data_update_success'));
         }
     }

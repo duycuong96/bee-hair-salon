@@ -43,7 +43,7 @@ class BranchSalonService
     public function store($request)
     {
         $data = request()->all();
-        dd($data);
+        // dd($data);
         $data['image'] = $request->file('image')->store('branch_salon', 'public');
 
         $customer = BranchSalon::create($data);

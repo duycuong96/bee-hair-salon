@@ -69,10 +69,10 @@
                                                 {{ $row->title }}
                                             </td>
                                             <td>
-                                                {{ $row->author_id }}
+                                                {{ $row->author->name }}
                                             </td>
                                             <td>
-                                                {{ $row->category_id }}
+                                                {{ $row->category->name }}
                                             </td>
                                             <td>
                                                 {{ $row->active }}

@@ -10,13 +10,13 @@ class Post extends Model
 
     protected $fillable = [
         'title',
-        'slugs',
+        'slug',
         'content',
         'image',
-        'active',
+        'status',
         'like',
         'category_id',
-        'admin_id'
+        'author_id',
     ];
 
     public function category(){
