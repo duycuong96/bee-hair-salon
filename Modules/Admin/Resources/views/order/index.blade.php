@@ -84,7 +84,7 @@
                                                 @elseif($row->status == STATUS_ACCOUNT_CUSTOMER_ACTIVE)
                                                     <b class="text-success">Khách hàng đã đến</b>
                                                 @else
-                                                    <b class="text-danger">Đã hoàn thành/b>
+                                                    <b class="text-danger">Đã hoàn thành</b>
                                                 @endif
                                             </td>
                                             <td>

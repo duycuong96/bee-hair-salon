@@ -13,18 +13,19 @@ class OrderService
 {
     use WebResponseTrait;
 
-    public function confirmOrder($request)
+    public function confirmOrder()
     {
-        $builder = Post::where(function ($query) use ($request) {
-            if ($request->name) $query->where('title', 'like', '%'.$request->name.'%');
-        });
-
-        $data = $builder->orderBy('id', 'desc')
-                        ->paginate(10);
-
-        $data->appends(request()->query());
+        $data = Order::where('status', STATUS_ACCOUNT_CUSTOMER_REGISTER)->get();
         return view(
-            'admin::order.confirm_order',
+            'admin::order.index',
+            ['data' => $data]
+        );
+    }
+    public function history()
+    {
+        $data = Order::where('status', STATUS_ACCOUNT_CUSTOMER_NOT_ACTIVE)->get();
+        return view(
+            'admin::order.index',
             ['data' => $data]
         );
     }

@@ -80,7 +80,8 @@ Route::group([
     // thời gian biểu
     Route::resource('thoi-gian-bieu', 'TimeScheduleController');
     // Page xác nhận đơn hàng: staff
-    Route::get('don-hang-xac-nhan', 'OrderController@confirmOrder')->name('confirm_order');
+    Route::get('don-hang-xac-nhan', 'OrderController@confirmOrder')->name('order.confirm_order');
+    Route::get('don-hang-lich-su', 'OrderController@history')->name('order.history');
     Route::resource('don-hang', 'OrderController')->except('edit');
     Route::get('don-hang-dich-vu-da-xoa/{id}', 'OrderController@listSoftDelete')->name('don-hang.listSoftDelete');
     Route::get('don-hang/khoi-phuc/{id}', 'OrderController@restore')->name('don-hang.restore');

@@ -68,9 +68,14 @@ class OrderController extends AdminBaseController
         return $this->orderService->delete($id);
     }
 
-    public function confirmOrder(Request $request)
+    public function confirmOrder()
     {
-        return $this->orderService->confirmOrder($request);
+        return $this->orderService->confirmOrder();
+    }
+
+    public function history()
+    {
+        return $this->orderService->history();
     }
 
     public function listSoftDelete($id)
