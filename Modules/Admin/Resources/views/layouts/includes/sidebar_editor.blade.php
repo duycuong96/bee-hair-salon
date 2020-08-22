@@ -1,5 +1,5 @@
 <li class="nav-item has-treeview {{ request()->routeIs('admin.bai-viet*') ? 'menu-open' : '' }}">
-    <a href="" class="nav-link {{ request()->routeIs('admin.bai-viet*') ? 'active' : '' }}">
+    <a href="{{ route('admin.bai-viet.index') }}" class="nav-link {{ request()->routeIs('admin.bai-viet*') ? 'active' : '' }}">
         <i class="nav-icon fas fa-user-tag"></i>
         <p>
             Bài viết
@@ -32,7 +32,7 @@
 </li>
 
 <li class="nav-item has-treeview {{ request()->routeIs('admin.chuyen-muc*') ? 'menu-open' : '' }}">
-    <a href="" class="nav-link {{ request()->routeIs('admin.chuyen-muc*') ? 'active' : '' }}">
+    <a href="{{ route('admin.chuyen-muc.index') }}" class="nav-link {{ request()->routeIs('admin.chuyen-muc*') ? 'active' : '' }}">
         <i class="nav-icon fas fa-blog"></i>
         <p>
             Chuyên mục
@@ -65,7 +65,7 @@
 </li>
 
 <li class="nav-item has-treeview {{ request()->routeIs('admin.binh-luan*') ? 'menu-open' : '' }}">
-    <a href="" class="nav-link {{ request()->routeIs('admin.binh-luan*') ? 'active' : '' }}">
+    <a href="{{ route('admin.binh-luan.index') }}" class="nav-link {{ request()->routeIs('admin.binh-luan*') ? 'active' : '' }}">
         <i class="nav-icon fas fa-comments"></i>
         <p>
             Bình luận

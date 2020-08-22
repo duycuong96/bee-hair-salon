@@ -108,47 +108,4 @@
 
 @push('scripts')
 
-    <script>
-        $(function() {
-            $("#example1").DataTable({
-                "responsive": true,
-                "autoWidth": false,
-                "paging": true,
-                "language": {
-                    "decimal": "",
-                    "emptyTable": "No data available in table",
-                    "info": "Showing _START_ to _END_ of _TOTAL_ entries",
-                    "infoEmpty": "Showing 0 to 0 of 0 entries",
-                    "infoFiltered": "(filtered from _MAX_ total entries)",
-                    "infoPostFix": "",
-                    "thousands": ",",
-                    "lengthMenu": "Danh sách: _MENU_",
-                    "loadingRecords": "Loading...",
-                    "processing": "Processing...",
-                    "search": "Tìm kiếm:",
-                    "zeroRecords": "No matching records found",
-                    "paginate": {
-                        "first": "First",
-                        "last": "Last",
-                        "next": ">>",
-                        "previous": "<<"
-                    },
-                    "aria": {
-                        "sortAscending": ": activate to sort column ascending",
-                        "sortDescending": ": activate to sort column descending"
-                    }
-                }
-            });
-            $('#example2').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
-            });
-        });
-
-    </script>
 @endpush
