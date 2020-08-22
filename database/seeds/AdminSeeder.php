@@ -18,6 +18,6 @@ class AdminSeeder extends Seeder
             'email' => 'vuduycuong6789@gmail.com',
             'password' =>  Hash::make('123456'),
         ]);
-        $admin->assignRole('administrator');
+        $admin->assignRole('Quản trị viên');
     }
 }

@@ -103,8 +103,8 @@
                     <div class="col-md-6 ab-content ab-content1">
                         <div class="ab-content-inner">
                             <a href="single.html">
-                                <img src="{!! url('storage/'.  json_decode($serviceT->images)[0]) !!}" alt="news image"
-                                    class="img-fluid"></a>
+                                {{-- <img src="{!! url('storage/'.  json_decode($serviceT->images)[0]) !!}" alt="news image"
+                                    class="img-fluid"></a> --}}
                             <div class="ab-info-con">
                                 <h4> {{ $serviceT->name }} </h4>
                                 <a href="single.html" class="read-more two btn m-0 px-3"><span
@@ -118,8 +118,8 @@
                 @foreach ($servicesB as $serviceB)
                     <div class="col-md-3 ab-content">
                         <div class="ab-content-inner">
-                            <a href="single.html"><img src="{!! url('storage/'.  json_decode($serviceB->images)[0]) !!}" alt="news image"
-                                    class="img-fluid"></a>
+                            {{-- <a href="single.html"><img src="{!! url('storage/'.  json_decode($serviceB->images)[0]) !!}" alt="news image"
+                                    class="img-fluid"></a> --}}
                             <div class="ab-info-con">
                                 <h4>{{$serviceB->name}}</h4>
                                 <a href="single.html" class="read-more two btn m-0 px-3"><span

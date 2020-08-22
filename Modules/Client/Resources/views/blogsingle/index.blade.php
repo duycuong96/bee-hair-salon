@@ -1,4 +1,4 @@
-@extends('customer::layouts.master')
+@extends('client::layouts.master')
 @section('title','BeeHair')
 @section('content')
 
@@ -21,7 +21,7 @@
 <div class="w3l-blog-single">
 	<div class="single blog py-5">
 	  <div class="container py-md-3">
-
+	
 		<div class="main-cont-blog">
 		  <!-- left side blog post content -->
 		  <div class="single-left">
@@ -50,7 +50,7 @@
 				  facere reiciendis quis.</p>
 			  </div>
 			</div>
-
+			
 		  </div>
 		  <!-- left side blog post content -->
 		</div>
@@ -64,14 +64,14 @@
 	<div class="comments-grids">
 		<div class="media">
 			<img class="img-responsive" src="{{asset('client/images/blog5.jpg')}}" alt="placeholder image">
-
+			
 			<div class="media-body comments-grid-right">
 				<h4><a href="#">Andriana Lima</a></h4>
 				<ul class="">
 					<li class="font-weight-bold">15 Oct  2019
-
+						
 					</li>
-
+					
 				</ul>
 				<p>Nullam facilisis diam non magna porta luctus. Aenean facilisis erat posuere erat ornare ultrices. Aliquam ac arcu interdum,Aliquam ac arcu interdum, dapibus nibh convallis, semper augue.</p>
 				<a href="#comment" class="replay"><span class="fa fa-reply"></span> Reply</a>
@@ -83,9 +83,9 @@
 				<h4><a href="#">Shane Watson</a></h4>
 				<ul class="">
 					<li class="font-weight-bold">20 Oct 2019
-
+						
 					</li>
-
+					
 				</ul>
 				<p>Nullam facilisis diam non magna porta luctus. Aenean facilisis erat posuere erat ornare ultrices. Aliquam ac arcu interdum,Aliquam ac arcu interdum, dapibus nibh convallis, semper augue.</p>
 				<a href="#comment" class="replay"><span class="fa fa-reply"></span> Reply</a>
@@ -97,9 +97,9 @@
 					<h4><a href="#">Heidi Kum</a></h4>
 					<ul class="">
 						<li class="font-weight-bold">25 Oct 2019
-
+						
 						</li>
-
+						
 					</ul>
 					<p>Nullam facilisis diam non magna porta luctus. Aenean facilisis erat posuere erat ornare ultrices. Aliquam ac arcu interdum,Aliquam ac arcu interdum, dapibus nibh convallis, semper augue.</p>
 					<a href="#comment" class="replay"><span class="fa fa-reply"></span> Reply</a>
@@ -115,7 +115,7 @@
 				<h3 class="title-main2">Leave A Message</h3>
 				<div class="form-commets">
 					<form action="#" method="post">
-
+						
 						<textarea name="Message" required="" placeholder="Write your comments here"></textarea>
 						<div class="media">
 								<input type="text" name="Name" required="Name" placeholder="Your Name">
