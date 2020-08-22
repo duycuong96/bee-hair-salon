@@ -40,6 +40,10 @@ Route::group([
     // page curd branch salon
     Route::resource('salon', 'BranchSalonController');
     Route::get('them-dich-vu-salon/{id}', 'BranchSalonController@createSalonService')->name('salon.createService');
+    Route::get('salon-list-khach-hang/{id}', 'BranchSalonController@salonListCustomer')->name('salon.salonListCustomer');
+    Route::get('salon-lich-su-cua-khach-hang/{id}', 'BranchSalonController@customerHisstory')->name('salon.customerHisstory');
+    Route::get('salon-danh-sach-danh-gia/{id}', 'BranchSalonController@salonListReview')->name('salon.salonListReview');
+
     // page curd review
     Route::resource('danh-gia', 'ReviewController')->except('create', 'store', 'edit');
     Route::get('danh-gia-lich-su-xoa', 'ReviewController@listSoftDelete')->name('danh-gia.listSoftDelete');
@@ -53,6 +57,7 @@ Route::group([
     // Route::post('validate', 'CustomerController@validateData')->name('khach-hang.validate');
     // page curd account
     Route::resource('tai-khoan', 'AccountController');
+    Route::get('danh-sach-salon-cua-ban', 'AccountController@salonListOfMe')->name('tai-khoan.salonListOfMe');
     // page role and permission
     Route::resource('phan-quyen', 'PermissionController');
     Route::resource('vai-tro', 'RoleController');
@@ -79,7 +84,8 @@ Route::group([
     // thời gian biểu
     Route::resource('thoi-gian-bieu', 'TimeScheduleController');
     // Page xác nhận đơn hàng: staff
-    Route::get('don-hang-xac-nhan', 'OrderController@confirmOrder')->name('confirm_order');
+    Route::get('don-hang-xac-nhan', 'OrderController@confirmOrder')->name('order.confirm_order');
+    Route::get('don-hang-lich-su', 'OrderController@history')->name('order.history');
     Route::resource('don-hang', 'OrderController')->except('edit');
     Route::get('don-hang-dich-vu-da-xoa/{id}', 'OrderController@listSoftDelete')->name('don-hang.listSoftDelete');
     Route::get('don-hang/khoi-phuc/{id}', 'OrderController@restore')->name('don-hang.restore');

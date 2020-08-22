@@ -29,9 +29,7 @@ class SalonServiceController extends AdminBaseController
      */
     public function create()
     {
-        $salon_id = null;
-        $service_id = null;
-        return $this->salonServiceService->create($salon_id, $service_id);
+        return $this->salonServiceService->create();
     }
 
     /**

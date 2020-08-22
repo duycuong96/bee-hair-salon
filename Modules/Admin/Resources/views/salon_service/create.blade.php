@@ -30,7 +30,7 @@
                               <label>Tên salon:</label>
                               <select class="custom-select" name="salon_id">
                                 @foreach ($salons as $salon)
-                                    <option {{ $salon_id == $salon->id ? 'selected' : '' }} value="{{ $salon->id }}">{{ $salon->name }}</option>
+                                    <option value="{{ $salon->id }}">{{ $salon->name }}</option>
                                 @endforeach
                               </select>
                             @error('name')
@@ -41,7 +41,7 @@
                             <label>Tên dịch vụ:</label>
                             <select class="custom-select" name="service_id">
                                 @foreach ($services as $service)
-                                    <option {{ $service_id == $salon->id ? 'selected' : '' }} value="{{ $service->id }}">{{ $service->name }}</option>
+                                    <option value="{{ $service->id }}">{{ $service->name }}</option>
                                 @endforeach
                               </select>
                               @error('email')

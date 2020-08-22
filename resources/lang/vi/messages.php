@@ -37,4 +37,6 @@ return [
     'data_restore_success' => 'Khôi phục thành công',
 
     'send_email_success' => 'Một email đã được gửi đến địa chỉ email của bạn.',
+
+    'data_exist_failed'        => 'Đã tồn tại.',
 ];

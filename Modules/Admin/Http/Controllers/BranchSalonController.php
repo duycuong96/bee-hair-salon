@@ -82,6 +82,19 @@ class BranchSalonController extends AdminBaseController
     public function createSalonService($id) {
         $salon_id = $id;
         $service_id = null;
-        return $this->salonServiceService->create($salon_id, $service_id);
+        return $this->salonServiceService->create();
+    }
+
+    public function salonListCustomer($id)
+    {
+        return $this->branchSalonService->salonListCustomer($id);
+    }
+    public function customerHisstory($id)
+    {
+        return $this->branchSalonService->customerHisstory($id);
+    }
+    public function salonListReview($id)
+    {
+        return $this->branchSalonService->salonListReview($id);
     }
 }

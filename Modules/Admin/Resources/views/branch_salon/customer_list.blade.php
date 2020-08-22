@@ -1,6 +1,6 @@
 @extends('admin::layouts.master')
 
-@section('title', 'Xác nhận đơn hàng')
+@section('title', 'Danh sách khách hàng đặt lịch tại salon')
 
     @push('css')
         <!-- Font Awesome -->
@@ -43,7 +43,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Danh sách - @yield('title')</h3>
-                            <a href="{{ route('admin.bai-viet.create') }}" class="btn btn-primary float-right">Thêm
+                            <a href="{{ route('admin.khach-hang.create') }}" class="btn btn-primary float-right">Thêm
                                 mới</a>
                         </div>
                         <!-- /.card-header -->
@@ -52,9 +52,9 @@
                                 <thead>
                                     <tr>
                                         <th>Id</th>
-                                        <th>Tên khách hàng</th>
-                                        <th>Giờ cắt</th>
-                                        <th>Thành tiền</th>
+                                        <th>Tên</th>
+                                        <th>Email</th>
+                                        <th>Sinh nhật</th>
                                         <th>Trạng thái</th>
                                         <th width="10%">Action</th>
                                     </tr>
@@ -66,20 +66,26 @@
                                                 {{ $row->id }}
                                             </td>
                                             <td>
-                                                {{ $row->title }}
+                                                {{ $row->name }}
                                             </td>
                                             <td>
-                                                9h00 - 10h00
+                                                {{ $row->email }}
                                             </td>
                                             <td>
-                                                100,000 đ
+                                                {{ $row->birthday }}
                                             </td>
                                             <td>
-                                                <b class="text-warning">Hoàn thành</b>
+                                                @if ($row->status == STATUS_ACCOUNT_CUSTOMER_REGISTER)
+                                                    <b class="text-warning">Chưa được kích hoạt</b>
+                                                @elseif($row->status == STATUS_ACCOUNT_CUSTOMER_ACTIVE)
+                                                    <b class="text-success">Đang hoạt động</b>
+                                                @else
+                                                <b class="text-danger">Đang khóa</b>
+                                                @endif
                                             </td>
                                             <td>
-                                                <a href="{{ route('admin.bai-viet.show', [$row->id]) }}" class="btn btn-app">
-                                                    <i class="fas fa-edit"></i> Cập nhật
+                                                <a href="{{ route('admin.salon.customerHisstory', $row->id) }}" class="btn btn-app">
+                                                    <i class="fas fa-edit"></i>Lịch sự đặt lịch
                                                 </a>
                                             </td>
                                         </tr>
@@ -110,12 +116,10 @@
                 "responsive": true,
                 "autoWidth": false,
                 "paging": true,
-                "ordering": false,
-                "searching": true,
                 "language": {
                     "decimal": "",
                     "emptyTable": "No data available in table",
-                    "info": "Hiển thị _START_ đến _END_ trong _TOTAL_ mục",
+                    "info": "Showing _START_ to _END_ of _TOTAL_ entries",
                     "infoEmpty": "Showing 0 to 0 of 0 entries",
                     "infoFiltered": "(filtered from _MAX_ total entries)",
                     "infoPostFix": "",
@@ -136,6 +140,15 @@
                         "sortDescending": ": activate to sort column descending"
                     }
                 }
+            });
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
             });
         });
 

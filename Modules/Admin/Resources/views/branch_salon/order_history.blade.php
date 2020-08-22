@@ -1,6 +1,6 @@
 @extends('admin::layouts.master')
 
-@section('title', 'Danh sách đơn hàng')
+@section('title', 'Lịch sự đặt lịch của khách hàng')
 
     @push('css')
         <!-- Font Awesome -->
@@ -57,7 +57,6 @@
                                         <th>Giờ cắt</th>
                                         <th>Thành tiền</th>
                                         <th>Trạng thái</th>
-                                        <th width="10%">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -84,13 +83,8 @@
                                                 @elseif($row->status == STATUS_ACCOUNT_CUSTOMER_ACTIVE)
                                                     <b class="text-success">Khách hàng đã đến</b>
                                                 @else
-                                                    <b class="text-danger">Đã hoàn thành</b>
+                                                    <b class="text-danger">Đã hoàn thành/b>
                                                 @endif
-                                            </td>
-                                            <td>
-                                                <a href="{{ route('admin.don-hang.show', [$row->id]) }}" class="btn btn-app">
-                                                    <i class="fas fa-edit"></i> Chi tiết
-                                                </a>
                                             </td>
                                         </tr>
                                     @endforeach
