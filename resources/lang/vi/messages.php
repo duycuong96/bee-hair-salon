@@ -34,6 +34,7 @@ return [
     'data_update_failed'  => 'Đã xảy ra lỗi khi cập nhật dữ liệu.',
     'data_delete_failed'  => 'Đã xảy ra lỗi khi xóa dữ liệu.',
     'data_not_found'      => 'Không tìm thây kêt quả.',
+    'data_restore_success' => 'Khôi phục thành công',
 
     'send_email_success' => 'Một email đã được gửi đến địa chỉ email của bạn.',
 ];

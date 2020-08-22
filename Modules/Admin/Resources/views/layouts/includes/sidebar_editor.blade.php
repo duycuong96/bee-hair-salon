@@ -15,6 +15,13 @@
             </a>
         </li>
         <li class="nav-item">
+            <a href="{{ route('admin.bai-viet.listSoftDelete') }}"
+                class="nav-link {{ request()->routeIs('admin.bai-viet.listSoftDelete') ? 'active' : '' }}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Thùng rác</p>
+            </a>
+        </li>
+        <li class="nav-item">
             <a href="{{ route('admin.bai-viet.create') }}"
                 class="nav-link {{ request()->routeIs('admin.bai-viet.create') ? 'active' : '' }}">
                 <i class="far fa-circle nav-icon"></i>

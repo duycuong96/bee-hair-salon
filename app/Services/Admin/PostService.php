@@ -17,10 +17,9 @@ class PostService
             if ($request->name) $query->where('title', 'like', '%'.$request->name.'%');
         });
 
-        $data = $builder->orderBy('id', 'desc')
-                        ->paginate(10);
+        $data = $builder->orderBy('created_at', 'desc')->get();
 
-        $data->appends(request()->query());
+        // $data->appends(request()->query());
 
         return view(
             'admin::post.index',
@@ -88,5 +87,27 @@ class PostService
             $post->update($data);
             return $this->returnSuccessWithRoute('admin.bai-viet.index', __('messages.data_update_success'));
         }
+    }
+
+    public function delete($id)
+    {
+        Post::where('id', $id)->delete();
+        return $this->returnSuccessWithRoute('admin.bai-viet.index', __('messages.data_delete_success'));
+    }
+
+    public function listSoftDelete(){
+        $data = Post::onlyTrashed()->get();
+        return view(
+            'admin::post.list_soft_delete',
+            [
+                'data' => $data
+            ]
+        );
+    }
+
+    public function restore($id)
+    {
+        Post::withTrashed()->where('id', $id)->restore();
+        return $this->returnSuccessWithRoute('admin.bai-viet.listSoftDelete', __('messages.data_restore_success'));
     }
 }
