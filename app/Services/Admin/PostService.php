@@ -110,4 +110,5 @@ class PostService
         Post::withTrashed()->where('id', $id)->restore();
         return $this->returnSuccessWithRoute('admin.bai-viet.listSoftDelete', __('messages.data_restore_success'));
     }
+    
 }

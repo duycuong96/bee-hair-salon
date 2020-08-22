@@ -48,6 +48,13 @@
             </a>
         </li>
         <li class="nav-item">
+            <a href="{{ route('admin.chuyen-muc.listSoftDelete') }}"
+                class="nav-link {{ request()->routeIs('admin.chuyen-muc.listSoftDelete') ? 'active' : '' }}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Thùng rác</p>
+            </a>
+        </li>
+        <li class="nav-item">
             <a href="{{ route('admin.chuyen-muc.create') }}"
                 class="nav-link {{ request()->routeIs('admin.chuyen-muc.create') ? 'active' : '' }}">
                 <i class="far fa-circle nav-icon"></i>
