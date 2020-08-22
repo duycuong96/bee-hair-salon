@@ -94,4 +94,9 @@ class AccountController extends AdminBaseController
     {
         return $this->accountService->changePassword($request);
     }
+
+    public function salonListOfMe()
+    {
+        return $this->accountService->salonListOfMe();
+    }
 }

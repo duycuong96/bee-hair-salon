@@ -36,6 +36,7 @@
                         </div>
                         <div class="form-group">
                             <label>Ảnh salon:</label>
+                            <img src="{!! url('storage/'.$data->image) !!}" alt="" height="70px">
                             <input type="file" class="form-control" name="image" value="{{ old('image') }}">
                             @error('image')
                             <span class="mt-3 errorMsg text-danger">{{ $message }}</span>

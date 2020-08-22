@@ -2,6 +2,7 @@
 namespace App\Services\Admin;
 
 use App\Models\BranchSalon;
+use App\Models\Order;
 use App\Models\Province;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
@@ -43,7 +44,6 @@ class BranchSalonService
     public function store($request)
     {
         $data = request()->all();
-        dd($data);
         $data['image'] = $request->file('image')->store('branch_salon', 'public');
 
         $customer = BranchSalon::create($data);
@@ -80,5 +80,25 @@ class BranchSalonService
             $branchSalon->delete();
             return $this->returnSuccessWithRoute('admin.salon.index', __('messages.data_delete_success'));
         }
+    }
+    public function salonListCustomer($id)
+    {
+        $data = Order::join('customers', 'orders.customer_id', 'customers.id')
+                    ->where('orders.salon_id', $id)->get();
+
+        return view(
+            'admin::branch_salon.customer_list',
+            ['data' => $data]
+        );
+
+    }
+
+    public function customerHisstory($id)
+    {
+        $data = Order::where('customer_id', $id)->get();
+        return view(
+            'admin::branch_salon.order_history',
+            ['data' => $data]
+        );
     }
 }

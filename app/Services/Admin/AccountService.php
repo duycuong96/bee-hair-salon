@@ -2,6 +2,7 @@
 namespace App\Services\Admin;
 
 use App\Models\Admin;
+use App\Models\AdminSalon;
 use App\Traits\WebResponseTrait;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
@@ -122,5 +123,13 @@ class AccountService
 
     protected function returnIfDataNotFound() {
         return $this->returnFailedWithRoute('admin.tai-khoan.index', __('messages.data_not_found'));
+    }
+
+    public function salonListOfMe()
+    {
+        $data = AdminSalon::
+            join('branch_salons', 'admin_salons.salon_id', 'branch_salons.id')
+            ->where('admin_salons.admin_id', Auth::user()->id)->get();
+        return view('admin::account.list_salon_admin', ['data' => $data]);
     }
 }

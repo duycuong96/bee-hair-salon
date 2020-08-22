@@ -40,6 +40,9 @@ Route::group([
     // page curd branch salon
     Route::resource('salon', 'BranchSalonController');
     Route::get('them-dich-vu-salon/{id}', 'BranchSalonController@createSalonService')->name('salon.createService');
+    Route::get('salon-list-khach-hang/{id}', 'BranchSalonController@salonListCustomer')->name('salon.salonListCustomer');
+    Route::get('salon-lich-su-cua-khach-hang/{id}', 'BranchSalonController@customerHisstory')->name('salon.customerHisstory');
+
     // page curd review
     Route::resource('danh-gia', 'ReviewController')->except('create', 'store', 'edit');
     Route::get('danh-gia-lich-su-xoa', 'ReviewController@listSoftDelete')->name('danh-gia.listSoftDelete');
@@ -53,6 +56,7 @@ Route::group([
     // Route::post('validate', 'CustomerController@validateData')->name('khach-hang.validate');
     // page curd account
     Route::resource('tai-khoan', 'AccountController');
+    Route::get('danh-sach-salon-cua-ban', 'AccountController@salonListOfMe')->name('tai-khoan.salonListOfMe');
     // page role and permission
     Route::resource('phan-quyen', 'PermissionController');
     Route::resource('vai-tro', 'RoleController');
