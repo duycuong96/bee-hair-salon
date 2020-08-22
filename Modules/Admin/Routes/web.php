@@ -69,8 +69,12 @@ Route::group([
     Route::get('banner/khoi-phuc/{id}', 'BannerController@restore')->name('banner.restore');
     // page curd post
     Route::resource('bai-viet', 'PostController');
+    Route::get('bai-viet-thung-rac', 'PostController@listSoftDelete')->name('bai-viet.listSoftDelete');
+    Route::get('bai-viet/khoi-phuc/{id}', 'PostController@restore')->name('bai-viet.restore');
     // page curd category
     Route::resource('chuyen-muc', 'CategoryController');
+    Route::get('chuyen-muc-thung-rac', 'CategoryController@listSoftDelete')->name('chuyen-muc.listSoftDelete');
+    Route::get('chuyen-muc/khoi-phuc/{id}', 'CategoryController@restore')->name('chuyen-muc.restore');
     // page curd comment
     Route::resource('binh-luan', 'CommentController');
     // Page Thống kê

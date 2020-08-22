@@ -69,22 +69,33 @@
                                                 {{ $row->title }}
                                             </td>
                                             <td>
-                                                {{ $row->author_id }}
+                                                {{ $row->author->name }}
                                             </td>
                                             <td>
-                                                {{ $row->category_id }}
+                                                {{ $row->category->name }}
                                             </td>
                                             <td>
-                                                {{ $row->active }}
+                                                @if ($row->status == STATUS_POST_DRAFT)
+                                                    <b class="text-warning">Chưa công khai</b>
+                                                @elseif($row->status == STATUS_POST_PUBLIC)
+                                                    <b class="text-success">Công khai</b>
+                                                @endif
                                             </td>
                                             <td>
                                                 <div class="btn-group">
-                                                <a href="{{ route('admin.bai-viet.show', [$row->id]) }}" class="btn btn-app">
-                                                    <i class="fas fa-edit "></i> Cập nhật
-                                                </a>
-                                                <a href="{{ route('admin.bai-viet.show', [$row->id]) }}" class="btn btn-app">
-                                                    <i class="fas fa-trash"></i> Xóa
-                                                </a>
+                                                    <a href="{{ route('admin.bai-viet.show', [$row->id]) }}" class="btn btn-app">
+                                                        <i class="fas fa-edit "></i> Cập nhật
+                                                    </a>
+                                                    <form
+                                                        action="{{ route('admin.bai-viet.destroy', [$row->id]) }}"
+                                                        method="post">
+                                                        @csrf
+                                                        @method('DELETE')
+
+                                                        <button type="submit" class="btn btn-app text-danger">
+                                                            <i class="far fa-trash-alt"></i> Xóa
+                                                        </button>
+                                                    </form>
                                             </div>
                                             </td>
                                         </tr>
@@ -115,6 +126,8 @@
                 "responsive": true,
                 "autoWidth": false,
                 "paging": true,
+                "ordering": false,
+                "searching": true,
                 "language": {
                     "decimal": "",
                     "emptyTable": "No data available in table",

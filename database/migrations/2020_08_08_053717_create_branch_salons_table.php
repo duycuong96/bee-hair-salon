@@ -17,7 +17,7 @@ class CreateBranchSalonsTable extends Migration
             $table->id();
             $table->string('name')->index('name');
             $table->string('image');
-            $table->text('content')->nullable();
+            $table->longText('content')->nullable();
             $table->json('work_time')->nullable();
             $table->string('address')->nullable();
             $table->string('phone')->nullable();

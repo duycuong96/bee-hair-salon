@@ -28,5 +28,27 @@
 <script src="dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
+<!-- Summernote -->
+<script src="plugins/summernote/summernote-bs4.min.js"></script>
+
+<script>
+    function changeImg(input){
+        //Nếu như tồn thuộc tính file, đồng nghĩa người dùng đã chọn file mới
+        if(input.files && input.files[0]){
+            var reader = new FileReader();
+            //Sự kiện file đã được load vào website
+            reader.onload = function(e){
+                //Thay đổi đường dẫn ảnh
+                $('#image').attr('src',e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $(document).ready(function() {
+        $('#image').click(function(){
+            $('#img').click();
+        });
+    });
+</script>
 
 

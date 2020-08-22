@@ -1,6 +1,6 @@
 @extends('admin::layouts.master')
 
-@section('title', 'Chuyên mục')
+@section('title', 'Bài viết')
 
     @push('css')
         <!-- Font Awesome -->
@@ -43,7 +43,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Danh sách - @yield('title')</h3>
-                            <a href="{{ route('admin.chuyen-muc.create') }}" class="btn btn-primary float-right">Thêm
+                            <a href="{{ route('admin.bai-viet.create') }}" class="btn btn-primary float-right">Thêm
                                 mới</a>
                         </div>
                         <!-- /.card-header -->
@@ -52,7 +52,9 @@
                                 <thead>
                                     <tr>
                                         <th>Id</th>
-                                        <th>Tên </th>
+                                        <th>Tiêu đề</th>
+                                        <th>Tác giả</th>
+                                        <th>Danh mục</th>
                                         <th>Trạng thái</th>
                                         <th width="10%">Action</th>
                                     </tr>
@@ -64,7 +66,13 @@
                                                 {{ $row->id }}
                                             </td>
                                             <td>
-                                                {{ $row->name }}
+                                                {{ $row->title }}
+                                            </td>
+                                            <td>
+                                                {{ $row->author->name }}
+                                            </td>
+                                            <td>
+                                                {{ $row->category->name }}
                                             </td>
                                             <td>
                                                 @if ($row->status == STATUS_POST_DRAFT)
@@ -75,20 +83,10 @@
                                             </td>
                                             <td>
                                                 <div class="btn-group">
-                                                    <a href="{{ route('admin.chuyen-muc.show', [$row->id]) }}" class="btn btn-app">
-                                                        <i class="fas fa-edit "></i> Cập nhật
+                                                    <a href="{{ route('admin.bai-viet.restore', [$row->id]) }}" class="btn btn-app text-success">
+                                                        <i class="fas fa-trash-restore"></i> Khôi phục
                                                     </a>
-                                                    <form
-                                                        action="{{ route('admin.chuyen-muc.destroy', [$row->id]) }}"
-                                                        method="post">
-                                                        @csrf
-                                                        @method('DELETE')
-
-                                                        <button type="submit" class="btn btn-app text-danger">
-                                                            <i class="far fa-trash-alt"></i> Xóa
-                                                        </button>
-                                                    </form>
-                                                </div>
+                                            </div>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -119,6 +117,7 @@
                 "autoWidth": false,
                 "paging": true,
                 "ordering": false,
+                "searching": true,
                 "language": {
                     "decimal": "",
                     "emptyTable": "No data available in table",
