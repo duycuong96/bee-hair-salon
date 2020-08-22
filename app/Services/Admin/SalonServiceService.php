@@ -44,8 +44,9 @@ class SalonServiceService
                     '=',
                     'branch_salons.id'
                 )
-            ->where('admin_salons.salon_id', Auth::user()->id)
+            ->where('admin_salons.admin_id', Auth::user()->id)
             ->get();
+
         $services = Service::all();
         return view(
             'admin::salon_service.create',
