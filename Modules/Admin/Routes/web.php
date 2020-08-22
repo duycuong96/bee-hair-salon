@@ -64,6 +64,8 @@ Route::group([
     Route::get('banner/khoi-phuc/{id}', 'BannerController@restore')->name('banner.restore');
     // page curd post
     Route::resource('bai-viet', 'PostController');
+    Route::get('bai-viet-thung-rac', 'PostController@listSoftDelete')->name('bai-viet.listSoftDelete');
+    Route::get('bai-viet/khoi-phuc/{id}', 'PostController@restore')->name('bai-viet.restore');
     // page curd category
     Route::resource('chuyen-muc', 'CategoryController');
     // page curd comment
