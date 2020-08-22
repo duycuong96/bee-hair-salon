@@ -77,6 +77,8 @@ Route::group([
     Route::get('chuyen-muc/khoi-phuc/{id}', 'CategoryController@restore')->name('chuyen-muc.restore');
     // page curd comment
     Route::resource('binh-luan', 'CommentController');
+    Route::get('binh-luan-thung-rac', 'CommentController@listSoftDelete')->name('binh-luan.listSoftDelete');
+    Route::get('binh-luan/khoi-phuc/{id}', 'CommentController@restore')->name('binh-luan.restore');
     // Page Thống kê
     Route::get('thong-ke/khach-hang', 'StatisticController@customer')->name('thong-ke.khach.hang');
     Route::get('thong-ke/doanh-thu', 'StatisticController@revenue')->name('thong-ke.doanh-thu');

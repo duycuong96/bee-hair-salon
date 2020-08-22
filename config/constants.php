@@ -11,3 +11,6 @@ if (!defined('STATUS_ACCOUNT_CUSTOMER_NOT_ACTIVE')) define('STATUS_ACCOUNT_CUSTO
 
 if (!defined('STATUS_POST_DRAFT')) define('STATUS_POST_DRAFT', 0);
 if (!defined('STATUS_POST_PUBLIC')) define('STATUS_POST_PUBLIC', 1);
+
+if (!defined('STATUS_COMMENT_DRAFT')) define('STATUS_COMMENT_DRAFT', 0);
+if (!defined('STATUS_COMMENT_PUBLIC')) define('STATUS_COMMENT_PUBLIC', 1);

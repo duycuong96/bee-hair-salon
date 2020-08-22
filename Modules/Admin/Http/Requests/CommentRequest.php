@@ -14,7 +14,7 @@ class CommentRequest extends FormRequest
     public function rules()
     {
         $rule = [
-            'title' => [
+            'status' => [
                 'required'
             ],
 
@@ -25,7 +25,7 @@ class CommentRequest extends FormRequest
     public function attributes()
     {
         return [
-            'title' => 'Tên tiêu đề',
+            'status' => 'Trạng thái bình luận',
         ];
     }
 

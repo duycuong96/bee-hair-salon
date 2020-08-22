@@ -53,7 +53,6 @@
                                         <th>Tiêu đề</th>
                                         <th>Bài viết</th>
                                         <th>Người bình luận</th>
-                                        <th>Ngày/giờ bình luận</th>
                                         <th>Trạng thái</th>
                                         <th width="10%">Action</th>
                                     </tr>
@@ -74,9 +73,6 @@
                                                 {{ $row->customer->name }}
                                             </td>
                                             <td>
-                                                {{ $row->created_at }}
-                                            </td>
-                                            <td>
                                                 @if ($row->status == STATUS_POST_DRAFT)
                                                     <b class="text-warning">Chưa công khai</b>
                                                 @elseif($row->status == STATUS_POST_PUBLIC)
@@ -85,19 +81,9 @@
                                             </td>
                                             <td>
                                                 <div class="btn-group">
-                                                    <a href="{{ route('admin.binh-luan.show', [$row->id]) }}" class="btn btn-app">
-                                                        <i class="fas fa-edit "></i> Cập nhật
+                                                    <a href="{{ route('admin.binh-luan.restore', [$row->id]) }}" class="btn btn-app text-success">
+                                                        <i class="fas fa-trash-restore"></i> Khôi phục
                                                     </a>
-                                                    <form
-                                                        action="{{ route('admin.binh-luan.destroy', [$row->id]) }}"
-                                                        method="post">
-                                                        @csrf
-                                                        @method('DELETE')
-
-                                                        <button type="submit" class="btn btn-app text-danger">
-                                                            <i class="far fa-trash-alt"></i> Xóa
-                                                        </button>
-                                                    </form>
                                                 </div>
                                             </td>
                                         </tr>
@@ -122,4 +108,47 @@
 
 @push('scripts')
 
+    <script>
+        $(function() {
+            $("#example1").DataTable({
+                "responsive": true,
+                "autoWidth": false,
+                "paging": true,
+                "language": {
+                    "decimal": "",
+                    "emptyTable": "No data available in table",
+                    "info": "Showing _START_ to _END_ of _TOTAL_ entries",
+                    "infoEmpty": "Showing 0 to 0 of 0 entries",
+                    "infoFiltered": "(filtered from _MAX_ total entries)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Danh sách: _MENU_",
+                    "loadingRecords": "Loading...",
+                    "processing": "Processing...",
+                    "search": "Tìm kiếm:",
+                    "zeroRecords": "No matching records found",
+                    "paginate": {
+                        "first": "First",
+                        "last": "Last",
+                        "next": ">>",
+                        "previous": "<<"
+                    },
+                    "aria": {
+                        "sortAscending": ": activate to sort column ascending",
+                        "sortDescending": ": activate to sort column descending"
+                    }
+                }
+            });
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+        });
+
+    </script>
 @endpush
