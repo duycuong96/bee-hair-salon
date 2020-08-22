@@ -35,7 +35,9 @@ Route::group([
     Route::resource('salon', 'BranchSalonController')->only('show');
     Route::resource('dich-vu', 'ServiceController');
     Route::get('danh-sach-salon', 'BranchSalonController@index')->name('branchSalon.index');
-    Route::get('bai-viet', 'PostController@index')->name('post.index');
+    Route::get('bai-viet', 'PostController@listPost')->name('post.list');
+    Route::get('bai-viet/{slug}', 'PostController@detailPost')->name('post.detail');
+    // Route::get('chuyen-muc/{id}', 'PostController@categoryPost')->name('post.category');
 
 });
 Route::group([
