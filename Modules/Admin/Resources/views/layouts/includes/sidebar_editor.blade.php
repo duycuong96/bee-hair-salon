@@ -80,13 +80,13 @@
                 <p>Danh sách</p>
             </a>
         </li>
-        {{-- <li class="nav-item">
-            <a href="{{ route('admin.binh-luan.create') }}"
-                class="nav-link {{ request()->routeIs('admin.binh-luan.create') ? 'active' : '' }}">
+        <li class="nav-item">
+            <a href="{{ route('admin.binh-luan.listSoftDelete') }}"
+                class="nav-link {{ request()->routeIs('admin.binh-luan.listSoftDelete') ? 'active' : '' }}">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Thêm mới</p>
+                <p>Thùng rác</p>
             </a>
-        </li> --}}
+        </li>
     </ul>
 </li>
 

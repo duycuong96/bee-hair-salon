@@ -14,26 +14,14 @@ class CommentService
             if ($request->name) $query->where('title', 'like', '%'.$request->name.'%');
         });
 
-        $data = $builder->orderBy('id', 'desc')
-                        ->paginate(10);
+        $data = $builder->orderBy('created_at', 'desc')
+                        ->get();
 
-        $data->appends(request()->query());
+        // $data->appends(request()->query());
         return view(
             'admin::comment.index',
             ['data' => $data]
         );
-    }
-
-    public function create()
-    {
-        return view('admin::comment.create');
-    }
-
-    public function store($request)
-    {
-        $data = request()->all();
-        $comment = Comment::create($data);
-        return $this->returnSuccessWithRoute('admin.binh-luan.index', __('messages.data_create_success'));
     }
 
     public function show($id)
@@ -50,11 +38,36 @@ class CommentService
     public function update($request, $id)
     {
         $comment = Comment::find($id);
+        $data = $request->only(
+            'status',
+        );
         if(empty($comment)) {
             return $this->returnFailedWithRoute('admin.binh-luan.index', __('messages.data_update_failed'));
         } else {
-            $comment->update($request->all());
+            $comment->update($data);
             return $this->returnSuccessWithRoute('admin.binh-luan.index', __('messages.data_update_success'));
         }
+    }
+
+    public function delete($id)
+    {
+        Comment::where('id', $id)->delete();
+        return $this->returnSuccessWithRoute('admin.binh-luan.index', __('messages.data_delete_success'));
+    }
+
+    public function listSoftDelete(){
+        $data = Comment::onlyTrashed()->get();
+        return view(
+            'admin::comment.list_soft_delete',
+            [
+                'data' => $data
+            ]
+        );
+    }
+
+    public function restore($id)
+    {
+        Comment::withTrashed()->where('id', $id)->restore();
+        return $this->returnSuccessWithRoute('admin.binh-luan.listSoftDelete', __('messages.data_restore_success'));
     }
 }
