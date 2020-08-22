@@ -45,9 +45,10 @@ class BranchSalonService
     public function store($request)
     {
         $data = request()->all();
+        // dd($data);
         $data['image'] = $request->file('image')->store('branch_salon', 'public');
 
-        $customer = BranchSalon::create($data);
+        $branchSalon = BranchSalon::create($data);
         return $this->returnSuccessWithRoute('admin.salon.index', __('messages.data_create_success'));
     }
 

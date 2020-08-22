@@ -80,6 +80,16 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return $this->postService->delete($id);
+    }
+
+    public function listSoftDelete()
+    {
+        return $this->postService->listSoftDelete();
+    }
+
+    public function restore($id)
+    {
+        return $this->postService->restore($id);
     }
 }

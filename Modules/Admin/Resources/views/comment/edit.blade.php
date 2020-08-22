@@ -24,37 +24,53 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('admin.bai-viet.update', [$data->id]) }}" method="POST">
+                    <form action="{{ route('admin.binh-luan.update', [$data->id]) }}" method="POST">
                         @csrf
                         @method('PUT')
                         <input type="hidden" name="id" value="{{ $data->id }}">
                         <div class="form-group">
                             <label>Tiêu đề bình luận:</label>
-                            <input type="text" class="form-control" name="title" value="{{ old('title', $data->title) }}"
-                                disabled>
-                            @error('name')
-                            <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
-                            @enderror
+                            <input type="text" class="form-control" name="title" value="{{ old('title', $data->title) }}" disabled>
                         </div>
                         <div class="form-group">
-                            <label for="">Nội dung</label>
-                            <textarea class="form-control" name="" id="" cols="30" rows="10" disabled></textarea>
+                            <label>Nội dung:</label>
+                            <textarea class="form-control" name="content" placeholder="Place some text here" disabled >{{ old('content', $data->content) }}</textarea>
                         </div>
                         <div class="form-group">
-                            <label>Trạng thái bình luận:</label>
+                            <label>Bài viết bình luận:</label>
+                            <input type="text" class="form-control" name="post_id" value="{{ old('post_id', $data->post->title ) }}" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label>Người bình luận:</label>
+                            <input type="text" class="form-control" name="customer_id" value="{{ old('customer_id', $data->customer->name ) }}" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label>Ngày giờ bình luận:</label>
+                            <input type="text" class="form-control" name="created_at" value="{{ old('created_at', $data->created_at ) }}" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label>Trạng thái bài viết:</label>
                             <br>
                             <div class="icheck-primary d-inline">
-                                <input type="radio" id="radioPrimary1" name="status"
-                                    value="{{ STATUS_ACCOUNT_CUSTOMER_ACTIVE }}" checked>
+                                <input
+                                        type="radio"
+                                        id="radioPrimary1"
+                                        name="status"
+                                        @if ($data->status == STATUS_COMMENT_DRAFT) checked @endif
+                                        value="{{ STATUS_POST_DRAFT }}">
                                 <label for="radioPrimary1">
-                                    Không chấp nhận
+                                    Chưa công khai
                                 </label>
                             </div>
                             <div class="icheck-primary d-inline">
-                                <input type="radio" id="radioPrimary2" name="status"
-                                    value="{{ STATUS_ACCOUNT_CUSTOMER_ACTIVE }}">
+                                <input
+                                        type="radio"
+                                        id="radioPrimary2"
+                                        name="status"
+                                        @if ($data->status == STATUS_COMMENT_PUBLIC) checked @endif
+                                        value="{{ STATUS_POST_PUBLIC }}">
                                 <label for="radioPrimary2">
-                                    Chấp nhận
+                                        Công khai
                                 </label>
                             </div>
                         </div>
@@ -72,5 +88,14 @@
 @endsection
 
 @push('scripts')
-
+    <script>
+        $(function () {
+            // Summernote
+            $('.textarea').summernote()
+            //Initialize Select2 Elements
+            $('.select2bs4').select2({
+                theme: 'bootstrap4'
+            })
+        })
+    </script>
 @endpush

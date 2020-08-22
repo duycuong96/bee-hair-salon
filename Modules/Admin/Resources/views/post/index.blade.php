@@ -69,22 +69,33 @@
                                                 {{ $row->title }}
                                             </td>
                                             <td>
-                                                {{ $row->author_id }}
+                                                {{ $row->author->name }}
                                             </td>
                                             <td>
-                                                {{ $row->category_id }}
+                                                {{ $row->category->name }}
                                             </td>
                                             <td>
-                                                {{ $row->active }}
+                                                @if ($row->status == STATUS_POST_DRAFT)
+                                                    <b class="text-warning">Chưa công khai</b>
+                                                @elseif($row->status == STATUS_POST_PUBLIC)
+                                                    <b class="text-success">Công khai</b>
+                                                @endif
                                             </td>
                                             <td>
                                                 <div class="btn-group">
-                                                <a href="{{ route('admin.bai-viet.show', [$row->id]) }}" class="btn btn-app">
-                                                    <i class="fas fa-edit "></i> Cập nhật
-                                                </a>
-                                                <a href="{{ route('admin.bai-viet.show', [$row->id]) }}" class="btn btn-app">
-                                                    <i class="fas fa-trash"></i> Xóa
-                                                </a>
+                                                    <a href="{{ route('admin.bai-viet.show', [$row->id]) }}" class="btn btn-app">
+                                                        <i class="fas fa-edit "></i> Cập nhật
+                                                    </a>
+                                                    <form
+                                                        action="{{ route('admin.bai-viet.destroy', [$row->id]) }}"
+                                                        method="post">
+                                                        @csrf
+                                                        @method('DELETE')
+
+                                                        <button type="submit" class="btn btn-app text-danger">
+                                                            <i class="far fa-trash-alt"></i> Xóa
+                                                        </button>
+                                                    </form>
                                             </div>
                                             </td>
                                         </tr>
@@ -109,47 +120,4 @@
 
 @push('scripts')
 
-    <script>
-        $(function() {
-            $("#example1").DataTable({
-                "responsive": true,
-                "autoWidth": false,
-                "paging": true,
-                "language": {
-                    "decimal": "",
-                    "emptyTable": "No data available in table",
-                    "info": "Showing _START_ to _END_ of _TOTAL_ entries",
-                    "infoEmpty": "Showing 0 to 0 of 0 entries",
-                    "infoFiltered": "(filtered from _MAX_ total entries)",
-                    "infoPostFix": "",
-                    "thousands": ",",
-                    "lengthMenu": "Danh sách: _MENU_",
-                    "loadingRecords": "Loading...",
-                    "processing": "Processing...",
-                    "search": "Tìm kiếm:",
-                    "zeroRecords": "No matching records found",
-                    "paginate": {
-                        "first": "First",
-                        "last": "Last",
-                        "next": ">>",
-                        "previous": "<<"
-                    },
-                    "aria": {
-                        "sortAscending": ": activate to sort column ascending",
-                        "sortDescending": ": activate to sort column descending"
-                    }
-                }
-            });
-            $('#example2').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
-            });
-        });
-
-    </script>
 @endpush

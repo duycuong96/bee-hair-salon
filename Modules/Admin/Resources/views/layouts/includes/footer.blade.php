@@ -28,5 +28,62 @@
 <script src="dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
+<!-- Summernote -->
+<script src="plugins/summernote/summernote-bs4.min.js"></script>
+
+<script>
+    function changeImg(input){
+        //Nếu như tồn thuộc tính file, đồng nghĩa người dùng đã chọn file mới
+        if(input.files && input.files[0]){
+            var reader = new FileReader();
+            //Sự kiện file đã được load vào website
+            reader.onload = function(e){
+                //Thay đổi đường dẫn ảnh
+                $('#image').attr('src',e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $(document).ready(function() {
+        $('#image').click(function(){
+            $('#img').click();
+        });
+    });
+</script>
+
+<script>
+    $(function() {
+        $("#example1").DataTable({
+            "responsive": true,
+            "autoWidth": false,
+            "paging": true,
+            "ordering": false,
+            "language": {
+                "decimal": "",
+                "emptyTable": "No data available in table",
+                "info": "Showing _START_ to _END_ of _TOTAL_ entries",
+                "infoEmpty": "Showing 0 to 0 of 0 entries",
+                "infoFiltered": "(filtered from _MAX_ total entries)",
+                "infoPostFix": "",
+                "thousands": ",",
+                "lengthMenu": "Danh sách: _MENU_",
+                "loadingRecords": "Loading...",
+                "processing": "Processing...",
+                "search": "Tìm kiếm:",
+                "zeroRecords": "No matching records found",
+                "paginate": {
+                    "first": "First",
+                    "last": "Last",
+                    "next": ">>",
+                    "previous": "<<"
+                },
+                "aria": {
+                    "sortAscending": ": activate to sort column ascending",
+                    "sortDescending": ": activate to sort column descending"
+                }
+            }
+        });
+    });
+</script>
 
 
