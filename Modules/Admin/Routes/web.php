@@ -42,6 +42,7 @@ Route::group([
     Route::get('them-dich-vu-salon/{id}', 'BranchSalonController@createSalonService')->name('salon.createService');
     Route::get('salon-list-khach-hang/{id}', 'BranchSalonController@salonListCustomer')->name('salon.salonListCustomer');
     Route::get('salon-lich-su-cua-khach-hang/{id}', 'BranchSalonController@customerHisstory')->name('salon.customerHisstory');
+    Route::get('salon-danh-sach-danh-gia/{id}', 'BranchSalonController@salonListReview')->name('salon.salonListReview');
 
     // page curd review
     Route::resource('danh-gia', 'ReviewController')->except('create', 'store', 'edit');

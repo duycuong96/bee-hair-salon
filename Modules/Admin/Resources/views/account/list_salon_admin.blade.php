@@ -83,9 +83,12 @@
                                                 <b class="text-danger">Đang khóa</b>
                                                 @endif
                                             </td>
-                                            <td>
+                                            <td class="btn-group">
                                                 <a href="{{ route('admin.salon.salonListCustomer', $row->id) }}" class="btn btn-app">
                                                     <i class="fas fa-users"></i>Danh sách khách hàng
+                                                </a>
+                                                <a href="{{ route('admin.salon.salonListReview', $row->id) }}" class="btn btn-app">
+                                                    <i class="fas fa-edit"></i>Danh sách bình luận
                                                 </a>
                                             </td>
                                         </tr>

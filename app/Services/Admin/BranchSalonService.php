@@ -4,6 +4,7 @@ namespace App\Services\Admin;
 use App\Models\BranchSalon;
 use App\Models\Order;
 use App\Models\Province;
+use App\Models\Review;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
 use Str;
@@ -98,6 +99,16 @@ class BranchSalonService
         $data = Order::where('customer_id', $id)->get();
         return view(
             'admin::branch_salon.order_history',
+            ['data' => $data]
+        );
+    }
+
+    public function salonListReview($id)
+    {
+        $data = Review::where('salon_id', $id)->get();
+
+        return view(
+            'admin::branch_salon.branch_salon_review',
             ['data' => $data]
         );
     }

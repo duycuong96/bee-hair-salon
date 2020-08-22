@@ -14,6 +14,7 @@ class Review extends Model
     protected $fillable = [
         'salon_id',
         'customer_id',
+        'admin_id',
         'rating_stars',
         'detail',
         'status',
