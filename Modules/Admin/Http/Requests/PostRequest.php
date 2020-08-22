@@ -17,6 +17,15 @@ class PostRequest extends FormRequest
             'title' => [
                 'required'
             ],
+            'content' => [
+                'required'
+            ],
+            'image' => [
+                'image'
+            ],
+            'category_id' => [
+                'required'
+            ]
 
         ];
         return $rule;
@@ -26,6 +35,9 @@ class PostRequest extends FormRequest
     {
         return [
             'title' => 'Tên tiêu đề',
+            'content' => 'Nội dung bài viết',
+            'image' => 'Ảnh đại diện bài viết',
+            'category_id' => 'Chuyên mục bài viết'
         ];
     }
 
