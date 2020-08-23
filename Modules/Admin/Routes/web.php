@@ -91,6 +91,7 @@ Route::group([
     Route::resource('don-hang', 'OrderController')->except('edit');
     Route::get('don-hang-dich-vu-da-xoa/{id}', 'OrderController@listSoftDelete')->name('don-hang.listSoftDelete');
     Route::get('don-hang/khoi-phuc/{id}', 'OrderController@restore')->name('don-hang.restore');
+    Route::get('order-update-status', 'OrderController@updateStatus')->name('don-hang.updateStatus');
 });
 
 

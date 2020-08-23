@@ -8,6 +8,7 @@ use App\Models\OrderService as ModelsOrderService;
 use App\Traits\WebResponseTrait;
 use App\Models\Post;
 use App\Models\Service;
+use Carbon\Carbon;
 
 class OrderService
 {
@@ -58,6 +59,7 @@ class OrderService
         $salon = BranchSalon::find($order->salon_id);
         $listServiceOrders = ModelsOrderService::where('order_id', $order->id)->get();
         $services = Service::all();
+        $now = Carbon::now('Asia/Ho_Chi_Minh');
 
         return view(
             'admin::order.show',
@@ -67,6 +69,7 @@ class OrderService
                 'salon' => $salon,
                 'listServiceOrders' => $listServiceOrders,
                 'services' => $services,
+                'now' => $now,
             ]
         );
     }
@@ -87,5 +90,18 @@ class OrderService
         ModelsOrderService::withTrashed()->where('id', $id)->restore();
         return redirect()->back()->with('success', "Khôi phục dịch vụ khỏi đơn hàng thành công");
         // return $this->returnSuccessWithRoute('admin.don-hang.listSoftDelete', __('messages.data_delete_success'));
+    }
+
+    public function updateStatus($request)
+    {
+        $data = $request->all();
+        $order = Order::find($data['order_id']);
+
+        $order->update(['status' => $data['status']]);
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Cập nhật trạng thái đơn hàng thành công',
+        ]);
     }
 }
