@@ -46,15 +46,30 @@
                     </div>
                     <div class="form-group">
                         <label>Trạng thái:</label>
-                        <select class="custom-select" name="status">
-                            <option
-                                {{ $data->status == STATUS_ACCOUNT_CUSTOMER_ACTIVE ? 'selected' : '' }}
-                                value="1">Chưa trả lời</option>
-                                <option
-                                    {{ $data->status == 2 ? 'selected' : '' }}
-                                    value="2">Đã trả lời</option>
-                        </select>
-                    </div>
+                        <br>
+                        <div class="icheck-primary d-inline">
+                          <input
+                                type="radio"
+                                id="radioPrimary1"
+                                name="status"
+                                value="{{STATUS_ACCOUNT_CUSTOMER_REGISTER}}"
+                                {{ ($data->status == STATUS_ACCOUNT_CUSTOMER_REGISTER) ? 'checked' : '' }}>
+                          <label for="radioPrimary1">
+                              Chưa trả lời
+                          </label>
+                        </div>
+                        <div class="icheck-primary d-inline">
+                          <input
+                                type="radio"
+                                id="radioPrimary2"
+                                name="status"
+                                value="{{STATUS_ACCOUNT_CUSTOMER_ACTIVE}}"
+                                {{ ($data->status == STATUS_ACCOUNT_CUSTOMER_ACTIVE) ? 'checked' : ''}}>
+                          <label for="radioPrimary2">
+                              Đã trả lời
+                          </label>
+                        </div>
+                      </div>
                     <div class="form-group d-flex justify-content-center">
                         <a href="{{ route('admin.lien-he.index') }}"
                             class="btn btn-lg btn-default mr-3">Trở lại</a>
