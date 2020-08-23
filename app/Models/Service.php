@@ -19,5 +19,6 @@ class Service extends Model
         'price',
         'sale_price',
         'estimate',
+        'status',
     ];
 }

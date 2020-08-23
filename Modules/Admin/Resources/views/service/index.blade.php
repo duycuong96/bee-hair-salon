@@ -68,6 +68,7 @@
                                     <th>Giá</th>
                                     <th>Giá sau khi giảm</th>
                                     <th>Thời gian kết thúc</th>
+                                    <th>Trạng thái</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -89,6 +90,13 @@
                                         <td>
                                             {{ $row->estimate }}
                                         </td>
+                                        <th>
+                                            @if ($row->status == STATUS_ACCOUNT_CUSTOMER_ACTIVE)
+                                                <b class="text-success">Hoạt động</b>
+                                            @else
+                                                <b class="text-danger">Không hoạt động</b>
+                                            @endif
+                                        </th>
                                         <td>
                                             <div class="btn-group">
                                                 <a href="{{ route('admin.dich-vu.show', [$row->id]) }}"
