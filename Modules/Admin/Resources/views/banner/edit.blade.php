@@ -64,17 +64,31 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label>Trạng thái:</label>
-
-                            <select class="custom-select" name="active">
-                                    <option
-                                        {{ $data->active == STATUS_ACCOUNT_CUSTOMER_ACTIVE ? 'selected' : '' }}
-                                        value="{{STATUS_ACCOUNT_CUSTOMER_ACTIVE}}">Hiện</option>
-                                    <option
-                                        {{ $data->active == STATUS_ACCOUNT_CUSTOMER_NOT_ACTIVE ? 'selected' : '' }}
-                                        value="{{STATUS_ACCOUNT_CUSTOMER_NOT_ACTIVE}}">Ẩn</option>
-                            </select>
-                        </div>
+                            <label>Trạng thái tài khoản:</label>
+                            <br>
+                            <div class="icheck-primary d-inline">
+                              <input
+                                    type="radio"
+                                    id="radioPrimary2"
+                                    name="active"
+                                    value="{{STATUS_ACCOUNT_CUSTOMER_ACTIVE}}"
+                                    {{ ($data->active == STATUS_ACCOUNT_CUSTOMER_ACTIVE) ? 'checked' : ''}}>
+                              <label for="radioPrimary2">
+                                  Hoạt động
+                              </label>
+                            </div>
+                            <div class="icheck-primary d-inline">
+                              <input
+                                    type="radio"
+                                    id="radioPrimary3"
+                                    name="active"
+                                    value="{{STATUS_ACCOUNT_CUSTOMER_NOT_ACTIVE}}"
+                                    {{ ($data->active == STATUS_ACCOUNT_CUSTOMER_NOT_ACTIVE) ? 'checked' : ''}}>
+                              <label for="radioPrimary3">
+                                  Đã khóa
+                              </label>
+                            </div>
+                          </div>
                         <hr>
                         <div class="form-group d-flex justify-content-center">
                             <a href="{{ route('admin.banner.index') }}" class="btn btn-lg btn-default mr-3">Trở lại</a>

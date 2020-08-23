@@ -83,6 +83,32 @@
                             <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
                         @enderror
                     </div>
+                    <div class="form-group">
+                        <label>Trạng thái tài khoản:</label>
+                        <br>
+                        <div class="icheck-primary d-inline">
+                          <input
+                                type="radio"
+                                id="radioPrimary2"
+                                name="status"
+                                value="{{STATUS_ACCOUNT_CUSTOMER_ACTIVE}}"
+                                {{ ($data->status == STATUS_ACCOUNT_CUSTOMER_ACTIVE) ? 'checked' : ''}}>
+                          <label for="radioPrimary2">
+                              Hoạt động
+                          </label>
+                        </div>
+                        <div class="icheck-primary d-inline">
+                          <input
+                                type="radio"
+                                id="radioPrimary3"
+                                name="status"
+                                value="{{STATUS_ACCOUNT_CUSTOMER_NOT_ACTIVE}}"
+                                {{ ($data->status == STATUS_ACCOUNT_CUSTOMER_NOT_ACTIVE) ? 'checked' : ''}}>
+                          <label for="radioPrimary3">
+                              Không hoạt động
+                          </label>
+                        </div>
+                      </div>
                     <hr>
                     <div class="form-group d-flex justify-content-center">
                         <a href="{{ route('admin.dich-vu.index') }}"

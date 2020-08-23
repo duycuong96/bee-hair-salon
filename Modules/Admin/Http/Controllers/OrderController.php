@@ -86,4 +86,9 @@ class OrderController extends AdminBaseController
     {
         return $this->orderService->restore($id);
     }
+
+    public function updateStatus(Request $request)
+    {
+        return $this->orderService->updateStatus($request);
+    }
 }

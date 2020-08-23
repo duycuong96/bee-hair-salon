@@ -39,6 +39,7 @@ class ServiceService
         $data = $request->all();
         $data['estimate'] = $data['estimate'] . ':00';
         $data['slugs'] = Str::slug($data['name'], '-');
+        $data['status'] = STATUS_POST_DRAFT;
         $array = [];
         foreach ($data['arrayImages'] as $image) {
             $img = $image->store('service', 'public');
