@@ -58,19 +58,41 @@
                     </div>
                     <div class="form-group">
                         <label>Trạng thái:</label>
-
-                        <select class="custom-select" name="status">
-                            <option
-                                {{ $data->status == STATUS_ACCOUNT_CUSTOMER_REGISTER ? 'selected' : '' }}
-                                value="{{STATUS_ACCOUNT_CUSTOMER_REGISTER}}">Chờ xét duyệt</option>
-                                <option
-                                    {{ $data->status == STATUS_ACCOUNT_CUSTOMER_ACTIVE ? 'selected' : '' }}
-                                    value="{{STATUS_ACCOUNT_CUSTOMER_ACTIVE}}">Đã xét duyệt</option>
-                                <option
-                                    {{ $data->status == STATUS_ACCOUNT_CUSTOMER_NOT_ACTIVE ? 'selected' : '' }}
-                                    value="{{STATUS_ACCOUNT_CUSTOMER_NOT_ACTIVE}}">Ẩn đánh giá</option>
-                        </select>
-                    </div>
+                        <br>
+                        <div class="icheck-primary d-inline">
+                          <input
+                                type="radio"
+                                id="radioPrimary1"
+                                name="status"
+                                value="{{STATUS_ACCOUNT_CUSTOMER_REGISTER}}"
+                                {{ ($data->status == STATUS_ACCOUNT_CUSTOMER_REGISTER) ? 'checked' : '' }}>
+                          <label for="radioPrimary1">
+                              Chờ xét duyệt
+                          </label>
+                        </div>
+                        <div class="icheck-primary d-inline">
+                          <input
+                                type="radio"
+                                id="radioPrimary2"
+                                name="status"
+                                value="{{STATUS_ACCOUNT_CUSTOMER_ACTIVE}}"
+                                {{ ($data->status == STATUS_ACCOUNT_CUSTOMER_ACTIVE) ? 'checked' : ''}}>
+                          <label for="radioPrimary2">
+                              Đã xét duyệt
+                          </label>
+                        </div>
+                        <div class="icheck-primary d-inline">
+                          <input
+                                type="radio"
+                                id="radioPrimary3"
+                                name="status"
+                                value="{{STATUS_ACCOUNT_CUSTOMER_NOT_ACTIVE}}"
+                                {{ ($data->status == STATUS_ACCOUNT_CUSTOMER_NOT_ACTIVE) ? 'checked' : ''}}>
+                          <label for="radioPrimary3">
+                              Đã ẩn
+                          </label>
+                        </div>
+                      </div>
                     <div class="form-group d-flex justify-content-center">
                         <a href="{{ route('admin.danh-gia.index') }}"
                             class="btn btn-lg btn-default mr-3">Trở lại</a>
