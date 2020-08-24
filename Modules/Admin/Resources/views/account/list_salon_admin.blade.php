@@ -18,6 +18,8 @@
 
 @section('content')
 
+
+
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
@@ -47,56 +49,35 @@
                                 mới</a>
                         </div>
                         <!-- /.card-header -->
-                        <div class="card-body">
-                            <table id="example1" class="table table-bordered table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Id</th>
-                                        <th>Tên</th>
-                                        <th>Email</th>
-                                        <th>Chức vụ</th>
-                                        <th>Trạng thái</th>
-                                        <th width="10%">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($data as $row)
-                                        <tr>
-                                            <td>
-                                                {{ $row->id }}
-                                            </td>
-                                            <td>
-                                                {{ $row->name }}
-                                            </td>
-                                            <td>
-                                                {{ $row->email }}
-                                            </td>
-                                            <td>
-                                                Quản trị
-                                            </td>
-                                            <td>
+                        <div class="card-body row">
+                            @foreach ($data as $row)
+                                    <div class="card col-3">
+                                        <img class="card-img-top" src="http://127.0.0.1:8000/storage/service/0pmqfGcsmor2muSkGZFY9GqTQtlpGwT3sjYUWPsB.jpeg" alt="Card image cap">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Salon: {{$row->name}}</h5>
+                                            <p class="card-text">
+                                                Trạng thái:
                                                 @if ($row->status == STATUS_ACCOUNT_CUSTOMER_REGISTER)
-                                                    <b class="text-warning">Chưa được kích hoạt</b>
+                                                    <b class="text-warning"> Chưa được kích hoạt</b>
                                                 @elseif($row->status == STATUS_ACCOUNT_CUSTOMER_ACTIVE)
-                                                    <b class="text-success">Đang hoạt động</b>
+                                                    <b class="text-success"> Đang hoạt động</b>
                                                 @else
-                                                <b class="text-danger">Đang khóa</b>
-                                                @endif
-                                            </td>
-                                            <td class="btn-group">
-                                                <a href="{{ route('admin.salon.salonListCustomer', $row->id) }}" class="btn btn-app">
-                                                    <i class="fas fa-users"></i>Danh sách khách hàng
-                                                </a>
-                                                <a href="{{ route('admin.salon.salonListReview', $row->id) }}" class="btn btn-app">
-                                                    <i class="fas fa-edit"></i>Danh sách bình luận
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    @endforeach
+                                                <b class="text-danger"> Đang khóa</b>
+                                                @endif</p>
 
-                                </tbody>
+                                            <a href="{{ route('admin.salon.salonListCustomer', $row->id) }}" class="btn btn-primary btn-block mt-2">
+                                                <i class="fas fa-users"></i> Danh sách khách hàng
+                                            </a>
+                                            <a href="{{ route('admin.salon.salonListReview', $row->id) }}" class="btn btn-primary btn-block mt-2">
+                                                <i class="fas fa-edit"></i> Danh sách bình luận
+                                            </a>
+                                            <a href="{{ route('admin.dich-vu-salon.registerService', $row->id) }}" class="btn btn-primary btn-block mt-2">
+                                                <i class="fab fa-usps"></i> Đăng ký dịch vụ salon
+                                            </a>
 
-                            </table>
+                                        </div>
+                                    </div>
+                            @endforeach
                         </div>
                         <!-- /.card-body -->
                     </div>
@@ -114,46 +95,46 @@
 @push('scripts')
 
     <script>
-        $(function() {
-            $("#example1").DataTable({
-                "responsive": true,
-                "autoWidth": false,
-                "paging": true,
-                "language": {
-                    "decimal": "",
-                    "emptyTable": "No data available in table",
-                    "info": "Showing _START_ to _END_ of _TOTAL_ entries",
-                    "infoEmpty": "Showing 0 to 0 of 0 entries",
-                    "infoFiltered": "(filtered from _MAX_ total entries)",
-                    "infoPostFix": "",
-                    "thousands": ",",
-                    "lengthMenu": "Danh sách: _MENU_",
-                    "loadingRecords": "Loading...",
-                    "processing": "Processing...",
-                    "search": "Tìm kiếm:",
-                    "zeroRecords": "No matching records found",
-                    "paginate": {
-                        "first": "First",
-                        "last": "Last",
-                        "next": ">>",
-                        "previous": "<<"
-                    },
-                    "aria": {
-                        "sortAscending": ": activate to sort column ascending",
-                        "sortDescending": ": activate to sort column descending"
-                    }
-                }
-            });
-            $('#example2').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
-            });
-        });
+        // $(function() {
+        //     $("#example1").DataTable({
+        //         "responsive": true,
+        //         "autoWidth": false,
+        //         "paging": true,
+        //         "language": {
+        //             "decimal": "",
+        //             "emptyTable": "No data available in table",
+        //             "info": "Showing _START_ to _END_ of _TOTAL_ entries",
+        //             "infoEmpty": "Showing 0 to 0 of 0 entries",
+        //             "infoFiltered": "(filtered from _MAX_ total entries)",
+        //             "infoPostFix": "",
+        //             "thousands": ",",
+        //             "lengthMenu": "Danh sách: _MENU_",
+        //             "loadingRecords": "Loading...",
+        //             "processing": "Processing...",
+        //             "search": "Tìm kiếm:",
+        //             "zeroRecords": "No matching records found",
+        //             "paginate": {
+        //                 "first": "First",
+        //                 "last": "Last",
+        //                 "next": ">>",
+        //                 "previous": "<<"
+        //             },
+        //             "aria": {
+        //                 "sortAscending": ": activate to sort column ascending",
+        //                 "sortDescending": ": activate to sort column descending"
+        //             }
+        //         }
+        //     });
+        //     $('#example2').DataTable({
+        //         "paging": true,
+        //         "lengthChange": false,
+        //         "searching": false,
+        //         "ordering": true,
+        //         "info": true,
+        //         "autoWidth": false,
+        //         "responsive": true,
+        //     });
+        // });
 
     </script>
 @endpush

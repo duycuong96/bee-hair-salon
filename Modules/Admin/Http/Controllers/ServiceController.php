@@ -79,11 +79,6 @@ class ServiceController extends AdminBaseController
         return $this->serviceService->delete($id);
     }
 
-    public function createServiceSalon($id) {
-        $salon_id = null;
-        $service_id = $id;
-        return $this->salonServiceService->create($salon_id, $service_id);
-    }
     public function listSoftDelete()
     {
         return $this->serviceService->listSoftDelete();

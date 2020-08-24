@@ -2,6 +2,7 @@
 
 namespace App\Services\Admin;
 
+use App\Models\BranchSalon;
 use App\Models\Service;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;

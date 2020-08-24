@@ -35,27 +35,6 @@ class SalonServiceService
         );
     }
 
-    public function create()
-    {
-        $salons = AdminSalon::
-            join(
-                    'branch_salons',
-                    'admin_salons.salon_id',
-                    '=',
-                    'branch_salons.id'
-                )
-            ->where('admin_salons.admin_id', Auth::user()->id)
-            ->get();
-
-        $services = Service::all();
-        return view(
-            'admin::salon_service.create',
-            [
-                'salons' => $salons,
-                'services' => $services,
-            ]
-        );
-    }
 
     public function store($request)
     {
@@ -68,13 +47,14 @@ class SalonServiceService
                         ->first();
 
         if ($salon == null || $service == null) {
-            return $this->returnFailedWithRoute('admin.dich-vu-salon.create', __('messages.data_not_found'));
+            // return $this->returnFailedWithRoute('/admin/dich-vu-salon/dang-ky/'. $data['salon_id'], __('messages.data_not_found'));
+            return redirect()->route('admin.dich-vu-salon.registerService', $data['salon_id'])->with('error', 'Lỗi dữ liệu');
         }
         if ($result) {
-            return $this->returnFailedWithRoute('admin.dich-vu-salon.create', __('messages.data_exist_failed'));
+            return redirect()->route('admin.dich-vu-salon.registerService', $data['salon_id'])->with('error', 'Dịch vụ đã được đăng ký');
         }
         SalonService::create($data);
-        return $this->returnSuccessWithRoute('admin.dich-vu-salon.create', __('messages.data_create_success'));
+        return redirect()->route('admin.dich-vu-salon.registerService', $data['salon_id'])->with('success', 'Đăng ký dịch vụ thành công');
     }
 
     public function show($id)
@@ -98,5 +78,18 @@ class SalonServiceService
             $customer->update($request->all());
             return $this->returnSuccessWithRoute('admin.dashboard', __('messages.data_update_success'));
         }
+    }
+
+    public function registerService($id)
+    {
+        $salon = BranchSalon::find($id);
+        $services = Service::all();
+        return view(
+            'admin::salon_service.create',
+            [
+                'salon' => $salon,
+                'services' => $services,
+            ]
+        );
     }
 }
