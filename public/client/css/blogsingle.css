@@ -67,7 +67,7 @@ h3.aside-title {
     text-transform: capitalize;
 }
 .media {
-    display: grid;
+    /* display: grid; */
     grid-auto-flow: column;
     grid-gap: 30px;
     position: relative;

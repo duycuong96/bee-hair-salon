@@ -3,6 +3,7 @@ namespace App\Services\Customer;
 
 use App\Models\BranchSalon;
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Order;
 use App\Models\OrderService;
 use App\Models\Service;
@@ -21,7 +22,8 @@ class PostService
             if ($request->category_id) $query->where('category_id', 'like', '%'.$request->category_id.'%');
         });
 
-        $dataPosts = $builder->orderBy('id', 'desc')
+        $dataPosts = $builder->where('status', STATUS_POST_PUBLIC)
+                        ->orderBy('id', 'desc')
                         ->paginate(5);
 
         $dataPosts->appends(request()->query());
@@ -41,22 +43,32 @@ class PostService
 
     public function detailPost($slug)
     {
-        return view('customer::post.show');
+        $data = Post::where('slug', $slug)->where('status', STATUS_POST_PUBLIC )->first();
+        if (!$data) {
+            abort(404);
+        }
+        $dataComments = Comment::where('post_id', $data->id)->where('status', STATUS_POST_PUBLIC)->get();
+        return view(
+            'customer::post.show',
+            [
+                'data' => $data,
+                'dataComments' => $dataComments,
+            ]
+        );
     }
 
-    // public function categoryPost($id)
-    // {
-    //     $dataCategories = Category::all();
-    //     $dataPosts = Post::where('category_id', $id)
-    //                     ->orderBy('id', 'desc')
-    //                     ->paginate(10);;
-    //     return view(
-    //         'customer::post.index',
-    //         [
-    //             'dataPosts' => $dataPosts,
-    //             'dataCategories' => $dataCategories,
-    //         ],
-    //     );
-    // }
+    public function sendComment($request, $slug)
+    {
+        $data = $request->only(
+            'content',
+        );
+        $post = Post::where('slug', $slug)->first();
+        $data['status'] = STATUS_COMMENT_APPROVE;
+        $data['post_id'] = $post->id;
+        // $data['customer_id'] = auth()->user()->id;
+        Comment::create($data);
+        return redirect()->route('customer.post.detail', $post->slug)->with('status', 'Bình luận thành công');
+    }
+
 
 }
