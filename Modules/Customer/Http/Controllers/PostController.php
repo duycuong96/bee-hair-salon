@@ -25,8 +25,8 @@ class PostController extends Controller
         return $this->postService->detailPost($slug);
     }
 
-    // public function categoryPost($id)
-    // {
-    //     return $this->postService->categoryPost($id);
-    // }
+    public function sendComment(Request $request, $slug)
+    {
+        return $this->postService->sendComment($request, $slug);
+    }
 }

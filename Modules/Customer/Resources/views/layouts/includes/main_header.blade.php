@@ -15,9 +15,9 @@
 					<input type="checkbox" id="drop" />
 						<ul class="menu">
 							<li class="mr-lg-3 mr-2 active"><a href="{{ url('/') }}">Trang chủ</a></li>
-							<li class="mr-lg-3 mr-2"><a href="/thu-vien">Salon</a></li>
-							<li class="mr-lg-3 mr-2"><a href="/">Bài viết</a></li>
-							<li class="mr-lg-3 mr-2"><a href="/ve-chung-toi">Về chúng tôi </a></li>
+                            <li class="mr-lg-3 mr-2"><a href="">Salon</a></li>
+							<li class="mr-lg-3 mr-2"><a href="{{ route('customer.post.list') }}">Bài viết</a></li>
+							<li class="mr-lg-3 mr-2"><a href="{{ route('customer.about') }}">Về chúng tôi </a></li>
 							<li class="mr-lg-3 mr-2"><a href="/lien-he">Liên hệ</a></li>
 							<li class="mr-lg-3 mr-2 p-0">
                                 <a href="{{route('customer.tai-khoan.index')}}">Tài khoản</a>
