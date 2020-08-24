@@ -99,10 +99,6 @@
                                                     class="btn btn-app text-success">
                                                     <i class="fas fa-edit"></i> Cập nhật
                                                 </a>
-                                                <a href="{{ route('admin.salon.createService', [$row->id]) }}"
-                                                    class="btn btn-app text-success ml-2">
-                                                    <i class="fas fa-plus"></i> Thêm dịch vụ
-                                                </a>
                                                 <form
                                                     action="{{ route('admin.salon.destroy', [$row->id]) }}"
                                                     method="post">
