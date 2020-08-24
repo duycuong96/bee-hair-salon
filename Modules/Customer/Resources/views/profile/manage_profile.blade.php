@@ -2,12 +2,13 @@
     <div class="card" >
         <div class="row d-flex justify-content-center">
             <div class="col-md-12">
-                <img src="{!! url('storage/'.Auth::user()->avatar) !!}" height="300px" class="card-img-top" alt="...">
+                <img id="image" src="{!! url('storage/'.Auth::user()->avatar) !!}" height="300px" width="300px" class="card-img-top mb-3" alt="...">
+
                 <form action="{{ route('customer.tai-khoan.update', Auth::user()->id) }}"
                     method="post" enctype="multipart/form-data" class="text-center">
                     @csrf
                     @method('put')
-                    <input class="form-group" type="file" name="avatar" id="">
+                    <input id="img" class="form-group" type="file" name="avatar" id="" onchange="changeImg(this)">
                     <button class="btn btn-primary" type="submit">Thay đổi ảnh đại diện</button>
                 </form>
             </div>
@@ -37,3 +38,4 @@
         </div>
     </div>
 </div>
+

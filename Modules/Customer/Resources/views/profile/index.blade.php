@@ -45,7 +45,7 @@
                             </div>
                             <div class="contact-name form-group">
                                 <label for="">Sinh nhật</label>
-                                <input type="text" class="form-control" name="birthday"
+                                <input type="date" class="form-control" name="birthday"
                                     value="{{ Auth::user()->birthday }}">
                             </div>
                             <div class="contact-name form-group">
@@ -71,3 +71,27 @@
 
 
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('client/js/jquery-3.5.1.min.js') }}"></script>
+    <script>
+        function changeImg(input){
+            //Nếu như tồn thuộc tính file, đồng nghĩa người dùng đã chọn file mới
+            if(input.files && input.files[0]){
+                var reader = new FileReader();
+                //Sự kiện file đã được load vào website
+                reader.onload = function(e){
+                    //Thay đổi đường dẫn ảnh
+                    $('#image').attr('src',e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $(document).ready(function() {
+            $('#image').click(function(){
+                $('#img').click();
+            });
+        });
+    </script>
+@endpush

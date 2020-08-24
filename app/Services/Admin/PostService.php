@@ -29,7 +29,7 @@ class PostService
 
     public function create()
     {
-        $dataCategories = Category::all();
+        $dataCategories = Category::where('status', STATUS_POST_PUBLIC )->get();
         return view(
             'admin::post.create',
             [
@@ -110,5 +110,5 @@ class PostService
         Post::withTrashed()->where('id', $id)->restore();
         return $this->returnSuccessWithRoute('admin.bai-viet.listSoftDelete', __('messages.data_restore_success'));
     }
-    
+
 }

@@ -8,7 +8,6 @@
 
     <body>
         @include('customer::layouts.includes.main_header')
-        @include('admin::layouts.includes.main_header')
 
         @yield('content')
 

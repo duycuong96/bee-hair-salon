@@ -23,14 +23,13 @@ Route::group([
     Route::post('register', 'RegisterController@register')->name('register');
 });
 
-
 Route::group([
     'prefix' => '',
     'as' => 'customer.',
 ], function () {
     Route::get('', 'HomeController@index')->name('home');
     Route::resource('lien-he', 'ContactController')->only('index', 'store');
-    Route::get('ve-chung-toi', 'AboutController@index');
+    Route::get('ve-chung-toi', 'AboutController@index')->name('about');
     // Route::get('thu-vien', 'GalleryController@index');
     Route::resource('salon', 'BranchSalonController')->only('show');
     Route::resource('dich-vu', 'ServiceController');
@@ -38,6 +37,7 @@ Route::group([
     Route::get('bai-viet', 'PostController@listPost')->name('post.list');
     Route::get('bai-viet/{slug}', 'PostController@detailPost')->name('post.detail');
     // Route::get('chuyen-muc/{id}', 'PostController@categoryPost')->name('post.category');
+    Route::post('binh-luan-bai-viet/{slug}', 'PostController@sendComment')->name('post.comment');
 
 });
 Route::group([
