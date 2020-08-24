@@ -51,9 +51,10 @@ Route::group([
     // page curd service
     Route::resource('dich-vu', 'ServiceController')->except('edit');
     Route::get('them-salon-dich-vu/{id}', 'ServiceController@createServiceSalon')->name('salon.createSalon');
-    Route::resource('dich-vu-salon', 'SalonServiceController')->except('edit');
+    Route::resource('dich-vu-salon', 'SalonServiceController')->except('create', 'edit');
     Route::get('dich-vu-lich-su-xoa', 'ServiceController@listSoftDelete')->name('dich-vu.listSoftDelete');
     Route::get('dich-vu/khoi-phuc/{id}', 'ServiceController@restore')->name('dich-vu.restore');
+    Route::get('dich-vu-salon/dang-ky/{id}', 'SalonServiceController@registerService')->name('dich-vu-salon.registerService');
     // Route::post('validate', 'CustomerController@validateData')->name('khach-hang.validate');
     // page curd account
     Route::resource('tai-khoan', 'AccountController');

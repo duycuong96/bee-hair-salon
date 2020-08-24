@@ -27,10 +27,6 @@ class SalonServiceController extends AdminBaseController
      * Show the form for creating a new resource.
      * @return Renderable
      */
-    public function create()
-    {
-        return $this->salonServiceService->create();
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -71,5 +67,9 @@ class SalonServiceController extends AdminBaseController
     public function destroy($id)
     {
         //
+    }
+    public function registerService($id)
+    {
+        return $this->salonServiceService->registerService($id);
     }
 }

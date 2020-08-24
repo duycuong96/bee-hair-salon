@@ -24,15 +24,17 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
+                    @if (session('error'))
+                        <p class="text-danger"> {{ session('error') }} </p>
+                    @elseif(session('success'))
+                        <p class="text-success"> {{ session('success') }} </p>
+                    @endif
                     <form action="{{ route('admin.dich-vu-salon.store') }}" method="POST">
                         @csrf
                         <div class="form-group">
-                              <label>Tên salon:</label>
-                              <select class="custom-select" name="salon_id">
-                                @foreach ($salons as $salon)
-                                    <option value="{{ $salon->id }}">{{ $salon->name }}</option>
-                                @endforeach
-                              </select>
+                              <label>Tên salon:</label>\
+                            <input type="hidden" name="salon_id" value="{{$salon->id}}">
+                              <input type="text" name="name" class="form-control" value="{{$salon->name}}" id="" readonly>
                             @error('name')
                             <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
                             @enderror
@@ -43,9 +45,9 @@
                                 @foreach ($services as $service)
                                     <option value="{{ $service->id }}">{{ $service->name }}</option>
                                 @endforeach
-                              </select>
-                              @error('email')
-                            <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
+                            </select>
+                            @error('email')
+                                <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
                             @enderror
                         </div>
                         <hr>
