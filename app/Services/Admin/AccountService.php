@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Carbon;
 
 class AccountService
 {
@@ -128,7 +129,7 @@ class AccountService
             'phone',
             'dob',
         );
-
+        $data['dob'] = Carbon::createFromFormat('d-m-Y', $request->dob)->format('Y-m-d H:i:s');
         // dd($data);
         try {
             if (empty($request->file())) {

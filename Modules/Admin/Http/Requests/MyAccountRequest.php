@@ -34,6 +34,9 @@ class MyAccountRequest extends FormRequest
             'phone' => [
                 'required',
             ],
+            'dob' => [
+                'required',
+            ]
         ];
 
         return $rule;
@@ -48,6 +51,7 @@ class MyAccountRequest extends FormRequest
             'password' => 'Mật khẩu',
             'phone' => 'Số điện thoại',
             'address' => 'Địa chỉ',
+            'dob' => 'Ngày sinh'
         ];
     }
 
