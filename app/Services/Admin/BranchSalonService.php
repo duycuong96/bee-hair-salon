@@ -32,15 +32,7 @@ class BranchSalonService
 
     public function create()
     {
-        $provinces = Province::all();
-        $districts = array();
-        $wards = array();
-        return view('admin::branch_salon.create',
-            [
-                'provinces'=> $provinces,
-                'districts' => $districts,
-                'wards' => $wards,
-            ]);
+        return view('admin::branch_salon.create');
     }
     public function store($request)
     {

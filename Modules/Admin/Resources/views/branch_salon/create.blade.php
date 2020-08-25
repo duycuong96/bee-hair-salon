@@ -68,41 +68,6 @@
                             <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
                             @enderror
                         </div>
-
-                      <div class="form-group">
-                        <label>Tỉnh/thành phố</label>
-                        <select name="province_code" id="provinceCode" class="form-control">
-                          <option disabled selected>Cọn Tỉnh/thành phố</option>
-                          @foreach ($provinces as $province)
-                            <option value="{{$province->code}}"> {{$province->name}} </option>
-                          @endforeach
-                        </select>
-                      </div>
-                      <div class="form-group">
-                        <label>Quận/huyện</label>
-                        <select name="province_code" id="district" class="form-control">
-                          <option disabled selected>Chọn Quận/huyện</option>
-                          @foreach ($districts as $district)
-                                <option value="{{$district->id}}"> {{$district->name}} </option>
-                          @endforeach
-                        </select>
-                      </div>
-                      <div class="form-group">
-                          <label for="">Địa chỉ</label><span class="ml-1 errorMsg">※</span>
-                          @error('post_code')
-                          <span class="ml-1 errorMsg">{{ $message }}</span>
-                          @enderror
-                          @error('address')
-                          <span class="ml-1 errorMsg">{{ $message }}</span>
-                          @enderror
-                            <div>
-                                <input type="text" name="post_code" value="{{ old('post_code') }}" class="size_s"
-                                    id="postCode" class="col-2 form-control d-inline" placeholder="500-1234">
-
-                                {{-- <input type="text" name="address" id="address" value="{{ old('address') }}"
-                                    class="mt-3 form-control -inline" placeholder=""> --}}
-                            </div>
-                        </div>
                         <hr>
                         <div class="form-group d-flex justify-content-center">
                             <a href="{{ route('admin.salon.index') }}" class="btn btn-lg btn-default mr-3">Trở lại</a>
