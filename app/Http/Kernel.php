@@ -66,6 +66,7 @@ class Kernel extends HttpKernel
         'Assign.guard' => \App\Http\Middleware\AssignGuard::class,
         'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
         'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
-        
+        'customer.status' => \App\Http\Middleware\CustomerStatus::class,
+
     ];
 }

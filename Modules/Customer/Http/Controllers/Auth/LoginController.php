@@ -9,17 +9,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use Modules\Admin\Http\Requests\Auth\LoginRequest;
 use Illuminate\Support\Arr;
+use Session;
 
 class LoginController extends Controller
 {
     use AuthenticatesUsers;
-
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = '';
 
     /**
      * Create a new controller instance.
@@ -28,7 +22,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest:customer', ['except' => 'logout']);
+        $this->middleware('guest:customer, customer.tai-khoan.index',  ['except' => 'logout']);
     }
 
     /**
@@ -50,8 +44,8 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         $this->guard()->logout();
-        $request->session()->flush();
-        $request->session()->regenerate();
+        // $request->session()->flush();
+        // $request->session()->regenerate();
         return redirect()->route('customer.home');
     }
 
@@ -71,5 +65,20 @@ class LoginController extends Controller
     protected function guard()
     {
         return Auth::guard('customer');
+    }
+
+    protected function authenticated(Request $request, $user)
+    {
+        $redirect = Session::get('redirect');
+
+        try {
+            if ($redirect) {
+                return redirect($redirect);
+            } else {
+                return redirect()->route('customer.tai-khoan.index');
+            }
+        } catch (\Exception $ex) {
+            return redirect()->route('customer.tai-khoan.index');
+        }
     }
 }

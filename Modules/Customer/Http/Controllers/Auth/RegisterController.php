@@ -3,6 +3,7 @@
 namespace Modules\Customer\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Customer;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -36,10 +37,10 @@ class RegisterController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('guest');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('guest:customer');
+    // }
 
     public function showRegistrationForm()
     {
@@ -57,7 +58,17 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:6', 'confirmed'],
+        ], [
+            'required' => ':attribute không được để trống',
+            'email' => ':attribute không đúng định dạng email',
+            'unique' => ':attribute đã tồn tại',
+            'min' => ':attribute lớn hơn 6 ký tự',
+            'confirmed' => ':attribute chưa khớp'
+        ], [
+            'email' => 'Email',
+            'password' => 'Mật khẩu',
+            'name' => 'Họ tên'
         ]);
     }
 
@@ -69,10 +80,13 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        return Customer::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'status' => STATUS_ACCOUNT_CUSTOMER_ACTIVE,
         ]);
     }
+
+
 }

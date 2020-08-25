@@ -23,11 +23,18 @@
                     @yield('title')
                 </h3>
                 @error('login')
-                <div class="mt-3">
-                    <div class="col-12 m-auto text-danger">
-                        Sai tài khoản hoặc mật khẩu
+                    <div class="mt-3">
+                        <div class="col-12 m-auto text-danger">
+                            Sai tài khoản hoặc mật khẩu
+                        </div>
                     </div>
-                </div>
+                @enderror
+                @error('expired')
+                    <div class="mt-3">
+                        <div class="col-12 m-auto text-danger">
+                            Tài khoản không được kích hoạt, vui lòng liên hệ quản trị viên
+                        </div>
+                    </div>
                 @enderror
             </div>
             <div class="contact-w3pvt-form mt-5">
