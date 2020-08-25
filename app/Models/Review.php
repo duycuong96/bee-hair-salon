@@ -18,6 +18,7 @@ class Review extends Model
         'rating_stars',
         'detail',
         'status',
+        'order_id'
     ];
     function branchSalon(){
         return $this->belongsTo('App\Models\BranchSalon', 'salon_id', 'id');
