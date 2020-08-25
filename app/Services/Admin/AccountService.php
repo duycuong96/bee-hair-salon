@@ -20,9 +20,9 @@ class AccountService
         });
 
         $data = $builder->orderBy('created_at', 'desc')
-                        ->paginate(10);
+                        ->get();
 
-        $data->appends(request()->query());
+        // $data->appends(request()->query());
 
         return view(
             'admin::account.index',
@@ -43,6 +43,7 @@ class AccountService
     {
         $data = request()->all();
         $data['password'] = Hash::make($request->password);
+        // $data['status'] = STATUS_ACCOUNT_ADMIN_ACTIVE;
         $account = Admin::create($data);
         $roles = $request->input('roles') ? $request->input('roles') : [];
         $account->assignRole($roles);

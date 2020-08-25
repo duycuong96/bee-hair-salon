@@ -60,8 +60,8 @@
                                     type="radio"
                                     id="radioPrimary1"
                                     name="status"
-                                    value="{{STATUS_ACCOUNT_CUSTOMER_REGISTER}}"
-                                    {{ ($data->status == STATUS_ACCOUNT_CUSTOMER_REGISTER) ? 'checked' : '' }}>
+                                    value="{{STATUS_ACCOUNT_ADMIN_NOT_ACTIVE}}"
+                                    {{ ($data->status == STATUS_ACCOUNT_ADMIN_NOT_ACTIVE) ? 'checked' : '' }}>
                               <label for="radioPrimary1">
                                   Chưa kích hoạt
                               </label>
@@ -71,21 +71,10 @@
                                     type="radio"
                                     id="radioPrimary2"
                                     name="status"
-                                    value="{{STATUS_ACCOUNT_CUSTOMER_ACTIVE}}"
-                                    {{ ($data->status == STATUS_ACCOUNT_CUSTOMER_ACTIVE) ? 'checked' : ''}}>
+                                    value="{{STATUS_ACCOUNT_ADMIN_ACTIVE}}"
+                                    {{ ($data->status == STATUS_ACCOUNT_ADMIN_ACTIVE) ? 'checked' : ''}}>
                               <label for="radioPrimary2">
                                   Hoạt động
-                              </label>
-                            </div>
-                            <div class="icheck-primary d-inline">
-                              <input
-                                    type="radio"
-                                    id="radioPrimary3"
-                                    name="status"
-                                    value="{{STATUS_ACCOUNT_CUSTOMER_NOT_ACTIVE}}"
-                                    {{ ($data->status == STATUS_ACCOUNT_CUSTOMER_NOT_ACTIVE) ? 'checked' : ''}}>
-                              <label for="radioPrimary3">
-                                  Đã khóa
                               </label>
                             </div>
                           </div>
