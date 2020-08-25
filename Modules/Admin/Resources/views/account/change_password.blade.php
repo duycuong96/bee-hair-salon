@@ -26,6 +26,7 @@
                 <div class="card-body">
                     <form action="{{ route('admin.submit.change.password.account') }}" method="POST">
                         @csrf
+                        <input type="hidden" name="id" value="{{ $account->id }}">
                         <div class="form-group">
                             <label>Mật khẩu mới:</label>
                             <input type="password" class="form-control" name="password" value="{{ old('password') }}">

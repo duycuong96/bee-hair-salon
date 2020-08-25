@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Admin\Http\Requests\AccountRequest;
 use App\Services\Admin\AccountService;
+use Modules\Admin\Http\Requests\ChangePasswordRequest;
 use Modules\Admin\Http\Requests\MyAccountRequest;
 
 class AccountController extends AdminBaseController
@@ -90,7 +91,7 @@ class AccountController extends AdminBaseController
         return $this->accountService->formChangePassword();
     }
 
-    public function changePassword(MyAccountRequest $request)
+    public function changePassword(ChangePasswordRequest $request)
     {
         return $this->accountService->changePassword($request);
     }

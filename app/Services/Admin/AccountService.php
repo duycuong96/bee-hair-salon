@@ -127,12 +127,15 @@ class AccountService
             'address',
             'phone',
             'dob',
-            'password',
         );
 
-        $data['password'] = Hash::make($request->password);
-        // dd($data); die;
+        // dd($data);
         try {
+            if (empty($request->file())) {
+                $data['avatar'] = Auth::user()->avatar;
+            }else {
+                $data['avatar'] = $request->file('avatar')->store('account', 'public');
+            }
             Auth::user()->update($data);
             return $this->returnSuccessWithRoute('admin.setting.account', __('messages.data_update_success'));
         }catch (\Exception $ex) {
@@ -156,6 +159,7 @@ class AccountService
         $data = $request->only(
             'password',
         );
+        $data['password'] = Hash::make($request->password);
         // dd($data); die;
         try {
             Auth::user()->update($data);
