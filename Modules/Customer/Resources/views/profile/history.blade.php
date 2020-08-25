@@ -31,23 +31,22 @@
                         <h4 class="text-center mt-5">Lịch sử đặt lịch & Đánh giá</h4>
                             <!-- The Timeline -->
 
-                            <ul class="timeline">
-                                @foreach ($data as $item)
-                                <!-- Item -->
-                                <li>
-                                    <div class="direction-{{$loop->iteration %2 == 0 ? 'r' : 'l'}}">
-                                        <div class="flag-wrapper">
-                                            <span class="flag">{{$item->branchSalon->name}}</span>
-                                            <span class="time-wrapper"><span class="time">{{$item->updated_at->format('l - d/m/Y')}}</span></span>
-                                        </div>
-                                        <div class="desc">{{$item->detail}}</div>
+                        <ul class="timeline">
+                            @foreach ($data as $item)
+                            <!-- Item -->
+                            <li>
+                                <div class="direction-{{$loop->iteration %2 == 0 ? 'r' : 'l'}}">
+                                    <div class="flag-wrapper">
+                                        <span class="flag">{{$item->branchSalon->name}}</span>
+                                        <span class="time-wrapper"><span class="time">{{$item->updated_at->format('l - d/m/Y')}}</span></span>
                                     </div>
-                                </li>
+                                    <div class="desc">{{$item->detail}}</div>
+                                </div>
+                            </li>
 
-                                @endforeach
-                            </ul>
-
-
+                            @endforeach
+                        </ul>
+                        {{ $data->links() }}
 
                     </div>
                 </form>

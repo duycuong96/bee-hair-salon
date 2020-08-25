@@ -33,7 +33,7 @@
                 <div class="info-box-content">
                   <span class="info-box-text">Tổng số khách hàng</span>
                   <span class="info-box-number">
-                      999
+                      {{ number_format($totalCustomer, 0, ',', ' ') }}
                   </span>
                 </div>
                 <!-- /.info-box-content -->
@@ -46,8 +46,8 @@
                 <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
 
                 <div class="info-box-content">
-                  <span class="info-box-text">Khách hàng trong tháng</span>
-                  <span class="info-box-number">41,410</span>
+                  <span class="info-box-text">Khách hàng tháng mới {{$now->month}} </span>
+                  <span class="info-box-number">{{number_format($totalCustomerMonth[$now->month - 1], 0, ',', ' ')}}</span>
                 </div>
                 <!-- /.info-box-content -->
               </div>
@@ -64,7 +64,7 @@
 
                 <div class="info-box-content">
                   <span class="info-box-text">Khách hàng quen</span>
-                  <span class="info-box-number">760</span>
+                  <span class="info-box-number">{{ number_format(0000, 0, ',', ' ') }}</span>
                 </div>
                 <!-- /.info-box-content -->
               </div>
@@ -76,7 +76,7 @@
                 <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
 
                 <div class="info-box-content">
-                  <span class="info-box-text">Số khách tháng trước</span>
+                  <span class="info-box-text">Số khách quen tháng trước</span>
                   <span class="info-box-number">2,000</span>
                 </div>
                 <!-- /.info-box-content -->
@@ -119,7 +119,7 @@
                   <div class="row">
                     <div class="col">
                       <p class="text-center">
-                        <strong>Bán hàng từ 1/2020 đến 8/2020</strong>
+                        <strong>Bán hàng từ 1/{{$now->year}} đến {{$now->month}} / {{$now->year}}</strong>
                       </p>
 
                       <div class="chart">
@@ -153,5 +153,77 @@
 <script src="plugins/chart.js/Chart.min.js"></script>
 
 <!-- PAGE SCRIPTS -->
-<script src="dist/js/pages/dashboard2.js"></script>
+<script>
+
+  var salesChartCanvas = $('#salesChart').get(0).getContext('2d')
+var salesChartData = {
+  labels  : ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
+  datasets: [
+    {
+      label               : 'Digital Goods',
+      backgroundColor     : 'rgba(60,141,188,0.9)',
+      borderColor         : 'rgba(60,141,188,0.8)',
+      pointRadius          : false,
+      pointColor          : '#3b8bba',
+      pointStrokeColor    : 'rgba(60,141,188,1)',
+      pointHighlightFill  : '#fff',
+      pointHighlightStroke: 'rgba(60,141,188,1)',
+      data                : [
+                                {{$totalCustomerMonth[0]}},
+                                {{$totalCustomerMonth[1]}},
+                                {{$totalCustomerMonth[2]}},
+                                {{$totalCustomerMonth[3]}},
+                                {{$totalCustomerMonth[4]}},
+                                {{$totalCustomerMonth[5]}},
+                                {{$totalCustomerMonth[6]}},
+                                {{$totalCustomerMonth[7]}},
+                                {{$totalCustomerMonth[8]}},
+                                {{$totalCustomerMonth[9]}},
+                                {{$totalCustomerMonth[10]}},
+                                {{$totalCustomerMonth[11]}},
+                            ]
+    },
+    {
+      label               : 'Electronics',
+      backgroundColor     : 'rgba(210, 214, 222, 1)',
+      borderColor         : 'rgba(210, 214, 222, 1)',
+      pointRadius         : false,
+      pointColor          : 'rgba(210, 214, 222, 1)',
+      pointStrokeColor    : '#c1c7d1',
+      pointHighlightFill  : '#fff',
+      pointHighlightStroke: 'rgba(220,220,220,1)',
+      data                : [0, 1, 0, 2, 5, 3, 4]
+    },
+  ]
+}
+
+var salesChartOptions = {
+  maintainAspectRatio : false,
+  responsive : true,
+  legend: {
+    display: false
+  },
+  scales: {
+    xAxes: [{
+      gridLines : {
+        display : false,
+      }
+    }],
+    yAxes: [{
+      gridLines : {
+        display : false,
+      }
+    }]
+  }
+}
+
+// This will get the first returned node in the jQuery collection.
+var salesChart = new Chart(salesChartCanvas, {
+    type: 'line',
+    data: salesChartData,
+    options: salesChartOptions
+  }
+)
+
+</script>
 @endpush

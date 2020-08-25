@@ -7,6 +7,7 @@ use Illuminate\Support\Arr;
 use App\Mail\MailCreateCustomer;
 use App\Models\Order;
 use Carbon\Carbon;
+use DB;
 use Hash;
 use Illuminate\Support\Str;
 
@@ -16,17 +17,24 @@ class StatisticService
     {
         $countCustomer = Customer::all()->count();
         $now = Carbon::now('Asia/Ho_Chi_Minh');
-        $countCustomerMonth = Customer::
-            whereMonth('created_at', $now->month)
-            ->whereYear('created_at', $now->year)
-            ->count();
-        // $familiarCustomers = Order:: ;
 
+        $totalCustomer = Customer::count();
+
+
+        $totalCustomerMonth = array();
+        for ($i = 1; $i < 13; $i ++){
+            $total = Customer::
+                        whereMonth('updated_at', $i)
+                        ->whereYear('updated_at', $now->year)
+                        ->count();
+            array_push($totalCustomerMonth, $total);
+        }
         return view(
             'admin::statistic.index',
             [
-                'countCustomer' => $countCustomer,
-                'countCustomerMonth' => $countCustomerMonth,
+                'now'=> $now,
+                'totalCustomer' => $totalCustomer,
+                'totalCustomerMonth' => $totalCustomerMonth,
             ]
         );
     }
