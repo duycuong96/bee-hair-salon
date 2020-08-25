@@ -24,8 +24,9 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('admin.submit.setting.account') }}" method="POST">
+                    <form action="{{ route('admin.submit.setting.account') }}" method="POST" enctype="multipart/form-data">
                         @csrf
+                        <input type="hidden" name="id" value="{{ $account->id }}">
                         <div class="form-group">
                             <label>Tên:</label>
                             <input type="text" class="form-control" name="name" value="{{ old('name', $account->name ) }}">
@@ -35,14 +36,15 @@
                         </div>
                         <div class="form-group">
                             <label>Email:</label>
-                            <input type="text" class="form-control" name="email" value="{{ old('email', $account->email) }}" disabled>
+                            <input type="text" class="form-control" name="email" value="{{ old('email', $account->email) }}" readonly>
                             @error('email')
                             <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label>Ảnh đại diện:</label>
-                            <input type="file" class="form-control" name="avatar" value="{{ old('avatar') }}">
+                            <input id="img" type="file" class="form-control" name="avatar" value="{{ old('avatar', $account->avatar) }}" onchange="changeImg(this)">
+                            <img id="image" class="img-thumbnail img-fluid mt-3" src="{!! url('storage/'.  $account->avatar) !!}" alt="">
                             @error('avatar')
                             <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
                             @enderror
@@ -63,7 +65,6 @@
                         </div>
                         <div class="form-group">
                             <label>Ngày sinh:</label>
-
                             <div class="input-group">
                               <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>

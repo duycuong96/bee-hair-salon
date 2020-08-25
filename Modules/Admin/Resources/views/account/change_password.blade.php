@@ -24,8 +24,9 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('admin.tai-khoan.store') }}" method="POST">
+                    <form action="{{ route('admin.submit.change.password.account') }}" method="POST">
                         @csrf
+                        <input type="hidden" name="id" value="{{ $account->id }}">
                         <div class="form-group">
                             <label>Mật khẩu mới:</label>
                             <input type="password" class="form-control" name="password" value="{{ old('password') }}">
@@ -35,7 +36,7 @@
                         </div>
                         <div class="form-group">
                             <label>Nhập lại mật khẩu mới:</label>
-                            <input type="password" class="form-control" name="password" value="{{ old('password') }}">
+                            <input type="password" class="form-control" name="password_confirmation" value="{{ old('password') }}">
                             @error('password')
                             <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
                             @enderror

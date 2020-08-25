@@ -48,6 +48,13 @@
                             @enderror
                         </div>
                         <div class="form-group">
+                            <label>Nhập lại mật khẩu:</label>
+                            <input type="password" class="form-control" name="password_confirmation" value="{{ old('password') }}">
+                            @error('password')
+                            <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
                             <label>Vai trò:</label>
                             <div class="select2-purple">
                               <select name="roles[]" id="roles" class="select2" multiple="multiple" data-placeholder="Chọn" data-dropdown-css-class="select2-purple" style="width: 100%;">
@@ -55,6 +62,9 @@
                                     <option value="{{ $id }}" {{ (in_array($id, old('roles', [])) || isset($user) && $user->roles->contains($id)) ? 'selected' : '' }}>{{ $roles }}</option>
                                 @endforeach
                               </select>
+                              @error('roles')
+                              <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
+                              @enderror
                             </div>
                         </div>
                         <div class="form-group">
@@ -79,6 +89,11 @@
                                 <label for="radioPrimary2">
                                         Kích hoạt
                                 </label>
+                            </div>
+                            <div class="d-block">
+                                @error('status')
+                                <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
                         <hr>

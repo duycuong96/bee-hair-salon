@@ -17,16 +17,28 @@ class MyAccountRequest extends FormRequest
     {
         $user = Auth::user();
         $rule =  [
-            'name' => ['required','min:1','max:255'],
+            'name' => [
+                'required',
+                'min:1','max:255',
+            ],
+            'email' => [
+                'required',
+                'email',
+            ],
+            'avatar' => [
+                'image',
+            ],
+            'address' => [
+                'required',
+            ],
+            'phone' => [
+                'required',
+            ],
+            'dob' => [
+                'required',
+            ]
         ];
-        if (request()->email) {
-            $rule =  [
-                'email' => 'required|email|unique:admin_users,email,'.$user->id,
-            ];
-        }
-        if(request()->password || request()->password_confirmation) {
-            $rule['password'] = 'required|confirmed|min:6|max:32';
-        }
+
         return $rule;
 
     }
@@ -37,6 +49,9 @@ class MyAccountRequest extends FormRequest
             'name' => 'Tên tài khoản',
             'email' => 'Địa chỉ email',
             'password' => 'Mật khẩu',
+            'phone' => 'Số điện thoại',
+            'address' => 'Địa chỉ',
+            'dob' => 'Ngày sinh'
         ];
     }
 

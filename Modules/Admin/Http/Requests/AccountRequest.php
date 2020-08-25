@@ -21,30 +21,26 @@ class AccountRequest extends FormRequest
                     $query->where('id', '=', auth()->user()->id);
                     $query->whereNull('deleted_at');
                 });
-                if (request()->name) {
-                    $rule['name'] = [
-                        'required'
-                    ];
-                }
-                if (request()->email) {
-                    $rule['email'] = [
-                        'required',
-                        'email',
-                        $unique,
-                    ];
-                }
-                if (request()->password) {
-                    $rule['password'] = [
-                        'required',
-                    ];
-                }
-                if (request()->address) {
-                    $rule['address'] = [
-                        'required'
-                    ];
-                }
-
-
+                $rule['name'] = [
+                    'required'
+                ];
+                $rule['email'] = [
+                    'required',
+                    'email',
+                    $unique,
+                ];
+                $rule['password'] = [
+                    'required',
+                    'min:6',
+                    'max:32',
+                    'confirmed',
+                ];
+                $rule['roles'] = [
+                    'required'
+                ];
+                $rule['status'] = [
+                    'required'
+                ];
             break;
 
             case "PUT":
@@ -62,11 +58,18 @@ class AccountRequest extends FormRequest
                     'required',
                     'email',
                 ];
-                if(request()->password) {
-                    $rule['password'] = [
-                        'required',
-                    ];
-                }
+                $rule['password'] = [
+                    'required',
+                    'min:6',
+                    'max:32',
+                    'confirmed',
+                ];
+                $rule['roles'] = [
+                    'required'
+                ];
+                $rule['status'] = [
+                    'required'
+                ];
             break;
         }
 
@@ -80,6 +83,8 @@ class AccountRequest extends FormRequest
             'name' => 'Tên tài khoản',
             'email' => 'Địa chỉ email',
             'password' => 'Mật khẩu',
+            'roles' => 'Vai trò',
+            'status' => 'Trạng thái',
         ];
     }
 
