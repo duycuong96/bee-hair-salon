@@ -52,6 +52,6 @@ Route::group([
     Route::post('dat-lich', 'BookingController@bookingSchedule')->name('bookingSchedule');
     // Route::get('tai-khoan/so-du', 'ProfileController@surplus')->name('profile.surplus');
     // Route::get('tai-khoan/thong-bao', 'ProfileController@notification')->name('profile.notification');
-    // Route::get('tai-khoan/lich-su&danh-gia', 'ProfileController@history')->name('profile.history');
+    Route::get('tai-khoan/lich-su&danh-gia', 'ProfileController@history')->name('profile.history');
 });
 
