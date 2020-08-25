@@ -57,6 +57,30 @@
                               </select>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label>Trạng thái:</label>
+                            <br>
+                            <div class="icheck-primary d-inline">
+                                <input
+                                        type="radio"
+                                        id="radioPrimary1"
+                                        name="status"
+                                        value="{{ STATUS_ACCOUNT_ADMIN_NOT_ACTIVE }}">
+                                <label for="radioPrimary1">
+                                    Chưa kích hoạt
+                                </label>
+                            </div>
+                            <div class="icheck-primary d-inline">
+                                <input
+                                        type="radio"
+                                        id="radioPrimary2"
+                                        name="status"
+                                        value="{{ STATUS_ACCOUNT_ADMIN_ACTIVE }}">
+                                <label for="radioPrimary2">
+                                        Kích hoạt
+                                </label>
+                            </div>
+                        </div>
                         <hr>
                         <div class="form-group d-flex justify-content-center">
                             <a href="{{ route('admin.tai-khoan.index') }}" class="btn btn-lg btn-default mr-3">Trở lại</a>

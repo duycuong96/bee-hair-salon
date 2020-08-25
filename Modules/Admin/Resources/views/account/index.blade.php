@@ -72,13 +72,15 @@
                                                 {{ $row->email }}
                                             </td>
                                             <td>
-                                                Quản trị
+                                                @foreach($row->roles()->pluck('name') as $role)
+                                                    <span class="badge badge-info">{{ $role }}</span>
+                                                @endforeach
                                             </td>
                                             <td>
-                                                @if ($row->status == STATUS_ACCOUNT_CUSTOMER_REGISTER)
+                                                @if ($row->status == STATUS_ACCOUNT_ADMIN_NOT_ACTIVE)
                                                     <b class="text-warning">Chưa được kích hoạt</b>
-                                                @elseif($row->status == STATUS_ACCOUNT_CUSTOMER_ACTIVE)
-                                                    <b class="text-success">Đang hoạt động</b>
+                                                @elseif($row->status == STATUS_ACCOUNT_ADMIN_ACTIVE)
+                                                    <b class="text-success">Đã kích hoạt</b>
                                                 @else
                                                 <b class="text-danger">Đang khóa</b>
                                                 @endif
