@@ -2,10 +2,11 @@
 
 namespace App\Http\Middleware;
 
+
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class CustomerStatus
+class AdminStatus
 {
     /**
      * Handle an incoming request.
@@ -18,7 +19,7 @@ class CustomerStatus
     {
         if (Auth::user()->status == 0) {
             Auth::logout();
-            return redirect()->route('customer.formLogin')
+            return redirect()->route('admin.formLogin')
                 ->withErrors(['expired' => 'account disable']);
         }
         return $next($request);
