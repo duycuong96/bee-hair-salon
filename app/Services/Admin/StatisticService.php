@@ -15,26 +15,15 @@ class StatisticService
 {
     public function customer()
     {
-        $countCustomer = Customer::all()->count();
+
         $now = Carbon::now('Asia/Ho_Chi_Minh');
-
-        $totalCustomer = Customer::count();
-
-
-        $totalCustomerMonth = array();
-        for ($i = 1; $i < 13; $i ++){
-            $total = Customer::
-                        whereMonth('updated_at', $i)
-                        ->whereYear('updated_at', $now->year)
-                        ->count();
-            array_push($totalCustomerMonth, $total);
-        }
+        $users = DB::select('SELECT month(created_at) month_date, COUNT(DISTINCT id) month_customer FROM customers WHERE year(created_at) = 2020 GROUP BY month(created_at)');
+        // dd($users);
         return view(
             'admin::statistic.index',
             [
-                'now'=> $now,
-                'totalCustomer' => $totalCustomer,
-                'totalCustomerMonth' => $totalCustomerMonth,
+                'users'=> $users,
+                'now' => $now,
             ]
         );
     }

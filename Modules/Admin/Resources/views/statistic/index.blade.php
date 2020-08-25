@@ -33,7 +33,7 @@
                 <div class="info-box-content">
                   <span class="info-box-text">Tổng số khách hàng</span>
                   <span class="info-box-number">
-                      {{ number_format($totalCustomer, 0, ',', ' ') }}
+                      {{-- {{ number_format($totalCustomer, 0, ',', ' ') }} --}}
                   </span>
                 </div>
                 <!-- /.info-box-content -->
@@ -47,7 +47,9 @@
 
                 <div class="info-box-content">
                   <span class="info-box-text">Khách hàng tháng mới {{$now->month}} </span>
-                  <span class="info-box-number">{{number_format($totalCustomerMonth[$now->month - 1], 0, ',', ' ')}}</span>
+                  <span class="info-box-number">
+                      {{-- {{number_format($totalCustomerMonth[$now->month - 1], 0, ',', ' ')}} --}}
+                </span>
                 </div>
                 <!-- /.info-box-content -->
               </div>
@@ -63,8 +65,10 @@
                 <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
 
                 <div class="info-box-content">
-                  <span class="info-box-text">Khách hàng quen</span>
-                  <span class="info-box-number">{{ number_format(0000, 0, ',', ' ') }}</span>
+                    <span class="info-box-text">Khách hàng quen</span>
+                    <span class="info-box-number">
+                      {{-- {{ number_format(0000, 0, ',', ' ') }} --}}
+                    </span>
                 </div>
                 <!-- /.info-box-content -->
               </div>
@@ -89,55 +93,27 @@
 
           <div class="row">
             <div class="col-md-12">
-              <div class="card">
-                <div class="card-header">
-                  <h5 class="card-title">Báo cáo tóm tắt hàng tháng</h5>
+                <div class="card card-primary">
+                    <div class="card-header">
+                      <h3 class="card-title">Area Chart</h3>
 
-                  <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                      <i class="fas fa-minus"></i>
-                    </button>
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-tool dropdown-toggle" data-toggle="dropdown">
-                        <i class="fas fa-wrench"></i>
-                      </button>
-                      <div class="dropdown-menu dropdown-menu-right" role="menu">
-                        <a href="#" class="dropdown-item">Action</a>
-                        <a href="#" class="dropdown-item">Another action</a>
-                        <a href="#" class="dropdown-item">Something else here</a>
-                        <a class="dropdown-divider"></a>
-                        <a href="#" class="dropdown-item">Separated link</a>
+                      <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                       </div>
                     </div>
-                    <button type="button" class="btn btn-tool" data-card-widget="remove">
-                      <i class="fas fa-times"></i>
-                    </button>
-                  </div>
-                </div>
-                <!-- /.card-header -->
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col">
-                      <p class="text-center">
-                        <strong>Bán hàng từ 1/{{$now->year}} đến {{$now->month}} / {{$now->year}}</strong>
-                      </p>
-
+                    <div class="card-body">
                       <div class="chart">
-                        <!-- Sales Chart Canvas -->
-                        <canvas id="salesChart" height="300" style="height: 300px;"></canvas>
+                        <div id="curve_chart" style="height: 500px"></div>
                       </div>
-                      <!-- /.chart-responsive -->
                     </div>
-                  </div>
-                  <!-- /.row -->
+                    <!-- /.card-body -->
                 </div>
-              </div>
-              <!-- /.card -->
             </div>
             <!-- /.col -->
           </div>
           <!-- /.row -->
-
           <!-- Main row -->
           <div class="row">
             <!-- /.col -->
@@ -149,81 +125,39 @@
 
 @endsection
 @push('scripts')
-<!-- ChartJS -->
-<script src="plugins/chart.js/Chart.min.js"></script>
+    <!-- ChartJS -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-<!-- PAGE SCRIPTS -->
+    <!-- PAGE SCRIPTS -->
+    <script type="text/javascript">
+
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+          var data = google.visualization.arrayToDataTable([
+            ['Tháng', 'Người dùng theo từng tháng'],
+            <?php
+                foreach ($users as $chart) {
+                    echo "['$chart->month_date', $chart->month_customer],";
+                }
+			?>
+
+          ]);
+
+          var options = {
+            title: 'Thống kê khách hàng năm 2020',
+            curveType: 'function',
+            legend: { position: 'bottom' }
+          };
+
+          var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+          chart.draw(data, options);
+        }
+    </script>
 <script>
 
-  var salesChartCanvas = $('#salesChart').get(0).getContext('2d')
-var salesChartData = {
-  labels  : ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
-  datasets: [
-    {
-      label               : 'Digital Goods',
-      backgroundColor     : 'rgba(60,141,188,0.9)',
-      borderColor         : 'rgba(60,141,188,0.8)',
-      pointRadius          : false,
-      pointColor          : '#3b8bba',
-      pointStrokeColor    : 'rgba(60,141,188,1)',
-      pointHighlightFill  : '#fff',
-      pointHighlightStroke: 'rgba(60,141,188,1)',
-      data                : [
-                                {{$totalCustomerMonth[0]}},
-                                {{$totalCustomerMonth[1]}},
-                                {{$totalCustomerMonth[2]}},
-                                {{$totalCustomerMonth[3]}},
-                                {{$totalCustomerMonth[4]}},
-                                {{$totalCustomerMonth[5]}},
-                                {{$totalCustomerMonth[6]}},
-                                {{$totalCustomerMonth[7]}},
-                                {{$totalCustomerMonth[8]}},
-                                {{$totalCustomerMonth[9]}},
-                                {{$totalCustomerMonth[10]}},
-                                {{$totalCustomerMonth[11]}},
-                            ]
-    },
-    {
-      label               : 'Electronics',
-      backgroundColor     : 'rgba(210, 214, 222, 1)',
-      borderColor         : 'rgba(210, 214, 222, 1)',
-      pointRadius         : false,
-      pointColor          : 'rgba(210, 214, 222, 1)',
-      pointStrokeColor    : '#c1c7d1',
-      pointHighlightFill  : '#fff',
-      pointHighlightStroke: 'rgba(220,220,220,1)',
-      data                : [0, 1, 0, 2, 5, 3, 4]
-    },
-  ]
-}
-
-var salesChartOptions = {
-  maintainAspectRatio : false,
-  responsive : true,
-  legend: {
-    display: false
-  },
-  scales: {
-    xAxes: [{
-      gridLines : {
-        display : false,
-      }
-    }],
-    yAxes: [{
-      gridLines : {
-        display : false,
-      }
-    }]
-  }
-}
-
-// This will get the first returned node in the jQuery collection.
-var salesChart = new Chart(salesChartCanvas, {
-    type: 'line',
-    data: salesChartData,
-    options: salesChartOptions
-  }
-)
 
 </script>
 @endpush
