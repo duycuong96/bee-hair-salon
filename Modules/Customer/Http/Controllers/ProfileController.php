@@ -2,7 +2,10 @@
 
 namespace Modules\Customer\Http\Controllers;
 
+use App\Models\Order;
+use App\Models\Review;
 use App\Services\Customer\ProfileService;
+use Auth;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -85,5 +88,15 @@ class ProfileController extends Controller
 
     public function changePassword(){
         return view('customer::profile.forgot_password');
+    }
+
+    public function history()
+    {
+        $data = Order::
+        join('reviews', 'orders.id', 'reviews.order_id')
+        ->where('orders.customer_id', Auth::user()->id)
+        ->get();
+
+        return view('customer::profile.history',['data' => $data]);
     }
 }

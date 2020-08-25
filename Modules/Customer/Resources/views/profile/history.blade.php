@@ -32,50 +32,19 @@
                             <!-- The Timeline -->
 
                             <ul class="timeline">
-
-                                <!-- Item 1 -->
+                                @foreach ($data as $item)
+                                <!-- Item -->
                                 <li>
-                                    <div class="direction-r">
+                                    <div class="direction-{{$loop->iteration %2 == 0 ? 'r' : 'l'}}">
                                         <div class="flag-wrapper">
-                                            <span class="flag">Salon Trần Hữu Dực, Hà Nội</span>
-                                            <span class="time-wrapper"><span class="time">Thứ 5 - 24/07/2020</span></span>
+                                            <span class="flag">{{$item->branchSalon->name}}</span>
+                                            <span class="time-wrapper"><span class="time">{{$item->updated_at->format('l - d/m/Y')}}</span></span>
                                         </div>
-                                        <div class="desc">My current employment. Way better than the position before!</div>
+                                        <div class="desc">{{$item->detail}}</div>
                                     </div>
                                 </li>
 
-                                <!-- Item 2 -->
-                                <li>
-                                    <div class="direction-l">
-                                        <div class="flag-wrapper">
-                                            <span class="flag">Salon Trần Hữu Dực, Hà Nội</span>
-                                            <span class="time-wrapper"><span class="time">Thứ 5 - 24/07/2020</span></span>
-                                        </div>
-                                        <div class="desc">My first employer. All the stuff I've learned and projects I've been working on.</div>
-                                    </div>
-                                </li>
-
-                                <!-- Item 3 -->
-                                <li>
-                                    <div class="direction-r">
-                                        <div class="flag-wrapper">
-                                            <span class="flag">Salon Trần Hữu Dực, Hà Nội</span>
-                                            <span class="time-wrapper"><span class="time">Thứ 5 - 24/07/2020</span></span>
-                                        </div>
-                                        <div class="desc">A description of all the lectures and courses I have taken and my final degree?</div>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="direction-l">
-                                        <div class="flag-wrapper">
-                                            <span class="flag">Salon Trần Hữu Dực, Hà Nội</span>
-                                            <span class="time-wrapper"><span class="time">Thứ 5 - 24/07/2020</span></span>
-                                        </div>
-                                        <div class="desc">A description of all the lectures and courses I have taken and my final degree?</div>
-                                    </div>
-                                </li>
-
+                                @endforeach
                             </ul>
 
 
