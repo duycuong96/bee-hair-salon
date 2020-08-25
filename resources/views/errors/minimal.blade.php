@@ -58,5 +58,8 @@
                 @yield('message')
             </div>
         </div>
+        <div class="flex-center">
+            @yield('content')
+        </div>
     </body>
 </html>

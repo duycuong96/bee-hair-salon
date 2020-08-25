@@ -1,6 +1,6 @@
-@extends('customer::layouts.master')
+@extends('errors::minimal')
 
-@section('title', 'Bài viết')
+@section('title', __('Tài khoản không được phép truy cập'))
 
 @push('css')
 
@@ -94,7 +94,7 @@
 
 @endpush
 
-@section('content')
+@section('message')
 
     <div class="main">
         <div class="row">

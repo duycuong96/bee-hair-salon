@@ -8,6 +8,7 @@ use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class AccountService
 {
@@ -15,6 +16,9 @@ class AccountService
 
     public function index($request)
     {
+        if (! Gate::allows('Quản trị viên')) {
+            return abort(401);
+        }
         $builder = Admin::where(function ($query) use ($request) {
             if ($request->name) $query->where('name', 'like', '%'.$request->name.'%');
         });
@@ -32,6 +36,9 @@ class AccountService
 
     public function create()
     {
+        if (! Gate::allows('Quản trị viên')) {
+            return abort(401);
+        }
         $roles = Role::get()->pluck('name', 'name');
         return view(
             'admin::account.create',
@@ -41,6 +48,10 @@ class AccountService
 
     public function store($request)
     {
+        if (! Gate::allows('Quản trị viên')) {
+            return abort(401);
+        }
+
         $data = request()->all();
         $data['password'] = Hash::make($request->password);
         // $data['status'] = STATUS_ACCOUNT_ADMIN_ACTIVE;
@@ -52,6 +63,10 @@ class AccountService
 
     public function show($id)
     {
+        if (! Gate::allows('Quản trị viên')) {
+            return abort(401);
+        }
+
         $data = Admin::find($id);
         $roles = Role::get()->pluck('name', 'name');
         return view(
@@ -65,6 +80,10 @@ class AccountService
 
     public function update($request, $id)
     {
+        if (! Gate::allows('Quản trị viên')) {
+            return abort(401);
+        }
+
         $data = $request->all();
         if($request->password){
             $data['password'] = Hash::make($request->password);
@@ -88,38 +107,63 @@ class AccountService
 
     public function formSettingAccount()
     {
+        if (! Gate::allows('Quản trị viên')) {
+            return abort(401);
+        }
+
         $account = Auth::user();
         return view('admin::account.setting_account', ['account' => $account]);
     }
 
     public function settingAccount($request)
     {
+        if (! Gate::allows('Quản trị viên')) {
+            return abort(401);
+        }
+
         $data = $request->only(
             'name',
             'avatar',
             'address',
             'phone',
             'dob',
+            'password',
         );
+
+        $data['password'] = Hash::make($request->password);
         // dd($data); die;
         try {
             Auth::user()->update($data);
-            return $this->returnSuccessWithRoute('admin.submit.setting.account', __('messages.data_update_success'));
+            return $this->returnSuccessWithRoute('admin.setting.account', __('messages.data_update_success'));
         }catch (\Exception $ex) {
             Log::error($ex);
-            return $this->returnFailedWithRoute('admin.submit.setting.account', __('messages.data_update_failed'));
+            return $this->returnFailedWithRoute('admin.setting.account', __('messages.data_update_failed'));
         }
     }
 
     public function formChangePassword()
     {
+        if (! Gate::allows('Quản trị viên')) {
+            return abort(401);
+        }
+
         $account = Auth::user();
         return view('admin::account.change_password', ['account' => $account]);
     }
 
-    public function changePassword()
+    public function changePassword($request)
     {
-
+        $data = $request->only(
+            'password',
+        );
+        // dd($data); die;
+        try {
+            Auth::user()->update($data);
+            return $this->returnSuccessWithRoute('admin.change.password.account', __('messages.data_update_success'));
+        }catch (\Exception $ex) {
+            Log::error($ex);
+            return $this->returnFailedWithRoute('admin.change.password.account', __('messages.data_update_failed'));
+        }
     }
 
     protected function returnIfDataNotFound() {
