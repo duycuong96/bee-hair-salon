@@ -1,5 +1,5 @@
 @extends('customer::layouts.master')
-@section('title', 'Đăng ký tài khoản')
+@section('title', 'Xác nhận tài khoản')
 @section('content')
 
 
@@ -22,35 +22,16 @@
                 <h3 class="heading text-center mb-3 mb-sm-5">
                     @yield('title')
                 </h3>
-                @error('login')
-                <div class="mt-3">
-                    <div class="col-12 m-auto text-danger">
-                        Sai tài khoản hoặc mật khẩu
-                    </div>
-                </div>
-                @enderror
             </div>
             <div class="contact-w3pvt-form mt-5">
-                <form action="{{ route('customer.register') }}" class="w3layouts-contact-fm" method="POST">
+                <form action="{{ route('customer.confirm') }}" class="w3layouts-contact-fm" method="POST">
                     @csrf
                     <div class="row d-flex justify-content-center">
                         <div class="col-lg-8">
-
-                            <div class="form-group">
-                                <label>Tên</label>
-                                <input class="form-control" type="text" name="name" placeholder="" value="{{ old('name') }}">
-                            </div>
-                            @error('name')
-                            <div>
-                                <label class="col-form-label text-danger">
-                                    {{ $message }}</i>
-                                </label>
-                            </div>
-                            @enderror
-
+                            <input type="hidden" name="registration_token" value="{{ $registration_token }}">
                             <div class="form-group">
                                 <label>Email</label>
-                                <input class="form-control" type="email" name="email" placeholder="" value="{{ old('email') }}">
+                                <input class="form-control" type="email" name="email" placeholder="" value="{{ $email }}" disabled>
                             </div>
                             @error('email')
                             <div>
@@ -87,7 +68,7 @@
                         </div>
                         <div class="col-lg-12 d-flex justify-content-center">
                             <div class="form-group mx-auto mt-3">
-                                <button type="submit" class="btn submit">Đăng ký</button>
+                                <button type="submit" class="btn submit">Xác nhận</button>
                             </div>
                         </div>
                     </div>

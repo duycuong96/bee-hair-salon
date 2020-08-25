@@ -13,20 +13,23 @@ Route::group([
     'as' => 'customer.',
 ], function () {
     Route::get('dang-nhap', 'LoginController@showLoginForm')->name('formLogin');
-    Route::post('login', 'LoginController@login')->name('login');
-    Route::post('logout', 'LoginController@logout')->name('logout');
+    Route::post('dang-nhap', 'LoginController@login')->name('login');
+    Route::post('dang-xuat', 'LoginController@logout')->name('logout');
     Route::get('quen-mat-khau', 'ForgotPasswordController@showLinkRequestForm')->name('password.reset.showForm');
     Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail')->name('send.link.email');
     Route::get('mat-khau/dat-lai/{token}', 'ResetPasswordController@showResetForm')->name('password.showResetForm');
     Route::post('password/reset', 'ResetPasswordController@reset')->name('password.update');
     Route::get('dang-ky', 'RegisterController@showRegistrationForm')->name('formRegister');
-    Route::post('register', 'RegisterController@register')->name('register');
+    Route::post('dang-ky', 'RegisterController@register')->name('register');
+
 });
 
 Route::group([
     'prefix' => '',
     'as' => 'customer.',
 ], function () {
+    Route::get('dang-ky/xac-nhan/{token}', 'RegisterController@showConfirmForm')->name('confirmForm');
+    Route::post('dang-ky/xac-nhan', 'RegisterController@confirm')->name('confirm');
     Route::get('', 'HomeController@index')->name('home');
     Route::resource('lien-he', 'ContactController')->only('index', 'store');
     Route::get('ve-chung-toi', 'AboutController@index')->name('about');
@@ -43,7 +46,7 @@ Route::group([
 Route::group([
     'prefix' => '',
     'as' => 'customer.',
-    'middleware' => 'Assign.guard:customer',
+    'middleware' => [ 'Assign.guard:customer', 'customer.status'],
 ], function () {
     Route::get('tai-khoan', 'ProfileController@index')->name('tai-khoan.index');
     Route::put('tai-khoan/{id}', 'ProfileController@update')->name('tai-khoan.update');

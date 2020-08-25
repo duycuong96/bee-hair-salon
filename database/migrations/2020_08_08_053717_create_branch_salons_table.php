@@ -15,7 +15,7 @@ class CreateBranchSalonsTable extends Migration
     {
         Schema::create('branch_salons', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->index('name');
+            $table->string('name');
             $table->string('image');
             $table->longText('content')->nullable();
             $table->json('work_time')->nullable();

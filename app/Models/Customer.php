@@ -18,14 +18,17 @@ class Customer extends Authenticatable
 
     protected $fillable = [
         'name',
+        'email',
+        'email_verified_at',
+        'password',
         'avatar',
         'birthday',
         'phone',
-        'email',
-        'password',
         'address',
         'ward_id',
         'status',
+        'registration_token',
+        'send_email_at',
     ];
 
     protected $hidden = [

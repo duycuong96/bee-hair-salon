@@ -83,26 +83,31 @@
             <div class="wrapper">
                 <div class="testi-top">
                     <h3 class="title-main2">Viết bình luận</h3>
-                    {{-- @guest
+                    @guest
                         <a href="{{ route('customer.formLogin') }}">Đăng nhập để bình luận</a>
-                    @endguest --}}
+                    @endguest
+
+                    @auth
+                    <div class="form-commets">
+                        <form action="{{ route('customer.post.comment', $data->slug) }}" method="post">
+                            @csrf
+                            <textarea name="content" placeholder="Viết nội dung bình luận"></textarea>
+                            <div class="media">
+                                <input type="hidden" name="customer_id" value="{{ auth()->user()->id }}">
+                                {{-- <input type="text" name="name" placeholder="" value="">
+                                <input type="email" name="email" placeholder="Email của bạn"> --}}
+                            </div>
+                            <div class="text-right">
+                                <button class="btn button-eff" type="submit">Gửi bình luận</button>
+                            </div>
+                        </form>
+                    </div>
+                    @endauth
 
 
-                        <div class="form-commets">
-                            <form action="{{ route('customer.post.comment', $data->slug) }}" method="post">
-                                @csrf
-                                <textarea name="content" placeholder="Viết nội dung bình luận"></textarea>
-                                <div class="media">
-                                    <input type="hidden" name="customer_id" value="">
-                                    {{-- <input type="text" name="name" placeholder="" value="">
-                                    <input type="email" name="email" placeholder="Email của bạn"> --}}
-                                </div>
-                                <div class="text-right">
-                                    <button class="btn button-eff" type="submit">Gửi bình luận</button>
-                                </div>
-                            </form>
-                        </div>
-                    
+
+
+
 
                 </div>
             </div>
