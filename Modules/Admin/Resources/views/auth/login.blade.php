@@ -3,12 +3,15 @@
 @section('content')
     <div class="login-box">
         <div class="login-logo">
-            <a href=""><b>Admin</b>LTE</a>
+            <a href="{{ route('customer.home') }}"><b>BEEHAIR</b>.VN</a>
         </div>
         <!-- /.login-logo -->
         <div class="card">
             <div class="card-body login-card-body">
-                <p class="login-box-msg">Sign in to start your session</p>
+                @error('expired')
+                    <p class="login-box-msg text-danger">Tài khoản không được kích hoạt, vui lòng liên hệ quản trị viên</p>
+                @enderror
+
 
                 <form action="{{ route('admin.login') }}" method="POST">
                     @csrf

@@ -25,7 +25,7 @@ Route::group([
 Route::group([
     'prefix' => 'admin',
     'as' => 'admin.',
-    'middleware' => 'Assign.guard:admin',
+    'middleware' => [ 'Assign.guard:admin', 'admin.status' ],
 ], function () {
     // page dashboard
     Route::get('/', 'DashboardController@index')->name('dashboard');
