@@ -62,7 +62,7 @@ class RegisterService
             $data['status'] = STATUS_ACCOUNT_CUSTOMER_ACTIVE ;
             $customer->update($data);
 
-            return redirect()->route('customer.home');
+            return redirect()->route('customer.formLogin');
         }
 
         return redirect()->route('customer.formLogin');
