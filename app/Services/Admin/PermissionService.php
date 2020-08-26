@@ -8,7 +8,7 @@ class PermissionService
 {
     public function index($request)
     {
-        if (! Gate::allows('Quản trị viên')) {
+        if (! Gate::allows('Quản trị viên cấp cao')) {
             return abort(401);
         }
 
@@ -16,10 +16,10 @@ class PermissionService
             if ($request->name) $query->where('name', 'like', '%'.$request->name.'%');
         });
 
-        $data = $builder->orderBy('id', 'desc')
-                        ->paginate(10);
+        $data = $builder->orderBy('created_at', 'desc')
+                        ->get();
 
-        $data->appends(request()->query());
+        // $data->appends(request()->query());
 
         return view(
             'admin::permission.index',
@@ -29,7 +29,7 @@ class PermissionService
 
     public function create()
     {
-        if (! Gate::allows('Quản trị viên')) {
+        if (! Gate::allows('Quản trị viên cấp cao')) {
             return abort(401);
         }
 
@@ -38,7 +38,7 @@ class PermissionService
 
     public function store($request)
     {
-        if (! Gate::allows('Quản trị viên')) {
+        if (! Gate::allows('Quản trị viên cấp cao')) {
             return abort(401);
         }
 
@@ -49,7 +49,7 @@ class PermissionService
 
     public function show($id)
     {
-        if (! Gate::allows('Quản trị viên')) {
+        if (! Gate::allows('Quản trị viên cấp cao')) {
             return abort(401);
         }
 
@@ -62,7 +62,7 @@ class PermissionService
 
     public function update($request, $id)
     {
-        if (! Gate::allows('Quản trị viên')) {
+        if (! Gate::allows('Quản trị viên cấp cao')) {
             return abort(401);
         }
 

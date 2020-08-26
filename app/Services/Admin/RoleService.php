@@ -9,7 +9,7 @@ class RoleService
 {
     public function index($request)
     {
-        if (! Gate::allows('Quản trị viên')) {
+        if (! Gate::allows('Quản trị viên cấp cao')) {
             return abort(401);
         }
 
@@ -18,9 +18,9 @@ class RoleService
         });
 
         $data = $builder->orderBy('created_at', 'desc')
-                        ->paginate(10);
+                        ->get();
 
-        $data->appends(request()->query());
+        // $data->appends(request()->query());
 
         return view(
             'admin::role.index',
@@ -30,7 +30,7 @@ class RoleService
 
     public function create()
     {
-        if (! Gate::allows('Quản trị viên')) {
+        if (! Gate::allows('Quản trị viên cấp cao')) {
             return abort(401);
         }
 
@@ -43,7 +43,7 @@ class RoleService
 
     public function store($request)
     {
-        if (! Gate::allows('Quản trị viên')) {
+        if (! Gate::allows('Quản trị viên cấp cao')) {
             return abort(401);
         }
 
@@ -56,7 +56,7 @@ class RoleService
 
     public function show($id)
     {
-        if (! Gate::allows('Quản trị viên')) {
+        if (! Gate::allows('Quản trị viên cấp cao')) {
             return abort(401);
         }
 
@@ -73,7 +73,7 @@ class RoleService
 
     public function update($request, $id)
     {
-        if (! Gate::allows('Quản trị viên')) {
+        if (! Gate::allows('Quản trị viên cấp cao')) {
             return abort(401);
         }
 
