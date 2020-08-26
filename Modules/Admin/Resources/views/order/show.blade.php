@@ -92,7 +92,18 @@
                           value="{{STATUS_ACCOUNT_CUSTOMER_NOT_ACTIVE}}"
                           {{ ($order->status == STATUS_ACCOUNT_CUSTOMER_NOT_ACTIVE) ? 'checked' : ''}}>
                     <label for="radioPrimary3">
-                        Đã ẩn
+                        Đang cắt tóc
+                    </label>
+                  </div>
+                  <div class="icheck-primary d-inline">
+                    <input
+                          type="radio"
+                          id="radioPrimary4"
+                          name="status"
+                          value="3"
+                          {{ ($order->status == 3) ? 'checked' : ''}}>
+                    <label for="radioPrimary4">
+                        Đã thanh toán
                     </label>
                   </div>
                 </div>

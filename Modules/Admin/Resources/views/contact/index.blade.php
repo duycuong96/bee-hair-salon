@@ -89,7 +89,7 @@
                                             <div class="btn-group">
                                                 <a href="{{ route('admin.lien-he.show', [$row->id]) }}"
                                                     class="btn btn-app text-success">
-                                                    <i class="fas fa-edit"></i> Cập nhật
+                                                    <i class="fas fa-edit"></i> Chi tiết
                                                 </a>
                                             </div>
                                         </td>
