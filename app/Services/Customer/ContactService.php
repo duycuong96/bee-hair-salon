@@ -8,6 +8,7 @@ use App\Models\Customer;
 use App\Models\Review;
 use App\Traits\WebResponseTrait;
 use App\Models\Service;
+use Auth;
 
 class ContactService
 {
@@ -19,13 +20,9 @@ class ContactService
     public function create($request)
     {
         $data = $request->all();
-        if (!empty($data['customer_id'])) {
-            $customer = Customer::find($data['customer_id']);
-            if (empty($customer)) {
-                return $this->returnSuccessWithRoute('customer.home', __('messages.data_not_found'));
-            }
-        }
+        $data['status'] = 1;
+
         Contact::create($data);
-        return $this->returnSuccessWithRoute('customer.home', __('messages.data_create_success'));
+        return redirect()->route('customer.lien-he.index')->with('success', 'Gửi liên hệ thành công');
     }
 }
