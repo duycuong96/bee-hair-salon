@@ -19,7 +19,7 @@ class CreateReviewsTable extends Migration
             $table->unsignedBigInteger('customer_id')->nullable();
             $table->unsignedBigInteger('order_id')->nullable();
             $table->integer('rating_stars');
-            $table->text('detail')->nullable();
+            $table->longText('detail')->nullable();
             $table->tinyInteger('status')->nullable();
             $table->timestamps();
             $table->softDeletes();

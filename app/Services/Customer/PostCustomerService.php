@@ -12,7 +12,7 @@ use App\Traits\WebResponseTrait;
 use App\Models\Post;
 use Auth;
 
-class PostService
+class PostCustomerService
 {
     use WebResponseTrait;
 
@@ -67,7 +67,7 @@ class PostService
         $post = Post::where('slug', $slug)->first();
         $data['status'] = STATUS_COMMENT_APPROVE;
         $data['post_id'] = $post->id;
-        // $data['customer_id'] = auth()->user()->id;
+        $data['customer_id'] = auth()->user()->id;
         Comment::create($data);
         return redirect()->route('customer.post.detail', $post->slug)->with('status', 'Bình luận thành công');
     }

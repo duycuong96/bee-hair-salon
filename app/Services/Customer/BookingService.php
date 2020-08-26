@@ -7,6 +7,7 @@ use App\Models\OrderService;
 use App\Models\Service;
 use App\Models\TimeSchedule;
 use App\Traits\WebResponseTrait;
+use Carbon\Carbon;
 
 class BookingService
 {
@@ -16,12 +17,17 @@ class BookingService
         $dataSalon = BranchSalon::all();
         $dataService = Service::all();
         $dataTime = TimeSchedule::all();
+        $now = Carbon::now('Asia/Ho_Chi_Minh');
+        $tomorrow = Carbon::tomorrow('Asia/Ho_Chi_Minh');
+        // dd($now->day);
         return view(
             'customer::booking.index',
             [
                 'dataSalon' => $dataSalon,
                 'dataService' => $dataService,
                 'dataTime' => $dataTime,
+                'now' => $now,
+                'tomorrow' => $tomorrow,
             ]
         );
     }

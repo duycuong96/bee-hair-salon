@@ -19,7 +19,7 @@
                     <a href="#"> 0 comment</a>
                 </div>
 
-                <p>{!! nl2br($row->content) !!}</p>
+                <p>{!! nl2br($row->title) !!}</p>
                 <a href="{{ route('customer.post.detail', $row->slug) }}" class="read-more btn ">Đọc bài viết</a>
             </div>
         </div>

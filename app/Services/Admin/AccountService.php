@@ -90,6 +90,7 @@ class AccountService
         if($request->password){
             $data['password'] = Hash::make($request->password);
         }
+        // dd($data);
 
         try {
             $account = Admin::find($id);
@@ -122,6 +123,7 @@ class AccountService
             'phone',
             'dob',
         );
+        // dd($data);
         $data['dob'] = Carbon::createFromFormat('d-m-Y', $request->dob)->format('Y-m-d H:i:s');
         // dd($data);
         try {

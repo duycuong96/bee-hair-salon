@@ -18,10 +18,21 @@
                             <li class="mr-lg-3 mr-2"><a href="{{ route('customer.branchSalon.index') }}">Salon</a></li>
 							<li class="mr-lg-3 mr-2"><a href="{{ route('customer.post.list') }}">Bài viết</a></li>
 							<li class="mr-lg-3 mr-2"><a href="{{ route('customer.about') }}">Về chúng tôi </a></li>
-							<li class="mr-lg-3 mr-2"><a href="/lien-he">Liên hệ</a></li>
-							<li class="mr-lg-3 mr-2 p-0">
-                                <a href="{{route('customer.tai-khoan.index')}}">Tài khoản</a>
-							</li>
+                            <li class="mr-lg-3 mr-2"><a href="/lien-he">Liên hệ</a></li>
+                            @guest
+                                <li class="mr-lg-3 mr-2 p-0">
+                                    <a href="{{route('customer.formRegister')}}">Đăng ký</a>
+                                </li>
+                                <li class="mr-lg-3 mr-2 p-0">
+                                    <a href="{{route('customer.formLogin')}}">Đăng nhập</a>
+                                </li>
+                            @endguest
+                            @auth
+                                <li class="mr-lg-3 mr-2 p-0">
+                                    <a href="{{route('customer.tai-khoan.index')}}">Tài khoản</a>
+                                </li>
+                            @endauth
+
 						</ul>
 				</nav>
 			</div>

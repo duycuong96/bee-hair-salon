@@ -31,26 +31,14 @@
                                 </ul> <!-- fieldsets -->
                                 <fieldset class="">
                                     <div class="form-card box-salon">
-                                        <h2 class="fs-title">Chọn salon bạn muốn đặt lịch</h2>
-                                        <select class="form-control">
-                                            <option selected>Chọn tỉnh/thành phố</option>
-                                            <option>Hà Nội</option>
-                                            <option>Thành phố HCM</option>
-                                        </select>
-                                        <br>
-                                        <select class="form-control">
-                                            <option selected>Chọn quận/huyện</option>
-                                            <option>Hoàn Kiếm</option>
-                                            <option>Thủ Đức</option>
-                                        </select>
-                                        <br>
+                                        <h2 class="fs-title mb-5">Chọn salon bạn muốn đặt lịch</h2>
                                         @include('customer::booking.booking_salon')
                                     </div>
                                     <input type="button" name="next" class="btn next action-button" value="Tiếp theo" />
                                 </fieldset>
                                 <fieldset>
                                     <div class="form-card">
-                                        <h2 class="fs-title">Mời bạn chọn dịch vụ</h2>
+                                        <h2 class="fs-title mb-5">Mời bạn chọn dịch vụ</h2>
                                         @include('customer::booking.booking_service')
                                     </div>
                                     <input type="button" name="previous" class="previous action-button-previous"

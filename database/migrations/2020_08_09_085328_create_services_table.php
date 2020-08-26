@@ -17,7 +17,7 @@ class CreateServicesTable extends Migration
             $table->id();
             $table->string('name', 255);
             $table->string('slugs', 255)->nullable();
-            $table->text('detail')->nullable();
+            $table->longText('detail')->nullable();
             $table->json('images')->nullable();
             $table->unsignedBigInteger('price')->default(0);
             $table->unsignedInteger('sale_price')->default(0);

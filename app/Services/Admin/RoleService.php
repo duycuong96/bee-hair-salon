@@ -18,9 +18,9 @@ class RoleService
         });
 
         $data = $builder->orderBy('created_at', 'desc')
-                        ->paginate(10);
+                        ->get();
 
-        $data->appends(request()->query());
+        // $data->appends(request()->query());
 
         return view(
             'admin::role.index',
