@@ -29,4 +29,12 @@ class StatisticController extends Controller
     public function service(){
         return $this->statisticService->service();
     }
+    public function order()
+    {
+        return $this->statisticService->order();
+    }
+    public function revenueSalon($id)
+    {
+        return $this->statisticService->revenueSalon($id);
+    }
 }
