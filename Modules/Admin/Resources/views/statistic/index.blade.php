@@ -1,6 +1,6 @@
 @extends('admin::layouts.master')
 
-@section('title', 'Quản lý khách hàng')
+@section('title', 'Thống kê khách hàng')
 
 @section('content')
     <!-- Content Header (Page header) -->
