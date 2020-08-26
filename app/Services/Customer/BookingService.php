@@ -48,7 +48,7 @@ class BookingService
         $now = Carbon::now('Asia/Ho_Chi_Minh');
         $tomorrow = Carbon::tomorrow('Asia/Ho_Chi_Minh');
 
-        $data = $request->all();
+        // $data = $request->all();
         // dd($data);
         $dataOrder = $request->only(
             'salon_id',
