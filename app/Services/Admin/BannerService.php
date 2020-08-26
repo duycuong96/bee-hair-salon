@@ -46,6 +46,10 @@ class BannerService
         }
 
         $data = request()->all();
+        // dd($request->hasFile('image'));
+        if ($request->hasFile('image')  == false) {
+            return redirect()->route('admin.banner.create')->with('error', 'Bạn phải thêm ảnh')->withInput();
+        }
         $data['image'] = $request->file('image')->store('banner', 'public');
         $data['active'] = STATUS_ACCOUNT_CUSTOMER_NOT_ACTIVE;
 

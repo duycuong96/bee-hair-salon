@@ -56,7 +56,7 @@
                                         <th>Id</th>
                                         <th>Tên</th>
                                         <th>Ảnh</th>
-                                        <th>Vị trí</th>
+                                        {{-- <th>Vị trí</th> --}}
                                         <th>Trạng thái</th>
                                         <th width="10%">Action</th>
                                     </tr>
@@ -71,11 +71,11 @@
                                                 {{ $row->name }}
                                             </td>
                                             <td>
-                                                <img src="{!! storage_path($row->image) !!}" alt="" height="100px">
+                                                <img src="{!! url('storage/'.  $row->image) !!}" height="100px" alt="">
                                             </td>
-                                            <td>
+                                            {{-- <td>
                                                 {{$row->location}}
-                                            </td>
+                                            </td> --}}
                                             <td>
                                                 @if($row->active == STATUS_ACCOUNT_CUSTOMER_ACTIVE)
                                                     <b class="text-success">Hiện</b>
