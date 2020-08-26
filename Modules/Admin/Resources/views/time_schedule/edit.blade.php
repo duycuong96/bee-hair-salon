@@ -76,5 +76,19 @@
 @endsection
 
 @push('scripts')
+<script>
+    $(function () {
 
+        //Timepicker
+        $('#time-start').datetimepicker({
+            pickTime: true,
+            format: 'HH:mm:ss',
+        })
+        $('#time-end').datetimepicker({
+            pickTime: true,
+            format: 'HH:mm:ss',
+        })
+
+    })
+</script>
 @endpush
