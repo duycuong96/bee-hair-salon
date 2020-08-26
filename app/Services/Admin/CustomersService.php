@@ -8,19 +8,24 @@ use App\Mail\MailCreateCustomer;
 use Carbon\Carbon;
 use Hash;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Gate;
 
 class CustomersService
 {
     public function index($request)
     {
+        if (! Gate::allows('Quản trị viên')) {
+            return abort(401);
+        }
+
         $builder = Customer::where(function ($query) use ($request) {
             if ($request->name) $query->where('name', 'like', '%'.$request->name.'%');
         });
 
         $data = $builder->orderBy('created_at', 'desc')
-                        ->paginate(10);
+                        ->get();
 
-        $data->appends(request()->query());
+        // $data->appends(request()->query());
 
         return view(
             'admin::customer.index',
@@ -30,11 +35,19 @@ class CustomersService
 
     public function create()
     {
+        if (! Gate::allows('Quản trị viên')) {
+            return abort(401);
+        }
+
         return view('admin::customer.create');
     }
 
     public function store($request)
     {
+        if (! Gate::allows('Quản trị viên')) {
+            return abort(401);
+        }
+
         $data = request()->all();
         $email = $request->email;
         $data['registration_token'] = Str::random(60);
@@ -49,6 +62,10 @@ class CustomersService
 
     public function show($id)
     {
+        if (! Gate::allows('Quản trị viên')) {
+            return abort(401);
+        }
+
         $data = Customer::find($id);
         return view(
             'admin::customer.edit',
@@ -58,6 +75,10 @@ class CustomersService
 
     public function update($request, $id)
     {
+        if (! Gate::allows('Quản trị viên')) {
+            return abort(401);
+        }
+
         $customer = Customer::find($id);
         if (empty($customer)) {
             return redirect()->route('admin.khach-hang.index');

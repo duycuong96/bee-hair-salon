@@ -14,20 +14,25 @@ use Carbon\Carbon;
 use Illuminate\Support\Str;
 use App\Traits\WebResponseTrait;
 use Auth;
+use Illuminate\Support\Facades\Gate;
 
 class SalonServiceService
 {
     use WebResponseTrait;
     public function index($request)
     {
+        if (! Gate::allows('Quản trị viên')) {
+            return abort(401);
+        }
+
         $builder = Customer::where(function ($query) use ($request) {
             if ($request->name) $query->where('name', 'like', '%' . $request->name . '%');
         });
 
         $data = $builder->orderBy('created_at', 'desc')
-            ->paginate(10);
+                        ->get();
 
-        $data->appends(request()->query());
+        // $data->appends(request()->query());
 
         return view(
             'admin::customer.index',
@@ -38,6 +43,10 @@ class SalonServiceService
 
     public function store($request)
     {
+        if (! Gate::allows('Quản trị viên')) {
+            return abort(401);
+        }
+
         $data = $request->all();
         $salon = BranchSalon::find($data['salon_id']);
         $service = Service::find($data['service_id']);
@@ -59,6 +68,10 @@ class SalonServiceService
 
     public function show($id)
     {
+        if (! Gate::allows('Quản trị viên')) {
+            return abort(401);
+        }
+
         $data = Customer::find($id);
         if (empty($data)) {
             return $this->returnFailedWithRoute('admin.khach-hang.index', __('messages.data_not_found'));
@@ -71,6 +84,10 @@ class SalonServiceService
 
     public function update($request, $id)
     {
+        if (! Gate::allows('Quản trị viên')) {
+            return abort(401);
+        }
+
         $customer = Customer::find($id);
         if (empty($customer)) {
             return $this->returnSuccessWithRoute('admin.dashboard', __('messages.data_not_found'));

@@ -4,12 +4,17 @@ namespace App\Services\Admin;
 use App\Models\Contact;
 use App\Traits\WebResponseTrait;
 use App\Models\Review;
+use Illuminate\Support\Facades\Gate;
 
 class ContactService
 {
     use WebResponseTrait;
     public function index($request)
     {
+        if (! Gate::allows('Quản trị viên')) {
+            return abort(401);
+        }
+
         $builder = Contact::where(function ($query) use ($request) {
             if ($request->name) $query->where('name', 'like', '%'.$request->name.'%');
         });
@@ -27,6 +32,10 @@ class ContactService
 
     public function show($id)
     {
+        if (! Gate::allows('Quản trị viên')) {
+            return abort(401);
+        }
+
         $data = Contact::find($id);
         if (empty($data)) {
             return $this->returnSuccessWithRoute('admin.lien-he.index', __('messages.data_not_found'));
@@ -39,6 +48,10 @@ class ContactService
 
     public function update($request, $id)
     {
+        if (! Gate::allows('Quản trị viên')) {
+            return abort(401);
+        }
+
         $contact = Contact::find($id);
 
         if (empty($contact)) {

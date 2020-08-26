@@ -11,11 +11,15 @@ use Carbon\Carbon;
 use DB;
 use Hash;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Gate;
 
 class StatisticService
 {
     public function customer()
     {
+        if (! Gate::allows('Quản trị viên')) {
+            return abort(401);
+        }
 
         $now = Carbon::now('Asia/Ho_Chi_Minh');
         $totalCustomer = Customer::count();
@@ -38,6 +42,10 @@ class StatisticService
 
     public function revenue()
     {
+        if (! Gate::allows('Quản trị viên')) {
+            return abort(401);
+        }
+
         $now = Carbon::now('Asia/Ho_Chi_Minh');
         $totalOrders = Order::count();
         $totalOrderMonth = DB::table('orders')
@@ -57,6 +65,10 @@ class StatisticService
 
     public function service()
     {
+        if (! Gate::allows('Quản trị viên')) {
+            return abort(401);
+        }
+
         $now = Carbon::now('Asia/Ho_Chi_Minh');
         $totalOrderService = OrderService::count();
         $totalOrderServiceMonth = DB::table('order_service')

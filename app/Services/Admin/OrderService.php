@@ -9,6 +9,7 @@ use App\Traits\WebResponseTrait;
 use App\Models\Post;
 use App\Models\Service;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Gate;
 
 class OrderService
 {
@@ -16,6 +17,10 @@ class OrderService
 
     public function confirmOrder()
     {
+        if (! Gate::allows('Quản trị viên')) {
+            return abort(401);
+        }
+
         $data = Order::where('status', STATUS_ACCOUNT_CUSTOMER_REGISTER)->get();
         return view(
             'admin::order.index',
@@ -24,6 +29,10 @@ class OrderService
     }
     public function history()
     {
+        if (! Gate::allows('Quản trị viên')) {
+            return abort(401);
+        }
+
         $data = Order::where('status', STATUS_ACCOUNT_CUSTOMER_NOT_ACTIVE)->get();
         return view(
             'admin::order.index',
@@ -33,6 +42,10 @@ class OrderService
 
     public function index()
     {
+        if (! Gate::allows('Quản trị viên')) {
+            return abort(401);
+        }
+
         $data = Order::all();
         return view(
             'admin::order.index',
@@ -42,6 +55,10 @@ class OrderService
 
     public function store($request)
     {
+        if (! Gate::allows('Quản trị viên')) {
+            return abort(401);
+        }
+
         $data = $request->all();
         $data['price'] = Service::find($data['service_id'])->sale_price;
         $service = ModelsOrderService::where('order_id', $data['order_id'])->where('service_id', $data['service_id'])->first();
@@ -54,6 +71,10 @@ class OrderService
 
     public function show($id)
     {
+        if (! Gate::allows('Quản trị viên')) {
+            return abort(401);
+        }
+
         $order = Order::find($id);
         $customer = Customer::find($order->customer_id);
         $salon = BranchSalon::find($order->salon_id);
@@ -75,6 +96,10 @@ class OrderService
     }
     public function delete($id)
     {
+        if (! Gate::allows('Quản trị viên')) {
+            return abort(401);
+        }
+
         ModelsOrderService::where('id', $id)->delete();
         // return $this->returnSuccessWithRoute('admin.don-hang.show', __('messages.data_delete_success'));
         return redirect()->back()->with('delete', "Xóa dịch vụ khỏi đơn hàng thành công");
@@ -82,11 +107,19 @@ class OrderService
 
     public function listSoftDelete($id)
     {
+        if (! Gate::allows('Quản trị viên')) {
+            return abort(401);
+        }
+
         $data = ModelsOrderService::where('order_id', $id)->onlyTrashed()->get();
         return view('admin::order.listSoftDelete', ['data' => $data]);
     }
     public function restore($id)
     {
+        if (! Gate::allows('Quản trị viên')) {
+            return abort(401);
+        }
+
         ModelsOrderService::withTrashed()->where('id', $id)->restore();
         return redirect()->back()->with('success', "Khôi phục dịch vụ khỏi đơn hàng thành công");
         // return $this->returnSuccessWithRoute('admin.don-hang.listSoftDelete', __('messages.data_delete_success'));

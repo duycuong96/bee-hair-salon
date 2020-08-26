@@ -8,20 +8,27 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
 use Str;
 use App\Traits\WebResponseTrait;
+use Illuminate\Support\Facades\Gate;
 
 class ServiceService
 {
     use WebResponseTrait;
+
     public function index($request)
     {
+        if (! Gate::allows('Quản trị viên')) {
+            return abort(401);
+        }
+
         $builder = Service::where(function ($query) use ($request) {
             if ($request->name) $query->where('name', 'like', '%' . $request->name . '%');
         });
 
         $data = $builder->orderBy('created_at', 'desc')
-            ->paginate(10);
+                        ->get();
 
-        $data->appends(request()->query());
+        // $data->appends(request()->query());
+
         foreach ($data as $item) {
             $item->images = json_decode($item->images);
         }
@@ -33,10 +40,18 @@ class ServiceService
 
     public function create()
     {
+        if (! Gate::allows('Quản trị viên')) {
+            return abort(401);
+        }
+
         return view('admin::service.create');
     }
     public function store($request)
     {
+        if (! Gate::allows('Quản trị viên')) {
+            return abort(401);
+        }
+
         $data = $request->all();
         $data['estimate'] = $data['estimate'] . ':00';
         $data['slugs'] = Str::slug($data['name'], '-');
@@ -55,6 +70,10 @@ class ServiceService
 
     public function show($id)
     {
+        if (! Gate::allows('Quản trị viên')) {
+            return abort(401);
+        }
+
         $data = Service::find($id);
         if (empty($data)) {
             return $this->returnFailedWithRoute('admin.dich-vu.index', __('messages.data_update_failed'));
@@ -68,6 +87,10 @@ class ServiceService
 
     public function update($request, $id)
     {
+        if (! Gate::allows('Quản trị viên')) {
+            return abort(401);
+        }
+
         $data = request()->all();
         $service = Service::find($id);
         $data['slugs'] = Str::slug($data['name'], '-');
@@ -92,6 +115,10 @@ class ServiceService
 
     public function delete($id)
     {
+        if (! Gate::allows('Quản trị viên')) {
+            return abort(401);
+        }
+
         $data = Service::find($id);
         if (empty($data)) {
             return $this->returnFailedWithRoute('admin.dich-vu.index', __('messages.data_update_failed'));
@@ -100,7 +127,12 @@ class ServiceService
         return $this->returnSuccessWithRoute('admin.dich-vu.index', __('messages.data_delete_success'));
     }
 
-    public function listSoftDelete(){
+    public function listSoftDelete()
+    {
+        if (! Gate::allows('Quản trị viên')) {
+            return abort(401);
+        }
+
         $data = Service::onlyTrashed()->get();
         return view(
             'admin::service.listSoftDelete',
@@ -109,6 +141,10 @@ class ServiceService
     }
     public function restore($id)
     {
+        if (! Gate::allows('Quản trị viên')) {
+            return abort(401);
+        }
+
         Service::withTrashed()->where('id', $id)->restore();
         return $this->returnSuccessWithRoute('admin.dich-vu.listSoftDelete', __('messages.data_create_success'));
     }
