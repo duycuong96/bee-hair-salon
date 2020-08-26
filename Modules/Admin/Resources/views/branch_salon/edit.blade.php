@@ -87,6 +87,43 @@
                             <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
                             @enderror
                         </div>
+                        <div class="form-group no-print">
+                            <label>Trạng thái:</label>
+                            <br>
+                            <div class="icheck-primary d-inline">
+                              <input
+                                    type="radio"
+                                    id="radioPrimary1"
+                                    name="status"
+                                    value="{{STATUS_ACCOUNT_CUSTOMER_REGISTER}}"
+                                    {{ ($data->status == STATUS_ACCOUNT_CUSTOMER_REGISTER) ? 'checked' : '' }}>
+                              <label for="radioPrimary1">
+                                  Chưa hoạt đông
+                              </label>
+                            </div>
+                            <div class="icheck-primary d-inline">
+                              <input
+                                    type="radio"
+                                    id="radioPrimary2"
+                                    name="status"
+                                    value="{{STATUS_ACCOUNT_CUSTOMER_ACTIVE}}"
+                                    {{ ($data->status == STATUS_ACCOUNT_CUSTOMER_ACTIVE) ? 'checked' : ''}}>
+                              <label for="radioPrimary2">
+                                  Đã hoạt động
+                              </label>
+                            </div>
+                            <div class="icheck-primary d-inline">
+                              <input
+                                    type="radio"
+                                    id="radioPrimary3"
+                                    name="status"
+                                    value="{{STATUS_ACCOUNT_CUSTOMER_NOT_ACTIVE}}"
+                                    {{ ($data->status == STATUS_ACCOUNT_CUSTOMER_NOT_ACTIVE) ? 'checked' : ''}}>
+                              <label for="radioPrimary3">
+                                  Đã đóng cửa
+                              </label>
+                            </div>
+                          </div>
                         <input type="hidden" name="ward_id" value="2">
                         <input type="hidden" name="admin" value="2">
                         <hr>

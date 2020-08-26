@@ -10,6 +10,7 @@ use App\Services\Admin\PostService;
 
 class PostController extends Controller
 {
+    protected $postService;
     public function __construct(PostService $postService)
     {
         $this->postService = $postService;

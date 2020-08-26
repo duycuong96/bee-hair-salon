@@ -23,9 +23,9 @@
         <h3 class="heading text-center mb-3 mb-sm-5">salon {{$salon->name}} </h3>
         <div class="single-w3pvt-page mt-md-5 mt-4 px-lg-5">
             <div class="content-sing-w3ls">
-                <img class="img-fluid" src="{!! url('storage/'.  $salon->thumb_img) !!}" alt="">
+                <img class="img-fluid" src="{!! url('storage/'.  $salon->image) !!}" alt="">
                 <h4>Một vài nét về cửa hàng</h4>
-                <p> {{$salon->content }} </p>
+                {{-- <p> {{$salon->content }} </p> --}}
             </div>
             <div class="row my-lg-5 mt-3 mx-0">
                 <div class="col-lg-6 text-info pl-0">
@@ -34,10 +34,7 @@
                 <div class="col-lg-6 mt-3 team-img">
                     <div class="row">
                         <div class="col-6">
-                            <img class="img-fluid" src="{!! url('storage/'.  $salon->thumb_img) !!}" alt="salon-image">
-                        </div>
-                        <div class="col-6">
-                            <img class="img-fluid" src="{!! url('storage/'.  $salon->thumb_img) !!}" alt="salon-image">
+                            <img class="img-fluid" src="{!! url('storage/'.  $salon->image) !!}" alt="salon-image">
                         </div>
                     </div>
                 </div>
@@ -58,28 +55,7 @@
                 </ul>
                 {{ $reviews->links() }}
             </div>
-            <div class="comment-bottom w3pvt_mail_grid_right p-0 my-lg-5 my-4">
-                <form action="#" class="w3ls-contact-fm" method="post">
 
-
-                    <div class="form-group">
-                        <label>Write Message</label>
-                        <textarea class="form-control" name="Message" placeholder="" required=""></textarea>
-                    </div>
-                    <div class="row leave-comment">
-                        <div class="col-lg-6 form-group">
-                            <label>First Name</label>
-                            <input class="form-control" type="text" name="Name" placeholder="" required="">
-                        </div>
-                        <div class="col-lg-6 form-group">
-                            <label>Email</label>
-                            <input class="form-control" type="email" name="Email" placeholder="" required="">
-                        </div>
-                    </div>
-
-                    <button type="submit" class="btn read mt-3">Submit</button>
-                </form>
-            </div>
 
         </div>
 

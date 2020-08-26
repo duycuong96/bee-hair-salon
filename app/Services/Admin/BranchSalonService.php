@@ -55,7 +55,6 @@ class BranchSalonService
             'end' => $request->end,
         ];
         $data['work_time'] = json_encode($work_time);
-        // dd($data);
         $data['image'] = $request->file('image')->store('branch_salon', 'public');
 
         $branchSalon = BranchSalon::create($data);
@@ -96,7 +95,8 @@ class BranchSalonService
                 'end' => $request->end,
             ];
             $data['work_time'] = json_encode($work_time);
-            $branchSalon->update($data);
+            // dd($data);
+            $branchSalon->update($request->all());
             return $this->returnSuccessWithRoute('admin.salon.index', __('messages.data_update_success'));
         }
 

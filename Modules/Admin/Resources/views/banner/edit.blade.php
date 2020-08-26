@@ -42,6 +42,7 @@
                             <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
                             @enderror
                         </div>
+                            <img src="{!! url('storage/'.  $data->image) !!}" height="100px" alt="">
                         <div class="form-group">
                             <label>Banner:</label>
                             <input type="file" class="form-control" name="image" value="{{ old('image') }}">

@@ -119,7 +119,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="{{ route('admin.vai-tro.create') }}"
+            <a href="{{ route('admin.banner.create') }}"
                 class="nav-link {{ request()->routeIs('admin.banner.create') ? 'active' : '' }}">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Thêm mới</p>

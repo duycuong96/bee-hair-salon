@@ -43,6 +43,9 @@
                         <div class="form-group">
                             <label>Banner:</label>
                             <input type="file" class="form-control" name="image" value="{{ old('image') }}">
+                            @if (session('error'))
+                                <p class="text-danger">{{session('error')}}</p>
+                            @endif
                             @error('image')
                             <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
                             @enderror
