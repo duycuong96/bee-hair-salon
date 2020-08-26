@@ -1,6 +1,7 @@
 <?php
 namespace App\Services\Admin;
 
+use App\Mail\MailFinishOrder;
 use App\Models\BranchSalon;
 use App\Models\Customer;
 use App\Models\Order;
@@ -10,6 +11,7 @@ use App\Models\Post;
 use App\Models\Service;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Gate;
+use Mail;
 
 class OrderService
 {
@@ -129,8 +131,12 @@ class OrderService
     {
         $data = $request->all();
         $order = Order::find($data['order_id']);
-
+        if ($data['status'] == 3 ) {
+            $listServiceOrders = ModelsOrderService::where('order_id', $data['order_id'])->get();
+            Mail::to($order->customer->email)->send(new MailFinishOrder($order, $listServiceOrders));
+        }
         $order->update(['status' => $data['status']]);
+
 
         return response()->json([
             'status' => 'success',

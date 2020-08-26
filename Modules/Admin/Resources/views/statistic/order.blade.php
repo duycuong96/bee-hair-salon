@@ -1,6 +1,6 @@
 @extends('admin::layouts.master')
 
-@section('title', 'Quản lý')
+@section('title', 'Thống kê doanh thu')
 
 @section('content')
     <!-- Content Header (Page header) -->
@@ -24,69 +24,42 @@
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
-            <!-- Small boxes (Stat box) -->
-            <div class="row">
-                <!-- ./col -->
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-warning">
-                        <div class="inner">
-                            <h3>{{number_format($totalCustomer, 0, ',', ' ')}}</h3>
+          <!-- Info boxes -->
+          <div class="row">
+            <div class="col-12 col-sm-6 col-md-6">
+              <div class="info-box">
+                <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
 
-                            <p>Khách hàng</p>
-                        </div>
-                        <div class="icon">
-                            <i class="ion ion-person-add"></i>
-                        </div>
-                        <a href="{{route('admin.khach-hang.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                    </div>
+                <div class="info-box-content">
+                  <span class="info-box-text">Tổng số đơn đặt lịch</span>
+                  <span class="info-box-number">
+                      {{ number_format($totalOrder, 0, ',', ' ') }}
+                  </span>
                 </div>
-                <!-- ./col -->
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-info">
-                        <div class="inner">
-                            <h3>{{number_format($totalOrder, 0, ',', ' ')}}</h3>
-
-                            <p>Đơn hàng</p>
-                        </div>
-                        <div class="icon">
-                            <i class="ion ion-bag"></i>
-                        </div>
-                        <a href="{{route('admin.don-hang.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                    </div>
-                </div>
-                <!-- ./col -->
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-success">
-                        <div class="inner">
-                            <h3>{{number_format($totalRevenue, 0, ',', ' ')}}<sup style="font-size: 20px">vnđ</sup></h3>
-
-                            <p>Doanh thu</p>
-                        </div>
-                        <div class="icon">
-                            <i class="ion ion-stats-bars"></i>
-                        </div>
-                        <a href="{{route('admin.thong-ke.doanh-thu')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-danger">
-                        <div class="inner">
-                            <h3>{{number_format($totalService, 0, ',', ' ')}}</h3>
-
-                            <p>Dịch vụ</p>
-                        </div>
-                        <div class="icon">
-                            <i class="ion ion-pie-graph"></i>
-                        </div>
-                        <a href="{{route('admin.dich-vu.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                    </div>
-                </div>
-                <!-- ./col -->
+                <!-- /.info-box-content -->
+              </div>
+              <!-- /.info-box -->
             </div>
+            <!-- /.col -->
+            <div class="col-12 col-sm-6 col-md-6">
+              <div class="info-box mb-3">
+                <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
+
+                <div class="info-box-content">
+                  <span class="info-box-text">Đơn đặt lịch mới tháng {{$now->month}} </span>
+                  <span class="info-box-number">
+                    {{ $totalOrderMonth }}
+                </span>
+                </div>
+                <!-- /.info-box-content -->
+              </div>
+              <!-- /.info-box -->
+            </div>
+            <!-- /.col -->
+
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
 
           <div class="row">
             <div class="col-md-12">
@@ -107,13 +80,30 @@
                     </div>
                     <!-- /.card-body -->
                 </div>
+                <div class="card card-primary">
+                    <div class="card-header">
+                      <h3 class="card-title">Thống kê doanh thu theo từng tháng</h3>
+
+                      <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <div class="chart">
+                        <div id="chart-revenue" style="height: 500px"></div>
+                      </div>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
             </div>
             <!-- /.col -->
           </div>
-            <!-- /.row -->
+          <!-- /.row -->
 
-        </div><!-- /.container-fluid -->
-    </section>
+        </div><!--/. container-fluid -->
+      </section>
     <!-- /.content -->
 
 @endsection

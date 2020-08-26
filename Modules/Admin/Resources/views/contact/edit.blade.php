@@ -29,51 +29,36 @@
                     @method('PUT')
                     <div class="form-group">
                         <label>Tên khách hàng:</label>
-                        <input type="text" disabled class="form-control" name="customer_id" value="{{ $data->name }}">
+                        <input type="text" readonly class="form-control" name="name" value="{{ $data->name }}">
                     </div>
                     <div class="form-group">
                         <label>Số điện thoại:</label>
-                        <input type="text" disabled class="form-control" name="salon_id" value="{{ $data->phone }}">
+                        <input type="text" readonly class="form-control" name="phone" value="{{ $data->phone }}">
+                    </div>
+                    <div class="form-group">
+                        <label>Email:</label>
+                        <input type="text" readonly class="form-control" name="email" value="{{ $data->email }}">
                     </div>
                     <div class="form-group">
                         <label>Tiêu đề:</label>
-                        <input type="text" disabled class="form-control" name="salon_id" value="{{ $data->title }}">
+                        <input type="text" readonly class="form-control" name="title" value="{{ $data->title }}">
                     </div>
                     <div class="form-group">
                         <label>Nội dung liên hệ:</label>
-                        <textarea name="detail" disabled class="form-control"
+                        <textarea name="detail" readonly class="form-control"
                             rows="10">{{ $data->content }}</textarea>
                     </div>
+
                     <div class="form-group">
-                        <label>Trạng thái:</label>
-                        <br>
-                        <div class="icheck-primary d-inline">
-                          <input
-                                type="radio"
-                                id="radioPrimary1"
-                                name="status"
-                                value="{{STATUS_ACCOUNT_CUSTOMER_REGISTER}}"
-                                {{ ($data->status == STATUS_ACCOUNT_CUSTOMER_REGISTER) ? 'checked' : '' }}>
-                          <label for="radioPrimary1">
-                              Chưa trả lời
-                          </label>
-                        </div>
-                        <div class="icheck-primary d-inline">
-                          <input
-                                type="radio"
-                                id="radioPrimary2"
-                                name="status"
-                                value="{{STATUS_ACCOUNT_CUSTOMER_ACTIVE}}"
-                                {{ ($data->status == STATUS_ACCOUNT_CUSTOMER_ACTIVE) ? 'checked' : ''}}>
-                          <label for="radioPrimary2">
-                              Đã trả lời
-                          </label>
-                        </div>
-                      </div>
+                        <label>Trả lời:</label>
+                        <textarea name="reply" class="form-control"
+                            rows="10"></textarea>
+                    </div>
+
                     <div class="form-group d-flex justify-content-center">
                         <a href="{{ route('admin.lien-he.index') }}"
                             class="btn btn-lg btn-default mr-3">Trở lại</a>
-                        <button type="submit" class="btn btn-lg btn-primary">Cập nhật</button>
+                        <button type="submit" class="btn btn-lg btn-primary">Trả lời</button>
                     </div>
                 </form>
             </div>
