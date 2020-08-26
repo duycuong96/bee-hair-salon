@@ -85,7 +85,7 @@ class ResetPasswordController extends Controller
             return new JsonResponse(['message' => trans($response)], 200);
         }
 
-        return redirect()->route('customer.index');
+        return redirect()->route('customer.home');
     }
 
 
