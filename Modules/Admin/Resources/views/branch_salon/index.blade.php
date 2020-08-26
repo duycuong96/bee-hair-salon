@@ -55,7 +55,7 @@
                                     <th>Tên</th>
                                     <th>Địa chỉ</th>
                                     <th>Quản lý</th>
-                                    <th>Địa điểm</th>
+                                    <th>Giờ làm việc</th>
                                     <th>Số điện thoại</th>
                                     <th>Trạng thái</th>
                                     <th>Action</th>
@@ -79,7 +79,10 @@
                                             @endforeach
                                         </td>
                                         <td>
-                                            {{ $row->ward_id }}
+                                            Bắt đầu từ
+                                            <b class="text-primary"> {{json_decode($row->work_time)->start}}</b>
+                                            đến
+                                            <b class="text-danger">{{ json_decode($row->work_time)->end }}</b>
                                         </td>
                                         <td>
                                             {{ $row->phone }}
