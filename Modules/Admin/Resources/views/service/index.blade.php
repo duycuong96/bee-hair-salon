@@ -103,10 +103,6 @@
                                                     class="btn btn-app text-success">
                                                     <i class="fas fa-edit"></i> Cập nhật
                                                 </a>
-                                                <a href="{{ route('admin.salon.createSalon', [$row->id]) }}"
-                                                    class="btn btn-app text-success ml-2">
-                                                    <i class="fas fa-plus"></i> Thêm salon
-                                                </a>
                                                 <form
                                                     action="{{ route('admin.dich-vu.destroy', [$row->id]) }}"
                                                     method="post">

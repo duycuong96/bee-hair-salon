@@ -55,14 +55,8 @@ class ServiceService
         $data = $request->all();
         $data['estimate'] = $data['estimate'] . ':00';
         $data['slugs'] = Str::slug($data['name'], '-');
-        $data['status'] = STATUS_POST_DRAFT;
-        $array = [];
-        foreach ($data['arrayImages'] as $image) {
-            $img = $image->store('service', 'public');
-            array_push($array, $img);
-        }
-        $data['images'] = json_encode($array);
-        unset($data['arrayImages']);
+        $data['status'] = 1;
+        $data['image'] = $request->file('image')->store('service', 'public');
         Service::create($data);
 
         return $this->returnSuccessWithRoute('admin.dich-vu.index', __('messages.data_create_success'));
@@ -91,24 +85,17 @@ class ServiceService
             return abort(401);
         }
 
-        $data = request()->all();
-        $service = Service::find($id);
-        $data['slugs'] = Str::slug($data['name'], '-');
-        $array = [];
-        if (empty($service)) {
+        $category = Service::find($id);
+        $data = $request->all();
+        if(empty($category)) {
             return $this->returnFailedWithRoute('admin.dich-vu.index', __('messages.data_update_failed'));
         } else {
             if (empty($request->file())) {
-                $data['images'] = $service->images;
-            } else {
-                foreach ($data['arrayImages'] as $image) {
-                    $img = $image->store('service', 'public');
-                    array_push($array, $img);
-                    $data['images'] = json_encode($array);
-                    unset($data['arrayImages']);
-                }
+                $data['image'] = $category->image;
+            }else {
+                $data['image'] = $request->file('image')->store('service', 'public');
             }
-            $service->update($data);
+            $category->update($data);
             return $this->returnSuccessWithRoute('admin.dich-vu.index', __('messages.data_update_success'));
         }
     }
