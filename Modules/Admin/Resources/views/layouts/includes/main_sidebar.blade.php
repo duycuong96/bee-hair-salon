@@ -14,7 +14,7 @@
                 <img src="{{ Auth::user()->avatar }}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="{{ route('admin.dashboard') }}">
+                <a href="{{ route('admin.tai-khoan.show', Auth::user()->id) }}">
                     @auth('admin')
                         {{ Auth::user()->name }}
                     @endauth

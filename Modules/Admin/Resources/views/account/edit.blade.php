@@ -30,14 +30,14 @@
                         <input type="hidden" name="id" value="{{ $data->id }}">
                         <div class="form-group">
                             <label>Tên:</label>
-                            <input readonly type="text" class="form-control" name="name" value="{{ old('name', $data->name) }}">
+                            <input {{$data->id == Auth::user()->id ? '' : 'readonly'}} type="text" class="form-control" name="name" value="{{ old('name', $data->name) }}">
                             @error('name')
                             <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label>Email:</label>
-                            <input readonly type="text" class="form-control" name="email" value="{{ old('email', $data->email) }}">
+                            <input {{$data->id == Auth::user()->id ? '' : 'readonly'}} type="text" class="form-control" name="email" value="{{ old('email', $data->email) }}">
                             @error('email')
                             <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
                             @enderror
