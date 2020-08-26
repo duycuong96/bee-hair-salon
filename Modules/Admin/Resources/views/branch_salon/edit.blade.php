@@ -49,13 +49,23 @@
                             <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
                             @enderror
                         </div>
-                        {{-- <div class="form-group">
-                            <label>Giờ làm việc:</label>
-                            <input type="text" class="form-control" name="name" value="{{ old('name') }}">
-                            @error('name')
-                            <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
-                            @enderror
-                        </div> --}}
+                        <label>Giờ làm việc</label>
+                        <br>
+                    <div class="btn-group">
+                        <label>Giờ bắt đầu: </label>
+                        <input type="time" class="mr-3 ml-3" name="start" value="{{ old('start', $data->work_time->start) }}" min="08:00" max="22:00">
+
+                        <label>Giờ kết thúc: </label>
+                        <input type="time" class="ml-3" name="end" value="{{ old('end', $data->work_time->end) }}" min="08:00" max="22:00">
+
+                    </div>
+                    <br>
+                        @error('start')
+                        <p class="mt-3 errorMsg text-danger">{{ $message }}</p>
+                        @enderror
+                        @error('end')
+                        <p class="mt-3 errorMsg text-danger">{{ $message }}</p>
+                        @enderror
                         <div class="form-group">
                             <label>Địa chỉ:</label>
                             <input type="text" class="form-control" name="address" value="{{ $data->address }}">

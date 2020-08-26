@@ -49,7 +49,12 @@ class BranchSalonService
             return abort(401);
         }
 
-        $data = request()->all();
+        $data = request()->except('start','end', '_token');
+        $work_time = [
+            'start' => $request->start,
+            'end' => $request->end,
+        ];
+        $data['work_time'] = json_encode($work_time);
         // dd($data);
         $data['image'] = $request->file('image')->store('branch_salon', 'public');
 
@@ -64,6 +69,11 @@ class BranchSalonService
         }
 
         $data = BranchSalon::find($id);
+        if (empty($data)) {
+            return $this->returnFailedWithRoute('admin.salon.index', __('messages.data_not_found'));
+        }
+        $data->work_time = json_decode($data->work_time);
+        // dd($data->work_time->start);
         return view(
             'admin::branch_salon.edit',
             ['data' => $data],
@@ -80,7 +90,13 @@ class BranchSalonService
         if (empty($branchSalon)) {
             return $this->returnFailedWithRoute('admin.salon.index', __('messages.data_update_failed'));
         } else {
-            $branchSalon->update($request->all());
+            $data = $request->except('start','end', '_token');
+            $work_time = [
+                'start' => $request->start,
+                'end' => $request->end,
+            ];
+            $data['work_time'] = json_encode($work_time);
+            $branchSalon->update($data);
             return $this->returnSuccessWithRoute('admin.salon.index', __('messages.data_update_success'));
         }
 
