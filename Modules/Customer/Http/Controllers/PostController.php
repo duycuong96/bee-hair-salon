@@ -5,12 +5,12 @@ namespace Modules\Customer\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use App\Services\Customer\PostService;
+use App\Services\Customer\PostCustomerService;
 
 class PostController extends Controller
 {
-    protected $postService;
-    public function __construct(PostService $postService)
+
+    public function __construct(PostCustomerService $postService)
     {
         $this->postService = $postService;
     }

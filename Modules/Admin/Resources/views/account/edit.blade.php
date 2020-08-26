@@ -53,6 +53,20 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label>Mật khẩu:</label>
+                            <input type="password" class="form-control" name="password" value="{{ old('password') }}">
+                            @error('password')
+                            <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label>Nhập lại mật khẩu:</label>
+                            <input type="password" class="form-control" name="password_confirmation" value="{{ old('password') }}">
+                            @error('password')
+                            <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
                             <label>Trạng thái tài khoản:</label>
                             <br>
                             <div class="icheck-primary d-inline">
@@ -77,7 +91,7 @@
                                   Hoạt động
                               </label>
                             </div>
-                          </div>
+                        </div>
                         <hr>
                         <div class="form-group d-flex justify-content-center">
                             <a href="{{ route('admin.tai-khoan.index') }}" class="btn btn-lg btn-default mr-3">Trở lại</a>

@@ -11,7 +11,7 @@ use App\Models\TimeSchedule;
 use App\Traits\WebResponseTrait;
 use App\Models\Post;
 
-class PostService
+class PostCustomerService
 {
     use WebResponseTrait;
 

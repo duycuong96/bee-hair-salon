@@ -28,6 +28,8 @@
 
                 @can('Quản trị viên')
                     @include('admin::layouts.includes.sidebar_admin')
+
+                    @include('admin::layouts.includes.sidebar_role_permission')
                 @endcan
 
                 @can('Biên tập viên')
