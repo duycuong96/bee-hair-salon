@@ -31,7 +31,7 @@
                         <div class="form-group">
                             <label>Tên tiêu đề:</label>
                             <input type="text" class="form-control" name="title" value="{{ old('title', $data->title) }}">
-                            @error('name')
+                            @error('title')
                             <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
                             @enderror
                         </div>

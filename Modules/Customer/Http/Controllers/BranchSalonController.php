@@ -2,6 +2,7 @@
 
 namespace Modules\Customer\Http\Controllers;
 
+use App\Models\BranchSalon;
 use App\Services\Customer\BranchSalonService;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
@@ -20,7 +21,9 @@ class BranchSalonController extends Controller
      */
     public function index()
     {
-        return view('customer::branch_salon.index');
+        $data = BranchSalon::all();
+        // dd($data);
+        return view('customer::branch_salon.index',['data' => $data] );
     }
 
     /**

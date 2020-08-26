@@ -2,8 +2,9 @@
 <div class="blog-pt-grid-content">
     @foreach ($dataPosts as $row)
         <div class="maghny-gd-1 blog-pt-grid mb-5">
-            <a href="blog-single.html"><img class="img-fluid mt-2"
-                    src="{{ asset('client/images/blog1.jpg') }}" alt=""></a>
+            <a href="{{ route('customer.post.detail', $row->slug) }}">
+                <img class="img-fluid mt-2" src="{!! url('storage/'.  $row->image) !!}" alt="">
+            </a>
             <div class="box-content">
                 <h5 class="blog-title">
                     <a href="{{ route('customer.post.detail', $row->slug) }}">

@@ -10,6 +10,7 @@ use App\Models\Service;
 use App\Models\TimeSchedule;
 use App\Traits\WebResponseTrait;
 use App\Models\Post;
+use Auth;
 
 class PostService
 {
@@ -43,6 +44,7 @@ class PostService
 
     public function detailPost($slug)
     {
+        
         $data = Post::where('slug', $slug)->where('status', STATUS_POST_PUBLIC )->first();
         if (!$data) {
             abort(404);
