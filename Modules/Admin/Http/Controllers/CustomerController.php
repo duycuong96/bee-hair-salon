@@ -11,6 +11,7 @@ use App\Services\Admin\CustomersService;
 class CustomerController extends AdminBaseController
 {
 
+    protected $customerService;
     public function __construct(CustomersService $customerService)
     {
         $this->customerService = $customerService;
