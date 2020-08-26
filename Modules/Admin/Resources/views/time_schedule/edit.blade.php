@@ -24,7 +24,7 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('admin.banner.update', [$data->id]) }}" method="POST">
+                    <form action="{{ route('admin.thoi-gian-bieu.update', [$data->id]) }}" method="POST">
                         @csrf
                         @method('PUT')
                         <!-- time Picker -->
@@ -64,7 +64,7 @@
                         </div>
                         <hr>
                         <div class="form-group d-flex justify-content-center">
-                            <a href="{{ route('admin.banner.index') }}" class="btn btn-lg btn-default mr-3">Trở lại</a>
+                            <a href="{{ route('admin.thoi-gian-bieu.index') }}" class="btn btn-lg btn-default mr-3">Trở lại</a>
                             <button type="submit" class="btn btn-lg btn-primary">Cập nhật</button>
                         </div>
                     </form>
