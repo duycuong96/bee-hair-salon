@@ -7,12 +7,18 @@ use App\Models\Post;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Exception;
+use Illuminate\Support\Facades\Gate;
+
 class PostService
 {
     use WebResponseTrait;
 
     public function index($request)
     {
+        if (! Gate::allows('Biên tập viên')) {
+            return abort(401);
+        }
+
         $builder = Post::where(function ($query) use ($request) {
             if ($request->name) $query->where('title', 'like', '%'.$request->name.'%');
         });
@@ -29,6 +35,10 @@ class PostService
 
     public function create()
     {
+        if (! Gate::allows('Biên tập viên')) {
+            return abort(401);
+        }
+
         $dataCategories = Category::where('status', STATUS_POST_PUBLIC )->get();
         return view(
             'admin::post.create',
@@ -40,6 +50,10 @@ class PostService
 
     public function store($request)
     {
+        if (! Gate::allows('Biên tập viên')) {
+            return abort(401);
+        }
+
         $data = $request->only(
             'title',
             'slug',
@@ -61,6 +75,10 @@ class PostService
 
     public function show($id)
     {
+        if (! Gate::allows('Biên tập viên')) {
+            return abort(401);
+        }
+
         $data = Post::find($id);
         $dataCategories = Category::all();
         return view(
@@ -74,6 +92,10 @@ class PostService
 
     public function update($request, $id)
     {
+        if (! Gate::allows('Biên tập viên')) {
+            return abort(401);
+        }
+
         $post = Post::find($id);
         $data=$request->all();
         if(empty($post)) {
@@ -91,11 +113,20 @@ class PostService
 
     public function delete($id)
     {
+        if (! Gate::allows('Biên tập viên')) {
+            return abort(401);
+        }
+
         Post::where('id', $id)->delete();
         return $this->returnSuccessWithRoute('admin.bai-viet.index', __('messages.data_delete_success'));
     }
 
-    public function listSoftDelete(){
+    public function listSoftDelete()
+    {
+        if (! Gate::allows('Biên tập viên')) {
+            return abort(401);
+        }
+
         $data = Post::onlyTrashed()->get();
         return view(
             'admin::post.list_soft_delete',

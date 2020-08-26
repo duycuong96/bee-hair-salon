@@ -4,6 +4,7 @@ namespace App\Services\Admin;
 use App\Traits\WebResponseTrait;
 use App\Models\Category;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Gate;
 
 class CategoryService
 {
@@ -11,6 +12,10 @@ class CategoryService
 
     public function index($request)
     {
+        if (! Gate::allows('Biên tập viên')) {
+            return abort(401);
+        }
+
         $builder = Category::where(function ($query) use ($request) {
             if ($request->name) $query->where('name', 'like', '%'.$request->name.'%');
         });
@@ -27,11 +32,19 @@ class CategoryService
 
     public function create()
     {
+        if (! Gate::allows('Biên tập viên')) {
+            return abort(401);
+        }
+
         return view('admin::category.create');
     }
 
     public function store($request)
     {
+        if (! Gate::allows('Biên tập viên')) {
+            return abort(401);
+        }
+
         $data = request()->all();
         $data['slug'] = Str::slug($request->name, '-');
         $data['image'] = $request->file('image')->store('category', 'public');
@@ -41,6 +54,10 @@ class CategoryService
 
     public function show($id)
     {
+        if (! Gate::allows('Biên tập viên')) {
+            return abort(401);
+        }
+
         $data = Category::find($id);
         return view(
             'admin::category.edit',
@@ -52,6 +69,10 @@ class CategoryService
 
     public function update($request, $id)
     {
+        if (! Gate::allows('Biên tập viên')) {
+            return abort(401);
+        }
+
         $category = Category::find($id);
         $data = $request->all();
         if(empty($category)) {
@@ -69,11 +90,20 @@ class CategoryService
 
     public function delete($id)
     {
+        if (! Gate::allows('Biên tập viên')) {
+            return abort(401);
+        }
+
         Category::where('id', $id)->delete();
         return $this->returnSuccessWithRoute('admin.chuyen-muc.index', __('messages.data_delete_success'));
     }
 
-    public function listSoftDelete(){
+    public function listSoftDelete()
+    {
+        if (! Gate::allows('Biên tập viên')) {
+            return abort(401);
+        }
+
         $data = Category::onlyTrashed()->get();
         return view(
             'admin::category.list_soft_delete',
@@ -85,6 +115,10 @@ class CategoryService
 
     public function restore($id)
     {
+        if (! Gate::allows('Biên tập viên')) {
+            return abort(401);
+        }
+
         Category::withTrashed()->where('id', $id)->restore();
         return $this->returnSuccessWithRoute('admin.chuyen-muc.listSoftDelete', __('messages.data_restore_success'));
     }

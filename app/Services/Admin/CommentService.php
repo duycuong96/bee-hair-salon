@@ -3,6 +3,7 @@ namespace App\Services\Admin;
 
 use App\Traits\WebResponseTrait;
 use App\Models\Comment;
+use Illuminate\Support\Facades\Gate;
 
 class CommentService
 {
@@ -10,6 +11,10 @@ class CommentService
 
     public function index($request)
     {
+        if (! Gate::allows('Biên tập viên')) {
+            return abort(401);
+        }
+
         $builder = Comment::where(function ($query) use ($request) {
             if ($request->name) $query->where('title', 'like', '%'.$request->name.'%');
         });
@@ -26,6 +31,10 @@ class CommentService
 
     public function show($id)
     {
+        if (! Gate::allows('Biên tập viên')) {
+            return abort(401);
+        }
+
         $data = Comment::find($id);
         return view(
             'admin::comment.edit',
@@ -37,6 +46,10 @@ class CommentService
 
     public function update($request, $id)
     {
+        if (! Gate::allows('Biên tập viên')) {
+            return abort(401);
+        }
+
         $comment = Comment::find($id);
         $data = $request->only(
             'status',
@@ -51,11 +64,20 @@ class CommentService
 
     public function delete($id)
     {
+        if (! Gate::allows('Biên tập viên')) {
+            return abort(401);
+        }
+
         Comment::where('id', $id)->delete();
         return $this->returnSuccessWithRoute('admin.binh-luan.index', __('messages.data_delete_success'));
     }
 
-    public function listSoftDelete(){
+    public function listSoftDelete()
+    {
+        if (! Gate::allows('Biên tập viên')) {
+            return abort(401);
+        }
+
         $data = Comment::onlyTrashed()->get();
         return view(
             'admin::comment.list_soft_delete',
@@ -67,6 +89,10 @@ class CommentService
 
     public function restore($id)
     {
+        if (! Gate::allows('Biên tập viên')) {
+            return abort(401);
+        }
+
         Comment::withTrashed()->where('id', $id)->restore();
         return $this->returnSuccessWithRoute('admin.binh-luan.listSoftDelete', __('messages.data_restore_success'));
     }

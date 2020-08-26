@@ -20,6 +20,7 @@ class AccountService
         if (! Gate::allows('Quản trị viên')) {
             return abort(401);
         }
+
         $builder = Admin::where(function ($query) use ($request) {
             if ($request->name) $query->where('name', 'like', '%'.$request->name.'%');
         });
@@ -108,20 +109,12 @@ class AccountService
 
     public function formSettingAccount()
     {
-        if (! Gate::allows('Quản trị viên')) {
-            return abort(401);
-        }
-
         $account = Auth::user();
         return view('admin::account.setting_account', ['account' => $account]);
     }
 
     public function settingAccount($request)
     {
-        if (! Gate::allows('Quản trị viên')) {
-            return abort(401);
-        }
-
         $data = $request->only(
             'name',
             'avatar',
@@ -147,10 +140,6 @@ class AccountService
 
     public function formChangePassword()
     {
-        if (! Gate::allows('Quản trị viên')) {
-            return abort(401);
-        }
-
         $account = Auth::user();
         return view('admin::account.change_password', ['account' => $account]);
     }

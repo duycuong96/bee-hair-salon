@@ -9,6 +9,10 @@ class RoleService
 {
     public function index($request)
     {
+        if (! Gate::allows('Quản trị viên')) {
+            return abort(401);
+        }
+
         $builder = Role::where(function ($query) use ($request) {
             if ($request->name) $query->where('name', 'like', '%'.$request->name.'%');
         });
@@ -26,6 +30,10 @@ class RoleService
 
     public function create()
     {
+        if (! Gate::allows('Quản trị viên')) {
+            return abort(401);
+        }
+
         $permissions = Permission::get()->pluck('name', 'name');
         return view(
             'admin::role.create',
@@ -35,6 +43,10 @@ class RoleService
 
     public function store($request)
     {
+        if (! Gate::allows('Quản trị viên')) {
+            return abort(401);
+        }
+
         $role = Role::create($request->except('permission'));
         $permissions = $request->input('permission') ? $request->input('permission') : [];
         $role->givePermissionTo($permissions);
@@ -44,6 +56,10 @@ class RoleService
 
     public function show($id)
     {
+        if (! Gate::allows('Quản trị viên')) {
+            return abort(401);
+        }
+
         $data = Role::find($id);
         $permissions = Permission::get()->pluck('name', 'name');
         return view(
@@ -57,6 +73,10 @@ class RoleService
 
     public function update($request, $id)
     {
+        if (! Gate::allows('Quản trị viên')) {
+            return abort(401);
+        }
+
         $role = Role::find($id);
         $role->update($request->except('permission'));
         $permissions = $request->input('permission') ? $request->input('permission') : [];
