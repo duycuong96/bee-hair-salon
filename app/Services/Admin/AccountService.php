@@ -90,6 +90,7 @@ class AccountService
         if($request->password){
             $data['password'] = Hash::make($request->password);
         }
+        // dd($data);
 
         try {
             $account = Admin::find($id);
