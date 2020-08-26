@@ -50,7 +50,7 @@
                                 <thead>
                                     <tr>
                                         <th>Id</th>
-                                        <th>Tiêu đề</th>
+                                        <th>Nội dung</th>
                                         <th>Bài viết</th>
                                         <th>Người bình luận</th>
                                         <th>Ngày/giờ bình luận</th>
@@ -65,7 +65,7 @@
                                                 {{ $row->id }}
                                             </td>
                                             <td>
-                                                {{ $row->title }}
+                                                {{ $row->content }}
                                             </td>
                                             <td>
                                                 {{ $row->post->title }}
@@ -77,8 +77,8 @@
                                                 {{ $row->created_at }}
                                             </td>
                                             <td>
-                                                @if ($row->status == STATUS_POST_DRAFT)
-                                                    <b class="text-warning">Chưa công khai</b>
+                                                @if ($row->status == STATUS_COMMENT_APPROVE)
+                                                    <b class="text-warning">Chưa phê duyệt</b>
                                                 @elseif($row->status == STATUS_POST_PUBLIC)
                                                     <b class="text-success">Công khai</b>
                                                 @endif
