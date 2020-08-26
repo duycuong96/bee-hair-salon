@@ -47,17 +47,28 @@
                             <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
                             @enderror
                         </div>
-                        {{-- <div class="form-group">
-                            <label>Giờ làm việc:</label>
-                            <input type="text" class="form-control" name="name" value="{{ old('name') }}">
-                            @error('name')
-                            <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
+                            <label>Giờ làm việc</label>
+                            <br>
+                        <div class="btn-group">
+                            <label>Giờ bắt đầu: </label>
+                            <input type="time" class="mr-3 ml-3" name="start" value="{{ old('start') }}" min="08:00" max="22:00">
+
+                            <label>Giờ kết thúc: </label>
+                            <input type="time" class="ml-3" name="end" value="{{ old('end') }}" min="08:00" max="22:00">
+
+                        </div>
+                        <br>
+                            @error('start')
+                            <p class="mt-3 errorMsg text-danger">{{ $message }}</p>
                             @enderror
-                        </div> --}}
+                            @error('end')
+                            <p class="mt-3 errorMsg text-danger">{{ $message }}</p>
+                            @enderror
                         <div class="form-group">
                             <label>Địa chỉ:</label>
                             <input type="text" class="form-control" name="address" value="{{ old('address') }}">
                             @error('address')
+                            <br>
                             <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
                             @enderror
                         </div>
@@ -65,6 +76,13 @@
                             <label>Số điện thoại:</label>
                             <input type="text" class="form-control" name="phone" value="{{ old('phone') }}">
                             @error('phone')
+                            <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label>Số ghế:</label>
+                            <input type="text" class="form-control" name="seat" value="{{ old('seat') }}">
+                            @error('seat')
                             <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
                             @enderror
                         </div>
@@ -82,57 +100,8 @@
 @endsection
 
 @push('scripts')
+<script>
     <script>
-        function listDistrict(data){
-            console.log(data);
-            $("#show").append(
-                "<option value='" + data['id'] +"'>" + data['name'] + "</option>"
-                );
-        }
-        function callAjax()
-            {
-                $.getJSON(api, function (data) {
-                    $("#district").html('');
-                    data.forEach(listDistrict);
-                });
-            }
-
-        function fetchData(data) {
-            if (data == null || data.length == 0) {
-                $("#address").val('');
-                return;
-            }
-            if (data.length == 1) {
-                let address = data[0].name;
-                $("#address").val(address);
-            } else {
-                showModalSelect(data);
-                $('#selectAdress').on('change', 'select', function() {
-                    let address = $(this).val();
-                    $("#address").val(address);
-                    $('#ModalAddress').modal('hide');
-                });
-            }
-        }
-
-        $(document).ready(function() {
-            var url = "{{ route('address.district') }}" + "?province=";
-            console.log('district');
-            $('#provinceCode').on('change', function() {
-                $.ajax({
-                    url: url + $('#provinceCode').val(),
-                    dataType: "json",
-                    success: function(res) {
-                        console.log(res);
-                        fetchData(res.data);
-                    }
-                });
-            });
-        })
-
-
-// --------------------------------------------------------------------
-
 
         function showModalSelect(data) {
             $('#selectAdress select option').remove();
