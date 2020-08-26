@@ -56,6 +56,8 @@ class BookingService
         $dataOrder['customer_id'] = auth()->user()->id;
         $time_schedule_id = $request->time_schedule_id;
         $time_schedule = TimeSchedule::find($time_schedule_id);
+        $service_id = $request->service_id;
+        $service = Service::find($service_id);
         // dd($time_schedule->time_start);
         if ($request->day == 1) {
             $dataOrder['time_start'] = $now->toDateString() . " " . $time_schedule->time_start;
@@ -64,6 +66,8 @@ class BookingService
             $dataOrder['time_start'] =  $tomorrow->toDateString() . " " . $time_schedule->time_start;
             $dataOrder['time_end'] =  $tomorrow->toDateString() . " " . $time_schedule->time_end;
         }
+        $dataOrder['price'] = $service->price;
+        $dataOrder['status'] = 0;
 
         $lastIdOrder = Order::create($dataOrder)->id;
 

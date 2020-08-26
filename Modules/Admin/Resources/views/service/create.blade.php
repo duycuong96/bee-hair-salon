@@ -35,10 +35,11 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label>Ảnh salon:</label>
-                        <input type="file" class="form-control" name="arrayImages[]" multiple>
-                        @error('images')
-                            <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
+                        <label>Ảnh dịch vụ:</label>
+                        <input id="img" type="file" class="form-control" name="image" onchange="changeImg(this)">
+                        <img id="image" class="img-thumbnail img-fluid mt-3" src="img/import-img.png">
+                        @error('image')
+                        <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="form-group">

@@ -15,7 +15,7 @@ class Service extends Model
         'slugs',
         'detail',
         'service_id',
-        'images',
+        'image',
         'price',
         'sale_price',
         'estimate',

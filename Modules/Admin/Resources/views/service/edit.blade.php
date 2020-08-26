@@ -1,7 +1,5 @@
 @extends('admin::layouts.master')
 
-<blade
-    section|(%26%2339%3Btitle%26%2339%3B%2C%20%26%2339%3BC%E1%BA%ADp%20nh%E1%BA%ADt%20d%E1%BB%8Bch%20v%E1%BB%A5%26%2339%3B) />
 
 @section('content')
 <!-- Content Header (Page header) -->
@@ -42,16 +40,11 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label>Ảnh dich-vu:</label>
-                        <br>
-                        @isset($data->images)
-                            @foreach($data->images as $image)
-                                <img src="{!! url('storage/'.$image) !!}" alt="" height="70px">
-                            @endforeach
-                        @endisset
-                        <input type="file" class="form-control" name="arrayImages[]" multiple>
-                        @error('images')
-                            <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
+                        <label>Ảnh dịch vụ:</label>
+                        <input id="img" type="file" class="form-control" name="image" value="{{ old('image', $data->image) }}" onchange="changeImg(this)">
+                        <img id="image" class="img-thumbnail img-fluid mt-3" src="{!! url('storage/'.  $data->image) !!}" alt="">
+                        @error('image')
+                        <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="form-group">
@@ -91,8 +84,8 @@
                                 type="radio"
                                 id="radioPrimary2"
                                 name="status"
-                                value="{{STATUS_ACCOUNT_CUSTOMER_ACTIVE}}"
-                                {{ ($data->status == STATUS_ACCOUNT_CUSTOMER_ACTIVE) ? 'checked' : ''}}>
+                                value="{{ 1 }}"
+                                {{ ($data->status == 1) ? 'checked' : ''}}>
                           <label for="radioPrimary2">
                               Hoạt động
                           </label>
@@ -102,8 +95,8 @@
                                 type="radio"
                                 id="radioPrimary3"
                                 name="status"
-                                value="{{STATUS_ACCOUNT_CUSTOMER_NOT_ACTIVE}}"
-                                {{ ($data->status == STATUS_ACCOUNT_CUSTOMER_NOT_ACTIVE) ? 'checked' : ''}}>
+                                value="{{ 0 }}"
+                                {{ ($data->status == 0) ? 'checked' : ''}}>
                           <label for="radioPrimary3">
                               Không hoạt động
                           </label>

@@ -8,13 +8,13 @@
                     <label class="for-checkbox-tools" for="service-{{ $row->id }}">
                             <div class="row no-gutters">
                                 <div class="col-md-4">
-                                    <img src="https://storage.30shine.com/salon_image/front/139.png"
+                                    <img src="{!! url('storage/'.  $row->image) !!}"
                                         class="card-img" alt="...">
                                 </div>
                                 <div class="col-md-8">
                                     <div class="card-body">
                                         <h5 class="card-title">{{ $row->name }}</h5>
-                                        <p class="card-text">123, Trần Hữu Dực, Mỹ Đình, Hà Nội.</p>
+                                        <p class="card-text">{{  number_format($row->price - $row->sale_price) }} vnđ</p>
                                     </div>
                                 </div>
                             </div>
