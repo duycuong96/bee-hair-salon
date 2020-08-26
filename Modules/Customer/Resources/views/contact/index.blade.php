@@ -23,6 +23,9 @@
                     LIÊN HỆ CHÚNG TÔI</h3>
                 <div class="title-desc text-center px-lg-5">
                     <p class="px-lg-5 sub-wthree">Mọi thông tin liên hệ vui lòng nhập bên dưới</p>
+                    @if (session('success'))
+                        <p class="text-success">{{session('success')}}</p>
+                    @endif
                 </div>
             </div>
             <div class="contact-w3pvt-form mt-5">
@@ -52,7 +55,6 @@
                                 <label>Nội dung</label>
                                 <textarea class="form-control" name="content" id="" required></textarea>
                             </div>
-                            <input type="hidden" name="status" value="1">
                         </div>
                         <div class="form-group mx-auto mt-3">
                             <button type="submit" class="btn submit">Submit</button>
