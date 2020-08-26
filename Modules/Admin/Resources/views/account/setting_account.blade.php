@@ -71,7 +71,9 @@
                               </div>
                               <input type="text" name="dob" class="form-control" value="{{ old('dob', $account->dob) }}" data-inputmask-alias="datetime" data-inputmask-inputformat="dd-mm-yyyy" data-mask>
                             </div>
-
+                            @error('dob')
+                            <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
                         <hr>
                         <div class="form-group d-flex justify-content-center">
