@@ -80,7 +80,7 @@
                                                 @if ($row->status == STATUS_COMMENT_APPROVE)
                                                     <b class="text-warning">Chưa phê duyệt</b>
                                                 @elseif($row->status == STATUS_POST_PUBLIC)
-                                                    <b class="text-success">Công khai</b>
+                                                    <b class="text-success">Phê duyệt</b>
                                                 @endif
                                             </td>
                                             <td>
