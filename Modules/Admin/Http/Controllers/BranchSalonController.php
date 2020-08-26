@@ -64,7 +64,7 @@ class BranchSalonController extends AdminBaseController
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update(BranchSalonRequest $request, $id)
     {
         return $this->branchSalonService->update($request, $id);
     }
@@ -77,12 +77,6 @@ class BranchSalonController extends AdminBaseController
     public function destroy($id)
     {
         return $this->branchSalonService->delete($id);
-    }
-
-    public function createSalonService($id) {
-        $salon_id = $id;
-        $service_id = null;
-        return $this->salonServiceService->create();
     }
 
     public function salonListCustomer($id)

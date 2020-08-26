@@ -92,4 +92,24 @@ class SalonServiceService
             ]
         );
     }
+
+    public function updateSalon($id)
+    {
+        $data = BranchSalon::find($id);
+        return view(
+            'admin::salon_service.update_salon',
+            ['data' => $data],
+        );
+    }
+
+    public function putUpdateSalon($request, $id)
+    {
+        $branchSalon = BranchSalon::find($id);
+        if (empty($branchSalon)) {
+            return $this->returnFailedWithRoute('admin.tai-khoan.salonListOfMe', __('messages.data_update_failed'));
+        } else {
+            $branchSalon->update($request->all());
+            return $this->returnSuccessWithRoute('admin.tai-khoan.salonListOfMe', __('messages.data_update_success'));
+        }
+    }
 }
