@@ -77,6 +77,9 @@
                                             <a href="{{ route('admin.dich-vu-salon.updateSalon', $row->id) }}" class="btn btn-primary btn-block mt-2">
                                                 <i class="fas fa-store-alt"></i> Cập nhật thông tin salon
                                             </a>
+                                            <a href="{{ route('admin.thong-ke.dich-vu.salon', $row->id) }}" class="btn btn-primary btn-block mt-2">
+                                                <i class="fas fa-store-alt"></i> Thống kê
+                                            </a>
 
                                         </div>
                                     </div>
