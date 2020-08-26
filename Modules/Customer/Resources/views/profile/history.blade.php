@@ -30,23 +30,27 @@
                     <div class="content-wrap">
                         <h4 class="text-center mt-5">Lịch sử đặt lịch & Đánh giá</h4>
                             <!-- The Timeline -->
+                            @if (empty($data[0]))
+                            <br>
+                                <p class="alert-success text-center">Lịch sử đặt lịch trống.</p>
+                            @else
+                                <ul class="timeline">
+                                    @foreach ($data as $item)
+                                    <!-- Item -->
+                                    <li>
+                                        <div class="direction-{{$loop->iteration %2 == 0 ? 'r' : 'l'}}">
+                                            <div class="flag-wrapper">
+                                                <span class="flag">{{$item->branchSalon->name}}</span>
+                                                <span class="time-wrapper"><span class="time">{{$item->updated_at->format('l - d/m/Y')}}</span></span>
+                                            </div>
+                                            <div class="desc">{{$item->detail}}</div>
+                                        </div>
+                                    </li>
 
-                        <ul class="timeline">
-                            @foreach ($data as $item)
-                            <!-- Item -->
-                            <li>
-                                <div class="direction-{{$loop->iteration %2 == 0 ? 'r' : 'l'}}">
-                                    <div class="flag-wrapper">
-                                        <span class="flag">{{$item->branchSalon->name}}</span>
-                                        <span class="time-wrapper"><span class="time">{{$item->updated_at->format('l - d/m/Y')}}</span></span>
-                                    </div>
-                                    <div class="desc">{{$item->detail}}</div>
-                                </div>
-                            </li>
-
-                            @endforeach
-                        </ul>
-                        {{ $data->links() }}
+                                    @endforeach
+                                </ul>
+                                {{ $data->links() }}
+                            @endif
 
                     </div>
                 </form>
