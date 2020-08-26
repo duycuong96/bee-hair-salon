@@ -32,7 +32,7 @@
                     <form action="{{ route('admin.dich-vu-salon.store') }}" method="POST">
                         @csrf
                         <div class="form-group">
-                              <label>Tên salon:</label>\
+                              <label>Tên salon:</label>
                             <input type="hidden" name="salon_id" value="{{$salon->id}}">
                               <input type="text" name="name" class="form-control" value="{{$salon->name}}" id="" readonly>
                             @error('name')

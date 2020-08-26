@@ -54,7 +54,6 @@
                                         <th>Id</th>
                                         <th>Tên</th>
                                         <th>Email</th>
-                                        <th>Sinh nhật</th>
                                         <th>Trạng thái</th>
                                         <th width="10%">Action</th>
                                     </tr>
@@ -70,9 +69,6 @@
                                             </td>
                                             <td>
                                                 {{ $row->email }}
-                                            </td>
-                                            <td>
-                                                {{ $row->birthday }}
                                             </td>
                                             <td>
                                                 @if ($row->status == STATUS_ACCOUNT_CUSTOMER_REGISTER)

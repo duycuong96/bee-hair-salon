@@ -43,8 +43,6 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Danh sách - @yield('title')</h3>
-                            <a href="{{ route('admin.danh-gia.listSoftDelete') }}"
-                                class="btn btn-danger float-right">Đánh giá đã xóa</a>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -106,16 +104,6 @@
                                                     class="btn btn-app text-success">
                                                     <i class="fas fa-edit"></i> Cập nhật
                                                 </a>
-                                                <form
-                                                    action="{{ route('admin.danh-gia.destroy', [$row->id]) }}"
-                                                    method="post">
-                                                    @csrf
-                                                    @method('DELETE')
-
-                                                    <button type="submit" class="btn btn-app text-danger">
-                                                        <i class="far fa-trash-alt"></i> Xóa
-                                                    </button>
-                                                </form>
                                             </div>
                                         </td>
                                     </tr>
