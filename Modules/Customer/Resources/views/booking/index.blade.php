@@ -65,7 +65,8 @@
                                         </div> <br><br>
                                         <div class="row justify-content-center">
                                             <div class="col-7 text-center">
-                                                <input type="submit" name="make_payment" class="next action-button" value="Xác nhận" />
+                                                {{-- <input type="submit" name="make_payment" class="next action-button" value="Xác nhận" /> --}}
+                                                <button type="submit" class="next action-button">Xác nhận</button>
                                                 <a href="{{ route('customer.home') }}"></a>
                                             </div>
                                         </div>
@@ -85,4 +86,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="{{ asset('client/js/booking.js') }}"></script>
+
+    <script>
+        $(document).ready(function(){
+            $(".hom-nay").click(function(){
+                $("#hom-nay").prop("checked", true);
+            });
+            $(".ngay-mai").click(function(){
+                $("#ngay-mai").prop("checked", true);
+            });
+        });
+    </script>
 @endpush
