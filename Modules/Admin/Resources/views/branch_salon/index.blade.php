@@ -93,7 +93,7 @@
                                             @elseif($row->status == STATUS_ACCOUNT_CUSTOMER_ACTIVE)
                                                 <b class="text-success">Đang hoạt động</b>
                                             @else
-                                                <b class="text-danger">Đang khóa</b>
+                                                <b class="text-danger">Đang đóng cửa</b>
                                             @endif
                                         </td>
                                         <td>
