@@ -9,20 +9,25 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
 use Str;
 use App\Traits\WebResponseTrait;
+use Illuminate\Support\Facades\Gate;
 
 class BranchSalonService
 {
     use WebResponseTrait;
     public function index($request)
     {
+        if (! Gate::allows('Quản trị viên')) {
+            return abort(401);
+        }
+
         $builder = BranchSalon::where(function ($query) use ($request) {
             if ($request->name) $query->where('name', 'like', '%'.$request->name.'%');
         });
 
         $data = $builder->orderBy('created_at', 'desc')
-                        ->paginate(10);
+                        ->get();
 
-        $data->appends(request()->query());
+        // $data->appends(request()->query());
 
         return view(
             'admin::branch_salon.index',
@@ -32,10 +37,18 @@ class BranchSalonService
 
     public function create()
     {
+        if (! Gate::allows('Quản trị viên')) {
+            return abort(401);
+        }
+
         return view('admin::branch_salon.create');
     }
     public function store($request)
     {
+        if (! Gate::allows('Quản trị viên')) {
+            return abort(401);
+        }
+
         $data = request()->all();
         // dd($data);
         $data['image'] = $request->file('image')->store('branch_salon', 'public');
@@ -46,6 +59,10 @@ class BranchSalonService
 
     public function show($id)
     {
+        if (! Gate::allows('Quản trị viên')) {
+            return abort(401);
+        }
+
         $data = BranchSalon::find($id);
         return view(
             'admin::branch_salon.edit',
@@ -55,6 +72,10 @@ class BranchSalonService
 
     public function update($request, $id)
     {
+        if (! Gate::allows('Quản trị viên')) {
+            return abort(401);
+        }
+
         $branchSalon = BranchSalon::find($id);
         if (empty($branchSalon)) {
             return $this->returnFailedWithRoute('admin.salon.index', __('messages.data_update_failed'));
@@ -67,6 +88,10 @@ class BranchSalonService
 
     public function delete($id)
     {
+        if (! Gate::allows('Quản trị viên')) {
+            return abort(401);
+        }
+
         $branchSalon =  BranchSalon::find($id);
         if (empty($branchSalon)) {
             return $this->returnFailedWithRoute('admin.salon.index', __('messages.data_delete_failed'));
@@ -77,6 +102,10 @@ class BranchSalonService
     }
     public function salonListCustomer($id)
     {
+        if (! Gate::allows('Quản trị viên')) {
+            return abort(401);
+        }
+
         $data = Order::join('customers', 'orders.customer_id', 'customers.id')
                     ->where('orders.salon_id', $id)->get();
 
