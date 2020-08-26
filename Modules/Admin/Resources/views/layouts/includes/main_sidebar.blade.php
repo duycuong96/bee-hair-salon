@@ -26,7 +26,9 @@
 
                 @can('Quản trị viên')
                     @include('admin::layouts.includes.sidebar_admin')
+                @endcan
 
+                @can('Quản trị viên cấp cao')
                     @include('admin::layouts.includes.sidebar_role_permission')
                 @endcan
 
