@@ -31,26 +31,14 @@
                                 </ul> <!-- fieldsets -->
                                 <fieldset class="">
                                     <div class="form-card box-salon">
-                                        <h2 class="fs-title">Chọn salon bạn muốn đặt lịch</h2>
-                                        <select class="form-control">
-                                            <option selected>Chọn tỉnh/thành phố</option>
-                                            <option>Hà Nội</option>
-                                            <option>Thành phố HCM</option>
-                                        </select>
-                                        <br>
-                                        <select class="form-control">
-                                            <option selected>Chọn quận/huyện</option>
-                                            <option>Hoàn Kiếm</option>
-                                            <option>Thủ Đức</option>
-                                        </select>
-                                        <br>
+                                        <h2 class="fs-title mb-5">Chọn salon bạn muốn đặt lịch</h2>
                                         @include('customer::booking.booking_salon')
                                     </div>
                                     <input type="button" name="next" class="btn next action-button" value="Tiếp theo" />
                                 </fieldset>
                                 <fieldset>
                                     <div class="form-card">
-                                        <h2 class="fs-title">Mời bạn chọn dịch vụ</h2>
+                                        <h2 class="fs-title mb-5">Mời bạn chọn dịch vụ</h2>
                                         @include('customer::booking.booking_service')
                                     </div>
                                     <input type="button" name="previous" class="previous action-button-previous"
@@ -77,7 +65,8 @@
                                         </div> <br><br>
                                         <div class="row justify-content-center">
                                             <div class="col-7 text-center">
-                                                <input type="submit" name="make_payment" class="next action-button" value="Xác nhận" />
+                                                {{-- <input type="submit" name="make_payment" class="next action-button" value="Xác nhận" /> --}}
+                                                <button type="submit" class="next action-button">Xác nhận</button>
                                                 <a href="{{ route('customer.home') }}"></a>
                                             </div>
                                         </div>
@@ -97,4 +86,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="{{ asset('client/js/booking.js') }}"></script>
+
+    <script>
+        $(document).ready(function(){
+            $(".hom-nay").click(function(){
+                $("#hom-nay").prop("checked", true);
+            });
+            $(".ngay-mai").click(function(){
+                $("#ngay-mai").prop("checked", true);
+            });
+        });
+    </script>
 @endpush

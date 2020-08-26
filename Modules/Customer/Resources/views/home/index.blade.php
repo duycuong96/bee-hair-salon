@@ -252,7 +252,7 @@
                 <h4 class="tittle my-2">+84 367896789</h4>
 
                 <div class="read-more mx-auto m-0 text-center">
-                    <a href="contact.html" class="read-more scroll btn">Click tại đây</a> </div>
+                    <a href="{{ route('customer.booking') }}" class="read-more scroll btn">Đặt lịch tại đây</a> </div>
             </div>
         </div>
     </section>

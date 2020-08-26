@@ -56,10 +56,10 @@
                                         type="radio"
                                         id="radioPrimary1"
                                         name="status"
-                                        @if ($data->status == STATUS_COMMENT_DRAFT) checked @endif
-                                        value="{{ STATUS_POST_DRAFT }}">
+                                        @if ($data->status == STATUS_COMMENT_APPROVE) checked @endif
+                                        value="{{ STATUS_COMMENT_APPROVE }}">
                                 <label for="radioPrimary1">
-                                    Chưa công khai
+                                    Chưa phê duyệt
                                 </label>
                             </div>
                             <div class="icheck-primary d-inline">
@@ -70,7 +70,7 @@
                                         @if ($data->status == STATUS_COMMENT_PUBLIC) checked @endif
                                         value="{{ STATUS_POST_PUBLIC }}">
                                 <label for="radioPrimary2">
-                                        Công khai
+                                        Phê duyệt
                                 </label>
                             </div>
                         </div>

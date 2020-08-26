@@ -16,10 +16,10 @@ class PermissionService
             if ($request->name) $query->where('name', 'like', '%'.$request->name.'%');
         });
 
-        $data = $builder->orderBy('id', 'desc')
-                        ->paginate(10);
+        $data = $builder->orderBy('created_at', 'desc')
+                        ->get();
 
-        $data->appends(request()->query());
+        // $data->appends(request()->query());
 
         return view(
             'admin::permission.index',

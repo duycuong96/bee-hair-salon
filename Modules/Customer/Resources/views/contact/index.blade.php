@@ -23,8 +23,9 @@
                     LIÊN HỆ CHÚNG TÔI</h3>
                 <div class="title-desc text-center px-lg-5">
                     <p class="px-lg-5 sub-wthree">Mọi thông tin liên hệ vui lòng nhập bên dưới</p>
+                    <br>
                     @if (session('success'))
-                        <p class="text-success">{{session('success')}}</p>
+                        <p class="alert alert-success">{{session('success')}}</p>
                     @endif
                 </div>
             </div>

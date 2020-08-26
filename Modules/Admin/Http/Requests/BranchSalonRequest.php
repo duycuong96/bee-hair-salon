@@ -18,7 +18,8 @@ class BranchSalonRequest extends FormRequest
             'thumb_img' => 'min:2|image',
             'name' => 'required|min:2',
             'content' => 'min:10',
-            // 'work_time' => 'required',
+            'start' => 'required',
+            'end' => 'required',
             'address' => 'required',
             'phone' => 'required|min:10',
             'seat' => 'required|numeric|min:2'
@@ -31,6 +32,8 @@ class BranchSalonRequest extends FormRequest
             'name' => 'Tên salon',
             'thumb_img' => 'Ảnh salon',
             'content' => 'Giới thiệu salon',
+            'start' => 'Thời gian bắt dầu làm việc',
+            'end' => 'Thời gian kết thúc làm việc',
             'work_time' => 'Thời gian hoạt động của salon',
             'address' => 'Địa chỉ của salon',
             'phone' => 'Số điện thoại'
