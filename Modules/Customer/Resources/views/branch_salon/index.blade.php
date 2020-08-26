@@ -19,7 +19,7 @@
 					<h4 class="ser-text-w3 text-bl font-weight-bold text-uppercase mb-2">{{$item->address}}</h4>
                     <p>{{number_format($item->phone, 0, ',', '.')}}</p>
 
-					{{-- <a href="#" class="btn button-style-3 mt-md-5 mt-4">Xem thêm</a> --}}
+                    <a href="{{ route('customer.salon.show', $item->id) }}" class="btn button-style-3 mt-md-5 mt-4">Xem thêm</a>
 				</div>
 			</div>
             @endforeach
