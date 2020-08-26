@@ -20,7 +20,8 @@ class BranchSalonRequest extends FormRequest
             'content' => 'min:10',
             // 'work_time' => 'required',
             'address' => 'required',
-            'phone' => 'required|min:10'
+            'phone' => 'required|min:10',
+            'seat' => 'required|numeric|min:2'
         ];
     }
 

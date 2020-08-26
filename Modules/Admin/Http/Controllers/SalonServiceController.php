@@ -6,6 +6,7 @@ use App\Services\Admin\SalonServiceService;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Admin\Http\Requests\BranchSalonRequest;
 
 class SalonServiceController extends AdminBaseController
 {
@@ -71,5 +72,14 @@ class SalonServiceController extends AdminBaseController
     public function registerService($id)
     {
         return $this->salonServiceService->registerService($id);
+    }
+
+    public function updateSalon($id)
+    {
+        return $this->salonServiceService->updateSalon($id);
+    }
+    public function putUpdateSalon(BranchSalonRequest $request, $id)
+    {
+        return $this->salonServiceService->putUpdateSalon($request, $id);
     }
 }

@@ -44,6 +44,7 @@ Route::group([
     Route::get('salon-lich-su-cua-khach-hang/{id}', 'BranchSalonController@customerHisstory')->name('salon.customerHisstory');
     Route::get('salon-danh-sach-danh-gia/{id}', 'BranchSalonController@salonListReview')->name('salon.salonListReview');
 
+
     // page curd review
     Route::resource('danh-gia', 'ReviewController')->except('create', 'store', 'edit');
     Route::get('danh-gia-lich-su-xoa', 'ReviewController@listSoftDelete')->name('danh-gia.listSoftDelete');
@@ -55,6 +56,8 @@ Route::group([
     Route::get('dich-vu-lich-su-xoa', 'ServiceController@listSoftDelete')->name('dich-vu.listSoftDelete');
     Route::get('dich-vu/khoi-phuc/{id}', 'ServiceController@restore')->name('dich-vu.restore');
     Route::get('dich-vu-salon/dang-ky/{id}', 'SalonServiceController@registerService')->name('dich-vu-salon.registerService');
+    Route::get('dich-vu-salon/update/{id}', 'SalonServiceController@updateSalon')->name('dich-vu-salon.updateSalon');
+    Route::put('dich-vu-salon/update/{id}', 'SalonServiceController@putUpdateSalon')->name('dich-vu-salon.putUpdateSalon');
     // Route::post('validate', 'CustomerController@validateData')->name('khach-hang.validate');
     // page curd account
     Route::resource('tai-khoan', 'AccountController');

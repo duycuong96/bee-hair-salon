@@ -70,12 +70,19 @@
                             <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
                             @enderror
                         </div>
+                        <div class="form-group">
+                            <label>Số ghế:</label>
+                            <input type="text" class="form-control" name="seat" value="{{ $data->seat }}">
+                            @error('seat')
+                            <span class="mt-3 errorMsg text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
                         <input type="hidden" name="ward_id" value="2">
                         <input type="hidden" name="admin" value="2">
                         <hr>
                         <div class="form-group d-flex justify-content-center">
                             <a href="{{ route('admin.salon.index') }}" class="btn btn-lg btn-default mr-3">Trở lại</a>
-                            <button type="submit" class="btn btn-lg btn-primary">Thêm mới</button>
+                            <button type="submit" class="btn btn-lg btn-primary">Cập nhật</button>
                         </div>
                     </form>
                 </div>

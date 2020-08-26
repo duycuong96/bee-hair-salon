@@ -18,6 +18,7 @@ class BranchSalon extends Model
         'view',
         'status',
         'ward_id',
+        'seat',
         'admin_id',
         'locations',
     ];

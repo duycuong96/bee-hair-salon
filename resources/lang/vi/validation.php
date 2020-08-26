@@ -152,6 +152,7 @@ return [
         'role' => 'Quyền',
         'phone' => 'Số điện thoại',
         'address' => 'Địa chỉ',
+        'seat' => "Số ghế"
     ],
     'exception' => [
         'message' => 'Dữ liệu không hợp lệ!'

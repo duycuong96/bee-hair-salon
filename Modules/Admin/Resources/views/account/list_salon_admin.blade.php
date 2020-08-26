@@ -74,6 +74,9 @@
                                             <a href="{{ route('admin.dich-vu-salon.registerService', $row->id) }}" class="btn btn-primary btn-block mt-2">
                                                 <i class="fab fa-usps"></i> Đăng ký dịch vụ salon
                                             </a>
+                                            <a href="{{ route('admin.dich-vu-salon.updateSalon', $row->id) }}" class="btn btn-primary btn-block mt-2">
+                                                <i class="fas fa-store-alt"></i> Cập nhật thông tin salon
+                                            </a>
 
                                         </div>
                                     </div>
