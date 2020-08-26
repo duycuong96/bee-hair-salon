@@ -123,6 +123,7 @@ class AccountService
             'phone',
             'dob',
         );
+        // dd($data);
         $data['dob'] = Carbon::createFromFormat('d-m-Y', $request->dob)->format('Y-m-d H:i:s');
         // dd($data);
         try {
