@@ -79,12 +79,12 @@
             <div class="row pt-2">
                 @foreach ($salons as $salon)
                     <div class="col-lg-3 col-sm-6 px-lg-2 mb-4">
-                        <img src="{!! url('storage/'.  $salon->thumb_img) !!}" alt="" class="img-fluid" />
+                        <img src="{!! url('storage/'.  $salon->image) !!}" alt="" class="img-fluid" />
                         <div class="bottom-ser-w3pvt serv-bg-clr4">
                             <h4 class="ser-text-w3 text-bl font-weight-bold text-uppercase mb-2">
-                                {{$salon->ward_id}}
+                                {{$salon->name}}
                             </h4>
-                            <p>{{ number_format($salon->phone, 0, ',', '.') }}</p>
+                            <p>{{ $salon->address }}</p>
                             <a href=" {{route('customer.salon.show', $salon->id)}} " class="btn button-style-3 mt-md-5 mt-4">Xem thêm</a>
                         </div>
                     </div>
@@ -95,42 +95,7 @@
     <!-- //lisi-salon -->
 
     <!-- /services -->
-    <section class="services py-5" id="services">
-        <div class="container py-md-5">
-            <h3 class="heading text-center mb-3 mb-sm-5">Dịch vụ</h3>
-            <div class="row ab-info">
-                @foreach ($servicesT as $serviceT)
-                    <div class="col-md-6 ab-content ab-content1">
-                        <div class="ab-content-inner">
-                            <a href="single.html">
-                                {{-- <img src="{!! url('storage/'.  json_decode($serviceT->images)[0]) !!}" alt="news image"
-                                    class="img-fluid"></a> --}}
-                            <div class="ab-info-con">
-                                <h4> {{ $serviceT->name }} </h4>
-                                <a href="single.html" class="read-more two btn m-0 px-3"><span
-                                        class="fa fa-arrow-circle-o-right"> </span></a>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-            <div class="row ab-info second mt-lg-4">
-                @foreach ($servicesB as $serviceB)
-                    <div class="col-md-3 ab-content">
-                        <div class="ab-content-inner">
-                            {{-- <a href="single.html"><img src="{!! url('storage/'.  json_decode($serviceB->images)[0]) !!}" alt="news image"
-                                    class="img-fluid"></a> --}}
-                            <div class="ab-info-con">
-                                <h4>{{$serviceB->name}}</h4>
-                                <a href="single.html" class="read-more two btn m-0 px-3"><span
-                                        class="fa fa-arrow-circle-o-right"> </span></a>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-    </section>
+
     <!-- /services -->
 
     <!-- pricing -->
@@ -138,12 +103,12 @@
         <div class="container py-md-5">
             <h3 class="heading text-capitalize text-center mb-3 mb-sm-5">GIÁ DỊCH VỤ</h3>
             <div class="row pricing-grids">
-                <div class="col-lg-6  mb-lg-0 mb-5">
+                <div class="col-lg-12  mb-lg-0 mb-12">
                     <div class="padding">
                         <h3>Dịch vụ mới</h3>
                         <!-- Item starts -->
                         @foreach ($servicesB as $serviceB)
-                            <div class="menu-item">
+                            <div class="menu-item mt-3">
                                 <div class="row border-dot no-gutters">
                                     <div class="col-8 menu-item-name">
                                         <h6>{{$serviceB->name}}</h6>
@@ -155,85 +120,6 @@
 
                             </div>
                         @endforeach
-                        <!-- Item ends -->
-                    </div>
-                </div>
-                <div class="col-lg-6  mb-lg-0 mb-5">
-                    <div class="padding">
-                        <h3>Dịch vụ ưa thích</h3>
-                        <!-- Item starts -->
-                        <div class="menu-item">
-                            <div class="row border-dot no-gutters">
-                                <div class="col-8 menu-item-name">
-                                    <h6>Dye your hair and beard 1</h6>
-                                </div>
-                                <div class="col-4 menu-item-price text-right">
-                                    <h6>$27</h6>
-                                </div>
-                            </div>
-
-                        </div>
-                        <!-- Item ends -->
-                        <!-- Item starts -->
-                        <div class="menu-item my-4">
-                            <div class="row border-dot no-gutters">
-                                <div class="col-8 menu-item-name">
-                                    <h6>Dye your hair and beard 2</h6>
-                                </div>
-                                <div class="col-4 menu-item-price text-right">
-                                    <h6>$21</h6>
-                                </div>
-                            </div>
-
-                        </div>
-                        <!-- Item ends -->
-                        <!-- Item starts -->
-                        <div class="menu-item">
-                            <div class="row border-dot no-gutters">
-                                <div class="col-8 menu-item-name">
-                                    <h6>Dye your hair and beard 3</h6>
-                                </div>
-                                <div class="col-4 menu-item-price text-right">
-                                    <h6>$25</h6>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Item ends -->
-                        <!-- Item starts -->
-                        <div class="menu-item mt-4">
-                            <div class="row border-dot no-gutters">
-                                <div class="col-8 menu-item-name">
-                                    <h6>Dye your hair and beard 4</h6>
-                                </div>
-                                <div class="col-4 menu-item-price text-right">
-                                    <h6>$28</h6>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Item ends -->
-                        <!-- Item starts -->
-                        <div class="menu-item mt-4">
-                            <div class="row border-dot no-gutters">
-                                <div class="col-8 menu-item-name">
-                                    <h6>Dye your hair and beard 5</h6>
-                                </div>
-                                <div class="col-4 menu-item-price text-right">
-                                    <h6>$30</h6>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Item ends -->
-                        <!-- Item starts -->
-                        <div class="menu-item mt-4">
-                            <div class="row border-dot no-gutters">
-                                <div class="col-8 menu-item-name">
-                                    <h6>Dye your hair and beard 6</h6>
-                                </div>
-                                <div class="col-4 menu-item-price text-right">
-                                    <h6>$35</h6>
-                                </div>
-                            </div>
-                        </div>
                         <!-- Item ends -->
                     </div>
                 </div>
@@ -262,7 +148,7 @@
 
 
     <!--/testimonials-->
-    <section class="testimonials py-5" id="testimonials">
+    {{-- <section class="testimonials py-5" id="testimonials">
         <div class="container py-md-5">
             <h3 class="heading text-center mb-3 mb-sm-5">Đánh giá của khách hàng</h3>
             <div class="row mt-3">
@@ -281,10 +167,10 @@
             @endforeach
 
         </div>
-    </section>
+    </section> --}}
 
     <!--//testimonials-->
-
+{{--
     <!-- subscribe -->
     <section class="subscribe" id="subscribe">
         <div class="container-fluid">
@@ -306,5 +192,5 @@
             </div>
         </div>
     </section>
-    <!-- //subscribe -->
+    <!-- //subscribe --> --}}
 @endsection
