@@ -26,7 +26,7 @@
                     <a href="/tai-khoan/thong-bao">Thông báo</a>
                 </li> --}}
                 <li>
-                    <a href="/tai-khoan/lich-su&danh-gia">Lịch sử đặt lịch & Đánh giá</a>
+                    <a href="/tai-khoan/lich-su&danh-gia">Lịch sử đặt lịch</a>
                 </li>
             </ul>
             <a class="btn btn-block btn-default"
