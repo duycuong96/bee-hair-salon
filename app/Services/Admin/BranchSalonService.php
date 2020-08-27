@@ -98,7 +98,7 @@ class BranchSalonService
             // dd($data);
             if (empty($request->file())) {
                 $data['image'] = $branchSalon->image;
-            }else {
+            } else {
                 $data['image'] = $request->file('image')->store('branch_salon', 'public');
             }
             $branchSalon->update($request->all());
