@@ -86,6 +86,8 @@ class BranchSalonService
         }
 
         $branchSalon = BranchSalon::find($id);
+        $data = $request->all();
+        // dd($data);
         if (empty($branchSalon)) {
             return $this->returnFailedWithRoute('admin.salon.index', __('messages.data_update_failed'));
         } else {
@@ -98,10 +100,10 @@ class BranchSalonService
             // dd($data);
             if (empty($request->file())) {
                 $data['image'] = $branchSalon->image;
-            }else {
+            } else {
                 $data['image'] = $request->file('image')->store('branch_salon', 'public');
             }
-            $branchSalon->update($request->all());
+            $branchSalon->update($data);
             return $this->returnSuccessWithRoute('admin.salon.index', __('messages.data_update_success'));
         }
 
