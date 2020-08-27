@@ -92,9 +92,7 @@ class ProfileController extends Controller
 
     public function history()
     {
-        $data = Order::
-        join('reviews', 'orders.id', 'reviews.order_id')
-        ->where('orders.customer_id', Auth::user()->id)
+        $data = Order::where('orders.customer_id', Auth::user()->id)
         ->paginate(4);
 
         return view('customer::profile.history',['data' => $data]);
