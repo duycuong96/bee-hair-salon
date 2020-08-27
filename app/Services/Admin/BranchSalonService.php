@@ -96,6 +96,11 @@ class BranchSalonService
             ];
             $data['work_time'] = json_encode($work_time);
             // dd($data);
+            if (empty($request->file())) {
+                $data['image'] = $branchSalon->image;
+            }else {
+                $data['image'] = $request->file('image')->store('branch_salon', 'public');
+            }
             $branchSalon->update($request->all());
             return $this->returnSuccessWithRoute('admin.salon.index', __('messages.data_update_success'));
         }
