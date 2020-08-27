@@ -22,9 +22,9 @@
                 <li>
                     <a href="{{route('customer.tai-khoan.forgotPassword')}}">Đổi mật khẩu</a>
                 </li>
-                <li>
+                {{-- <li>
                     <a href="/tai-khoan/thong-bao">Thông báo</a>
-                </li>
+                </li> --}}
                 <li>
                     <a href="/tai-khoan/lich-su&danh-gia">Lịch sử đặt lịch & Đánh giá</a>
                 </li>
